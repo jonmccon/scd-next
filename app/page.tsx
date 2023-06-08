@@ -4,6 +4,7 @@ import { Suspense } from 'react'
 import Table from '@/components/table'
 import TablePlaceholder from '@/components/table-placeholder'
 import ExpandingArrow from '@/components/expanding-arrow'
+import Table_Directory from '@/components/table_directory'
 
 // Prisma does not support Edge without the Data Proxy currently
 // export const runtime = 'edge'
@@ -25,7 +26,7 @@ export default function Home() {
       </h1>
       <Suspense fallback={<TablePlaceholder />}>
         {/* @ts-expect-error Async Server Component */}
-        <Table />
+        <Table_Directory />
       </Suspense>
       <p className="font-light text-gray-600 w-full max-w-lg text-center mt-6">
         <Link

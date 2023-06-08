@@ -3,10 +3,20 @@ import { timeAgo } from '@/lib/utils'
 import Image from 'next/image'
 import RefreshButton from './refresh-button'
 
-export default async function Table() {
+export default async function Table_Directory() {
   const startTime = Date.now()
-  const users = await prisma.directory.findMany()
   const duration = Date.now() - startTime
+  
+  const users = await prisma.directory.findMany({
+    where: {
+        published: true,
+      },
+      select: {
+        title: true,
+        website: true,
+      },
+  })
+  
 
   return (
     <div className="bg-white/30 p-12 shadow-xl ring-1 ring-gray-900/5 rounded-lg backdrop-blur-lg max-w-xl mx-auto w-full">
@@ -14,7 +24,7 @@ export default async function Table() {
         <div className="space-y-1">
           <h2 className="text-xl font-semibold">Recent Users</h2>
           <p className="text-sm text-gray-500">
-            Fetched {users.length} users in {duration}ms
+            Fetched {users.title} users in {duration}ms
           </p>
         </div>
         <RefreshButton />
@@ -22,7 +32,7 @@ export default async function Table() {
       <div className="divide-y divide-gray-900/5">
         {users.map((user) => (
           <div
-            key={user.name}
+            key={user.title}
             className="flex items-center justify-between py-3"
           >
             <div className="flex items-center space-x-4">
@@ -34,8 +44,8 @@ export default async function Table() {
                 className="rounded-full ring-1 ring-gray-900/5"
               />
               <div className="space-y-1">
-                <p className="font-medium leading-none">{user.name}</p>
-                <p className="text-sm text-gray-500">{user.email}</p>
+                <p className="font-medium leading-none">{user.title}</p>
+                <p className="text-sm text-gray-500">{user.website}</p>
               </div>
             </div>
             <p className="text-sm text-gray-500">{timeAgo(user.createdAt)}</p>
