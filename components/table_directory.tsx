@@ -6,17 +6,25 @@ import RefreshButton from './refresh-button'
 export default async function Table_Directory() {
   const startTime = Date.now()
   const duration = Date.now() - startTime
+
+//   const { tags } = this.props;
+//
+// turn this component into just the individual listing
+//    
   
   const users = await prisma.directory.findMany({
     where: {
         published: true,
-      },
-      select: {
-        title: true,
-        website: true,
+        category: "A",
       },
   })
   
+  const usersB = await prisma.directory.findMany({
+    where: {
+        published: true,
+        category: "B",
+      },
+  })
 
   return (
     <div className="bg-white/30 p-12 shadow-xl ring-1 ring-gray-900/5 rounded-lg backdrop-blur-lg max-w-xl mx-auto w-full">
@@ -31,6 +39,29 @@ export default async function Table_Directory() {
       </div>
       <div className="divide-y divide-gray-900/5">
         {users.map((user) => (
+          <div
+            key={user.title}
+            className="flex items-center justify-between py-3"
+          >
+            <div className="flex items-center space-x-4">
+              <Image
+                src={user.image}
+                alt={user.name}
+                width={48}
+                height={48}
+                className="rounded-full ring-1 ring-gray-900/5"
+              />
+              <div className="space-y-1">
+                <p className="font-medium leading-none">{user.title}</p>
+                <p className="text-sm text-gray-500">{user.website}</p>
+              </div>
+            </div>
+            <p className="text-sm text-gray-500">{timeAgo(user.createdAt)}</p>
+          </div>
+        ))}
+      </div>
+      <div className="divide-y divide-gray-900/5">
+        {usersB.map((user) => (
           <div
             key={user.title}
             className="flex items-center justify-between py-3"
