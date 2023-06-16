@@ -41,7 +41,7 @@ export default async function Table_Directory() {
   const listingsZ = await prisma.directory.findMany({ where: { published: true, category: "Z",},})
   const listingsNumbers = await prisma.directory.findMany({ where: { published: true, category: "numbers",},})
   
-  
+  const totalcount: number = listingsA.length + listingsB.length + listingsC.length + listingsD.length + listingsE.length + listingsF.length + listingsG.length + listingsH.length + listingsI.length + listingsJ.length + listingsK.length + listingsL.length + listingsM.length + listingsN.length + listingsO.length + listingsP.length + listingsQ.length + listingsR.length + listingsS.length + listingsT.length + listingsU.length + listingsV.length + listingsW.length + listingsX.length + listingsY.length + listingsZ.length + listingsNumbers.length
 
   return (
     <div className="grid">
@@ -50,7 +50,7 @@ export default async function Table_Directory() {
           <div className="space-y-1">
             <h2 className="text-xl font-semibold">Recent Users</h2>
             <p className="text-sm text-gray-500">
-              Fetched {listingsA.length} users in {duration}ms
+              Fetched {totalcount} users in {duration}ms
             </p>
           </div>
           <RefreshButton />
