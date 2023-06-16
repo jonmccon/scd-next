@@ -3,6 +3,7 @@ import { timeAgo } from '@/lib/utils'
 import Image from 'next/image'
 import RefreshButton from './refresh-button'
 import Link from 'next/link'
+import { Key, ReactElement, JSXElementConstructor, ReactFragment } from 'react'
 
 export default async function Table_Directory() {
   const startTime = Date.now()
@@ -58,7 +59,7 @@ export default async function Table_Directory() {
       </div>
       
       <div className="divide-y divide-gray-900/5">
-        {listingsA.map((listing) => (
+        {listingsA.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -73,7 +74,7 @@ export default async function Table_Directory() {
       </div>
 
       <div className="divide-y divide-gray-900/5">
-        {listingsB.map((listing) => (
+        {listingsB.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -88,7 +89,7 @@ export default async function Table_Directory() {
       </div>
 
       <div className="divide-y divide-gray-900/5">
-        {listingsC.map((listing) => (
+        {listingsC.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -103,7 +104,7 @@ export default async function Table_Directory() {
       </div>
 
       <div className="divide-y divide-gray-900/5">
-        {listingsD.map((listing) => (
+        {listingsD.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -118,7 +119,7 @@ export default async function Table_Directory() {
       </div>
 
       <div className="divide-y divide-gray-900/5">
-        {listingsE.map((listing) => (
+        {listingsE.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -133,7 +134,7 @@ export default async function Table_Directory() {
       </div>
       
       <div className="divide-y divide-gray-900/5">
-        {listingsF.map((listing) => (
+        {listingsF.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -148,7 +149,7 @@ export default async function Table_Directory() {
       </div>
       
       <div className="divide-y divide-gray-900/5">
-        {listingsG.map((listing) => (
+        {listingsG.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -163,7 +164,7 @@ export default async function Table_Directory() {
       </div>
       
       <div className="divide-y divide-gray-900/5">
-        {listingsH.map((listing) => (
+        {listingsH.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -178,7 +179,7 @@ export default async function Table_Directory() {
       </div>
       
       <div className="divide-y divide-gray-900/5">
-        {listingsI.map((listing) => (
+        {listingsI.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -193,7 +194,7 @@ export default async function Table_Directory() {
       </div>
       
       <div className="divide-y divide-gray-900/5">
-        {listingsJ.map((listing) => (
+        {listingsJ.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -208,7 +209,7 @@ export default async function Table_Directory() {
       </div>
       
       <div className="divide-y divide-gray-900/5">
-        {listingsK.map((listing) => (
+        {listingsK.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -223,7 +224,7 @@ export default async function Table_Directory() {
       </div>
       
       <div className="divide-y divide-gray-900/5">
-        {listingsL.map((listing) => (
+        {listingsL.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -238,7 +239,7 @@ export default async function Table_Directory() {
       </div>
       
       <div className="divide-y divide-gray-900/5">
-        {listingsM.map((listing) => (
+        {listingsM.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -253,7 +254,7 @@ export default async function Table_Directory() {
       </div>
       
       <div className="divide-y divide-gray-900/5">
-        {listingsN.map((listing) => (
+        {listingsN.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -268,7 +269,7 @@ export default async function Table_Directory() {
       </div>
       
       <div className="divide-y divide-gray-900/5">
-        {listingsO.map((listing) => (
+        {listingsO.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -283,7 +284,7 @@ export default async function Table_Directory() {
       </div>
 
       <div className="divide-y divide-gray-900/5">
-        {listingsP.map((listing) => (
+        {listingsP.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -298,7 +299,7 @@ export default async function Table_Directory() {
       </div>
       
       <div className="divide-y divide-gray-900/5">
-        {listingsQ.map((listing) => (
+        {listingsQ.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -313,7 +314,7 @@ export default async function Table_Directory() {
       </div>
       
       <div className="divide-y divide-gray-900/5">
-        {listingsR.map((listing) => (
+        {listingsR.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -328,7 +329,7 @@ export default async function Table_Directory() {
       </div>
       
       <div className="divide-y divide-gray-900/5">
-        {listingsS.map((listing) => (
+        {listingsS.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -343,7 +344,7 @@ export default async function Table_Directory() {
       </div>
       
       <div className="divide-y divide-gray-900/5">
-        {listingsT.map((listing) => (
+        {listingsT.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -358,7 +359,7 @@ export default async function Table_Directory() {
       </div>
       
       <div className="divide-y divide-gray-900/5">
-        {listingsU.map((listing) => (
+        {listingsU.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -373,7 +374,7 @@ export default async function Table_Directory() {
       </div>
       
       <div className="divide-y divide-gray-900/5">
-        {listingsV.map((listing) => (
+        {listingsV.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -388,7 +389,7 @@ export default async function Table_Directory() {
       </div>
       
       <div className="divide-y divide-gray-900/5">
-        {listingsW.map((listing) => (
+        {listingsW.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -403,7 +404,7 @@ export default async function Table_Directory() {
       </div>
       
       <div className="divide-y divide-gray-900/5">
-        {listingsR.map((listing) => (
+        {listingsR.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -418,7 +419,7 @@ export default async function Table_Directory() {
       </div>
       
       <div className="divide-y divide-gray-900/5">
-        {listingsX.map((listing) => (
+        {listingsX.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -433,7 +434,7 @@ export default async function Table_Directory() {
       </div>
       
       <div className="divide-y divide-gray-900/5">
-        {listingsY.map((listing) => (
+        {listingsY.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -448,7 +449,7 @@ export default async function Table_Directory() {
       </div>
       
       <div className="divide-y divide-gray-900/5">
-        {listingsZ.map((listing) => (
+        {listingsZ.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
@@ -463,7 +464,7 @@ export default async function Table_Directory() {
       </div>
 
       <div className="divide-y divide-gray-900/5">
-        {listingsNumbers.map((listing) => (
+        {listingsNumbers.map((listing: { title: string; website: string; }) => (
           <div
             key={listing.title}
             className="flex items-center justify-between py-3"
