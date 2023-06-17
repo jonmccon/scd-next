@@ -28,7 +28,8 @@ export default function Home() {
       <Suspense fallback={<TablePlaceholder />}>
         {/* @ts-expect-error Async Server Component */}
         <Filters />
-        {/* <Table_Directory /> */}
+        {/* @ts-expect-error Async Server Component */}
+        <Table_Directory />
       </Suspense>
       <p className="font-light text-gray-600 w-full max-w-lg text-center mt-6">
         <Link
