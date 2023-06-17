@@ -20,7 +20,7 @@ const citys = await prisma.directory.findMany({
 
 
 
-  
+// Will need a action that changes the background color of all the listings that match that filter
 
   return (
     <div className="grid">
@@ -79,46 +79,46 @@ const citys = await prisma.directory.findMany({
 
       <div className="divide-y divide-gray-900/5">
           <ul>
-          <li>THREE_DIMENSIONAL</li>
-          <li>ADVERTISING</li>
-          <li>ARCHITECTURE</li>
-          <li>BRANDING</li>
-          <li>COMMUNITY</li>
-          <li>DEVELOPMENT</li>
-          <li>ECOMMERCE</li>
-          <li>ENGINEERING</li>
-          <li>ENVIRONMENTAL</li>
-          <li>EVENTS</li>
-          <li>EXHIBITION</li>
-          <li>EXPERIENCE</li>
-          <li>EXPERIENTIAL</li>
-          <li>GAMING</li>
-          <li>ILLUSTRATION</li>
-          <li>INDUSTRIAL</li>
-          <li>INHOUSE</li>
-          <li>INTERACTIVE</li>
-          <li>INTERIOR</li>
-          <li>MARKETING</li>
-          <li>MOTION</li>
-          <li>NAMING</li>
-          <li>PACKAGING</li>
-          <li>PHOTOGRAPHY</li>
-          <li>PRESENTATION</li>
-          <li>PRESS</li>
-          <li>PRINT</li>
-          <li>PRINTER</li>
-          <li>PRODUCT</li>
-          <li>PUBLIC_RELATIONS</li>
-          <li>RECRUITER</li>
-          <li>RESEARCH</li>
-          <li>SCHOOL</li>
-          <li>SOUND</li>
-          <li>STRATEGY</li>
-          <li>TYPOGRAPHY</li>
-          <li>UX_UI</li>
-          <li>VFX</li>
-          <li>VIDEO</li>
-          <li>VOICE</li>
+            <li>THREE_DIMENSIONAL</li>
+            <li>ADVERTISING</li>
+            <li>ARCHITECTURE</li>
+            <li>BRANDING</li>
+            <li>COMMUNITY</li>
+            <li>DEVELOPMENT</li>
+            <li>ECOMMERCE</li>
+            <li>ENGINEERING</li>
+            <li>ENVIRONMENTAL</li>
+            <li>EVENTS</li>
+            <li>EXHIBITION</li>
+            <li>EXPERIENCE</li>
+            <li>EXPERIENTIAL</li>
+            <li>GAMING</li>
+            <li>ILLUSTRATION</li>
+            <li>INDUSTRIAL</li>
+            <li>INHOUSE</li>
+            <li>INTERACTIVE</li>
+            <li>INTERIOR</li>
+            <li>MARKETING</li>
+            <li>MOTION</li>
+            <li>NAMING</li>
+            <li>PACKAGING</li>
+            <li>PHOTOGRAPHY</li>
+            <li>PRESENTATION</li>
+            <li>PRESS</li>
+            <li>PRINT</li>
+            <li>PRINTER</li>
+            <li>PRODUCT</li>
+            <li>PUBLIC_RELATIONS</li>
+            <li>RECRUITER</li>
+            <li>RESEARCH</li>
+            <li>SCHOOL</li>
+            <li>SOUND</li>
+            <li>STRATEGY</li>
+            <li>TYPOGRAPHY</li>
+            <li>UX_UI</li>
+            <li>VFX</li>
+            <li>VIDEO</li>
+            <li>VOICE</li>
           </ul>
       </div>
 
