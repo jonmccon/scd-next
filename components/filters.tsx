@@ -38,6 +38,7 @@ const citys = await prisma.directory.findMany({
       <div className="divide-y divide-gray-900/5">
         {sizes.map((size: { size: string; }) => (
           <div
+          key={size.size}
             className="flex items-center justify-between py-3"
           >
             <div className="flex items-center space-x-4">
@@ -52,6 +53,7 @@ const citys = await prisma.directory.findMany({
       <div className="divide-y divide-gray-900/5">
         {neighborhoods.map((neighborhood: { neighborhood: string; }) => (
           <div
+          key={neighborhood.neighborhood}
             className="flex items-center justify-between py-3"
           >
             <div className="flex items-center space-x-4">
@@ -66,6 +68,7 @@ const citys = await prisma.directory.findMany({
       <div className="divide-y divide-gray-900/5">
         {citys.map((city: { city: string; }) => (
           <div
+          key={city.city}
             className="flex items-center justify-between py-3"
           >
             <div className="flex items-center space-x-4">
