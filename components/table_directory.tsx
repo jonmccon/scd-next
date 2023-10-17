@@ -65,7 +65,7 @@ export default async function Table_Directory() {
             <RefreshButton />
         
       <div className="directory-block--title"><a id="A"></a>A</div>
-      <DirectoryListing />
+      {/* <DirectoryListing /> */}
         
         
         <div className="directory-list">
