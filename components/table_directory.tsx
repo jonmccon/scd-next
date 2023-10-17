@@ -44,8 +44,11 @@ export default async function Table_Directory() {
   const listingsNumbers = await prisma.directory.findMany({ where: { published: true, category: "numbers",},})
   
   // possible array of arrays to map thru
-  // const listings = [...listingsA, ...listingsB, ...listingsC]
-  // var doubledArray = array.map(nested => nested.map(element => element * 2));
+  // const listings = [...listingsA, ...listingsB, ...listingsC, ...listingsD, ...listingsE, ...listingsF, ...listingsG,
+  //                   ...listingsH, ...listingsI, ...listingsJ, ...listingsK, ...listingsL, ...listingsM, ...listingsN,
+  //                   ...listingsO, ...listingsP, ...listingsQ, ...listingsR, ...listingsS, ...listingsT, ...listingsU,
+  //                   ...listingsV, ...listingsW, ...listingsX, ...listingsY, ...listingsZ, ...listingsNumbers]
+  // var doubledArray = listings.map(nested => nested.map(element => element * 2));
 
   const totalcount: number = listingsA.length + listingsB.length + listingsC.length + listingsD.length + listingsE.length + listingsF.length + listingsG.length + listingsH.length + listingsI.length + listingsJ.length + listingsK.length + listingsL.length + listingsM.length + listingsN.length + listingsO.length + listingsP.length + listingsQ.length + listingsR.length + listingsS.length + listingsT.length + listingsU.length + listingsV.length + listingsW.length + listingsX.length + listingsY.length + listingsZ.length + listingsNumbers.length
 
@@ -62,6 +65,9 @@ export default async function Table_Directory() {
             <RefreshButton />
         
       <div className="directory-block--title"><a id="A"></a>A</div>
+      <DirectoryListing />
+        
+        
         <div className="directory-list">
           {listingsA.map((listing: { title: string; website: string; }) => (
             <div
@@ -83,9 +89,7 @@ export default async function Table_Directory() {
               className=""
             >
               <div className="directory-block--item">
-                <div className="space-y-1">
-                  <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-                </div>
+                  <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
               </div>
             </div>
           ))}
@@ -99,9 +103,7 @@ export default async function Table_Directory() {
               className=""
             >
               <div className="directory-block--item">
-                <div className="space-y-1">
-                  <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-                </div>
+                  <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
               </div>
             </div>
           ))}
@@ -115,9 +117,7 @@ export default async function Table_Directory() {
               className=""
             >
               <div className="directory-block--item">
-                <div className="space-y-1">
-                  <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-                </div>
+                  <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
               </div>
             </div>
           ))}
@@ -130,10 +130,8 @@ export default async function Table_Directory() {
               key={listing.title}
               className=""
             >
-              <div className="directory-block--item">
-                <div className="space-y-1">
-                  <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-                </div>
+              <div className="directory-block--item">             
+                  <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
               </div>
             </div>
           ))}
@@ -146,10 +144,8 @@ export default async function Table_Directory() {
               key={listing.title}
               className=""
             >
-              <div className="directory-block--item">
-                <div className="space-y-1">
-                  <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-                </div>
+              <div className="directory-block--item"> 
+                  <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>             
               </div>
             </div>
           ))}
@@ -157,7 +153,6 @@ export default async function Table_Directory() {
       </div>
       
       <div className='directory-block'>
-
       <div className="directory-block--title"><a id="G"></a>G</div>   
       <div className="directory-list">
         {listingsG.map((listing: { title: string; website: string; }) => (
@@ -166,9 +161,7 @@ export default async function Table_Directory() {
             className=""
           >
             <div className="directory-block--item">
-              <div className="space-y-1">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-              </div>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
             </div>
           </div>
         ))}
@@ -182,9 +175,7 @@ export default async function Table_Directory() {
             className=""
           >
             <div className="directory-block--item">
-              <div className="space-y-1">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-              </div>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
             </div>
           </div>
         ))}
@@ -198,9 +189,7 @@ export default async function Table_Directory() {
             className=""
           >
             <div className="directory-block--item">
-              <div className="space-y-1">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-              </div>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
             </div>
           </div>
         ))}
@@ -214,9 +203,7 @@ export default async function Table_Directory() {
             className=""
           >
             <div className="directory-block--item">
-              <div className="space-y-1">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-              </div>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
             </div>
           </div>
         ))}
@@ -230,9 +217,7 @@ export default async function Table_Directory() {
             className=""
           >
             <div className="directory-block--item">
-              <div className="space-y-1">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-              </div>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
             </div>
           </div>
         ))}
@@ -246,9 +231,7 @@ export default async function Table_Directory() {
             className=""
           >
             <div className="directory-block--item">
-              <div className="space-y-1">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-              </div>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
             </div>
           </div>
         ))}
@@ -262,9 +245,7 @@ export default async function Table_Directory() {
             className=""
           >
             <div className="directory-block--item">
-              <div className="space-y-1">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-              </div>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
             </div>
           </div>
         ))}
@@ -278,9 +259,7 @@ export default async function Table_Directory() {
             className=""
           >
             <div className="directory-block--item">
-              <div className="space-y-1">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-              </div>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
             </div>
           </div>
         ))}
@@ -296,9 +275,7 @@ export default async function Table_Directory() {
             className=""
           >
             <div className="directory-block--item">
-              <div className="space-y-1">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-              </div>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
             </div>
           </div>
         ))}
@@ -312,9 +289,7 @@ export default async function Table_Directory() {
             className=""
           >
             <div className="directory-block--item">
-              <div className="space-y-1">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-              </div>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
             </div>
           </div>
         ))}
@@ -328,9 +303,7 @@ export default async function Table_Directory() {
             className=""
           >
             <div className="directory-block--item">
-              <div className="space-y-1">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-              </div>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
             </div>
           </div>
         ))}
@@ -344,9 +317,7 @@ export default async function Table_Directory() {
             className=""
           >
             <div className="directory-block--item">
-              <div className="space-y-1">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-              </div>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
             </div>
           </div>
         ))}
@@ -360,9 +331,7 @@ export default async function Table_Directory() {
             className=""
           >
             <div className="directory-block--item">
-              <div className="space-y-1">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-              </div>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
             </div>
           </div>
         ))}
@@ -378,9 +347,7 @@ export default async function Table_Directory() {
             className=""
           >
             <div className="directory-block--item">
-              <div className="space-y-1">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-              </div>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
             </div>
           </div>
         ))}
@@ -394,9 +361,7 @@ export default async function Table_Directory() {
             className=""
           >
             <div className="directory-block--item">
-              <div className="space-y-1">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-              </div>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
             </div>
           </div>
         ))}
@@ -410,9 +375,7 @@ export default async function Table_Directory() {
             className=""
           >
             <div className="directory-block--item">
-              <div className="space-y-1">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-              </div>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
             </div>
           </div>
         ))}
@@ -426,9 +389,7 @@ export default async function Table_Directory() {
             className=""
           >
             <div className="directory-block--item">
-              <div className="space-y-1">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-              </div>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
             </div>
           </div>
         ))}
@@ -442,9 +403,7 @@ export default async function Table_Directory() {
             className=""
           >
             <div className="directory-block--item">
-              <div className="space-y-1">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-              </div>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
             </div>
           </div>
         ))}
@@ -458,9 +417,7 @@ export default async function Table_Directory() {
             className=""
           >
             <div className="directory-block--item">
-              <div className="space-y-1">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-              </div>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
             </div>
           </div>
         ))}
@@ -474,9 +431,7 @@ export default async function Table_Directory() {
             className=""
           >
             <div className="directory-block--item">
-              <div className="space-y-1">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-              </div>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
             </div>
           </div>
         ))}
@@ -490,9 +445,7 @@ export default async function Table_Directory() {
             className=""
           >
             <div className="directory-block--item">
-              <div className="space-y-1">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-              </div>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
             </div>
           </div>
         ))}
@@ -506,9 +459,7 @@ export default async function Table_Directory() {
             className=""
           >
             <div className="directory-block--item">
-              <div className="space-y-1">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
-              </div>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
             </div>
           </div>
         ))}
