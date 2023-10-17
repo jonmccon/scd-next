@@ -8,6 +8,7 @@ import { Key, ReactElement, JSXElementConstructor, ReactFragment } from 'react'
 export default async function Table_Directory() {
   const startTime = Date.now()
   const duration = Date.now() - startTime
+  
 
 //   const { tags } = this.props;
 //
@@ -44,12 +45,13 @@ export default async function Table_Directory() {
   
   const totalcount: number = listingsA.length + listingsB.length + listingsC.length + listingsD.length + listingsE.length + listingsF.length + listingsG.length + listingsH.length + listingsI.length + listingsJ.length + listingsK.length + listingsL.length + listingsM.length + listingsN.length + listingsO.length + listingsP.length + listingsQ.length + listingsR.length + listingsS.length + listingsT.length + listingsU.length + listingsV.length + listingsW.length + listingsX.length + listingsY.length + listingsZ.length + listingsNumbers.length
 
+  
   return (
     <div className="grid">
       <div className="bg-white/30 p-12 shadow-xl ring-1 ring-gray-900/5 rounded-lg backdrop-blur-lg max-w-xl mx-auto w-full">
         <div className="flex justify-between items-center mb-4">
           <div className="space-y-1">
-            <h2 className="text-xl font-semibold">Recent Users</h2>
+            <h2 className="text-xl font-semibold">begin directory</h2>
             <p className="text-sm text-gray-500">
               Fetched {totalcount} users in {duration}ms
             </p>
@@ -58,94 +60,96 @@ export default async function Table_Directory() {
         </div>
       </div>
       
-      <div className="divide-y divide-gray-900/5">
-        {listingsA.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className="flex items-center justify-between py-3"
-          >
-            <div className="flex items-center space-x-4">
-              <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+      <div className='directory-block'>
+        <div className="divide-y divide-gray-900/5">
+          {listingsA.map((listing: { title: string; website: string; }) => (
+            <div
+              key={listing.title}
+              className="flex items-center justify-between py-3"
+            >
+              <div className="flex items-center space-x-4">
+                <div className="space-y-1">
+                  <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <div className="divide-y divide-gray-900/5">
-        {listingsB.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className="flex items-center justify-between py-3"
-          >
-            <div className="flex items-center space-x-4">
-              <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+        <div className="divide-y divide-gray-900/5">
+          {listingsB.map((listing: { title: string; website: string; }) => (
+            <div
+              key={listing.title}
+              className="flex items-center justify-between py-3"
+            >
+              <div className="flex items-center space-x-4">
+                <div className="space-y-1">
+                  <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <div className="divide-y divide-gray-900/5">
-        {listingsC.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className="flex items-center justify-between py-3"
-          >
-            <div className="flex items-center space-x-4">
-              <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+        <div className="divide-y divide-gray-900/5">
+          {listingsC.map((listing: { title: string; website: string; }) => (
+            <div
+              key={listing.title}
+              className="flex items-center justify-between py-3"
+            >
+              <div className="flex items-center space-x-4">
+                <div className="space-y-1">
+                  <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <div className="divide-y divide-gray-900/5">
-        {listingsD.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className="flex items-center justify-between py-3"
-          >
-            <div className="flex items-center space-x-4">
-              <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+        <div className="divide-y divide-gray-900/5">
+          {listingsD.map((listing: { title: string; website: string; }) => (
+            <div
+              key={listing.title}
+              className="flex items-center justify-between py-3"
+            >
+              <div className="flex items-center space-x-4">
+                <div className="space-y-1">
+                  <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <div className="divide-y divide-gray-900/5">
-        {listingsE.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className="flex items-center justify-between py-3"
-          >
-            <div className="flex items-center space-x-4">
-              <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+        <div className="divide-y divide-gray-900/5">
+          {listingsE.map((listing: { title: string; website: string; }) => (
+            <div
+              key={listing.title}
+              className="flex items-center justify-between py-3"
+            >
+              <div className="flex items-center space-x-4">
+                <div className="space-y-1">
+                  <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
-      
-      <div className="divide-y divide-gray-900/5">
-        {listingsF.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className="flex items-center justify-between py-3"
-          >
-            <div className="flex items-center space-x-4">
-              <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+          ))}
+        </div>
+        
+        <div className="divide-y divide-gray-900/5">
+          {listingsF.map((listing: { title: string; website: string; }) => (
+            <div
+              key={listing.title}
+              className="flex items-center justify-between py-3"
+            >
+              <div className="flex items-center space-x-4">
+                <div className="space-y-1">
+                  <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
       
       <div className="divide-y divide-gray-900/5">
@@ -156,7 +160,7 @@ export default async function Table_Directory() {
           >
             <div className="flex items-center space-x-4">
               <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
               </div>
             </div>
           </div>
@@ -171,7 +175,7 @@ export default async function Table_Directory() {
           >
             <div className="flex items-center space-x-4">
               <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
               </div>
             </div>
           </div>
@@ -186,7 +190,7 @@ export default async function Table_Directory() {
           >
             <div className="flex items-center space-x-4">
               <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
               </div>
             </div>
           </div>
@@ -201,7 +205,7 @@ export default async function Table_Directory() {
           >
             <div className="flex items-center space-x-4">
               <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
               </div>
             </div>
           </div>
@@ -216,7 +220,7 @@ export default async function Table_Directory() {
           >
             <div className="flex items-center space-x-4">
               <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
               </div>
             </div>
           </div>
@@ -231,7 +235,7 @@ export default async function Table_Directory() {
           >
             <div className="flex items-center space-x-4">
               <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
               </div>
             </div>
           </div>
@@ -246,7 +250,7 @@ export default async function Table_Directory() {
           >
             <div className="flex items-center space-x-4">
               <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
               </div>
             </div>
           </div>
@@ -261,7 +265,7 @@ export default async function Table_Directory() {
           >
             <div className="flex items-center space-x-4">
               <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
               </div>
             </div>
           </div>
@@ -276,7 +280,7 @@ export default async function Table_Directory() {
           >
             <div className="flex items-center space-x-4">
               <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
               </div>
             </div>
           </div>
@@ -291,7 +295,7 @@ export default async function Table_Directory() {
           >
             <div className="flex items-center space-x-4">
               <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
               </div>
             </div>
           </div>
@@ -306,7 +310,7 @@ export default async function Table_Directory() {
           >
             <div className="flex items-center space-x-4">
               <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
               </div>
             </div>
           </div>
@@ -321,7 +325,7 @@ export default async function Table_Directory() {
           >
             <div className="flex items-center space-x-4">
               <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
               </div>
             </div>
           </div>
@@ -336,7 +340,7 @@ export default async function Table_Directory() {
           >
             <div className="flex items-center space-x-4">
               <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
               </div>
             </div>
           </div>
@@ -351,7 +355,7 @@ export default async function Table_Directory() {
           >
             <div className="flex items-center space-x-4">
               <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
               </div>
             </div>
           </div>
@@ -366,7 +370,7 @@ export default async function Table_Directory() {
           >
             <div className="flex items-center space-x-4">
               <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
               </div>
             </div>
           </div>
@@ -381,7 +385,7 @@ export default async function Table_Directory() {
           >
             <div className="flex items-center space-x-4">
               <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
               </div>
             </div>
           </div>
@@ -396,7 +400,7 @@ export default async function Table_Directory() {
           >
             <div className="flex items-center space-x-4">
               <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
               </div>
             </div>
           </div>
@@ -411,7 +415,7 @@ export default async function Table_Directory() {
           >
             <div className="flex items-center space-x-4">
               <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
               </div>
             </div>
           </div>
@@ -426,7 +430,7 @@ export default async function Table_Directory() {
           >
             <div className="flex items-center space-x-4">
               <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
               </div>
             </div>
           </div>
@@ -441,7 +445,7 @@ export default async function Table_Directory() {
           >
             <div className="flex items-center space-x-4">
               <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
               </div>
             </div>
           </div>
@@ -456,7 +460,7 @@ export default async function Table_Directory() {
           >
             <div className="flex items-center space-x-4">
               <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
               </div>
             </div>
           </div>
@@ -471,7 +475,7 @@ export default async function Table_Directory() {
           >
             <div className="flex items-center space-x-4">
               <div className="space-y-1">
-                <a href={listing.website}><p className="font-medium leading-none">{listing.title}</p></a>
+                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}><p className="font-medium leading-none">{listing.title}</p></a>
               </div>
             </div>
           </div>

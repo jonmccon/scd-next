@@ -25,7 +25,7 @@ const filters: Array<String> = [
   "RECRUITER", "RESEARCH", "SCHOOL", "SOUND", "STRATEGY", "TYPOGRAPHY", "UX_UI", "VFX", "VIDEO", "VOICE"
 ];
 
-console.log(filters)
+// console.log(filters)
 
 
 // may just need to change tags back to a list of strings? 

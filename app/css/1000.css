@@ -1,0 +1,354 @@
+/* DESKTOP SCREEN */
+
+@media only screen and (min-width: 1250px) { 
+
+    h1 {
+        font: var(--text-mono-std);
+        line-height: 140%;
+    }
+
+    h5 {
+        font: var(--text-mono--item);
+        margin-block-start: 0;
+    }
+    
+    /* BACKGROUND PATTERN */
+    .pattern {
+        grid-template-columns: 2em 1fr 2em;
+        grid-template-rows: 2em 1fr 2em;
+    }
+    /* ----------------------------------------------- */
+
+
+    /* CONTAINER GRID */
+    .container {
+        display: grid;
+        grid-row: 2;
+        grid-column: 2;
+        grid-template-columns: 2em repeat(10, 1fr) 2em;
+        grid-template-rows: 1fr auto auto auto auto auto 8em;
+        grid-gap: .5em;
+        grid-auto-flow: dense;    
+        max-width: 1400px;
+        border-radius: 10px;
+        grid-template-areas:
+            "MenuLeft              MenuLeft        .        .               Logo            Logo            Logo            Logo            .               .       MenuRight       MenuRight"
+            ".              .               .               Headline        Headline        Headline        Headline        Headline        Headline        .        .               ."
+            "showContainer  showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer"
+            "Filters        Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters"
+            ".              Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       ."
+            ".              .          .          .          .          .          .          .          .          .          .          ."
+            ".              Footer          Footer          Footer          Footer          Footer          Footer          Footer          Footer          Footer          Footer          ."
+            ;
+    }   
+
+
+     /* LOGOMARK */
+
+     .logo {
+        margin: 1em 0 0 0;
+      }
+
+    /* ----------------------------------------------- */
+    
+    /* HEADLINE */
+    .headline {
+        margin: 0 0 2em 0;
+        /* min-height: 60vh; */
+    }
+
+    .headline-wrapper {
+        display: grid;
+        grid-area: Headline;
+        min-height: 5vh;
+    }
+
+    .headline-wrapper-small {
+        grid-area: Headline;
+        margin: 4em 0 0 0;
+    }
+
+    .headlineFilter {
+        font-size: 1em;
+    }
+
+    .headline-menu-left {
+        margin: 5vh 0 0 0;
+        grid-area: MenuLeft;
+        align-self: center;
+        width: max-content;
+    }
+
+    .headline-menu-left a {
+        display: block;
+        margin: 0 0 0 0;
+    }
+
+    .headline-menu-right {
+        margin: 5vh 0 0 0;
+        grid-area: MenuRight;
+        align-self: start;
+        text-align: right;
+    }
+
+    /* .headline-menu-right a {
+        display: block;
+        text-align: right;
+    } */
+
+    .headline-menu--link { 
+        font: var(--text-mono-std);
+        text-align: right;
+    }
+    
+    .headline-menu--about {
+    }
+
+    /* ----------------------------------------------- */
+
+    /* SUBSCRIBE */
+    .email-form {  
+     }
+
+    .email-form input { 
+        width: 20ch;
+    }
+
+    .email-form input:hover { }
+
+    .email-form input:focus { }
+
+    .email-form button { 
+        font: var(--text-mono-std);
+    }
+
+    .email-form button:hover { }
+    /* ----------------------------------------------- */
+
+    /* PODCAST SHOW */
+
+    #showContainer {
+        
+    }
+
+    .podcast {
+        grid-template-columns: repeat(4, minmax(0,1fr));
+        grid-gap: 1px;
+        margin: 0;
+    }
+
+    .podcastEpisode {
+        min-height: 40vh;
+        /* aspect-ratio: 1/1; */
+    }
+
+    .pullquote {
+        font: var(--text-serif-pullquote);
+        font-style: italic;
+    }
+
+/* 
+    .rhap_progress-section {
+        display: inherit !important;
+        flex: none !important;
+        align-items: inherit !important;
+        z-index: -1 !important;
+    } */
+    /* CSS Dropcap synrtax, the escaped " kinda messes this up
+    but for future reference */
+    /* .pullquote:first-child:first-letter {
+        color: #903;
+        float: left;
+        font-family: Georgia;
+        font-size: 75px;
+        line-height: 60px;
+        padding-top: 4px;
+        padding-right: 8px;
+        padding-left: 3px;
+      } */
+
+
+
+    /* CATEGORY & TAG CONTAINER*/
+    .filters {
+        font: var(--text-mono-menu);
+        margin: 6em 0 0 0;
+        text-align: left;
+        max-height: 350px;
+        /* background-color: var(--color-test); */
+    }
+    
+    .filter-cat-container {
+        display: none;   
+    }
+
+    .filter-tag-container { 
+    }
+
+    .allCats {
+        grid-column: span 2; 
+    }
+
+    .tagSize {
+        grid-column: span 1; 
+    }
+
+    .tagSeattle, .tagCity {
+        grid-column: span 2;
+        padding-left: 1em;
+        border-left: 1px solid #292929; 
+    }
+
+    .tagSeattle div, .tagCity div {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column: span 2; 
+    }
+    
+    .allTags {
+        grid-column: span 3; 
+        padding-left: 1em;
+        border-left: 1px solid #000; 
+    }
+
+    .allTags div {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column: span 3;
+    }
+
+
+    /* ----------------------------------------------- */
+
+     /* ----------------------------------------------- */
+
+
+    /* DIRECTORY LISTING */
+    .directory {
+        grid-template-columns: repeat(12, minmax(0,1fr));
+    }
+
+    .directory-list {
+        font: var(--text-mono--item);
+    }
+
+    .directory-block {
+        display: grid;
+        grid-column: span 3;
+        margin: 0 0 2em 0;
+        align-self: start;
+        /* if we want to look at evening out the spacing veritcally, set this to center */
+    }
+
+    .directory-block--item  {
+        line-height: 1.6em;
+        border-bottom: none;
+        text-align: center;
+    }
+
+    .directory-block--title {
+        font: var(--text-gin-small);
+        text-align: center;
+     }
+
+    /* by filter style */
+    .directory-block--filter { }
+
+    /* hover effects */
+    .directory-block--item:hover { }    
+    /* ----------------------------------------------- */
+
+    /* Inline audio player overrides */
+
+    .audioPlayer-small {
+        display: inline-block;
+        margin: -1em 0 -1em 0;
+    }
+
+    .audioPlayer-small .rhap_main-controls {
+        max-height: 1.6em;
+        margin: -1.4ch 0 0 1ch;
+    }
+
+    .audioPlayer-small .rhap_container {
+        display: inline-block;
+        -webkit-box-shadow: none; 
+        border: none;
+        box-shadow: none;
+        border-radius: none;
+        padding: 0 0 0 0;
+        background-color: var(--color-transparent);
+        width: 11ch;
+        height: min-content;
+        margin: 0 0 -1ch 1ch;
+    }
+
+    .audioPlayer-small .rhap_controls-section {
+        display: inline-block;
+        flex: none;
+    }
+    
+    .audioPlayer-small .rhap_play-pause-button {
+        /* background-color: var(--color-test); */
+        width: min-content;
+        height: min-content;
+        /* margin: 0 0 40% 0; */
+        /* padding: 0 0 2.5ch 0; */
+    }
+
+    .audioPlayer-small .rhap_current-time {
+        display: none;
+    }
+    
+    .audioPlayer-small .rhap_progress-container {
+        display: none;
+    }
+
+    .audioPlayer-small .button {
+        color: var(--color-bg-coral-dark);
+    }
+
+    .smallplayer:hover {
+        color: var(--color-card);
+    }
+
+    .episodePromo {
+        display: inline-block;
+        font: var(--text-mono-std);
+        color: var(--color-text);
+        margin: 0 -2ch 0 1em;
+        background-color:var(--color-card);
+        box-shadow: 0px 0px 2px var(--color-text-tag);
+        text-shadow: 0px .5px 0px var(--color-text-tag);
+        padding: .5ch 1ch .3ch 1ch;
+        border-radius: 1ch 1.2ch .9ch 1.2ch;
+    }
+
+
+    /* ----------------------------------------------- */
+
+    /* About page content */
+
+    .aboutContent, .submitContent {
+        grid-column: 4 / span 6;
+        grid-row-start: 3;
+    }
+
+    .aboutContent a {
+    }
+
+    .aboutContent a:hover {
+    }
+
+    .spacer {
+        grid-row-start: 4;
+        min-height: 50vmin;
+    }
+
+    .submit-size, .submit-select fieldset {
+        grid-template-columns:  repeat(5, .1em 1fr);
+        grid-row-gap: .1em;
+    }
+
+    /* ----------------------------------------------- */
+}

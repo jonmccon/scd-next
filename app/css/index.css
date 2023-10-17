@@ -1,28 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-} */
-
 /* IMPORTS FOR OTHER SECTIONS */
-/* @import url(~sanitize.css);         For cross browser wonkiness */
-@import url(css/fonts.css);             /* All hosted and external fonts */
-@import url(css/300.css);               /* Mobile styles */
-@import url(css/1000.css);              /* Desktop styles */
+@import url(~sanitize.css);         /* For cross browser wonkiness */
+@import url(fonts.css);             /* All hosted and external fonts */
+@import url(300.css);               /* Mobile styles */
+@import url(1000.css);              /* Desktop styles */
 
 /* COLOR VARIABLES */
 :root {
