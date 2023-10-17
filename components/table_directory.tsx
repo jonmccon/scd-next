@@ -47,7 +47,7 @@ export default async function Table_Directory() {
 
   
   return (
-    <div className="grid">
+    
       <div className="bg-white/30 p-12 shadow-xl ring-1 ring-gray-900/5 rounded-lg backdrop-blur-lg max-w-xl mx-auto w-full">
         <div className="flex justify-between items-center mb-4">
           <div className="space-y-1">
@@ -58,9 +58,11 @@ export default async function Table_Directory() {
           </div>
           <RefreshButton />
         </div>
-      </div>
       
+    
+    <div className="directory">
       <div className='directory-block'>
+        
         <div className="divide-y divide-gray-900/5">
           {listingsA.map((listing: { title: string; website: string; }) => (
             <div
@@ -152,6 +154,8 @@ export default async function Table_Directory() {
         </div>
       </div>
       
+      <div className='directory-block'>
+
       <div className="divide-y divide-gray-900/5">
         {listingsG.map((listing: { title: string; website: string; }) => (
           <div
@@ -271,7 +275,9 @@ export default async function Table_Directory() {
           </div>
         ))}
       </div>
-      
+      </div>
+
+      <div className='directory-block'>
       <div className="divide-y divide-gray-900/5">
         {listingsO.map((listing: { title: string; website: string; }) => (
           <div
@@ -346,7 +352,9 @@ export default async function Table_Directory() {
           </div>
         ))}
       </div>
+      </div>
       
+      <div className='directory-block'>
       <div className="divide-y divide-gray-900/5">
         {listingsT.map((listing: { title: string; website: string; }) => (
           <div
@@ -481,7 +489,10 @@ export default async function Table_Directory() {
           </div>
         ))}
       </div>
-      
+      </div>
+
+    </div>
+    
       
 
     </div>
