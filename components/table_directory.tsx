@@ -2,6 +2,7 @@ import prisma from '@/lib/prisma'
 import { timeAgo } from '@/lib/utils'
 import Image from 'next/image'
 import RefreshButton from './refresh-button'
+import DirectoryListing from './directory-listing'
 import Link from 'next/link'
 import { Key, ReactElement, JSXElementConstructor, ReactFragment } from 'react'
 
@@ -59,411 +60,106 @@ export default async function Table_Directory() {
     
     
       <div className='directory-block'>
-      <p className="text-sm text-gray-500">
+        
+        <div className="directory-block--title"><a id="A"></a>A</div>
+        <DirectoryListing listingQuery={listingsA} />
+
+        <div className="directory-block--title"><a id="B"></a>B</div>
+        <DirectoryListing listingQuery={listingsB} />
+
+        <div className="directory-block--title"><a id="C"></a>C</div>
+        <DirectoryListing listingQuery={listingsC} />
+
+        <div className="directory-block--title"><a id="D"></a>D</div>
+        <DirectoryListing listingQuery={listingsD} />
+
+        <div className="directory-block--title"><a id="E"></a>E</div>
+        <DirectoryListing listingQuery={listingsE} />
+
+        <div className="directory-block--title"><a id="F"></a>F</div>
+        <DirectoryListing listingQuery={listingsF} />
+      </div>
+        
+        
+      <div className='directory-block'>
+        <div className="directory-block--title"><a id="G"></a>G</div>     
+        <DirectoryListing listingQuery={listingsG} />
+
+        <div className="directory-block--title"><a id="H"></a>H</div>
+        <DirectoryListing listingQuery={listingsH} />
+
+        <div className="directory-block--title"><a id="I"></a>I</div>
+        <DirectoryListing listingQuery={listingsI} />
+
+        <div className="directory-block--title"><a id="J"></a>J</div>
+        <DirectoryListing listingQuery={listingsJ} />
+
+        <div className="directory-block--title"><a id="K"></a>K</div>
+        <DirectoryListing listingQuery={listingsK} />
+
+        <div className="directory-block--title"><a id="L"></a>L</div>
+        <DirectoryListing listingQuery={listingsL} />
+
+        <div className="directory-block--title"><a id="M"></a>M</div>
+        <DirectoryListing listingQuery={listingsM} />
+
+        <div className="directory-block--title"><a id="N"></a>N</div>
+        <DirectoryListing listingQuery={listingsN} />
+      
+      </div>
+
+      <div className='directory-block'>
+        <div className="directory-block--title"><a id="O"></a>O</div>
+        <DirectoryListing listingQuery={listingsO} />
+
+        <div className="directory-block--title"><a id="P"></a>P</div>
+        <DirectoryListing listingQuery={listingsP} />
+
+        <div className="directory-block--title"><a id="Q"></a>Q</div>
+        <DirectoryListing listingQuery={listingsQ} />
+
+        <div className="directory-block--title"><a id="R"></a>R</div>
+        <DirectoryListing listingQuery={listingsR} />
+
+        <div className="directory-block--title"><a id="S"></a>S</div>
+        <DirectoryListing listingQuery={listingsS} />
+
+      </div>
+      
+      <div className='directory-block'>
+        <div className="directory-block--title"><a id="T"></a>T</div>
+        <DirectoryListing listingQuery={listingsT} />
+
+        <div className="directory-block--title"><a id="U"></a>U</div>
+        <DirectoryListing listingQuery={listingsU} />
+
+        <div className="directory-block--title"><a id="V"></a>V</div>
+        <DirectoryListing listingQuery={listingsV} />
+
+        <div className="directory-block--title"><a id="W"></a>W</div>
+        <DirectoryListing listingQuery={listingsW} />
+
+        <div className="directory-block--title"><a id="X"></a>X</div>
+        <DirectoryListing listingQuery={listingsX} />
+
+        <div className="directory-block--title"><a id="Y"></a>Y</div>
+        <DirectoryListing listingQuery={listingsY} />
+
+        <div className="directory-block--title"><a id="Z"></a>Z</div>
+        <DirectoryListing listingQuery={listingsZ} />
+
+        <div className="directory-block--title"><a id="#"></a>#</div>
+        <DirectoryListing listingQuery={listingsNumbers} />
+
+
+        {/* Use counter here */}
+        {/* Need Submission Promo */}
+        
+        <p className="text-sm text-gray-500">
               Fetched {totalcount} users in {duration}ms
             </p>
             <RefreshButton />
-        
-      <div className="directory-block--title"><a id="A"></a>A</div>
-      {/* <DirectoryListing /> */}
-        
-        
-        <div className="directory-list">
-          {listingsA.map((listing: { title: string; website: string; }) => (
-            <div
-              key={listing.title}
-              className=""
-            >
-              <div className="directory-block--item">                
-                  <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a> 
-              </div>
-            </div>
-          ))}
-        </div>
 
-      <div className="directory-block--title"><a id="B"></a>B</div>
-        <div className="directory-list">
-          {listingsB.map((listing: { title: string; website: string; }) => (
-            <div
-              key={listing.title}
-              className=""
-            >
-              <div className="directory-block--item">
-                  <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-              </div>
-            </div>
-          ))}
-        </div>
-
-      <div className="directory-block--title"><a id="C"></a>C</div>
-        <div className="directory-list">
-          {listingsC.map((listing: { title: string; website: string; }) => (
-            <div
-              key={listing.title}
-              className=""
-            >
-              <div className="directory-block--item">
-                  <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-              </div>
-            </div>
-          ))}
-        </div>
-
-      <div className="directory-block--title"><a id="D"></a>D</div>
-        <div className="directory-list">
-          {listingsD.map((listing: { title: string; website: string; }) => (
-            <div
-              key={listing.title}
-              className=""
-            >
-              <div className="directory-block--item">
-                  <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-              </div>
-            </div>
-          ))}
-        </div>
-
-      <div className="directory-block--title"><a id="E"></a>E</div>
-        <div className="directory-list">
-          {listingsE.map((listing: { title: string; website: string; }) => (
-            <div
-              key={listing.title}
-              className=""
-            >
-              <div className="directory-block--item">             
-                  <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-              </div>
-            </div>
-          ))}
-        </div>
-        
-      <div className="directory-block--title"><a id="F"></a>F</div>        
-        <div className="directory-list">
-          {listingsF.map((listing: { title: string; website: string; }) => (
-            <div
-              key={listing.title}
-              className=""
-            >
-              <div className="directory-block--item"> 
-                  <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>             
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      
-      <div className='directory-block'>
-      <div className="directory-block--title"><a id="G"></a>G</div>   
-      <div className="directory-list">
-        {listingsG.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className=""
-          >
-            <div className="directory-block--item">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-            </div>
-          </div>
-        ))}
-      </div>
-      
-      <div className="directory-block--title"><a id="H"></a>H</div>   
-      <div className="directory-list">
-        {listingsH.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className=""
-          >
-            <div className="directory-block--item">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-            </div>
-          </div>
-        ))}
-      </div>
-      
-      <div className="directory-block--title"><a id="I"></a>I</div>   
-      <div className="directory-list">
-        {listingsI.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className=""
-          >
-            <div className="directory-block--item">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-            </div>
-          </div>
-        ))}
-      </div>
-      
-      <div className="directory-block--title"><a id="J"></a>J</div>   
-      <div className="directory-list">
-        {listingsJ.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className=""
-          >
-            <div className="directory-block--item">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-            </div>
-          </div>
-        ))}
-      </div>
-      
-      <div className="directory-block--title"><a id="K"></a>K</div>   
-      <div className="directory-list">
-        {listingsK.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className=""
-          >
-            <div className="directory-block--item">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="directory-block--title"><a id="L"></a>L</div>   
-      <div className="directory-list">
-        {listingsL.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className=""
-          >
-            <div className="directory-block--item">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-            </div>
-          </div>
-        ))}
-      </div>
-      
-      <div className="directory-block--title"><a id="M"></a>M</div>   
-      <div className="directory-list">
-        {listingsM.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className=""
-          >
-            <div className="directory-block--item">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-            </div>
-          </div>
-        ))}
-      </div>
-      
-      <div className="directory-block--title"><a id="N"></a>N</div>   
-      <div className="directory-list">
-        {listingsN.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className=""
-          >
-            <div className="directory-block--item">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-            </div>
-          </div>
-        ))}
-      </div>
-      </div>
-
-      <div className='directory-block'>
-      <div className="directory-block--title"><a id="O"></a>O</div>     
-      <div className="directory-list">
-        {listingsO.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className=""
-          >
-            <div className="directory-block--item">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="directory-block--title"><a id="P"></a>P</div>   
-      <div className="directory-list">
-        {listingsP.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className=""
-          >
-            <div className="directory-block--item">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-            </div>
-          </div>
-        ))}
-      </div>
-      
-      <div className="directory-block--title"><a id="Q"></a>Q</div>   
-      <div className="directory-list">
-        {listingsQ.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className=""
-          >
-            <div className="directory-block--item">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-            </div>
-          </div>
-        ))}
-      </div>
-      
-      <div className="directory-block--title"><a id="R"></a>R</div>   
-      <div className="directory-list">
-        {listingsR.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className=""
-          >
-            <div className="directory-block--item">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-            </div>
-          </div>
-        ))}
-      </div>
-      
-      <div className="directory-block--title"><a id="S"></a>S</div>   
-      <div className="directory-list">
-        {listingsS.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className=""
-          >
-            <div className="directory-block--item">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-            </div>
-          </div>
-        ))}
-      </div>
-      </div>
-      
-      <div className='directory-block'>
-      <div className="directory-block--title"><a id="T"></a>T</div>   
-      <div className="directory-list">
-        {listingsT.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className=""
-          >
-            <div className="directory-block--item">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-            </div>
-          </div>
-        ))}
-      </div>
-      
-      <div className="directory-block--title"><a id="U"></a>U</div>   
-      <div className="directory-list">
-        {listingsU.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className=""
-          >
-            <div className="directory-block--item">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-            </div>
-          </div>
-        ))}
-      </div>
-      
-      <div className="directory-block--title"><a id="V"></a>V</div>   
-      <div className="directory-list">
-        {listingsV.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className=""
-          >
-            <div className="directory-block--item">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-            </div>
-          </div>
-        ))}
-      </div>
-      
-      <div className="directory-block--title"><a id="W"></a>W</div>   
-      <div className="directory-list">
-        {listingsW.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className=""
-          >
-            <div className="directory-block--item">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-            </div>
-          </div>
-        ))}
-      </div>
-      
-      <div className="directory-block--title"><a id="R"></a>R</div>   
-      <div className="directory-list">
-        {listingsR.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className=""
-          >
-            <div className="directory-block--item">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-            </div>
-          </div>
-        ))}
-      </div>
-      
-      <div className="directory-block--title"><a id="X"></a>X</div>   
-      <div className="directory-list">
-        {listingsX.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className=""
-          >
-            <div className="directory-block--item">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-            </div>
-          </div>
-        ))}
-      </div>
-      
-      <div className="directory-block--title"><a id="Y"></a>Y</div>   
-      <div className="directory-list">
-        {listingsY.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className=""
-          >
-            <div className="directory-block--item">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-            </div>
-          </div>
-        ))}
-      </div>
-      
-      <div className="directory-block--title"><a id="Z"></a>Z</div>   
-      <div className="directory-list">
-        {listingsZ.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className=""
-          >
-            <div className="directory-block--item">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="directory-block--title"><a id="#"></a>#</div>   
-      <div className="directory-list">
-        {listingsNumbers.map((listing: { title: string; website: string; }) => (
-          <div
-            key={listing.title}
-            className=""
-          >
-            <div className="directory-block--item">
-                <a target='_blank' href={`${listing.website}?seattle-creative-directory`}>{listing.title}</a>
-            </div>
-          </div>
-        ))}
-      </div>
       </div>
 
     </div>
