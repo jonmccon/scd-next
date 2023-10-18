@@ -39,14 +39,14 @@ return (
 
             
 
-            <div
-                key={listing.title}  
+            <div  
                 className="directory-block--item"
             >
               
               <a 
                 href={`${listing.website}?seattle-creative-directory`} 
                 target="_blank"
+                key={listing.title}
                 // onClick={e => {
                 //   trackCustomEvent({
                 //     category: "Directory",

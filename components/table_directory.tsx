@@ -151,15 +151,19 @@ export default async function Table_Directory() {
         <div className="directory-block--title"><a id="#"></a>#</div>
         <DirectoryListing listingQuery={listingsNumbers} />
 
-
-        {/* Use counter here */}
-        {/* Need Submission Promo */}
-        
-        <p className="text-sm text-gray-500">
-              Fetched {totalcount} users in {duration}ms
-            </p>
+        <div className="directory-block--title" id="endcap">*</div>       
+          <div className="directory-block--end">
+            <p>{totalcount} Studios</p> 
+            <p>Don't see yourself?</p>
             <RefreshButton />
+            <p>
+            <Link
+              className="directory-endcap--link highlight" 
+              href="#">Get Listed
+            </Link>
+            </p>
 
+          </div>
       </div>
 
     </div>

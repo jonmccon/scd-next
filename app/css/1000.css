@@ -190,16 +190,17 @@
     }
 
     .tagSize {
-        grid-column: span 1; 
+        grid-column: span 1;
     }
 
+/* issue here with nested divs and whos got the grid */
     .tagSeattle, .tagCity {
         grid-column: span 2;
         padding-left: 1em;
         border-left: 1px solid #292929; 
     }
 
-    .tagSeattle div, .tagCity div {
+    .tagSeattleContainer, .tagCityContainer {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-column: span 2; 
@@ -211,7 +212,7 @@
         border-left: 1px solid #000; 
     }
 
-    .allTags div {
+    .allTagsContainer {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-column: span 3;

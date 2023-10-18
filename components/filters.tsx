@@ -34,76 +34,75 @@ const filters: Array<String> = [
 // Will need a action that changes the background color of all the listings that match that filter
 
   return (
-    <div className="grid">
-      <div className="bg-white/30 p-12 shadow-xl ring-1 ring-gray-900/5 rounded-lg backdrop-blur-lg max-w-xl mx-auto w-full">
-        <div className="flex justify-between items-center mb-4">
-          <div className="space-y-1">
-            <h2 className="text-xl font-semibold">Recent Users</h2>
-            <p className="text-sm text-gray-500">
-              {/* Fetched {totalcount} users in {duration}ms */}
-            </p>
-          </div>
-        </div>
-      </div>
-      
-      <div className="divide-y divide-gray-900/5">
+    <div className="filters">
+
+      <div className="tagSize">
+      <h5>SIZE</h5>
+        <div className='tagSizeContainer'>
         {sizes.map((size: { size: string; }) => (
           <div
-          key={size.size}
-            className="flex items-center justify-between py-3"
+            key={size.size}
+            className="filter-tag-container"
           >
-            <div className="flex items-center space-x-4">
-              <div className="space-y-1">
-                <p className="font-medium leading-none">{size.size}</p>
-              </div>
-            </div>
+          <a 
+            className="filter-tag--attr">
+            {size.size}
+          </a>
           </div>
         ))}
+        </div>
       </div>
 
-      <div className="divide-y divide-gray-900/5">
+
+      <div className="tagSeattle">
+      <h5>SEATTLE BY NEIGHBORHOOD</h5>
+        <div className='tagSeattleContainer'>
         {neighborhoods.map((neighborhood: { neighborhood: string; }) => (
           <div
-          key={neighborhood.neighborhood}
-            className="flex items-center justify-between py-3"
+            key={neighborhood.neighborhood}
+            className="filter-tag-container"
           >
-            <div className="flex items-center space-x-4">
-              <div className="space-y-1">
-                <p className="font-medium leading-none">{neighborhood.neighborhood}</p>
-              </div>
-            </div>
+          <a 
+            className="filter-tag--attr">
+            {neighborhood.neighborhood}
+          </a>
           </div>
         ))}
+        </div>
       </div>
 
-      <div className="divide-y divide-gray-900/5">
+      <div className="tagCity">
+      <h5>GREATER PNW</h5>
+        <div className='tagCityContainer'>
         {citys.map((city: { city: string; }) => (
           <div
-          key={city.city}
-            className="flex items-center justify-between py-3"
+            key={city.city}
+            className="filter-tag-container"
           >
-            <div className="flex items-center space-x-4">
-              <div className="space-y-1">
-                <p className="font-medium leading-none">{city.city}</p>
-              </div>
-            </div>
+          <a 
+            className="filter-tag--attr">
+            {city.city}
+          </a>
           </div>
         ))}
+        </div>
       </div>
 
-      <div className="divide-y divide-gray-900/5">
+      <div className="allTags">
+      <h5>DISCIPLINE</h5>
+        <div className='allTagsContainer'>
         {filters.map((filter) => (
           <div
-          key="filter"
-            className="flex items-center justify-between py-3"
+            key="filter"
+            className="filter-tag-container"
           >
-            <div className="flex items-center space-x-4">
-              <div className="space-y-1">
-                <p className="font-medium leading-none">{filter}</p>
-              </div>
-            </div>
+          <a 
+            className="filter-tag--attr">
+            {filter}
+          </a>
           </div>
         ))} 
+        </div>
       </div>
 
      
