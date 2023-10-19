@@ -30,7 +30,9 @@ return (
       
       <div className="directory-list">
         {listingList.map((listing: { website: any; title: string; episodePromo: any; color: any; }) => (
-          <React.Fragment>
+          <React.Fragment
+          key={listing.title}
+          >
             {/* 
             Have a class added for each tag that's present. 
             Add an additional a:hover class for each that changes its own display.
@@ -46,7 +48,6 @@ return (
               <a 
                 href={`${listing.website}?seattle-creative-directory`} 
                 target="_blank"
-                key={listing.title}
                 // onClick={e => {
                 //   trackCustomEvent({
                 //     category: "Directory",
