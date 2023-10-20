@@ -16,6 +16,7 @@ export default function Home() {
     <main className="pattern">
       <div className="container">
         <div className='headline-wrapper'></div>
+        
         <div className='showContainer'></div>
       
         <Suspense fallback={<TablePlaceholder />}>          

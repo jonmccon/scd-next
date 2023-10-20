@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-import Play from '../../public/assets-svg/button-play-small.inline.svg';   
-import Pause from '../../public/assets-svg/button-pause-small.inline.svg'; 
-import ExpandingArrow from './icon-play'  
-import PlayIcon from "./icon-play";
+import Image from "next/image";
+import IconPlay from '../../public/assets-svg/button-play-small.inline.svg';   
+import IconPause from '../../public/assets-svg/button-pause-small.inline.svg'; 
 
 
 class AudioPlayerSmall extends React.Component<any, any> {
@@ -28,19 +27,19 @@ class AudioPlayerSmall extends React.Component<any, any> {
           customAdditionalControls={[]}  
           customVolumeControls={[]}
           showJumpControls={false}
-          customIcons={{
-            play: <PlayIcon />,
-            pause: <Pause 
-            // onClick={e => {
-            //   e.preventDefault()
-            //   trackCustomEvent({
-            //     category: "Audio Player",
-            //     action: "Pause - Inline",
-            //     label: podcastTitle,
-            //   })
-            // }}
-            /> 
-            }}
+          // customIcons={{
+          //   play: 
+          //   <Image
+          //     priority
+          //     src={IconPlay}
+          //     alt="Play"
+          //     />,
+          //   pause: 
+          //   <Image 
+          //     src={IconPause}
+          //     alt="Pause"
+          //     /> 
+          //   }}
         />
       </div>
       </React.Fragment>

@@ -1,15 +1,16 @@
 import React from "react";
-import { Link } from "gatsby";
-import { trackCustomEvent } from "gatsby-plugin-google-analytics";
-import EpisodeBlockPlayer from "../Audioplayer/EpisodeBlockPlayer";
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player';
-import Play from '../../static/assets-svg/button-play-large.inline.svg';   
-import Pause from '../../static/assets-svg/button-pause-large.inline.svg';
 
+export default async function EpisodeListing({ tags: any; title: any; website: any; twit: any; inst: any; linkA: any; linkB: any; episodeURL: any; episodePerson: any; episodePromo: any; color: any; pullquote: any; }[] ) {
+  
+  const episodeList = await prisma.directory.findMany({
+    where: { published: true, }, distinct: ['episodeURL'],})
+  
+}
 
-class EpisodeListing extends React.Component {
+// class EpisodeListing extends React.Component {
   getEpisodeList() {
-    const episodeList = [];
+    const episodeList: { tags: any; title: any; website: any; twit: any; inst: any; linkA: any; linkB: any; episodeURL: any; episodePerson: any; episodePromo: any; color: any; pullquote: any; }[] = [];
     this.props.postEdgesDirectory.forEach((postEdge) => {
       episodeList.push({
         tags: postEdge.node.frontmatter.tags,
@@ -214,4 +215,4 @@ class EpisodeListing extends React.Component {
   }
 }
 
-export default EpisodeListing;
+// export default EpisodeListing;

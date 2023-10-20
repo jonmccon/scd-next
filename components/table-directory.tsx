@@ -1,6 +1,5 @@
 import prisma from '@/lib/prisma'
 import { timeAgo } from '@/lib/utils'
-import Image from 'next/image'
 import RefreshButton from './refresh-button'
 import DirectoryListing from './listing/directory-listing'
 import Link from 'next/link'
@@ -9,12 +8,6 @@ import { Key, ReactElement, JSXElementConstructor, ReactFragment } from 'react'
 export default async function TableDirectory() {
   const startTime = Date.now()
   const duration = Date.now() - startTime
-  
-
-//   const { tags } = this.props;
-//
-// turn this component into just the individual listing
-//    
   
   const listingsA = await prisma.directory.findMany({ where: { published: true, category: "A",},})
   const listingsB = await prisma.directory.findMany({ where: { published: true, category: "B",},})
