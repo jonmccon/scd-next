@@ -3,8 +3,7 @@ import Link from 'next/link'
 import { Suspense } from 'react'
 // import Table from '@/components/table'
 import TablePlaceholder from '@/components/table-placeholder'
-import ExpandingArrow from '@/components/expanding-arrow'
-import Table_Directory from '@/components/table_directory'
+import TableDirectory from '@/components/table-directory'
 import Filters from '@/components/filters'
 
 // Prisma does not support Edge without the Data Proxy currently
@@ -23,7 +22,7 @@ export default function Home() {
             {/* @ts-expect-error Async Server Component */}
             <Filters />
             {/* @ts-expect-error Async Server Component */}
-            <Table_Directory />          
+            <TableDirectory />          
         </Suspense>
         
       

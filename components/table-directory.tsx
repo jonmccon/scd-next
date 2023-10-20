@@ -2,11 +2,11 @@ import prisma from '@/lib/prisma'
 import { timeAgo } from '@/lib/utils'
 import Image from 'next/image'
 import RefreshButton from './refresh-button'
-import DirectoryListing from './directory-listing'
+import DirectoryListing from './listing/directory-listing'
 import Link from 'next/link'
 import { Key, ReactElement, JSXElementConstructor, ReactFragment } from 'react'
 
-export default async function Table_Directory() {
+export default async function TableDirectory() {
   const startTime = Date.now()
   const duration = Date.now() - startTime
   

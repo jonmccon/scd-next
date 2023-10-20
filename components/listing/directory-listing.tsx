@@ -1,7 +1,7 @@
 'use client'
 import React from "react";
 import prisma from '@/lib/prisma';
-import AudioPlayerSmall from "./audioplayer/AudioPlayerSmall";
+import AudioPlayerSmall from "../audioplayer/audio-player-small";
 
 class DirectoryListing extends React.Component<any, any> {
   getlistingList() {

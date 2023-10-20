@@ -1,24 +1,21 @@
 import React, { Component } from "react";
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-import Play from '../../public/assets-svg/button-play-large.inline.svg';   
-import Pause from '../../public/assets-svg/button-pause-large.inline.svg';
+import Play from '../../public/assets-svg/button-play-small.inline.svg';   
+import Pause from '../../public/assets-svg/button-pause-small.inline.svg'; 
+import ExpandingArrow from './icon-play'  
+import PlayIcon from "./icon-play";
 
 
-
-
-class EpisodeBlockPlayer extends Component {
+class AudioPlayerSmall extends React.Component<any, any> {
   render() {
-    const { podcastTitle } = this.props;
-    const { podcastSeason } = this.props;
-    const { podcastURL } = this.props;
+    const { episodeURL } = this.props;
     
     return (
-      <div className="podcast-promo">
-
-          
+      <React.Fragment>
+      <div className="audioPlayer-small">
         <AudioPlayer         
-          src={podcastURL}
+          src={episodeURL}
           onPlay={e => console.log("onPlay")}
           layout="horizontal-reverse" 
           customProgressBarSection={
@@ -32,35 +29,27 @@ class EpisodeBlockPlayer extends Component {
           customVolumeControls={[]}
           showJumpControls={false}
           customIcons={{
-            play: <Play 
-              // onClick={e => {
-              //   e.preventDefault()
-              //   trackCustomEvent({
-              //     category: "Audio Player",
-              //     action: "Play - Featured",
-              //     label: {podcastTitle},
-              //   })
-              // }}
-            />,
+            play: <PlayIcon />,
             pause: <Pause 
             // onClick={e => {
             //   e.preventDefault()
             //   trackCustomEvent({
             //     category: "Audio Player",
-            //     action: "Pause - Featured",
-            //     label: {podcastTitle},
+            //     action: "Pause - Inline",
+            //     label: podcastTitle,
             //   })
             // }}
             /> 
             }}
         />
       </div>
+      </React.Fragment>
       
     );
   }
 }
 
-export default EpisodeBlockPlayer;
+export default AudioPlayerSmall;
 
 
  
