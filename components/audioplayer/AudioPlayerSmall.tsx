@@ -8,7 +8,6 @@ import Pause from '../../public/assets-svg/button-pause-small.inline.svg';
 class AudioPlayerSmall extends React.Component<any, any> {
   render() {
     const { episodeURL } = this.props;
-    const { podcastTitle } = this.props;
     
     return (
       <React.Fragment>
