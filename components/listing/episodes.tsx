@@ -6,11 +6,15 @@ export default async function Episodes() {
     where: { published: true, 
     episodeURL: {
       startsWith: "https://cdn.simplecast.com/audio/"
-    }}, })
+    }},
+    orderBy: {
+      episodePromo: 'asc',
+    } 
+  })
 
   return (
     
-    <div className="showContainer">  
+    <div id="showContainer">  
         <EpisodeListing episodeQuery={episodeList} />
     
       

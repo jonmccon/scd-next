@@ -6,6 +6,9 @@ import TablePlaceholder from '@/components/table-placeholder'
 import TableDirectory from '@/components/table-directory'
 import Filters from '@/components/filters'
 import Episodes from '@/components/listing/episodes'
+import Logo from '@/components/header/logo'
+import MenuLeft from '@/components/header/menu-left'
+import MenuRight from '@/components/header/menu-right'
 
 // Prisma does not support Edge without the Data Proxy currently
 // export const runtime = 'edge'
@@ -16,7 +19,16 @@ export default function Home() {
   return (
     <main className="pattern">
       <div className="container">
-        <div className='headline-wrapper'></div>
+      
+      <div className="logo"></div>
+      <MenuLeft />
+      <MenuRight />
+      
+      <div className="headline-wrapper">
+        <div className="headline">
+          <h1>Cataloging the creative studios of the Pacific Northwest</h1>
+        </div>
+      </div>
       
         <Suspense fallback={<TablePlaceholder />}> 
             {/* @ts-expect-error Async Server Component */}
@@ -31,7 +43,7 @@ export default function Home() {
 
 
 {/* Footer content */}
-        <div className="flex justify-center space-x-5 pt-10 mt-10 border-t border-gray-300 w-full max-w-xl text-gray-600">
+        {/* <div className="flex justify-center space-x-5 pt-10 mt-10 border-t border-gray-300 w-full max-w-xl text-gray-600"> */}
           
           {/* <Link
             href="https://postgres-drizzle.vercel.app/"
@@ -64,7 +76,7 @@ export default function Home() {
             />
             <p className="font-light">Source</p>
           </Link> */}
-        </div>
+        {/* </div> */}
       </div>
     </main>
   )
