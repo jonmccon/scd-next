@@ -1,6 +1,6 @@
 import prisma from '@/lib/prisma'
-import RefreshButton from './refresh-button'
-import DirectoryListing from './listing/directory-listing'
+import RefreshButton from '../refresh-button'
+import DirectoryListing from './directory-listing'
 import Link from 'next/link'
 
 export default async function TableDirectory() {
@@ -145,7 +145,7 @@ export default async function TableDirectory() {
         <div className="directory-block--title" id="endcap">*</div>       
           <div className="directory-block--end">
             <p>{totalcount} Studios</p> 
-            <p>Don't see yourself?</p>
+            <p>Don&apos;t see yourself?</p>
             <RefreshButton />
             <p>
             <Link

@@ -3,7 +3,7 @@
 @media only screen and (min-width: 1250px) { 
 
     h1 {
-        font: var(--text-mono-std);
+        font: var(--text-mono--item);
         line-height: 140%;
     }
 
@@ -22,23 +22,22 @@
 
 
     /* CONTAINER GRID */
-    .container {
+    .wrapper {
         display: grid;
-        grid-row: 2;
-        grid-column: 2;
-        grid-template-columns: 2em repeat(10, 1fr) 2em;
+        /* background-color: aqua; */
+        grid-template-columns: repeat(12, 1fr);
         grid-template-rows: 1fr auto auto auto auto auto 8em;
         grid-gap: .5em;
         grid-auto-flow: dense;    
-        max-width: 1400px;
+        max-width: 100%;
         border-radius: 10px;
         grid-template-areas:
             "MenuLeft              MenuLeft        .        .               Logo            Logo            Logo            Logo            .               .       MenuRight       MenuRight"
             ".              .               .               Headline        Headline        Headline        Headline        Headline        Headline        .        .               ."
             "showContainer  showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer"
-            "Filters        Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters"
+            ".        Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         ."
             ".              Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       ."
-            ".              .          .          .          .          .          .          .          .          .          .          ."
+            "About          About           About           About           About           About           About           About           About           About           About          About"
             ".              Footer          Footer          Footer          Footer          Footer          Footer          Footer          Footer          Footer          Footer          ."
             ;
     }   
@@ -47,7 +46,7 @@
      /* LOGOMARK */
 
      .logo {
-        margin: 1em 0 0 0;
+        margin: 3em 0 0 0;
       }
 
     /* ----------------------------------------------- */
@@ -129,6 +128,7 @@
     /* PODCAST SHOW */
 
     #showContainer {
+        margin: 1px;
         
     }
 
@@ -332,9 +332,8 @@
 
     /* About page content */
 
-    .aboutContent, .submitContent {
-        grid-column: 4 / span 6;
-        grid-row-start: 3;
+    .aboutContent {
+    
     }
 
     .aboutContent a {

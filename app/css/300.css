@@ -15,16 +15,12 @@
     .pattern {
         border: 1em solid var(--color-bg-gray);
         background-color: var(--color-card);
-        display: grid;
-        grid-template-columns: 1fr 30fr 1fr;
-        grid-template-rows: 2.5em 1fr 2em;
+        
     }
     /* ----------------------------------------------- */
 
-    .container {
+    .wrapper {
         display: grid;
-        grid-row: 2;
-        grid-column: 2;
         grid-template-columns: 1.5em repeat(6, 1fr) 1.5em;
         grid-template-rows: 1fr auto auto auto auto auto auto 8em;
         grid-gap: .5em;
@@ -39,6 +35,7 @@
             "showContainer  showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer"
             "Filters        Filters         Filters         Filters         Filters         Filters         Filters         Filters"
             ".              Directory       Directory       Directory       Directory       Directory       Directory       ."
+            "About          About           About           About           About           About           About           About"
             ".              Footer          Footer          Footer          Footer          Footer          Footer          ."
             ;
     }  
@@ -512,12 +509,12 @@
 
     /* About & Submit page content */
 
-    .aboutContent, .submitContent {
-        margin: 6em 0 0 0;
+    .aboutContent {
         display: grid;
+        grid-area: About;
+        margin: 6em 0 0 0;
         justify-self: center;
-        grid-column: 2 / span 6;
-        grid-row-start: 6;
+        background-color: var(--color-bg-gray);
     }
 
     .aboutContent a {
