@@ -1,9 +1,7 @@
 import prisma from '@/lib/prisma'
-import { timeAgo } from '@/lib/utils'
 import RefreshButton from './refresh-button'
 import DirectoryListing from './listing/directory-listing'
 import Link from 'next/link'
-import { Key, ReactElement, JSXElementConstructor, ReactFragment } from 'react'
 
 export default async function TableDirectory() {
   const startTime = Date.now()

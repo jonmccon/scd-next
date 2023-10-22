@@ -1,10 +1,9 @@
 'use client'
 import React from "react";
-import prisma from '@/lib/prisma';
 import AudioPlayerSmall from "../audioplayer/audio-player-small";
 
 class DirectoryListing extends React.Component<any, any> {
-  getlistingList() {
+  getListingList() {
     const listingList: { title: any; website: any; episodeURL: any; episodePromo: any; color: any; }[] = [];
     this.props.listingQuery.forEach((listing: { title: any; website: any; episodeURL: any; episodePromo: any; color: any; }) => {
       listingList.push({
@@ -19,8 +18,8 @@ class DirectoryListing extends React.Component<any, any> {
   }
 
 render() {
-        const listingList = this.getlistingList();
-
+        const listingList = this.getListingList();
+        
 return (
       
       <div className="directory-list">

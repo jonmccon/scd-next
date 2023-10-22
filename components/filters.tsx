@@ -91,9 +91,9 @@ const filters: Array<String> = [
       <div className="allTags">
       <h5>DISCIPLINE</h5>
         <div className='allTagsContainer'>
-        {filters.map((filter) => (
+        {filters.map((filter, index) => (
           <div
-            key="filter"
+            key={index}
             className="filter-tag-container"
           >
           <a 

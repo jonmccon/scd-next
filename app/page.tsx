@@ -5,6 +5,7 @@ import { Suspense } from 'react'
 import TablePlaceholder from '@/components/table-placeholder'
 import TableDirectory from '@/components/table-directory'
 import Filters from '@/components/filters'
+import Episodes from '@/components/listing/episodes'
 
 // Prisma does not support Edge without the Data Proxy currently
 // export const runtime = 'edge'
@@ -16,10 +17,10 @@ export default function Home() {
     <main className="pattern">
       <div className="container">
         <div className='headline-wrapper'></div>
-        
-        <div className='showContainer'></div>
       
-        <Suspense fallback={<TablePlaceholder />}>          
+        <Suspense fallback={<TablePlaceholder />}> 
+            {/* @ts-expect-error Async Server Component */}
+            <Episodes />    
             {/* @ts-expect-error Async Server Component */}
             <Filters />
             {/* @ts-expect-error Async Server Component */}

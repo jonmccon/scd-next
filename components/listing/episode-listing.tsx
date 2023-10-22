@@ -1,30 +1,23 @@
+'use client'
 import React from "react";
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player';
 
-export default async function EpisodeListing({ tags: any; title: any; website: any; twit: any; inst: any; linkA: any; linkB: any; episodeURL: any; episodePerson: any; episodePromo: any; color: any; pullquote: any; }[] ) {
-  
-  const episodeList = await prisma.directory.findMany({
-    where: { published: true, }, distinct: ['episodeURL'],})
-  
-}
-
-// class EpisodeListing extends React.Component {
+class EpisodeListing extends React.Component<any, any> {
   getEpisodeList() {
-    const episodeList: { tags: any; title: any; website: any; twit: any; inst: any; linkA: any; linkB: any; episodeURL: any; episodePerson: any; episodePromo: any; color: any; pullquote: any; }[] = [];
-    this.props.postEdgesDirectory.forEach((postEdge) => {
+    const episodeList: { title: any; website: any; twit: any; inst: any; linkA: any; linkB: any; episodeURL: any; episodePerson: any; episodePromo: any; color: any; pullquote: any; }[] = [];
+    this.props.episodeQuery.forEach((episode: { title: any; website: any; twit: any; inst: any; linkA: any; linkB: any; episodeURL: any; episodePerson: any; episodePromo: any; color: any; pullquote: any; }) => {
       episodeList.push({
-        tags: postEdge.node.frontmatter.tags,
-        title: postEdge.node.frontmatter.title,
-        website: postEdge.node.frontmatter.website,
-        twit: postEdge.node.frontmatter.twit,
-        inst: postEdge.node.frontmatter.inst,
-        linkA: postEdge.node.frontmatter.linkA,
-        linkB: postEdge.node.frontmatter.linkB,
-        episodeURL: postEdge.node.frontmatter.episodeURL,
-        episodePerson: postEdge.node.frontmatter.episodePerson,
-        episodePromo: postEdge.node.frontmatter.episodePromo,
-        color: postEdge.node.frontmatter.color,
-        pullquote:postEdge.node.frontmatter.pullquote,
+        title: episode.title,
+        website: episode.website,
+        twit: episode.twit,
+        inst: episode.inst,
+        linkA: episode.linkA,
+        linkB: episode.linkA,
+        episodeURL: episode.episodeURL,
+        episodePerson: episode.episodePromo,
+        episodePromo: episode.episodePromo,
+        color: episode.color,
+        pullquote: episode.pullquote,
       });
     });
     return episodeList;
@@ -32,123 +25,83 @@ export default async function EpisodeListing({ tags: any; title: any; website: a
 
   render() {
     const episodeList = this.getEpisodeList();
-    const postTitle = episodeList.title;
-
-    
 
     return (
       <div className="podcast">
       
-        {episodeList.map((post) => (
-
-          <div className= {`podcastEpisode ${post.color}`}>
-            
-
-        
-
+        {episodeList.map((episode: { title: any; website: any; twit: any; inst: any; linkA: any; linkB: any; episodeURL: any; episodePerson: any; episodePromo: any; color: any; pullquote: any; }) => (
+          <div 
+            className= {`podcastEpisode ${episode.color}`}
+            key={episode.title}
+          >
         
             
             {/* Pull quote */}
-            <div className="pullquote">{post.pullquote}</div>
+            <div className="pullquote">{episode.pullquote}</div>
             
             <div className="podcastEpisode-content">
               <a className="podcastEpisode-person"
-                href={post.website} 
+                href={episode.website} 
                 target="_blank"
-                onClick={e => {
-                  trackCustomEvent({
-                    category: "Episode",
-                    action: "Clicked",
-                    label: post.title,
-                  })
-                }}
               >
-                {post.episodePerson} of {post.title}
+                {episode.episodePerson} of {episode.title}
               </a>
             </div>
 
             {/* If Additional Link A,B */}
-            {post.linkA ? 
+            {episode.linkA ? 
               <div className="podcastEpisode-content">
                 <a 
-                    href={`${post.linkA[1]}`}
+                    href={`${episode.linkA[1]}`}
                     target="_blank"
-                    onClick={e => {
-                      trackCustomEvent({
-                        category: "Episode",
-                        action: "Clicked",
-                        label: post.twit,
-                      })
-                    }}
                   >
-                    {post.linkA[0] && post.linkA[0]}
+                    {episode.linkA[0] && episode.linkA[0]}
                   </a>
-                  &nbsp;<i class="fas fa-anchor"></i>
+                  &nbsp;<i className="fas fa-anchor"></i>
                 </div>
                 : '' 
               }
-            {post.linkB ? 
+            {episode.linkB ? 
               <div className="podcastEpisode-content">
                 <a 
-                    href={`${post.linkB[1]}`}
+                    href={`${episode.linkB[1]}`}
                     target="_blank"
-                    onClick={e => {
-                      trackCustomEvent({
-                        category: "Episode",
-                        action: "Clicked",
-                        label: post.twit,
-                      })
-                    }}
                   >
-                    {post.linkB[0] && post.linkB[0]}
+                    {episode.linkB[0] && episode.linkB[0]}
                   </a>
-                  &nbsp;<i class="fas fa-anchor"></i>
+                  &nbsp;<i className="fas fa-anchor"></i>
                 </div>
                 : '' 
               }
 
             {/* If Twitter */}
-            {post.twit ? 
+            {episode.twit ? 
               <div className="podcastEpisode-content">
                 @&nbsp;
                 {/* <i class="far fa-link"></i> */}
                 {/* <i class="fas fa-anchor"></i> */}
                 <a 
-                    href={`https://twitter.com/${post.twit}`}
+                    href={`https://twitter.com/${episode.twit}`}
                     target="_blank"
-                    onClick={e => {
-                      trackCustomEvent({
-                        category: "Episode",
-                        action: "Clicked",
-                        label: post.twit,
-                      })
-                    }}
                   >
-                    {post.twit && post.twit}
+                    {episode.twit && episode.twit}
                   </a>
-                  &nbsp;<i class="fab fa-twitter"></i>
+                  &nbsp;<i className="fab fa-twitter"></i>
                 </div>
                 : '' 
               }
 
               {/* If Instagram */}
-              {post.inst ? 
+              {episode.inst ? 
                 <div className="podcastEpisode-content">
                   @&nbsp;
                   <a 
-                    href={`https://www.instagram.com/${post.inst}`}
+                    href={`https://www.instagram.com/${episode.inst}`}
                     target="_blank"
-                    onClick={e => {
-                      trackCustomEvent({
-                        category: "Episode",
-                        action: "Clicked",
-                        label: post.inst,
-                      })
-                    }}
                   >
-                    {post.inst && post.inst}
+                    {episode.inst && episode.inst}
                   </a>
-                  &nbsp;<i class="fab fa-instagram"></i>
+                  &nbsp;<i className="fab fa-instagram"></i>
                 </div>
                 : '' 
               }
@@ -169,7 +122,7 @@ export default async function EpisodeListing({ tags: any; title: any; website: a
               
               */}
               <AudioPlayer         
-          src= {post.episodeURL}
+          src= {episode.episodeURL}
           onPlay={e => console.log("onPlay")}
           layout="horizontal" 
           customProgressBarSection={
@@ -181,38 +134,36 @@ export default async function EpisodeListing({ tags: any; title: any; website: a
           customAdditionalControls={[]}  
           customVolumeControls={[]}
           showJumpControls={false}
-          customIcons={{
-            play: <Play 
-              onClick={e => {
-                e.preventDefault()
-                trackCustomEvent({
-                  category: "Audio Player",
-                  action: "Play - Featured",
-                  label: post.title,
-                })
-              }}
-            />,
-            pause: <Pause 
-            onClick={e => {
-              e.preventDefault()
-              trackCustomEvent({
-                category: "Audio Player",
-                action: "Pause - Featured",
-                label: post.title,
-              })
-            }}
-            /> 
-            }}
+          // customIcons={{
+          //   play: <Play 
+          //     onClick={e => {
+          //       e.preventDefault()
+          //       trackCustomEvent({
+          //         category: "Audio Player",
+          //         action: "Play - Featured",
+          //         label: episode.title,
+          //       })
+          //     }}
+          //   />,
+          //   pause: <Pause 
+          //   onClick={e => {
+          //     e.preventDefault()
+          //     trackCustomEvent({
+          //       category: "Audio Player",
+          //       action: "Pause - Featured",
+          //       label: episode.title,
+          //     })
+          //   }}
+          //   /> 
+          //   }}
         />
           </div>
       
       
-      
-                
         ))}
       </div>
     );
   }
 }
 
-// export default EpisodeListing;
+export default EpisodeListing;
