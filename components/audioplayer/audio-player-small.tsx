@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-import Image from "next/image";
-import IconPlay from '../../public/assets-svg/button-play-small.inline.svg';   
-import IconPause from '../../public/assets-svg/button-pause-small.inline.svg'; 
-
+import { FaCirclePlay, FaCirclePause } from 'react-icons/fa6'
 
 class AudioPlayerSmall extends React.Component<any, any> {
   render() {
@@ -27,19 +24,12 @@ class AudioPlayerSmall extends React.Component<any, any> {
           customAdditionalControls={[]}  
           customVolumeControls={[]}
           showJumpControls={false}
-          // customIcons={{
-          //   play: 
-          //   <Image
-          //     priority
-          //     src={IconPlay}
-          //     alt="Play"
-          //     />,
-          //   pause: 
-          //   <Image 
-          //     src={IconPause}
-          //     alt="Pause"
-          //     /> 
-          //   }}
+          customIcons={{
+            play: 
+            <FaCirclePlay />,
+            pause: 
+            <FaCirclePause /> 
+            }}
         />
       </div>
       </React.Fragment>

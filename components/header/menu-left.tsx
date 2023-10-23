@@ -18,20 +18,15 @@ export default function MenuLeft() {
             target="_blank"
             href="https://seattlecreative.show/"
           >
-            Listen
+            Subscribe to Podcast
           </a>
-
-          <Link
-          className="headline-menu--link" 
-          href="/about">About
-          </Link>
 
           <a
             className="headline-menu--link"
             target="_blank"
             href="https://discord.gg/SVV4XVCFCj"
           >
-            Chat
+            Join Discord
           </a>
           
           

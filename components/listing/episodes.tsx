@@ -8,7 +8,7 @@ export default async function Episodes() {
       startsWith: "https://cdn.simplecast.com/audio/"
     }},
     orderBy: {
-      episodePromo: 'asc',
+      episodePromo: 'desc',
     } 
   })
 

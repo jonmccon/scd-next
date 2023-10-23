@@ -26,7 +26,7 @@
         display: grid;
         /* background-color: aqua; */
         grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: 1fr auto auto auto auto auto 8em;
+        grid-template-rows: 1fr auto auto auto auto auto auto;
         grid-gap: .5em;
         grid-auto-flow: dense;    
         max-width: 100%;
@@ -38,7 +38,7 @@
             ".        Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         ."
             ".              Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       ."
             "About          About           About           About           About           About           About           About           About           About           About          About"
-            ".              Footer          Footer          Footer          Footer          Footer          Footer          Footer          Footer          Footer          Footer          ."
+            /* "Footer              Footer          Footer          Footer          Footer          Footer          Footer          Footer          Footer          Footer          Footer          Footer" */
             ;
     }   
 
@@ -73,7 +73,7 @@
     }
 
     .headline-menu-left {
-        margin: 5vh 0 0 0;
+        margin: 0 0 0 1.5em;
         grid-area: MenuLeft;
         align-self: center;
         width: max-content;
@@ -291,12 +291,9 @@
         flex: none;
     }
     
-    .audioPlayer-small .rhap_play-pause-button {
+    .audioPlayer-small .rhap_play-pause-button  {
+        font-size: 1.5em;
         /* background-color: var(--color-test); */
-        width: min-content;
-        height: min-content;
-        /* margin: 0 0 40% 0; */
-        /* padding: 0 0 2.5ch 0; */
     }
 
     .audioPlayer-small .rhap_current-time {
@@ -307,9 +304,9 @@
         display: none;
     }
 
-    .audioPlayer-small .button {
+    /* .audioPlayer-small .button {
         color: var(--color-bg-coral-dark);
-    }
+    } */
 
     .smallplayer:hover {
         color: var(--color-card);
@@ -333,7 +330,20 @@
     /* About page content */
 
     .aboutContent {
+        grid-template-columns: .25fr repeat(6, 1fr) .25fr;
+        grid-column-gap: 1.5em;
+    }
+
+    .about-story {
+        grid-column: 2 / 4;
+    }
+
+    .about-history {
+        grid-column: 4 /6;
+    }
     
+    .about-press {
+        grid-column: 6 / 8;
     }
 
     .aboutContent a {
@@ -351,6 +361,25 @@
         grid-template-columns:  repeat(5, .1em 1fr);
         grid-row-gap: .1em;
     }
+
+    /* ----------------------------------------------- */
+
+    /* Footer content */
+
+    .footerContent {
+        display: grid;
+        grid-template-columns: .25fr repeat(6, 1fr) .25fr;
+        grid-column-gap: 1.5em;
+    }
+    
+    .footer-submit {
+        grid-column: 2 / 6;
+    }
+
+    .footer-created {
+        grid-column: 6 / 10;
+    }
+
 
     /* ----------------------------------------------- */
 }

@@ -1,6 +1,9 @@
 'use client'
 import React from "react";
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player';
+import { LuAtSign, LuTwitter, LuInstagram, LuAmpersand, LuAmpersands } from 'react-icons/lu';
+import { FaCirclePlay, FaCirclePause } from 'react-icons/fa6'
+
 
 class EpisodeListing extends React.Component<any, any> {
   getEpisodeList() {
@@ -41,7 +44,7 @@ class EpisodeListing extends React.Component<any, any> {
             
             <div className="podcastEpisode-content">
               <a className="podcastEpisode-person"
-                href={episode.website} 
+                href={`${episode.website}?seattle-creative-directory`} 
                 target="_blank"
               >
                 {episode.episodePerson} of {episode.title}
@@ -51,25 +54,26 @@ class EpisodeListing extends React.Component<any, any> {
             {/* If Additional Link A,B */}
             {episode.linkA ? 
               <div className="podcastEpisode-content">
+                <LuAmpersand />&nbsp;
                 <a 
                     href={`${episode.linkA[1]}`}
                     target="_blank"
                   >
                     {episode.linkA[0] && episode.linkA[0]}
                   </a>
-                  &nbsp;<i className="fas fa-anchor"></i>
                 </div>
                 : '' 
               }
             {episode.linkB ? 
               <div className="podcastEpisode-content">
+                <LuAmpersand />&nbsp;
                 <a 
                     href={`${episode.linkB[1]}`}
                     target="_blank"
                   >
                     {episode.linkB[0] && episode.linkB[0]}
                   </a>
-                  &nbsp;<i className="fas fa-anchor"></i>
+                  &nbsp;
                 </div>
                 : '' 
               }
@@ -77,16 +81,14 @@ class EpisodeListing extends React.Component<any, any> {
             {/* If Twitter */}
             {episode.twit ? 
               <div className="podcastEpisode-content">
-                @&nbsp;
-                {/* <i class="far fa-link"></i> */}
-                {/* <i class="fas fa-anchor"></i> */}
+                <LuTwitter />&nbsp;
                 <a 
                     href={`https://twitter.com/${episode.twit}`}
                     target="_blank"
                   >
                     {episode.twit && episode.twit}
                   </a>
-                  &nbsp;<i className="fab fa-twitter"></i>
+                  &nbsp;
                 </div>
                 : '' 
               }
@@ -94,14 +96,14 @@ class EpisodeListing extends React.Component<any, any> {
               {/* If Instagram */}
               {episode.inst ? 
                 <div className="podcastEpisode-content">
-                  @&nbsp;
+                  <LuInstagram />&nbsp;
                   <a 
                     href={`https://www.instagram.com/${episode.inst}`}
                     target="_blank"
                   >
                     {episode.inst && episode.inst}
                   </a>
-                  &nbsp;<i className="fab fa-instagram"></i>
+                  &nbsp;
                 </div>
                 : '' 
               }
@@ -134,28 +136,12 @@ class EpisodeListing extends React.Component<any, any> {
           customAdditionalControls={[]}  
           customVolumeControls={[]}
           showJumpControls={false}
-          // customIcons={{
-          //   play: <Play 
-          //     onClick={e => {
-          //       e.preventDefault()
-          //       trackCustomEvent({
-          //         category: "Audio Player",
-          //         action: "Play - Featured",
-          //         label: episode.title,
-          //       })
-          //     }}
-          //   />,
-          //   pause: <Pause 
-          //   onClick={e => {
-          //     e.preventDefault()
-          //     trackCustomEvent({
-          //       category: "Audio Player",
-          //       action: "Pause - Featured",
-          //       label: episode.title,
-          //     })
-          //   }}
-          //   /> 
-          //   }}
+          customIcons={{
+            play: 
+            <FaCirclePlay />,
+            pause: 
+            <FaCirclePause /> 
+            }}
         />
           </div>
       
