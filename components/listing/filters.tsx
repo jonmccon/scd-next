@@ -1,7 +1,7 @@
 import prisma from '@/lib/prisma'
 import { timeAgo } from '@/lib/utils'
 import Image from 'next/image'
-import RefreshButton from '../refresh-button'
+import RefreshButton from './refresh-button'
 import Link from 'next/link'
 import { Key, ReactElement, JSXElementConstructor, ReactFragment } from 'react'
 

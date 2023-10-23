@@ -27,14 +27,7 @@ return (
           <React.Fragment
           key={listing.title}
           >
-            {/* 
-            Have a class added for each tag that's present. 
-            Add an additional a:hover class for each that changes its own display.
-            Needs to be added to the tag listing as well. 
-            */}
-
             
-
             <div  
                 className="directory-block--item"
             >
@@ -42,13 +35,6 @@ return (
               <a 
                 href={`${listing.website}?seattle-creative-directory`} 
                 target="_blank"
-                // onClick={e => {
-                //   trackCustomEvent({
-                //     category: "Directory",
-                //     action: "Clicked",
-                //     label: listing.title,
-                //   })
-                // }}
               >
                 {listing.title} 
               </a>

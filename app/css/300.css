@@ -307,6 +307,7 @@
     .rhap_controls-section {
         flex: none !important;
         display: inline !important;
+        margin-left: -.4em !important;
     }
 
     .rhap_main-controls {
@@ -346,8 +347,11 @@
         background-color: var(--color-text) !important;
     }
 
-    .rhap_play-pause-button svg {
-        /* opacity: .8; */
+    .rhap_play-pause-button {
+        font-size: 1.5em !important;
+        color: var(--color-text) !important;
+        height: 50px !important;
+        width: 1em !important;
     }
 
     .rhap_play-pause-button svg:hover {
@@ -507,20 +511,24 @@
         background-color: var(--color-bg-gray);
     }
 
-    .aboutContent {
+    .aboutContent, .footerContent {
         font: var(--text-serif-pullquote);
         display: grid;
         padding: 1.5em;
         /* justify-self: center; */
     }
 
-    .aboutContent a {
+    .about a {
         color:var(--color-bg-coral-dark);
         text-decoration: none;
     }
 
-    .aboutContent a:hover {
+    .about a:hover {
+        background: var(--color-bg-coral);
+        border-radius: 4px;
+        cursor: pointer;
         text-decoration: underline;
+        color: var(--color-text);
     }
 
     .spacer {
@@ -531,21 +539,7 @@
 
     /* ----------------------------------------------- */
 
-    /* Footer content */
-
-    .footerContent a {
-        text-align: center;
-        font: var(--text-mono-menu);
-        padding: 0 0 1em 0;
-        color: var(--color-text);
-        background-color: var(--color-bg-gray);
-    }
-
-    .footer a:hover {
-        color: var(--color-bg-coral);
-        text-decoration: underline;
-    }
-
+    
     /* ----------------------------------------------- */
 
     

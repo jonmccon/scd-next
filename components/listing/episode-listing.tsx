@@ -7,17 +7,19 @@ import { FaCirclePlay, FaCirclePause } from 'react-icons/fa6'
 
 class EpisodeListing extends React.Component<any, any> {
   getEpisodeList() {
-    const episodeList: { title: any; website: any; twit: any; inst: any; linkA: any; linkB: any; episodeURL: any; episodePerson: any; episodePromo: any; color: any; pullquote: any; }[] = [];
-    this.props.episodeQuery.forEach((episode: { title: any; website: any; twit: any; inst: any; linkA: any; linkB: any; episodeURL: any; episodePerson: any; episodePromo: any; color: any; pullquote: any; }) => {
+    const episodeList: { title: any; website: any; twit: any; inst: any; linkATitle: any; linkAURL: any; linkBTitle: any; linkBURL: any; episodeURL: any; episodePerson: any; episodePromo: any; color: any; pullquote: any; }[] = [];
+    this.props.episodeQuery.forEach((episode: { title: any; website: any; twit: any; inst: any; linkATitle: any; linkAURL: any; linkBTitle: any; linkBURL: any; episodeURL: any; episodePerson: any; episodePromo: any; color: any; pullquote: any; }) => {
       episodeList.push({
         title: episode.title,
         website: episode.website,
         twit: episode.twit,
         inst: episode.inst,
-        linkA: episode.linkA,
-        linkB: episode.linkA,
+        linkATitle: episode.linkATitle,
+        linkAURL: episode.linkAURL,
+        linkBTitle: episode.linkBTitle,
+        linkBURL: episode.linkBURL,
         episodeURL: episode.episodeURL,
-        episodePerson: episode.episodePromo,
+        episodePerson: episode.episodePerson,
         episodePromo: episode.episodePromo,
         color: episode.color,
         pullquote: episode.pullquote,
@@ -32,7 +34,7 @@ class EpisodeListing extends React.Component<any, any> {
     return (
       <div className="podcast">
       
-        {episodeList.map((episode: { title: any; website: any; twit: any; inst: any; linkA: any; linkB: any; episodeURL: any; episodePerson: any; episodePromo: any; color: any; pullquote: any; }) => (
+        {episodeList.map((episode: { title: any; website: any; twit: any; inst: any; linkATitle: any; linkAURL: any; linkBTitle: any; linkBURL: any; episodeURL: any; episodePerson: any; episodePromo: any; color: any; pullquote: any; }) => (
           <div 
             className= {`podcastEpisode ${episode.color}`}
             key={episode.title}
@@ -52,26 +54,26 @@ class EpisodeListing extends React.Component<any, any> {
             </div>
 
             {/* If Additional Link A,B */}
-            {episode.linkA ? 
+            {episode.linkATitle ? 
               <div className="podcastEpisode-content">
                 <LuAmpersand />&nbsp;
                 <a 
-                    href={`${episode.linkA[1]}`}
+                    href={`${episode.linkAURL}?seattle-creative-directory`}
                     target="_blank"
                   >
-                    {episode.linkA[0] && episode.linkA[0]}
+                    {episode.linkATitle && episode.linkATitle}
                   </a>
                 </div>
                 : '' 
               }
-            {episode.linkB ? 
+            {episode.linkBTitle ? 
               <div className="podcastEpisode-content">
-                <LuAmpersand />&nbsp;
+                <LuAmpersands />&nbsp;
                 <a 
-                    href={`${episode.linkB[1]}`}
+                    href={`${episode.linkBURL}?seattle-creative-directory`}
                     target="_blank"
                   >
-                    {episode.linkB[0] && episode.linkB[0]}
+                    {episode.linkBTitle && episode.linkBTitle}
                   </a>
                   &nbsp;
                 </div>
@@ -108,41 +110,26 @@ class EpisodeListing extends React.Component<any, any> {
                 : '' 
               }
               
-              
-              {/* 
-              install v2 version unless you're gonna move the whole thing up
-              https://www.gatsbyjs.com/plugins/gatsby-plugin-sass/ 
-              drop background, look at ui overrides 
-              try to hide the player as much as possible
-              you probably won't get the full background thing, although it is cool
-              Is it possible to pass a click action to the player from outside?
-              need a smaller button to reduce height of player
-              
-              header foooter may work better to put it more inline with content
-              <AudioPlayer src={SAMPLE_MP3_URL} header="Now playing: Let it go!" footer="This is a footer" />
-              possibly with custom controls
-              
-              */}
               <AudioPlayer         
-          src= {episode.episodeURL}
-          onPlay={e => console.log("onPlay")}
-          layout="horizontal" 
-          customProgressBarSection={
-            [
-              RHAP_UI.CURRENT_LEFT_TIME,
-              RHAP_UI.PROGRESS_BAR,
-            ]
-          }
-          customAdditionalControls={[]}  
-          customVolumeControls={[]}
-          showJumpControls={false}
-          customIcons={{
-            play: 
-            <FaCirclePlay />,
-            pause: 
-            <FaCirclePause /> 
-            }}
-        />
+                src= {episode.episodeURL}
+                onPlay={e => console.log("onPlay")}
+                layout="horizontal-reverse" 
+                customProgressBarSection={
+                  [
+                    RHAP_UI.CURRENT_LEFT_TIME,
+                    RHAP_UI.PROGRESS_BAR,
+                  ]
+                }
+                customAdditionalControls={[]}  
+                customVolumeControls={[]}
+                showJumpControls={false}
+                customIcons={{
+                  play: 
+                  <FaCirclePlay />,
+                  pause: 
+                  <FaCirclePause /> 
+                  }}
+              />
           </div>
       
       

@@ -130,8 +130,8 @@ export default async function Directory() {
         <div className="directory-block--title"><a id="W"></a>W</div>
         <DirectoryListing listingQuery={listingsW} />
 
-        {/* <div className="directory-block--title"><a id="X"></a>X</div>
-        <DirectoryListing listingQuery={listingsX} /> */}
+        <div className="directory-block--title"><a id="X"></a>X</div>
+        <DirectoryListing listingQuery={listingsX} />
 
         <div className="directory-block--title"><a id="Y"></a>Y</div>
         <DirectoryListing listingQuery={listingsY} />
@@ -145,7 +145,7 @@ export default async function Directory() {
         <div className="directory-block--title" id="endcap">*</div>       
           <div className="directory-block--end">
             <p>{totalcount} Studios</p> 
-            <p>Don&#39;t see yourself?</p>
+            <p>Don&lsquo;t see yourself?</p>
             <RefreshButton />
             <p>
             <Link

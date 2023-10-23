@@ -10,7 +10,7 @@ export default function About() {
                     This is a phonebook for you and your creative peers in the Pacific Northwest. We also have an interview series called the Seattle Creative Show that can either be found on the homepage, in your favorite podcast player or <a href="https://seattlecreative.show/">see all available platforms here.</a> If you have any questions or suggestions please feel free to reach out <a href="mailto:jonny@seattlecreative.directory" target="_blank">in email.</a>
                     </p>
                     <p className="about-press">
-                    🔎 For more behind the scenes, there's a real nice <a href="http://marketingnw.com/new-seattle-creative-directory/">write up in Marketing Northwest on the project</a> that you can check out.
+                    🔎 For more behind the scenes, there&#39;s a real nice <a href="http://marketingnw.com/new-seattle-creative-directory/">write up in Marketing Northwest on the project</a> that you can check out.
                     </p>
             </div>
             <div className="footerContent">

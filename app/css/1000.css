@@ -3,7 +3,7 @@
 @media only screen and (min-width: 1250px) { 
 
     h1 {
-        font: var(--text-mono--item);
+        font: var(--text-mono-input) !important;
         line-height: 140%;
     }
 
@@ -367,7 +367,6 @@
     /* Footer content */
 
     .footerContent {
-        display: grid;
         grid-template-columns: .25fr repeat(6, 1fr) .25fr;
         grid-column-gap: 1.5em;
     }
@@ -377,7 +376,7 @@
     }
 
     .footer-created {
-        grid-column: 6 / 10;
+        grid-column: 6 / 9;
     }
 
 
