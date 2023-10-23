@@ -3,7 +3,7 @@ import RefreshButton from '../refresh-button'
 import DirectoryListing from './directory-listing'
 import Link from 'next/link'
 
-export default async function TableDirectory() {
+export default async function Directory() {
   const startTime = Date.now()
   const duration = Date.now() - startTime
   
@@ -130,8 +130,8 @@ export default async function TableDirectory() {
         <div className="directory-block--title"><a id="W"></a>W</div>
         <DirectoryListing listingQuery={listingsW} />
 
-        <div className="directory-block--title"><a id="X"></a>X</div>
-        <DirectoryListing listingQuery={listingsX} />
+        {/* <div className="directory-block--title"><a id="X"></a>X</div>
+        <DirectoryListing listingQuery={listingsX} /> */}
 
         <div className="directory-block--title"><a id="Y"></a>Y</div>
         <DirectoryListing listingQuery={listingsY} />
@@ -145,7 +145,7 @@ export default async function TableDirectory() {
         <div className="directory-block--title" id="endcap">*</div>       
           <div className="directory-block--end">
             <p>{totalcount} Studios</p> 
-            <p>Don&apos;t see yourself?</p>
+            <p>Don&#39;t see yourself?</p>
             <RefreshButton />
             <p>
             <Link
