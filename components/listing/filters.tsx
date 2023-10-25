@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import prisma from '@/lib/prisma'
-import chroma from 'chroma-js';
+import chroma from 'chroma-js'
 
 export default async function Filters() {
 
