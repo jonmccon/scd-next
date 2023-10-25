@@ -1,9 +1,6 @@
+import React, { useState, useEffect } from 'react'
 import prisma from '@/lib/prisma'
-import { timeAgo } from '@/lib/utils'
-import Image from 'next/image'
-import RefreshButton from './refresh-button'
-import Link from 'next/link'
-import { Key, ReactElement, JSXElementConstructor, ReactFragment } from 'react'
+import chroma from 'chroma-js';
 
 export default async function Filters() {
 
@@ -16,6 +13,8 @@ const neighborhoods = await prisma.directory.findMany({
 
 const citys = await prisma.directory.findMany({
   select: { city: true, }, distinct: ['city'],})
+
+  chroma
 
 
 const filters: Array<String> = [
