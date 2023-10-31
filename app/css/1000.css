@@ -233,6 +233,7 @@
 
     .directory-list {
         font: var(--text-mono--item);
+        grid-auto-flow: row dense;
     }
 
     .directory-block {

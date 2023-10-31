@@ -10,11 +10,6 @@ export const metadata = {
   authors: [{ name: 'Jonny McConnell', url: 'https://jonmccon.com' }],
 }
 
-// const inter = Inter({
-//   variable: '--font-inter',
-//   subsets: ['latin'],
-//   display: 'swap',
-// })
 
 export default function RootLayout({
   children,

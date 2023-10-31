@@ -4,45 +4,16 @@ import DirectoryListing from './directory-listing'
 import Link from 'next/link'
 
 export default async function Directory() {
-  const startTime = Date.now()
-  const duration = Date.now() - startTime
-  
-  const listingsA = await prisma.directory.findMany({ where: { published: true, category: "A",},})
-  const listingsB = await prisma.directory.findMany({ where: { published: true, category: "B",},})
-  const listingsC = await prisma.directory.findMany({ where: { published: true, category: "C",},})
-  const listingsD = await prisma.directory.findMany({ where: { published: true, category: "D",},})
-  const listingsE = await prisma.directory.findMany({ where: { published: true, category: "E",},})
-  const listingsF = await prisma.directory.findMany({ where: { published: true, category: "F",},})
-  const listingsG = await prisma.directory.findMany({ where: { published: true, category: "G",},})
-  const listingsH = await prisma.directory.findMany({ where: { published: true, category: "H",},})
-  const listingsI = await prisma.directory.findMany({ where: { published: true, category: "I",},})
-  const listingsJ = await prisma.directory.findMany({ where: { published: true, category: "J",},})
-  const listingsK = await prisma.directory.findMany({ where: { published: true, category: "K",},})
-  const listingsL = await prisma.directory.findMany({ where: { published: true, category: "L",},})
-  const listingsM = await prisma.directory.findMany({ where: { published: true, category: "M",},})
-  const listingsN = await prisma.directory.findMany({ where: { published: true, category: "N",},})
-  const listingsO = await prisma.directory.findMany({ where: { published: true, category: "O",},})
-  const listingsP = await prisma.directory.findMany({ where: { published: true, category: "P",},})
-  const listingsQ = await prisma.directory.findMany({ where: { published: true, category: "Q",},})
-  const listingsR = await prisma.directory.findMany({ where: { published: true, category: "R",},})
-  const listingsS = await prisma.directory.findMany({ where: { published: true, category: "S",},})
-  const listingsT = await prisma.directory.findMany({ where: { published: true, category: "T",},})
-  const listingsU = await prisma.directory.findMany({ where: { published: true, category: "U",},})
-  const listingsV = await prisma.directory.findMany({ where: { published: true, category: "V",},})
-  const listingsW = await prisma.directory.findMany({ where: { published: true, category: "W",},})
-  const listingsX = await prisma.directory.findMany({ where: { published: true, category: "X",},})
-  const listingsY = await prisma.directory.findMany({ where: { published: true, category: "Y",},})
-  const listingsZ = await prisma.directory.findMany({ where: { published: true, category: "Z",},})
-  const listingsNumbers = await prisma.directory.findMany({ where: { published: true, category: "numbers",},})
-  
-  // possible array of arrays to map thru
-  // const listings = [...listingsA, ...listingsB, ...listingsC, ...listingsD, ...listingsE, ...listingsF, ...listingsG,
-  //                   ...listingsH, ...listingsI, ...listingsJ, ...listingsK, ...listingsL, ...listingsM, ...listingsN,
-  //                   ...listingsO, ...listingsP, ...listingsQ, ...listingsR, ...listingsS, ...listingsT, ...listingsU,
-  //                   ...listingsV, ...listingsW, ...listingsX, ...listingsY, ...listingsZ, ...listingsNumbers]
-  // var doubledArray = listings.map(nested => nested.map(element => element * 2));
 
-  const totalcount: number = listingsA.length + listingsB.length + listingsC.length + listingsD.length + listingsE.length + listingsF.length + listingsG.length + listingsH.length + listingsI.length + listingsJ.length + listingsK.length + listingsL.length + listingsM.length + listingsN.length + listingsO.length + listingsP.length + listingsQ.length + listingsR.length + listingsS.length + listingsT.length + listingsU.length + listingsV.length + listingsW.length + listingsX.length + listingsY.length + listingsZ.length + listingsNumbers.length
+  const categories = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#".split('');
+  const listings = {};
+
+  for (let category of categories) {
+    listings[category] = await prisma.directory.findMany({ where: { published: true, category: category === '#' ? 'numbers' : category }});
+  }
+
+  
+  const totalcount = Object.values(listings).reduce((total, categoryListings) => total + categoryListings.length, 0);
 
   
   return (
@@ -50,7 +21,16 @@ export default async function Directory() {
     <div className="directory">  
     
     
-      <div className='directory-block'>
+      {categories.map(category => (
+          <div className='directory-block' key={category}>
+            <div className="directory-block--title"><a id={category}></a>{category}</div>
+            <DirectoryListing listingQuery={listings[category]} />
+          </div>
+        ))}
+
+
+
+      {/* <div className='directory-block'>
         
         <div className="directory-block--title"><a id="A"></a>A</div>
         <DirectoryListing listingQuery={listingsA} />
@@ -140,7 +120,7 @@ export default async function Directory() {
         <DirectoryListing listingQuery={listingsZ} />
 
         <div className="directory-block--title"><a id="#"></a>#</div>
-        <DirectoryListing listingQuery={listingsNumbers} />
+        <DirectoryListing listingQuery={listingsNumbers} /> */}
 
         <div className="directory-block--title" id="endcap">*</div>       
           <div className="directory-block--end">
@@ -155,7 +135,7 @@ export default async function Directory() {
             </p>
 
           </div>
-      </div>
+      
 
     </div>
     

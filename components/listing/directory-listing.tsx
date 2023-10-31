@@ -4,8 +4,20 @@ import AudioPlayerSmall from "../audioplayer/audio-player-small";
 
 class DirectoryListing extends React.Component<any, any> {
   getListingList() {
-    const listingList: { title: any; website: any; episodeURL: any; episodePromo: any; color: any; }[] = [];
-    this.props.listingQuery.forEach((listing: { title: any; website: any; episodeURL: any; episodePromo: any; color: any; }) => {
+    const listingList: { 
+      title: any; 
+      website: any; 
+      episodeURL: any; 
+      episodePromo: any; 
+      color: any; 
+    }[] = [];
+    this.props.listingQuery.forEach((listing: { 
+      title: any; 
+      website: any; 
+      episodeURL: any; 
+      episodePromo: any; 
+      color: any; 
+    }) => {
       listingList.push({
         title: listing.title,
         website: listing.website,
@@ -23,7 +35,13 @@ render() {
 return (
       
       <div className="directory-list">
-        {listingList.map((listing: { website: any; title: string; episodeURL: any; episodePromo: any; color: any; }) => (
+        {listingList.map((listing: { 
+          website: any; 
+          title: string; 
+          episodeURL: any; 
+          episodePromo: any; 
+          color: any; 
+        }) => (
           <React.Fragment
           key={listing.title}
           >
