@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import prisma from '@/lib/prisma'
 import chroma from 'chroma-js'
+
 
 export default async function Filters() {
 
@@ -13,9 +14,6 @@ const neighborhoods = await prisma.directory.findMany({
 
 const citys = await prisma.directory.findMany({
   select: { city: true, }, distinct: ['city'],})
-
-  chroma
-
 
 const filters: Array<String> = [
   "THREE_DIMENSIONAL", "ADVERTISING", "ARCHITECTURE", "BRANDING", "COMMUNITY", "DEVELOPMENT", "ECOMMERCE", "ENGINEERING", "ENVIRONMENTAL", 
