@@ -50,7 +50,7 @@ const disciplines: Array<string> = [
   "RECRUITER", "RESEARCH", "SCHOOL", "SOUND", "STRATEGY", "TYPOGRAPHY", "UX_UI", "VFX", "VIDEO", "VOICE"
 ];
 
-console.log(selectedFilter)
+// console.log(selectedFilter)
 
   return (
     <div className="filters">
@@ -62,6 +62,7 @@ console.log(selectedFilter)
           <div
             key={size.size}
             className="filter-tag-container"
+            style={{ backgroundColor: size.size === selectedFilter ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"
@@ -82,6 +83,7 @@ console.log(selectedFilter)
           <div
             key={neighborhood.neighborhood}
             className="filter-tag-container"
+            style={{ backgroundColor: neighborhood.neighborhood === selectedFilter ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"
@@ -101,6 +103,7 @@ console.log(selectedFilter)
           <div
             key={city.city}
             className="filter-tag-container"
+            style={{ backgroundColor: city.city === selectedFilter ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"
@@ -120,6 +123,7 @@ console.log(selectedFilter)
           <div
             key={index}
             className="filter-tag-container"
+            style={{ backgroundColor: discipline === selectedFilter ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"

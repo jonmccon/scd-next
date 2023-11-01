@@ -14,7 +14,10 @@ function DirectoryListing(props: { listingQuery: any[]; }) {
       episodeURL: any; 
       episodePromo: any; 
       color: any; 
-      metadata: any;
+      city: any;
+      neighborhood: any;
+      size: any;
+      discipline: any;
     }[] = [];
     props.listingQuery.forEach(listing => {
       listingList.push({
@@ -23,7 +26,10 @@ function DirectoryListing(props: { listingQuery: any[]; }) {
         episodeURL: listing.episodeURL,
         episodePromo: listing.episodePromo,
         color: listing.color,
-        metadata: listing.metadata,
+        city: listing.city,
+        neighborhood: listing.neighborhood,
+        size: listing.size,
+        discipline: listing.discipline,
       });
     });
     return listingList;
@@ -35,8 +41,8 @@ return (
       
   <div className="directory-list">
   {listingList.map(listing => {
-    const isSelected = selectedFilters.includes(listing.metadata);
-    const backgroundColor = isSelected ? chroma.scale(['white', 'red'])(0.5) : 'white';
+    const isSelected = selectedFilters.includes(listing.discipline) || selectedFilters.includes(listing.city) || selectedFilters.includes(listing.neighborhood) || selectedFilters.includes(listing.size);
+    const backgroundColor = isSelected ? chroma.scale(['white', 'red'])(0.5).toString() : 'transparent';
 
     return (
           <React.Fragment
@@ -44,7 +50,8 @@ return (
           >
             
             <div  
-                className={`directory-block--item ${backgroundColor}`}
+                className="directory-block--item"
+                style={{ backgroundColor: backgroundColor }}
             >
               
               <a 
