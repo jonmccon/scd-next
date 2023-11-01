@@ -1,53 +1,50 @@
 'use client'
 import React from "react";
 import AudioPlayerSmall from "../audioplayer/audio-player-small";
+import { useFilters } from '../FilterContext';
+import chroma from 'chroma-js';
 
-class DirectoryListing extends React.Component<any, any> {
-  getListingList() {
+function DirectoryListing(props: { listingQuery: any[]; }) {
+  const { selectedFilters } = useFilters();
+
+  const getListingList = () => {
     const listingList: { 
       title: any; 
       website: any; 
       episodeURL: any; 
       episodePromo: any; 
       color: any; 
+      metadata: any;
     }[] = [];
-    this.props.listingQuery.forEach((listing: { 
-      title: any; 
-      website: any; 
-      episodeURL: any; 
-      episodePromo: any; 
-      color: any; 
-    }) => {
+    props.listingQuery.forEach(listing => {
       listingList.push({
         title: listing.title,
         website: listing.website,
         episodeURL: listing.episodeURL,
         episodePromo: listing.episodePromo,
         color: listing.color,
+        metadata: listing.metadata,
       });
     });
     return listingList;
-  }
+  };
 
-render() {
-        const listingList = this.getListingList();
+  const listingList = getListingList();
         
 return (
       
-      <div className="directory-list">
-        {listingList.map((listing: { 
-          website: any; 
-          title: string; 
-          episodeURL: any; 
-          episodePromo: any; 
-          color: any; 
-        }) => (
+  <div className="directory-list">
+  {listingList.map(listing => {
+    const isSelected = selectedFilters.includes(listing.metadata);
+    const backgroundColor = isSelected ? chroma.scale(['white', 'red'])(0.5) : 'white';
+
+    return (
           <React.Fragment
           key={listing.title}
           >
             
             <div  
-                className="directory-block--item"
+                className={`directory-block--item ${backgroundColor}`}
             >
               
               <a 
@@ -71,11 +68,10 @@ return (
             </div>
           </React.Fragment>
 
-        ))}
-        
-      </div>
-    );
-  
-}}
-
+    )
+  }
+  )}
+  </div>
+)
+}
 export default DirectoryListing;

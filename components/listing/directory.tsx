@@ -6,7 +6,7 @@ import Link from 'next/link'
 export default async function Directory() {
 
   const categories = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#".split('');
-  const listings = {};
+  const listings: {[key: string]: any} = {};
 
   for (let category of categories) {
     listings[category] = await prisma.directory.findMany({ where: { published: true, category: category === '#' ? 'numbers' : category }});

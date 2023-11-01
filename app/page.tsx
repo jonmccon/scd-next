@@ -9,6 +9,7 @@ import Episodes from '@/components/listing/episodes'
 import MenuLeft from '@/components/header/menu-left'
 import MenuRight from '@/components/header/menu-right'
 import About from '@/components/footer/about'
+import { FilterProvider } from '@/components/FilterContext'
 
 // Prisma does not support Edge without the Data Proxy currently
 // export const runtime = 'edge'
@@ -33,10 +34,11 @@ export default function Home() {
         <Suspense fallback={<TablePlaceholder />}> 
             {/* @ts-expect-error Async Server Component */}
             <Episodes />    
-            {/* @ts-expect-error Async Server Component */}
-            <Filters />
-            {/* @ts-expect-error Async Server Component */}
-            <Directory />          
+            <FilterProvider>
+              <Filters />
+              {/* @ts-expect-error Async Server Component */}
+              <Directory />   
+            </FilterProvider>       
         </Suspense>
       
       <About />

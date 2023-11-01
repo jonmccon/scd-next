@@ -1,19 +1,39 @@
-import React, { useState } from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
 import prisma from '@/lib/prisma'
 import chroma from 'chroma-js'
 
+// add interface for filterContext type
+interface FilterContextType {
+  selectedFilters: string[];
+  addFilter: (filter: string) => void;
+  removeFilter: (filter: string) => void;
+};
 
-export default async function Filters() {
 
+export default function Filters() {
 
-const sizes = await prisma.directory.findMany({
-  select: { size: true, }, distinct: ['size'],})
-
-const neighborhoods = await prisma.directory.findMany({
-  select: { neighborhood: true, }, distinct: ['neighborhood'],})
-
-const citys = await prisma.directory.findMany({
-  select: { city: true, }, distinct: ['city'],})
+    const [sizes, setSizes] = useState([])
+    const [neighborhoods, setNeighborhoods] = useState([])
+    const [cities, setCities] = useState([])
+  
+    useEffect(() => {
+      fetch('/api/filters')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          setSizes(data.sizes)
+          setNeighborhoods(data.neighborhoods)
+          setCities(data.cities)
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation: ', error);
+        });
+    }, [])
 
 const filters: Array<String> = [
   "THREE_DIMENSIONAL", "ADVERTISING", "ARCHITECTURE", "BRANDING", "COMMUNITY", "DEVELOPMENT", "ECOMMERCE", "ENGINEERING", "ENVIRONMENTAL", 
@@ -21,14 +41,6 @@ const filters: Array<String> = [
   "MARKETING", "MOTION", "NAMING", "PACKAGING", "PHOTOGRAPHY", "PRESENTATION", "PRESS", "PRINT", "PRINTER", "PRODUCT", "PUBLIC_RELATIONS",
   "RECRUITER", "RESEARCH", "SCHOOL", "SOUND", "STRATEGY", "TYPOGRAPHY", "UX_UI", "VFX", "VIDEO", "VOICE"
 ];
-
-// console.log(filters)
-
-
-// may just need to change tags back to a list of strings? 
-// then using https://www.prisma.io/docs/concepts/components/prisma-client/full-text-search to search for the tags
-// then all data is created equally, and then maybe we can do this state selector thing to filter the data
-// Will need a action that changes the background color of all the listings that match that filter
 
   return (
     <div className="filters">
@@ -71,7 +83,7 @@ const filters: Array<String> = [
       <div className="tagCity">
       <h5>GREATER PNW</h5>
         <div className='tagCityContainer'>
-        {citys.map((city: { city: string; }) => (
+        {cities.map((city: { city: string; }) => (
           <div
             key={city.city}
             className="filter-tag-container"
