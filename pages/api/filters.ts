@@ -17,7 +17,7 @@ console.log(`Received ${req.method} request to ${req.url}`)
   })
 
   console.log(`Sending repsponse with status ${res.statusCode} to ${req.url}`)
-  console.log(sizes, neighborhoods, cities)
+  // console.log(sizes, neighborhoods, cities)
   res.status(200).json({ sizes, neighborhoods, cities })
   
 }

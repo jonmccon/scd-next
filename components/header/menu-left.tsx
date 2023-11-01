@@ -17,7 +17,7 @@ export default function MenuLeft() {
             className="headline-menu--link highlight">
               Get Listed
            </a>
-          <script src="//embed.typeform.com/next/embed.js"></script>
+          {/* <script src="//embed.typeform.com/next/embed.js"></script> */}
 
           {/* <Link
           className="headline-menu--link highlight" 

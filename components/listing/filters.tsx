@@ -13,6 +13,14 @@ interface FilterContextType {
 
 export default function Filters() {
 
+    // Add a new piece of state to hold the selected filter
+    const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
+
+    // This function will be called when a filter link is clicked
+    const handleFilterClick = (filter: string) => {
+      setSelectedFilter(filter);
+    }
+
     const [sizes, setSizes] = useState([])
     const [neighborhoods, setNeighborhoods] = useState([])
     const [cities, setCities] = useState([])
@@ -35,12 +43,14 @@ export default function Filters() {
         });
     }, [])
 
-const filters: Array<String> = [
-  "THREE_DIMENSIONAL", "ADVERTISING", "ARCHITECTURE", "BRANDING", "COMMUNITY", "DEVELOPMENT", "ECOMMERCE", "ENGINEERING", "ENVIRONMENTAL", 
+const disciplines: Array<string> = [
+  "THREE DIMENSIONAL", "ADVERTISING", "ARCHITECTURE", "BRANDING", "COMMUNITY", "DEVELOPMENT", "ECOMMERCE", "ENGINEERING", "ENVIRONMENTAL", 
   "EVENTS", "EXHIBITION", "EXPERIENCE", "EXPERIENTIAL", "GAMING", "ILLUSTRATION", "INDUSTRIAL", "INHOUSE", "INTERACTIVE", "INTERIOR",
-  "MARKETING", "MOTION", "NAMING", "PACKAGING", "PHOTOGRAPHY", "PRESENTATION", "PRESS", "PRINT", "PRINTER", "PRODUCT", "PUBLIC_RELATIONS",
+  "MARKETING", "MOTION", "NAMING", "PACKAGING", "PHOTOGRAPHY", "PRESENTATION", "PRESS", "PRINT", "PRINTER", "PRODUCT", "PUBLIC RELATIONS",
   "RECRUITER", "RESEARCH", "SCHOOL", "SOUND", "STRATEGY", "TYPOGRAPHY", "UX_UI", "VFX", "VIDEO", "VOICE"
 ];
+
+console.log(selectedFilter)
 
   return (
     <div className="filters">
@@ -54,7 +64,9 @@ const filters: Array<String> = [
             className="filter-tag-container"
           >
           <a 
-            className="filter-tag--attr">
+            className="filter-tag--attr"
+            onClick={() => handleFilterClick(size.size)} 
+          >
             {size.size}
           </a>
           </div>
@@ -72,7 +84,9 @@ const filters: Array<String> = [
             className="filter-tag-container"
           >
           <a 
-            className="filter-tag--attr">
+            className="filter-tag--attr"
+            onClick={() => handleFilterClick(neighborhood.neighborhood)} 
+          >
             {neighborhood.neighborhood}
           </a>
           </div>
@@ -89,7 +103,9 @@ const filters: Array<String> = [
             className="filter-tag-container"
           >
           <a 
-            className="filter-tag--attr">
+            className="filter-tag--attr"
+            onClick={() => handleFilterClick(city.city)} 
+          >
             {city.city}
           </a>
           </div>
@@ -100,23 +116,21 @@ const filters: Array<String> = [
       <div className="allTags">
       <h5>DISCIPLINE</h5>
         <div className='allTagsContainer'>
-        {filters.map((filter, index) => (
+        {disciplines.map((discipline, index) => (
           <div
             key={index}
             className="filter-tag-container"
           >
           <a 
-            className="filter-tag--attr">
-            {filter}
+            className="filter-tag--attr"
+            onClick={() => handleFilterClick(discipline)} 
+          >
+            {discipline}
           </a>
           </div>
         ))} 
         </div>
-      </div>
-
-     
-      
-      
+      </div>    
 
     </div>
 
