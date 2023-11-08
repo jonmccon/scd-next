@@ -6,14 +6,16 @@ type FilterContextType = {
     selectedFilters: string[];
     addFilter: (filter: string) => void;
     removeFilter: (filter: string) => void;
-    isFilterSelected: (filter: string) => boolean;  // Add this line
+    isFilterSelected: (filter: string) => boolean; 
+    clearFilters: () => void; 
 };
 
 const FilterContext = createContext<FilterContextType>({
     selectedFilters: [],
     addFilter: () => {},
     removeFilter: () => {},
-    isFilterSelected: () => false,  // Add this line
+    isFilterSelected: () => false, 
+    clearFilters: () => {}, 
 });
 
 export function FilterProvider({ children }: { children: React.ReactNode }) {
@@ -39,8 +41,12 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
         return selectedFilters.includes(filter);
       };
 
+    const clearFilters = () => {
+    setSelectedFilters([]);  // Clear all filters
+    };
+
     return (
-        <FilterContext.Provider value={{ selectedFilters, addFilter, removeFilter, isFilterSelected }}>
+        <FilterContext.Provider value={{ selectedFilters, addFilter, removeFilter, isFilterSelected, clearFilters }}>
             {children}
         </FilterContext.Provider>
     );

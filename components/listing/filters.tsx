@@ -14,7 +14,7 @@ interface FilterContextType {
 export default function Filters() {
 
     // Add a new piece of state to hold the selected filter
-    const { selectedFilters, addFilter, removeFilter } = useFilters();  // Get the selected filters and functions from the context
+    const { selectedFilters, addFilter, removeFilter, clearFilters } = useFilters();  // Get the selected filters and functions from the context
 
     // This function will be called when a filter link is clicked
     const handleFilterClick = (filter: string) => {
@@ -61,8 +61,9 @@ const disciplines: Array<string> = [
           <li key={filter}>{filter}</li>  // Render each selected filter as a list item
         ))}
       </ul>
+      <button onClick={clearFilters}>Clear All Filters</button>
 
-      {/* <div className="tagSize">
+      <div className="tagSize">
       <h5>SIZE</h5>
         <div className='tagSizeContainer'>
         {sizes.map((size: { size: string; }) => (
@@ -80,7 +81,7 @@ const disciplines: Array<string> = [
           </div>
         ))}
         </div>
-      </div> */}
+      </div>
 
 
       <div className="tagSeattle">
