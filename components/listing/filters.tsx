@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import prisma from '@/lib/prisma'
+import { useFilters } from '../FilterContext';  // Import your FilterContext
 import chroma from 'chroma-js'
 
 // add interface for filterContext type
@@ -14,11 +14,15 @@ interface FilterContextType {
 export default function Filters() {
 
     // Add a new piece of state to hold the selected filter
-    const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
+    const { selectedFilters, addFilter, removeFilter } = useFilters();  // Get the selected filters and functions from the context
 
     // This function will be called when a filter link is clicked
     const handleFilterClick = (filter: string) => {
-      setSelectedFilter(filter);
+      if (selectedFilters.includes(filter)) {
+        removeFilter(filter);
+      } else {
+        addFilter(filter);
+      }
     }
 
     const [sizes, setSizes] = useState([])
@@ -50,19 +54,22 @@ const disciplines: Array<string> = [
   "RECRUITER", "RESEARCH", "SCHOOL", "SOUND", "STRATEGY", "TYPOGRAPHY", "UX_UI", "VFX", "VIDEO", "VOICE"
 ];
 
-// console.log(selectedFilter)
-
   return (
     <div className="filters">
+      <ul>
+        {selectedFilters.map(filter => (
+          <li key={filter}>{filter}</li>  // Render each selected filter as a list item
+        ))}
+      </ul>
 
-      <div className="tagSize">
+      {/* <div className="tagSize">
       <h5>SIZE</h5>
         <div className='tagSizeContainer'>
         {sizes.map((size: { size: string; }) => (
           <div
             key={size.size}
             className="filter-tag-container"
-            style={{ backgroundColor: size.size === selectedFilter ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
+            style={{ backgroundColor: selectedFilters.includes(size.size) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"
@@ -73,7 +80,7 @@ const disciplines: Array<string> = [
           </div>
         ))}
         </div>
-      </div>
+      </div> */}
 
 
       <div className="tagSeattle">
@@ -83,7 +90,7 @@ const disciplines: Array<string> = [
           <div
             key={neighborhood.neighborhood}
             className="filter-tag-container"
-            style={{ backgroundColor: neighborhood.neighborhood === selectedFilter ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
+            style={{ backgroundColor: selectedFilters.includes(neighborhood.neighborhood) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"
@@ -103,7 +110,7 @@ const disciplines: Array<string> = [
           <div
             key={city.city}
             className="filter-tag-container"
-            style={{ backgroundColor: city.city === selectedFilter ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
+            style={{ backgroundColor: selectedFilters.includes(city.city) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"
@@ -123,7 +130,7 @@ const disciplines: Array<string> = [
           <div
             key={index}
             className="filter-tag-container"
-            style={{ backgroundColor: discipline === selectedFilter ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
+            style={{ backgroundColor: selectedFilters.includes(discipline) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"

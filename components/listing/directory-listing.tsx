@@ -5,7 +5,7 @@ import { useFilters } from '../FilterContext';
 import chroma from 'chroma-js';
 
 function DirectoryListing(props: { listingQuery: any[]; }) {
-  const { selectedFilters } = useFilters();
+  const { selectedFilters, isFilterSelected } = useFilters();
 
   const getListingList = () => {
     const listingList: { 
@@ -41,7 +41,7 @@ return (
       
   <div className="directory-list">
   {listingList.map(listing => {
-    const isSelected = selectedFilters.includes(listing.discipline) || selectedFilters.includes(listing.city) || selectedFilters.includes(listing.neighborhood) || selectedFilters.includes(listing.size);
+    const isSelected = isFilterSelected(listing.discipline) || isFilterSelected(listing.city) || isFilterSelected(listing.neighborhood) || isFilterSelected(listing.size);
     const backgroundColor = isSelected ? chroma.scale(['white', 'red'])(0.5).toString() : 'transparent';
 
     return (
