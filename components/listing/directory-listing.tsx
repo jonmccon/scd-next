@@ -5,7 +5,7 @@ import { useFilters } from '../FilterContext';
 import chroma from 'chroma-js';
 
 function DirectoryListing(props: { listingQuery: any[]; }) {
-  const { selectedFilters, isFilterSelected } = useFilters();
+  const { selectedSizes, selectedNeighborhoods, selectedCities, selectedDisciplines } = useFilters(); 
 
   const getListingList = () => {
     const listingList: { 
@@ -36,14 +36,45 @@ function DirectoryListing(props: { listingQuery: any[]; }) {
   };
 
   const listingList = getListingList();
+
+  // Creating color scales for each filter
+  const sizeColorScale = chroma.scale(['fda388','F02D3A']).colors(5);
+  const neighborhoodColorScale = chroma.scale(['a1dcef','24A7D1']).colors(5);
+  const cityColorScale = chroma.scale(['63c5b4','15B76C']).colors(5);
+  const disciplineColorScale = chroma.scale(['ffdd7e', 'FBBB13']).colors(5);
         
 return (
       
   <div className="directory-list">
   {listingList.map(listing => {
-    const isSelected = isFilterSelected(listing.discipline) || isFilterSelected(listing.city) || isFilterSelected(listing.neighborhood) || isFilterSelected(listing.size);
-    const backgroundColor = isSelected ? chroma.scale(['white', 'red'])(0.5).toString() : 'transparent';
 
+          // Calculate the color index based on the number of selected filters for each type
+        const sizeColorIndex = selectedSizes.includes(listing.size) ? selectedSizes.length - 1 : -1;
+        const neighborhoodColorIndex = selectedNeighborhoods.includes(listing.neighborhood) ? selectedNeighborhoods.length - 1 : -1;
+        const cityColorIndex = selectedCities.includes(listing.city) ? selectedCities.length - 1 : -1;
+        const disciplineColorIndex = selectedDisciplines.includes(listing.discipline) ? selectedDisciplines.length - 1 : -1;
+
+        const sizeColor = sizeColorIndex >= 0 ? sizeColorScale[sizeColorIndex] : 'transparent';
+        const neighborhoodColor = neighborhoodColorIndex >= 0 ? neighborhoodColorScale[neighborhoodColorIndex] : 'transparent';
+        const cityColor = cityColorIndex >= 0 ? cityColorScale[cityColorIndex] : 'transparent';
+        const disciplineColor = disciplineColorIndex >= 0 ? disciplineColorScale[disciplineColorIndex] : 'transparent';
+
+        const selectedColors = [];
+
+        if (sizeColorIndex >= 0) {
+          selectedColors.push(sizeColorScale[sizeColorIndex]);
+        }
+        if (neighborhoodColorIndex >= 0) {
+          selectedColors.push(neighborhoodColorScale[neighborhoodColorIndex]);
+        }
+        if (cityColorIndex >= 0) {
+          selectedColors.push(cityColorScale[cityColorIndex]);
+        }
+        if (disciplineColorIndex >= 0) {
+          selectedColors.push(disciplineColorScale[disciplineColorIndex]);
+        }
+
+        console.log(sizeColorIndex);
     return (
           <React.Fragment
           key={listing.title}
@@ -51,7 +82,9 @@ return (
             
             <div  
                 className="directory-block--item"
-                style={{ backgroundColor: backgroundColor }}
+                style={{ 
+                  backgroundImage: `linear-gradient(90deg, ${selectedColors.join(', ')})` 
+                }}
             >
               
               <a 

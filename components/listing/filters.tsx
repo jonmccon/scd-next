@@ -4,30 +4,61 @@ import { useFilters } from '../FilterContext';  // Import your FilterContext
 import chroma from 'chroma-js'
 
 // add interface for filterContext type
-interface FilterContextType {
-  selectedFilters: string[];
-  addFilter: (filter: string) => void;
-  removeFilter: (filter: string) => void;
+type FilterContextType = {
+  selectedSizes: string[];
+  selectedNeighborhoods: string[];
+  selectedCities: string[];
+  selectedDisciplines: string[];
+  addFilter: (filter: string, type: string) => void;
+  removeFilter: (filter: string, type: string) => void;
+  isFilterSelected: (filter: string, type: string) => boolean;
+  clearFilters: () => void;
 };
 
 
 export default function Filters() {
 
-    // Add a new piece of state to hold the selected filter
-    const { selectedFilters, addFilter, removeFilter, clearFilters } = useFilters();  // Get the selected filters and functions from the context
+  const { selectedSizes, selectedNeighborhoods, selectedCities, selectedDisciplines, addFilter, removeFilter, clearFilters } = useFilters();
 
-    // This function will be called when a filter link is clicked
-    const handleFilterClick = (filter: string) => {
-      if (selectedFilters.includes(filter)) {
-        removeFilter(filter);
-      } else {
-        addFilter(filter);
-      }
+  const handleFilterClick = (filter: string, type: string) => {
+    switch (type) {
+      case 'size':
+        if (selectedSizes.includes(filter)) {
+          removeFilter(filter, type);
+        } else {
+          addFilter(filter, type);
+        }
+        break;
+      case 'neighborhood':
+        if (selectedNeighborhoods.includes(filter)) {
+          removeFilter(filter, type);
+        } else {
+          addFilter(filter, type);
+        }
+        break;
+      case 'city':
+        if (selectedCities.includes(filter)) {
+          removeFilter(filter, type);
+        } else {
+          addFilter(filter, type);
+        }
+        break;
+      case 'discipline':
+        if (selectedDisciplines.includes(filter)) {
+          removeFilter(filter, type);
+        } else {
+          addFilter(filter, type);
+        }
+        break;
+      default:
+        break;
     }
+  }
 
-    const [sizes, setSizes] = useState([])
-    const [neighborhoods, setNeighborhoods] = useState([])
-    const [cities, setCities] = useState([])
+  const [sizes, setSizes] = useState([])
+  const [neighborhoods, setNeighborhoods] = useState([])
+  const [cities, setCities] = useState([])
+  const [_, setDisciplines] = useState([])  
   
     useEffect(() => {
       fetch('/api/filters')
@@ -41,6 +72,7 @@ export default function Filters() {
           setSizes(data.sizes)
           setNeighborhoods(data.neighborhoods)
           setCities(data.cities)
+          setDisciplines(data.disciplines)
         })
         .catch(error => {
           console.error('There was a problem with the fetch operation: ', error);
@@ -55,13 +87,22 @@ const disciplines: Array<string> = [
 ];
 
   return (
-    <div className="filters">
-      <ul>
-        {selectedFilters.map(filter => (
-          <li key={filter}>{filter}</li>  // Render each selected filter as a list item
-        ))}
-      </ul>
-      <button onClick={clearFilters}>Clear All Filters</button>
+      <div className="filters">
+        {/* <ul>
+          {selectedSizes.map(filter => (
+            <li key={filter}>{filter}</li>
+          ))}
+          {selectedNeighborhoods.map(filter => (
+            <li key={filter}>{filter}</li>
+          ))}
+          {selectedCities.map(filter => (
+            <li key={filter}>{filter}</li>
+          ))}
+          {selectedDisciplines.map(filter => (
+            <li key={filter}>{filter}</li>
+          ))}
+        </ul>
+        <button onClick={clearFilters}>Clear All Filters</button> */}
 
       <div className="tagSize">
       <h5>SIZE</h5>
@@ -70,11 +111,11 @@ const disciplines: Array<string> = [
           <div
             key={size.size}
             className="filter-tag-container"
-            style={{ backgroundColor: selectedFilters.includes(size.size) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
+            style={{ backgroundColor: selectedSizes.includes(size.size) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"
-            onClick={() => handleFilterClick(size.size)} 
+            onClick={() => handleFilterClick(size.size, 'size')} 
           >
             {size.size}
           </a>
@@ -91,11 +132,11 @@ const disciplines: Array<string> = [
           <div
             key={neighborhood.neighborhood}
             className="filter-tag-container"
-            style={{ backgroundColor: selectedFilters.includes(neighborhood.neighborhood) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
+            style={{ backgroundColor: selectedNeighborhoods.includes(neighborhood.neighborhood) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"
-            onClick={() => handleFilterClick(neighborhood.neighborhood)} 
+            onClick={() => handleFilterClick(neighborhood.neighborhood, 'neighborhood')} 
           >
             {neighborhood.neighborhood}
           </a>
@@ -111,11 +152,11 @@ const disciplines: Array<string> = [
           <div
             key={city.city}
             className="filter-tag-container"
-            style={{ backgroundColor: selectedFilters.includes(city.city) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
+            style={{ backgroundColor: selectedCities.includes(city.city) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"
-            onClick={() => handleFilterClick(city.city)} 
+            onClick={() => handleFilterClick(city.city, 'city')} 
           >
             {city.city}
           </a>
@@ -131,11 +172,11 @@ const disciplines: Array<string> = [
           <div
             key={index}
             className="filter-tag-container"
-            style={{ backgroundColor: selectedFilters.includes(discipline) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
+            style={{ backgroundColor: selectedDisciplines.includes(discipline) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"
-            onClick={() => handleFilterClick(discipline)} 
+            onClick={() => handleFilterClick(discipline, 'discipline')} 
           >
             {discipline}
           </a>
