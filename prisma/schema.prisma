@@ -1,5 +1,5 @@
 generator client {
-  provider        = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -56,65 +56,34 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-model Directory {
-  title             String  @unique
-  website           String
-  category          String
-  size              String
-  city              String
-  neighborhood      String
-  latitude          Float
-  longitude         Float
-  twit              String
-  inst              String
-  linkATitle        String
-  linkAURL          String
-  linkBTitle        String
-  linkBURL          String
-  pullquote         String
-  episodePromo      String
-  episodePerson     String
-  episodeURL        String
-  color             String
-  published         Boolean
-  three_dimensional Boolean
-  advertising       Boolean
-  architecture      Boolean
-  branding          Boolean
-  community         Boolean
-  development       Boolean
-  eCommerce         Boolean
-  engineering       Boolean
-  environmental     Boolean
-  events            Boolean
-  exhibition        Boolean
-  experience        Boolean
-  experiential      Boolean
-  gaming            Boolean
-  illustration      Boolean
-  industrial        Boolean
-  inhouse           Boolean
-  interactive       Boolean
-  interior          Boolean
-  marketing         Boolean
-  motion            Boolean
-  naming            Boolean
-  packaging         Boolean
-  photography       Boolean
-  presentation      Boolean
-  press             Boolean
-  print             Boolean
-  printer           Boolean
-  product           Boolean
-  public_relations  Boolean
-  recruiter         Boolean
-  research          Boolean
-  school            Boolean
-  sound             Boolean
-  strategy          Boolean
-  typography        Boolean
-  ux_ui             Boolean
-  vfx               Boolean
-  video             Boolean
-  voice             Boolean
+model Listing {
+  id            String  @id @default(cuid())
+  title         String  @unique
+  website       String
+  category      String
+  size          String
+  city          String
+  neighborhood  String?
+  latitude      Float?
+  longitude     Float?
+  twit          String?
+  inst          String?
+  linkATitle    String?
+  linkAURL      String?
+  linkBTitle    String?
+  linkBURL      String?
+  pullquote     String?
+  episodePromo  String?
+  episodePerson String?
+  episodeURL    String?
+  color         String?
+  published     Boolean
+  description   String?
+  tags          Tag[]   @relation("TagToListing")
+}
+
+model Tag {
+  id       String    @id @default(cuid())
+  name     String    @unique
+  listings Listing[] @relation("TagToListing")
 }
