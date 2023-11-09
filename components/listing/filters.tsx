@@ -8,7 +8,7 @@ type FilterContextType = {
   selectedSizes: string[];
   selectedNeighborhoods: string[];
   selectedCities: string[];
-  selectedDisciplines: string[];
+  selectedTags: string[];
   addFilter: (filter: string, type: string) => void;
   removeFilter: (filter: string, type: string) => void;
   isFilterSelected: (filter: string, type: string) => boolean;
@@ -18,7 +18,7 @@ type FilterContextType = {
 
 export default function Filters() {
 
-  const { selectedSizes, selectedNeighborhoods, selectedCities, selectedDisciplines, addFilter, removeFilter, clearFilters } = useFilters();
+  const { selectedSizes, selectedNeighborhoods, selectedCities, selectedTags, addFilter, removeFilter, clearFilters } = useFilters();
 
   const handleFilterClick = (filter: string, type: string) => {
     switch (type) {
@@ -43,8 +43,8 @@ export default function Filters() {
           addFilter(filter, type);
         }
         break;
-      case 'discipline':
-        if (selectedDisciplines.includes(filter)) {
+      case 'tag':
+        if (selectedTags.includes(filter)) {
           removeFilter(filter, type);
         } else {
           addFilter(filter, type);
@@ -58,7 +58,7 @@ export default function Filters() {
   const [sizes, setSizes] = useState([])
   const [neighborhoods, setNeighborhoods] = useState([])
   const [cities, setCities] = useState([])
-  const [_, setDisciplines] = useState([])  
+  const [tags, setTags] = useState([])  
   
     useEffect(() => {
       fetch('/api/filters')
@@ -72,19 +72,12 @@ export default function Filters() {
           setSizes(data.sizes)
           setNeighborhoods(data.neighborhoods)
           setCities(data.cities)
-          setDisciplines(data.disciplines)
+          setTags(data.tags)
         })
         .catch(error => {
           console.error('There was a problem with the fetch operation: ', error);
         });
     }, [])
-
-const disciplines: Array<string> = [
-  "THREE DIMENSIONAL", "ADVERTISING", "ARCHITECTURE", "BRANDING", "COMMUNITY", "DEVELOPMENT", "ECOMMERCE", "ENGINEERING", "ENVIRONMENTAL", 
-  "EVENTS", "EXHIBITION", "EXPERIENCE", "EXPERIENTIAL", "GAMING", "ILLUSTRATION", "INDUSTRIAL", "INHOUSE", "INTERACTIVE", "INTERIOR",
-  "MARKETING", "MOTION", "NAMING", "PACKAGING", "PHOTOGRAPHY", "PRESENTATION", "PRESS", "PRINT", "PRINTER", "PRODUCT", "PUBLIC RELATIONS",
-  "RECRUITER", "RESEARCH", "SCHOOL", "SOUND", "STRATEGY", "TYPOGRAPHY", "UX_UI", "VFX", "VIDEO", "VOICE"
-];
 
   return (
       <div className="filters">
@@ -98,7 +91,7 @@ const disciplines: Array<string> = [
           {selectedCities.map(filter => (
             <li key={filter}>{filter}</li>
           ))}
-          {selectedDisciplines.map(filter => (
+          {selectedTags.map(filter => (
             <li key={filter}>{filter}</li>
           ))}
         </ul>
@@ -168,17 +161,17 @@ const disciplines: Array<string> = [
       <div className="allTags">
       <h5>DISCIPLINE</h5>
         <div className='allTagsContainer'>
-        {disciplines.map((discipline, index) => (
+        {tags.map((tag: { name: string; }) => (
           <div
-            key={index}
+            key={tag.name}
             className="filter-tag-container"
-            style={{ backgroundColor: selectedDisciplines.includes(discipline) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
+            style={{ backgroundColor: selectedTags.includes(tag.name) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"
-            onClick={() => handleFilterClick(discipline, 'discipline')} 
+            onClick={() => handleFilterClick(tag.name, 'tag')} 
           >
-            {discipline}
+            {tag.name}
           </a>
           </div>
         ))} 

@@ -5,7 +5,7 @@ import { useFilters } from '../FilterContext';
 import chroma from 'chroma-js';
 
 function DirectoryListing(props: { listingQuery: any[]; }) {
-  const { selectedSizes, selectedNeighborhoods, selectedCities, selectedDisciplines } = useFilters(); 
+  const { selectedSizes, selectedNeighborhoods, selectedCities, selectedTags } = useFilters(); 
 
   const getListingList = () => {
     const listingList: { 
@@ -17,7 +17,7 @@ function DirectoryListing(props: { listingQuery: any[]; }) {
       city: any;
       neighborhood: any;
       size: any;
-      discipline: any;
+      tag: any;
     }[] = [];
     props.listingQuery.forEach(listing => {
       listingList.push({
@@ -29,7 +29,7 @@ function DirectoryListing(props: { listingQuery: any[]; }) {
         city: listing.city,
         neighborhood: listing.neighborhood,
         size: listing.size,
-        discipline: listing.discipline,
+        tag: listing.tag,
       });
     });
     return listingList;
@@ -41,7 +41,7 @@ function DirectoryListing(props: { listingQuery: any[]; }) {
   const sizeColorScale = chroma.scale(['fda388','F02D3A']).colors(5);
   const neighborhoodColorScale = chroma.scale(['a1dcef','24A7D1']).colors(5);
   const cityColorScale = chroma.scale(['63c5b4','15B76C']).colors(5);
-  const disciplineColorScale = chroma.scale(['ffdd7e', 'FBBB13']).colors(5);
+  const tagColorScale = chroma.scale(['ffdd7e', 'FBBB13']).colors(5);
         
 return (
       
@@ -52,12 +52,12 @@ return (
         const sizeColorIndex = selectedSizes.includes(listing.size) ? selectedSizes.length - 1 : -1;
         const neighborhoodColorIndex = selectedNeighborhoods.includes(listing.neighborhood) ? selectedNeighborhoods.length - 1 : -1;
         const cityColorIndex = selectedCities.includes(listing.city) ? selectedCities.length - 1 : -1;
-        const disciplineColorIndex = selectedDisciplines.includes(listing.discipline) ? selectedDisciplines.length - 1 : -1;
+        const tagColorIndex = selectedTags.includes(listing.tag) ? selectedTags.length - 1 : -1;
 
         const sizeColor = sizeColorIndex >= 0 ? sizeColorScale[sizeColorIndex] : 'transparent';
         const neighborhoodColor = neighborhoodColorIndex >= 0 ? neighborhoodColorScale[neighborhoodColorIndex] : 'transparent';
         const cityColor = cityColorIndex >= 0 ? cityColorScale[cityColorIndex] : 'transparent';
-        const disciplineColor = disciplineColorIndex >= 0 ? disciplineColorScale[disciplineColorIndex] : 'transparent';
+        const tagColor = tagColorIndex >= 0 ? tagColorScale[tagColorIndex] : 'transparent';
 
         const selectedColors = [];
 
@@ -70,8 +70,8 @@ return (
         if (cityColorIndex >= 0) {
           selectedColors.push(cityColorScale[cityColorIndex]);
         }
-        if (disciplineColorIndex >= 0) {
-          selectedColors.push(disciplineColorScale[disciplineColorIndex]);
+        if (tagColorIndex >= 0) {
+          selectedColors.push(tagColorScale[tagColorIndex]);
         }
 
         // console.log(sizeColorIndex);

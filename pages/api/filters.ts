@@ -18,8 +18,12 @@ console.log(`Received ${req.method} request to ${req.url}`)
     select: { city: true, }, distinct: ['city'],
   })
 
+  const tags = await prisma.tag.findMany({
+    select: { name: true, }, distinct: ['name'],
+  })
+
   console.log(`Sending repsponse with status ${res.statusCode} to ${req.url}`)
-  // console.log(sizes, neighborhoods, cities)
-  res.status(200).json({ sizes, neighborhoods, cities })
+  // console.log(tags)
+  res.status(200).json({ sizes, neighborhoods, cities, tags })
   
 }

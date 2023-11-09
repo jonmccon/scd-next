@@ -6,7 +6,7 @@ type FilterContextType = {
   selectedSizes: string[];
   selectedNeighborhoods: string[];
   selectedCities: string[];
-  selectedDisciplines: string[];
+  selectedTags: string[];
   addFilter: (filter: string, type: string) => void;
   removeFilter: (filter: string, type: string) => void;
   isFilterSelected: (filter: string, type: string) => boolean;
@@ -17,7 +17,7 @@ const FilterContext = createContext<FilterContextType>({
   selectedSizes: [],
   selectedNeighborhoods: [],
   selectedCities: [],
-  selectedDisciplines: [],
+  selectedTags: [],
   addFilter: () => {},
   removeFilter: () => {},
   isFilterSelected: () => false, 
@@ -28,7 +28,7 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
     const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
     const [selectedNeighborhoods, setSelectedNeighborhoods] = useState<string[]>([]);
     const [selectedCities, setSelectedCities] = useState<string[]>([]);
-    const [selectedDisciplines, setSelectedDisciplines] = useState<string[]>([]);
+    const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
     const addFilter = (filter: string, type: string) => {
       switch (type) {
@@ -41,8 +41,8 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
         case 'city':
           setSelectedCities(prevCities => [...prevCities, filter]);
           break;
-        case 'discipline':
-          setSelectedDisciplines(prevDisciplines => [...prevDisciplines, filter]);
+        case 'tag':
+          setSelectedTags(prevTags => [...prevTags, filter]);
           break;
         default:
           break;
@@ -60,8 +60,8 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
         case 'city':
           setSelectedCities(prevCities => prevCities.filter(city => city !== filter));
           break;
-        case 'discipline':
-          setSelectedDisciplines(prevDisciplines => prevDisciplines.filter(discipline => discipline !== filter));
+        case 'tag':
+          setSelectedTags(prevTags => prevTags.filter(tag => tag !== filter));
           break;
         default:
           break;
@@ -76,8 +76,8 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
           return selectedNeighborhoods.includes(filter);
         case 'city':
           return selectedCities.includes(filter);
-        case 'discipline':
-          return selectedDisciplines.includes(filter);
+        case 'tag':
+          return selectedTags.includes(filter);
         default:
           return false;
       }
@@ -87,11 +87,11 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
       setSelectedSizes([]);
       setSelectedNeighborhoods([]);
       setSelectedCities([]);
-      setSelectedDisciplines([]);
+      setSelectedTags([]);
     };
 
     return (
-        <FilterContext.Provider value={{ selectedSizes, selectedNeighborhoods, selectedCities, selectedDisciplines, addFilter, removeFilter, isFilterSelected, clearFilters }}>
+        <FilterContext.Provider value={{ selectedSizes, selectedNeighborhoods, selectedCities, selectedTags, addFilter, removeFilter, isFilterSelected, clearFilters }}>
             {children}
         </FilterContext.Provider>
     );
