@@ -74,7 +74,7 @@ return (
           selectedColors.push(disciplineColorScale[disciplineColorIndex]);
         }
 
-        console.log(sizeColorIndex);
+        // console.log(sizeColorIndex);
     return (
           <React.Fragment
           key={listing.title}

@@ -1,8 +1,10 @@
-import prisma from '@/lib/prisma'
+import { PrismaClient } from '@prisma/client'
 import EpisodeListing from './episode-listing'
 
+const prisma = new PrismaClient()
+
 export default async function Episodes() {
-  const episodeList = await prisma.directory.findMany({ 
+  const episodeList = await prisma.listing.findMany({ 
     where: { published: true, 
     episodeURL: {
       startsWith: "https://cdn.simplecast.com/audio/"

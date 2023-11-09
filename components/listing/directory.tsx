@@ -1,15 +1,16 @@
-import prisma from '@/lib/prisma'
+import { PrismaClient } from '@prisma/client'
 import RefreshButton from '../refresh-button'
 import DirectoryListing from './directory-listing'
 import Link from 'next/link'
 
-export default async function Directory() {
+const prisma = new PrismaClient()
 
+export default async function Directory() {
   const categories = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#".split('');
   const listings: {[key: string]: any} = {};
 
   for (let category of categories) {
-    listings[category] = await prisma.directory.findMany({ where: { published: true, category: category === '#' ? 'numbers' : category }});
+    listings[category] = await prisma.listing.findMany({ where: { published: true, category: category === '#' ? 'numbers' : category }});
   }
 
   
