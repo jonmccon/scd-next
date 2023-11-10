@@ -3,16 +3,13 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 
 export const metadata = {
-  title: 'Vercel Postgres Demo with Prisma',
-  description:
-    'A simple Next.js app with Vercel Postgres as the database and Prisma as the ORM',
+  metadataBase: new URL('https://seattlecreative.directory'),
+  title: 'Seattle Creative Directory',
+  description: 'A phonebook of studios in the Pacific Northwest',
+  keywords: ['seattle', 'design', 'studio', 'agency', 'interview', 'aiga'],
+  authors: [{ name: 'Jonny McConnell', url: 'https://jonmccon.com' }],
 }
 
-const inter = Inter({
-  variable: '--font-inter',
-  subsets: ['latin'],
-  display: 'swap',
-})
 
 export default function RootLayout({
   children,
@@ -21,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.variable}>{children}<Analytics /></body>
+      <body>{children}<Analytics /></body>
     </html>
   )
 }
