@@ -8,6 +8,9 @@ dependencies:
   '@prisma/client':
     specifier: ^5.5.2
     version: 5.5.2(prisma@5.5.2)
+  '@typeform/embed-react':
+    specifier: ^3.8.0
+    version: 3.8.0(react@18.2.0)
   '@types/chroma-js':
     specifier: ^2.4.2
     version: 2.4.2
@@ -366,6 +369,22 @@ packages:
 
   /@tsconfig/node16@1.0.4:
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
+    dev: false
+
+  /@typeform/embed-react@3.8.0(react@18.2.0):
+    resolution: {integrity: sha512-1Ew+Je+MO6oiefiJlVK6usxrgnIHq0mO4wHkgnHpJRxiPs31D0BWsT27ZhAP+7UPQ6jm3XnSze+COT+1OSJHzw==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      '@typeform/embed': 4.3.2
+      fast-deep-equal: 3.1.3
+      react: 18.2.0
+    dev: false
+
+  /@typeform/embed@4.3.2:
+    resolution: {integrity: sha512-uUlCcUU0MVmyHcoIfJpn2LXh/53tPCoHU6OGBHm0dkH7oKhbHDnHknnCdHZsO9M6MvzGZnMRItx/qz5l5z5hRw==}
+    engines: {node: '>=10'}
     dev: false
 
   /@types/chroma-js@2.4.2:

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { useFilters } from '../FilterContext';  // Import your FilterContext
 import chroma from 'chroma-js'
+import ListingSubmission from '../typeform/FormEmbed'
 
 // add interface for filterContext type
 type FilterContextType = {
@@ -96,6 +97,8 @@ export default function Filters() {
           ))}
         </ul>
         <button onClick={clearFilters}>Clear All Filters</button> */}
+
+      <ListingSubmission />
 
       <div className="tagSize">
       <h5>SIZE</h5>
