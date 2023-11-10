@@ -23,7 +23,7 @@ const TypeformSubmission = () => {
           autoClose    
           keepSession
           tooltip='&nbsp&nbspGet Listed'
-          customIcon='https://github.com/ionic-team/ionicons/blob/main/src/svg/add-circle.svg'
+          customIcon='🍭'
           buttonProps={{
             ariaLabel: 'Typeform Button',
             }}
