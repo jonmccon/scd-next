@@ -6,15 +6,7 @@ export default function MenuLeft() {
     return (
       <React.Fragment>
 
-        <div className="headline-menu-left">  
-          
-          {/* <Link 
-            className="headline-menu--link highlight"
-            href="#typeform"
-            >
-            Get Listed
-           </Link> */}
-          
+        <div className="headline-menu-left">            
 
           <Link
             className="headline-menu--link"

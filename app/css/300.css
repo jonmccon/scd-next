@@ -542,9 +542,30 @@
 
     /* ----------------------------------------------- */
 
+    /* Typeform overrides */
+
+    .tf-v1-popover-button, .tf-v1-popover-tooltip::before {
+        background-color: #000 !important;
+    }
+    
+    .tf-v1-popover-tooltip {
+        background-color: #000 !important;
+    }
+
+    .tf-v1-popover-tooltip-text {
+        font: 700 .8em JetBrains-Mono, sans-serif;
+        text-transform: uppercase;
+        color: #FFF;
+    }
+
+    .tf-v1-popover-tooltip-close {
+        display: none !important;
+    }
+    
     
     /* ----------------------------------------------- */
 
+    
     
 }
 
