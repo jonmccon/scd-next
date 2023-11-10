@@ -42,9 +42,10 @@ class EpisodeListing extends React.Component<any, any> {
         
             
             {/* Pull quote */}
-            <div className="pullquote">{episode.pullquote}</div>
+            <div className="pullquote podcastEpisode-content">{episode.pullquote}</div>
             
             <div className="podcastEpisode-content">
+              
               <a className="podcastEpisode-person"
                 href={`${episode.website}?seattle-creative-directory`} 
                 target="_blank"

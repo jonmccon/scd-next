@@ -237,7 +237,8 @@
 
     .podcastEpisode {        
         display: grid;
-        grid-template-rows: min-content auto minmax(1ch, 1fr);
+        /* grid-template-rows: min-content auto minmax(1ch, 1fr); */
+        grid-template-rows: auto minmax(1ch, 1fr);
         row-gap: .3em;
         padding: 1.5em;
         min-height: 20vh;
@@ -298,6 +299,7 @@
         background-color: rgba(255, 255, 255, 0) !important;
         /* border: 5px solid var(--color-bg-coral); */
         /* border-radius: 10px; */
+        margin: -.9em 0 -1em 0 !important;
     }
 
     .rhap_main {
@@ -348,10 +350,11 @@
     }
 
     .rhap_play-pause-button {
-        font-size: 1.5em !important;
+        font-size: 1em !important;
         color: var(--color-text) !important;
         height: 50px !important;
         width: 1em !important;
+        margin: 0 0 0 .4em !important;
     }
 
     .rhap_play-pause-button svg:hover {
