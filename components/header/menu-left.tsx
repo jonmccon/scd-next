@@ -8,21 +8,13 @@ export default function MenuLeft() {
 
         <div className="headline-menu-left">  
           
-          <a 
-            data-tf-slider="UR7SpT93" 
-            data-tf-position="right" 
-            data-tf-opacity="100" 
-            data-tf-iframe-props="title=SCD - Intake" 
-            data-tf-transitive-search-params data-tf-medium="snippet" 
-            className="headline-menu--link highlight">
-              Get Listed
-           </a>
-          {/* <script src="//embed.typeform.com/next/embed.js"></script> */}
-
-          {/* <Link
-          className="headline-menu--link highlight" 
-          href="/submit">Get Listed
-          </Link> */}
+          {/* <Link 
+            className="headline-menu--link highlight"
+            href="#typeform"
+            >
+            Get Listed
+           </Link> */}
+          
 
           <Link
             className="headline-menu--link"

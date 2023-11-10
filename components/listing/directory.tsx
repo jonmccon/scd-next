@@ -2,7 +2,6 @@ import { PrismaClient } from '@prisma/client'
 import RefreshButton from '../refresh-button'
 import DirectoryListing from './directory-listing'
 import Link from 'next/link'
-import ListingSubmission from '../typeform/FormEmbed'
 
 const prisma = new PrismaClient()
 

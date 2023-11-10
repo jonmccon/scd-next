@@ -10,6 +10,7 @@ import MenuLeft from '@/components/header/menu-left'
 import MenuRight from '@/components/header/menu-right'
 import About from '@/components/footer/about'
 import { FilterProvider } from '@/components/FilterContext'
+import TypeformSubmission from '@/components/typeform/TypeformSubmission'
 
 // Prisma does not support Edge without the Data Proxy currently
 // export const runtime = 'edge'
@@ -38,12 +39,13 @@ export default function Home() {
               <Filters />
               {/* @ts-expect-error Async Server Component */}
               <Directory />   
-            </FilterProvider>       
+            </FilterProvider>
         </Suspense>
       
-      <About />
-
+        <About />
+      
       </div>
+    <TypeformSubmission />       
     </main>
   )
 }
