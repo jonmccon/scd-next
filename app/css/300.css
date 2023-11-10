@@ -544,10 +544,12 @@
 
     /* Typeform overrides */
 
-    .tf-v1-popover-button, .tf-v1-popover-tooltip::before {
+    .tf-v1-popover-button, .tf-v1-popover-tooltip::before, .tf-v1-popover-wrapper button {
         background-color: #000 !important;
     }
+
     
+
     .tf-v1-popover-tooltip {
         background-color: #000 !important;
     }
