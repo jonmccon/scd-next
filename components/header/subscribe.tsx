@@ -29,19 +29,21 @@ const Subscribe = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Enter your email</label>
-      <input 
-        type="email" 
-        name="email" 
-        value={email}
-        onChange={e => setEmail(e.target.value)}
-      />
-      
-      <input type="submit" value="Subscribe" />
-      {status === 'Subscription successful' && <p>Thank you for subscribing!</p>}
-      {status === 'Subscription failed' && <p>Subscription failed. Please try again.</p>}
-    </form>
+    <div className='headline-menu-right'>
+      <form className='email-form' onSubmit={handleSubmit}>
+        <label className=''>Newsletter</label>
+        <input 
+          type="email" 
+          name="email" 
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+        />
+        
+        <button type="submit" value="Subscribe">Subscribe</button>
+        {status === 'Subscription successful' && <p>Subscribed!</p>}
+        {status === 'Subscription failed' && <p>Please try that again!</p>}
+      </form>
+    </div>
   );
 };
 

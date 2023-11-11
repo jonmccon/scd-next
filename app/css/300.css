@@ -123,29 +123,57 @@
         background: var(--color-bg-coral);
         /* box-shadow: -.15em .15em 2px var(--color-listingHover-shadow); */
         cursor: pointer;
-        text-decoration: underline;
+        /* text-decoration: underline; */
     }
     /* ----------------------------------------------- */
 
     /* SUBSCRIBE & SUBMIT */
 
     .email-form, .submit-form {
-        display: inline-block;
+        display: block;
     }
 
     .email-form, .submit-form {
-        font: var(--text-mono-input);
+        font: var(--text-mono-std);
         border: 0 none var(--color-card);
         padding: .2em .4em .1em .2em;
         margin: 0 0 .2em .1em;
         text-align: right;
-        background-color: var(--color-bg-gray);
+        text-transform: uppercase;
         width: 100%;
     }
 
-    .email-form:hover, .submit-form:hover {
-        background-color: var(--color-bg-coral);
+    .email-form button {
+        font: var(--text-mono--link);
+        text-transform: uppercase;
+        width: 16ch;
+        height: 3ch;
+        background-color: var(--color-bg-gray);
+        margin: .25em 0 0 0;
+        border-radius: 2px;
     }
+
+    .email-form button:hover {
+        cursor: pointer;
+        background-color: var(--color-bg-coral);
+        /* text-decoration-line: underline; */
+    }
+
+    .email-form input {
+        height: 3ch;
+        background-color: var(--color-bg-gray);
+        border-bottom: #000;
+        border: 2px;
+    }
+    
+    .email-form input:focus {
+        outline: none;
+        outline-offset: none;
+    }
+
+    /* .email-form:hover, .submit-form:hover {
+        background-color: var(--color-bg-coral);
+    } */
 
     .email-form:focus, .submit-form:focus {
         box-shadow: 0 0 5px var(--color-bg-coral);
