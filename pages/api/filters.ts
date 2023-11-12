@@ -4,26 +4,26 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 const prisma = new PrismaClient()
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-console.log(`Received ${req.method} request to ${req.url}`)
+  console.log(`Received ${req.method} request to ${req.url}`)
 
-  const sizes = await prisma.listing.findMany({
-    select: { size: true, }, distinct: ['size'],
+  const listings = await prisma.listing.findMany({
+    select: {
+      size: true,
+      neighborhood: true,
+      city: true,
+      tags: {
+        select: {
+          name: true
+        }
+      }
+    }
   })
 
-  const neighborhoods = await prisma.listing.findMany({
-    select: { neighborhood: true, }, distinct: ['neighborhood'],
-  })
+  const sizes = [...new Set(listings.map(listing => listing.size))];
+  const neighborhoods = [...new Set(listings.map(listing => listing.neighborhood))];
+  const cities = [...new Set(listings.map(listing => listing.city))];
+  const tags = [...new Set(listings.flatMap(listing => listing.tags).map(tag => tag.name))];
 
-  const cities = await prisma.listing.findMany({
-    select: { city: true, }, distinct: ['city'],
-  })
-
-  const tags = await prisma.tag.findMany({
-    select: { name: true, }, distinct: ['name'],
-  })
-
-  console.log(`Sending repsponse with status ${res.statusCode} to ${req.url}`)
-  // console.log(tags)
+  console.log(`Sending response with status ${res.statusCode} to ${req.url}`)
   res.status(200).json({ sizes, neighborhoods, cities, tags })
-  
 }

@@ -1,27 +1,45 @@
-import { PrismaClient } from '@prisma/client'
+'use client'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 import RefreshButton from '../refresh-button'
 import DirectoryListing from './directory-listing'
 import Link from 'next/link'
 
-const prisma = new PrismaClient()
+interface Listings {
+  [key: string]: Listing[]; // This means that any string key will return an array of Listing objects
+}
 
-export default async function Directory() {
+interface Listing {
+  id: string;
+  title: string;
+}
+
+export default function Directory() {
+
+  const [data, setData] = useState<{ listings: Listings } | null>(null);
   const categories = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#".split('');
-  const listings: {[key: string]: any} = {};
 
-  for (let category of categories) {
-    listings[category] = await prisma.listing.findMany({ where: { published: true, category: category === '#' ? 'numbers' : category }});
+  useEffect(() => {
+    axios.get('/api/filters')
+      .then(response => {
+        setData(response.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, []);
+
+  if (!data) {
+    return <div>Loading...</div>;
   }
 
-  
-  const totalcount = Object.values(listings).reduce((total, categoryListings) => total + categoryListings.length, 0);
+  type Data = { listings: Record<string, any> };
+  const { listings }: Data = data;
+  // const totalcount = Object.values(listings).reduce((total, categoryListings) => total + categoryListings.length, 0);
 
-  
   return (
     
-    <div className="directory">  
-    
-    
+    <div className="directory">      
       {categories.map(category => (
           <div className='directory-block' key={category}>
             <div className="directory-block--title"><a id={category}></a>{category}</div>
@@ -31,7 +49,7 @@ export default async function Directory() {
 
         <div className="directory-block--title" id="endcap">*</div>       
           <div className="directory-block--end">
-            <p>{totalcount} Studios</p> 
+            {/* <p>{totalcount} Studios</p>  */}
             <p>Don&lsquo;t see yourself?</p>
             <RefreshButton />
             <p>
@@ -42,13 +60,7 @@ export default async function Directory() {
             </p>
 
           </div>
-      
-
     </div>
-    
-      
-
-  
 
   )
 }

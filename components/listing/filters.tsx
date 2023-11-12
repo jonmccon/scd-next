@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { useFilters } from '../FilterContext';  // Import your FilterContext
 import chroma from 'chroma-js'
-import TypeformSubmission from '../typeform/TypeformSubmission';
+import axios from 'axios'
 
 // add interface for filterContext type
 type FilterContextType = {
@@ -18,68 +18,24 @@ type FilterContextType = {
 
 
 export default function Filters() {
-
+  const [data, setData] = useState(null);
   const { selectedSizes, selectedNeighborhoods, selectedCities, selectedTags, addFilter, removeFilter, clearFilters } = useFilters();
 
-  const handleFilterClick = (filter: string, type: string) => {
-    switch (type) {
-      case 'size':
-        if (selectedSizes.includes(filter)) {
-          removeFilter(filter, type);
-        } else {
-          addFilter(filter, type);
-        }
-        break;
-      case 'neighborhood':
-        if (selectedNeighborhoods.includes(filter)) {
-          removeFilter(filter, type);
-        } else {
-          addFilter(filter, type);
-        }
-        break;
-      case 'city':
-        if (selectedCities.includes(filter)) {
-          removeFilter(filter, type);
-        } else {
-          addFilter(filter, type);
-        }
-        break;
-      case 'tag':
-        if (selectedTags.includes(filter)) {
-          removeFilter(filter, type);
-        } else {
-          addFilter(filter, type);
-        }
-        break;
-      default:
-        break;
-    }
+  useEffect(() => {
+    axios.get('/api/your-api-handler')
+      .then(response => {
+        setData(response.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, []);
+
+  if (!data) {
+    return <div>Loading...</div>;
   }
-
-  const [sizes, setSizes] = useState([])
-  const [neighborhoods, setNeighborhoods] = useState([])
-  const [cities, setCities] = useState([])
-  const [tags, setTags] = useState([])  
   
-    useEffect(() => {
-      fetch('/api/filters')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then(data => {
-          setSizes(data.sizes)
-          setNeighborhoods(data.neighborhoods)
-          setCities(data.cities)
-          setTags(data.tags)
-        })
-        .catch(error => {
-          console.error('There was a problem with the fetch operation: ', error);
-        });
-    }, [])
-
+  
   return (
       <div className="filters">
         {/* <ul>
