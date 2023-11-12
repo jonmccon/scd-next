@@ -112,6 +112,7 @@
 
     .email-form input { 
         width: 20ch;
+        padding: 0 0 0 1ch;
     }
 
     .email-form input:hover { }

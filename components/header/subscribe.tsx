@@ -31,16 +31,17 @@ const Subscribe = () => {
   return (
     <div className='headline-menu-right'>
       <form className='email-form' onSubmit={handleSubmit}>
-        <label className=''>Newsletter</label>
+        {/* <label className=''>Newsletter</label> */}
         <input 
           type="email" 
           name="email" 
           value={email}
+          placeholder='Newsletter signup'
           onChange={e => setEmail(e.target.value)}
         />
         
         <button type="submit" value="Subscribe">Subscribe</button>
-        {status === 'Subscription successful' && <p>Subscribed!</p>}
+        {status === 'Subscription successful' && <p>Thanks talk soon!</p>}
         {status === 'Subscription failed' && <p>Please try that again!</p>}
       </form>
     </div>
