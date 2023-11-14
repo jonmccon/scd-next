@@ -85,7 +85,7 @@
     }
 
     .headline-menu-right {
-        margin: 5vh 0 0 0;
+        margin: 2.5em 1.5em 0 0;
         grid-area: MenuRight;
         align-self: start;
         text-align: right;
@@ -112,6 +112,7 @@
 
     .email-form input { 
         width: 20ch;
+        padding: 0 0 0 1ch;
     }
 
     .email-form input:hover { }
@@ -119,7 +120,6 @@
     .email-form input:focus { }
 
     .email-form button { 
-        font: var(--text-mono-std);
     }
 
     .email-form button:hover { }

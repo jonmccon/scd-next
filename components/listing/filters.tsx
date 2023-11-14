@@ -1,60 +1,11 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { useFilters } from '../FilterContext';  // Import your FilterContext
 import chroma from 'chroma-js'
-import TypeformSubmission from '../typeform/TypeformSubmission';
 
-// add interface for filterContext type
-type FilterContextType = {
-  selectedSizes: string[];
-  selectedNeighborhoods: string[];
-  selectedCities: string[];
-  selectedTags: string[];
-  addFilter: (filter: string, type: string) => void;
-  removeFilter: (filter: string, type: string) => void;
-  isFilterSelected: (filter: string, type: string) => boolean;
-  clearFilters: () => void;
-};
 
 
 export default function Filters() {
-
-  const { selectedSizes, selectedNeighborhoods, selectedCities, selectedTags, addFilter, removeFilter, clearFilters } = useFilters();
-
-  const handleFilterClick = (filter: string, type: string) => {
-    switch (type) {
-      case 'size':
-        if (selectedSizes.includes(filter)) {
-          removeFilter(filter, type);
-        } else {
-          addFilter(filter, type);
-        }
-        break;
-      case 'neighborhood':
-        if (selectedNeighborhoods.includes(filter)) {
-          removeFilter(filter, type);
-        } else {
-          addFilter(filter, type);
-        }
-        break;
-      case 'city':
-        if (selectedCities.includes(filter)) {
-          removeFilter(filter, type);
-        } else {
-          addFilter(filter, type);
-        }
-        break;
-      case 'tag':
-        if (selectedTags.includes(filter)) {
-          removeFilter(filter, type);
-        } else {
-          addFilter(filter, type);
-        }
-        break;
-      default:
-        break;
-    }
-  }
+ 
 
   const [sizes, setSizes] = useState([])
   const [neighborhoods, setNeighborhoods] = useState([])
@@ -105,11 +56,9 @@ export default function Filters() {
           <div
             key={size.size}
             className="filter-tag-container"
-            style={{ backgroundColor: selectedSizes.includes(size.size) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"
-            onClick={() => handleFilterClick(size.size, 'size')} 
           >
             {size.size}
           </a>
@@ -126,11 +75,9 @@ export default function Filters() {
           <div
             key={neighborhood.neighborhood}
             className="filter-tag-container"
-            style={{ backgroundColor: selectedNeighborhoods.includes(neighborhood.neighborhood) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
           >
           <a 
-            className="filter-tag--attr"
-            onClick={() => handleFilterClick(neighborhood.neighborhood, 'neighborhood')} 
+            className="filter-tag--attr"            
           >
             {neighborhood.neighborhood}
           </a>
@@ -145,12 +92,10 @@ export default function Filters() {
         {cities.map((city: { city: string; }) => (
           <div
             key={city.city}
-            className="filter-tag-container"
-            style={{ backgroundColor: selectedCities.includes(city.city) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
+            className="filter-tag-container"        
           >
           <a 
-            className="filter-tag--attr"
-            onClick={() => handleFilterClick(city.city, 'city')} 
+            className="filter-tag--attr"              
           >
             {city.city}
           </a>
@@ -166,11 +111,11 @@ export default function Filters() {
           <div
             key={tag.name}
             className="filter-tag-container"
-            style={{ backgroundColor: selectedTags.includes(tag.name) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
+            
           >
           <a 
             className="filter-tag--attr"
-            onClick={() => handleFilterClick(tag.name, 'tag')} 
+            
           >
             {tag.name}
           </a>

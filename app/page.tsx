@@ -7,10 +7,10 @@ import Directory from '@/components/listing/directory'
 import Filters from '@/components/listing/filters'
 import Episodes from '@/components/listing/episodes'
 import MenuLeft from '@/components/header/menu-left'
-import MenuRight from '@/components/header/menu-right'
+import MenuRight from '@/components/header/subscribe'
 import About from '@/components/footer/about'
-import { FilterProvider } from '@/components/FilterContext'
 import TypeformSubmission from '@/components/typeform/TypeformSubmission'
+import Subscribe from '@/components/header/subscribe'
 
 // Prisma does not support Edge without the Data Proxy currently
 // export const runtime = 'edge'
@@ -24,7 +24,7 @@ export default function Home() {
       
       <div className="logo"></div>
       <MenuLeft />
-      <MenuRight />
+      <Subscribe />
       
       <div className="headline-wrapper">
         <div className="headline">
@@ -35,11 +35,11 @@ export default function Home() {
         <Suspense fallback={<TablePlaceholder />}> 
             {/* @ts-expect-error Async Server Component */}
             <Episodes />    
-            <FilterProvider>
+          
               <Filters />
               {/* @ts-expect-error Async Server Component */}
               <Directory />   
-            </FilterProvider>
+          
         </Suspense>
       
         <About />
