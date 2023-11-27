@@ -4,6 +4,7 @@ import axios from 'axios'
 import RefreshButton from '../refresh-button'
 import DirectoryListing from './directory-listing'
 import Link from 'next/link'
+import TablePlaceholder from '../table-placeholder'
 
 interface Listings {
   [key: string]: Listing[]; // This means that any string key will return an array of Listing objects
@@ -30,7 +31,7 @@ export default function Directory() {
   }, []);
 
   if (!data) {
-    return <div>Loading...</div>;
+    return <TablePlaceholder />;
   }
 
   type Data = { listings: Record<string, any> };

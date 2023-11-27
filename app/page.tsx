@@ -38,7 +38,6 @@ export default function Home() {
             <Episodes />    
             <FilterProvider>
               <Filters />
-              {/* @ts-expect-error Async Server Component */}
               <Directory />   
             </FilterProvider>
         </Suspense>

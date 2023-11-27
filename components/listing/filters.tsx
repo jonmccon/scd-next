@@ -6,6 +6,10 @@ import axios from 'axios'
 
 // add interface for filterContext type
 type FilterContextType = {
+  sizes: string[];
+  neighborhoods: string[];
+  cities: string[];
+  tags: string[];
   selectedSizes: string[];
   selectedNeighborhoods: string[];
   selectedCities: string[];
@@ -15,11 +19,19 @@ type FilterContextType = {
   isFilterSelected: (filter: string, type: string) => boolean;
   clearFilters: () => void;
 };
-
+const FilterContext = React.createContext<FilterContextType | undefined>(undefined);
 
 export default function Filters() {
   const [data, setData] = useState(null);
-  const { selectedSizes, selectedNeighborhoods, selectedCities, selectedTags, addFilter, removeFilter, clearFilters } = useFilters();
+  const { sizes, neighborhoods, cities, tags, selectedSizes, selectedNeighborhoods, selectedCities, selectedTags, addFilter, removeFilter, clearFilters, isFilterSelected } = useFilters();
+  
+  const handleFilterClick = (filter: string, type: string) => {
+    if (isFilterSelected(filter, type)) {
+      removeFilter(filter, type);
+    } else {
+      addFilter(filter, type);
+    }
+  };
 
   useEffect(() => {
     axios.get('/api/filters')
@@ -57,17 +69,17 @@ export default function Filters() {
       <div className="tagSize">
       <h5>SIZE</h5>
         <div className='tagSizeContainer'>
-        {data.sizes.map((size: { size: string; }) => (
+        {sizes.map((size: string ) => (
           <div
-            key={size.size}
+            key={size}
             className="filter-tag-container"
-            style={{ backgroundColor: selectedSizes.includes(size.size) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
+            style={{ backgroundColor: selectedSizes.includes(size) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"
-            onClick={() => handleFilterClick(size.size, 'size')} 
+            onClick={() => handleFilterClick(size, 'size')} 
           >
-            {size.size}
+            {size}
           </a>
           </div>
         ))}
@@ -78,17 +90,17 @@ export default function Filters() {
       <div className="tagSeattle">
       <h5>SEATTLE BY NEIGHBORHOOD</h5>
         <div className='tagSeattleContainer'>
-        {neighborhoods.map((neighborhood: { neighborhood: string; }) => (
+        {neighborhoods.map(( neighborhood: string ) => (
           <div
-            key={neighborhood.neighborhood}
+            key={neighborhood}
             className="filter-tag-container"
-            style={{ backgroundColor: selectedNeighborhoods.includes(neighborhood.neighborhood) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
+            style={{ backgroundColor: selectedNeighborhoods.includes(neighborhood) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"
-            onClick={() => handleFilterClick(neighborhood.neighborhood, 'neighborhood')} 
+            onClick={() => handleFilterClick(neighborhood, 'neighborhood')} 
           >
-            {neighborhood.neighborhood}
+            {neighborhood}
           </a>
           </div>
         ))}
@@ -98,17 +110,17 @@ export default function Filters() {
       <div className="tagCity">
       <h5>GREATER PNW</h5>
         <div className='tagCityContainer'>
-        {cities.map((city: { city: string; }) => (
+        {cities.map(( city: string ) => (
           <div
-            key={city.city}
+            key={city}
             className="filter-tag-container"
-            style={{ backgroundColor: selectedCities.includes(city.city) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
+            style={{ backgroundColor: selectedCities.includes(city) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"
-            onClick={() => handleFilterClick(city.city, 'city')} 
+            onClick={() => handleFilterClick(city, 'city')} 
           >
-            {city.city}
+            {city}
           </a>
           </div>
         ))}
@@ -118,17 +130,17 @@ export default function Filters() {
       <div className="allTags">
       <h5>DISCIPLINE</h5>
         <div className='allTagsContainer'>
-        {tags.map((tag: { name: string; }) => (
+        {tags.map(( tag: string ) => (
           <div
-            key={tag.name}
+            key={tag}
             className="filter-tag-container"
-            style={{ backgroundColor: selectedTags.includes(tag.name) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
+            style={{ backgroundColor: selectedTags.includes(tag) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"
-            onClick={() => handleFilterClick(tag.name, 'tag')} 
+            onClick={() => handleFilterClick(tag, 'tag')} 
           >
-            {tag.name}
+            {tag}
           </a>
           </div>
         ))} 

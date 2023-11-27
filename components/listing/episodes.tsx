@@ -1,31 +1,23 @@
-import { PrismaClient } from '@prisma/client'
+'use client'
+import { useState, useEffect } from 'react';
 import EpisodeListing from './episode-listing'
 
-const prisma = new PrismaClient()
+export default function Episodes() {
+  const [episodeList, setEpisodeList] = useState([]);
 
-export default async function Episodes() {
-  const episodeList = await prisma.listing.findMany({ 
-    where: { published: true, 
-    episodeURL: {
-      startsWith: "https://cdn.simplecast.com/audio/"
-    }},
-    orderBy: {
-      episodePromo: 'desc',
-    } 
-  })
+  useEffect(() => {
+    const fetchEpisodes = async () => {
+      const res = await fetch('/api/episodes');
+      const data = await res.json();
+      setEpisodeList(data);
+    };
+
+    fetchEpisodes();
+  }, []);
 
   return (
-    
     <div id="showContainer">  
-        <EpisodeListing episodeQuery={episodeList} />
-    
-      
-
+      <EpisodeListing episodeQuery={episodeList} />
     </div>
-    
-      
-
-  
-
-  )
+  );
 }

@@ -1,8 +1,11 @@
 'use client'
-// Create a Context
 import React, { createContext, useContext, useState } from 'react';
 
 type FilterContextType = {
+  sizes: string[]; 
+  neighborhoods: string[]; 
+  cities: string[]; 
+  tags: string[]; 
   selectedSizes: string[];
   selectedNeighborhoods: string[];
   selectedCities: string[];
@@ -14,6 +17,10 @@ type FilterContextType = {
 };
 
 const FilterContext = createContext<FilterContextType>({
+  sizes: [],
+  neighborhoods: [],
+  cities: [],
+  tags: [],
   selectedSizes: [],
   selectedNeighborhoods: [],
   selectedCities: [],
@@ -25,10 +32,41 @@ const FilterContext = createContext<FilterContextType>({
 });
 
 export function FilterProvider({ children }: { children: React.ReactNode }) {
+    const [sizes, setSizes] = useState<string[]>([]);
+    const [neighborhoods, setNeighborhoods] = useState<string[]>([]);
+    const [cities, setCities] = useState<string[]>([]);
+    const [tags, setTags] = useState<string[]>([]);
     const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
     const [selectedNeighborhoods, setSelectedNeighborhoods] = useState<string[]>([]);
     const [selectedCities, setSelectedCities] = useState<string[]>([]);
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
+    React.useEffect(() => {
+      const fetchSizes = async () => {
+        const response = await fetch('/api/sizes');
+        const data = await response.json();
+        return data;
+      };
+      const fetchNeighborhoods = async () => {
+        const response = await fetch('/api/neighborhoods');
+        const data = await response.json();
+        return data;
+      };
+      const fetchCities = async () => {
+        const response = await fetch('/api/cities');
+        const data = await response.json();
+        return data;
+      };
+      const fetchTags = async () => {
+        const response = await fetch('/api/tags');
+        const data = await response.json();
+        return data;
+      };
+      fetchSizes().then(setSizes);
+      fetchNeighborhoods().then(setNeighborhoods);
+      fetchCities().then(setCities);
+      fetchTags().then(setTags);
+    }, []);
 
     const addFilter = (filter: string, type: string) => {
       switch (type) {
@@ -91,9 +129,24 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
     };
 
     return (
-        <FilterContext.Provider value={{ selectedSizes, selectedNeighborhoods, selectedCities, selectedTags, addFilter, removeFilter, isFilterSelected, clearFilters }}>
-            {children}
-        </FilterContext.Provider>
+      <FilterContext.Provider
+        value={{
+          sizes,
+          neighborhoods,
+          cities,
+          tags,
+          selectedSizes,
+          selectedNeighborhoods,
+          selectedCities,
+          selectedTags,
+          addFilter,
+          removeFilter,
+          isFilterSelected,
+          clearFilters,
+        }}
+      >
+        {children}
+      </FilterContext.Provider>
     );
 }
 

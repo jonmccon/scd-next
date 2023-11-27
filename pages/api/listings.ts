@@ -8,6 +8,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const listings = await prisma.listing.findMany({
     select: {
+      id: true,
+      title: true,
       size: true,
       neighborhood: true,
       city: true,
@@ -16,14 +18,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           name: true
         }
       }
+      // Add any other fields you need for a listing
     }
   })
 
-  const sizes = [...new Set(listings.map(listing => listing.size))];
-  const neighborhoods = [...new Set(listings.map(listing => listing.neighborhood))];
-  const cities = [...new Set(listings.map(listing => listing.city))];
-  const tags = [...new Set(listings.flatMap(listing => listing.tags).map(tag => tag.name))];
-
   console.log(`Sending response with status ${res.statusCode} to ${req.url}`)
-  res.status(200).json({listings, sizes, neighborhoods, cities, tags })
+  res.status(200).json({ listings })
 }
