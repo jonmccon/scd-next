@@ -25,5 +25,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const tags = [...new Set(listings.flatMap(listing => listing.tags).map(tag => tag.name))];
 
   console.log(`Sending response with status ${res.statusCode} to ${req.url}`)
-  res.status(200).json({ sizes, neighborhoods, cities, tags })
+  res.status(200).json({listings, sizes, neighborhoods, cities, tags })
 }

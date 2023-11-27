@@ -22,7 +22,7 @@ export default function Filters() {
   const { selectedSizes, selectedNeighborhoods, selectedCities, selectedTags, addFilter, removeFilter, clearFilters } = useFilters();
 
   useEffect(() => {
-    axios.get('/api/your-api-handler')
+    axios.get('/api/filters')
       .then(response => {
         setData(response.data);
       })
@@ -57,7 +57,7 @@ export default function Filters() {
       <div className="tagSize">
       <h5>SIZE</h5>
         <div className='tagSizeContainer'>
-        {sizes.map((size: { size: string; }) => (
+        {data.sizes.map((size: { size: string; }) => (
           <div
             key={size.size}
             className="filter-tag-container"

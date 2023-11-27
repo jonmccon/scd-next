@@ -41,11 +41,13 @@ export default function Directory() {
     
     <div className="directory">      
       {categories.map(category => (
+        listings[category] ? (
           <div className='directory-block' key={category}>
             <div className="directory-block--title"><a id={category}></a>{category}</div>
             <DirectoryListing listingQuery={listings[category]} />
           </div>
-        ))}
+        ) : null
+      ))}
 
         <div className="directory-block--title" id="endcap">*</div>       
           <div className="directory-block--end">
