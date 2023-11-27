@@ -34,7 +34,6 @@ export default function Home() {
       </div>
       
         <Suspense fallback={<TablePlaceholder />}> 
-            {/* @ts-expect-error Async Server Component */}
             <Episodes />    
             <FilterProvider>
               <Filters />
