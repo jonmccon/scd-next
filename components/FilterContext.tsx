@@ -2,15 +2,20 @@
 import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
 
+type Tag = {
+  id: string;
+  name: string;
+};
+
 type FilterContextType = {
   sizes: string[]; 
   neighborhoods: string[]; 
   cities: string[]; 
-  tags: string[]; 
+  tags: Tag[]; 
   selectedSizes: string[];
   selectedNeighborhoods: string[];
   selectedCities: string[];
-  selectedTags: string[];
+  selectedTags: Tag[];
   addFilter: (filter: string, type: string) => void;
   removeFilter: (filter: string, type: string) => void;
   isFilterSelected: (filter: string, type: string) => boolean;
@@ -36,11 +41,11 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
     const [sizes, setSizes] = useState<string[]>([]);
     const [neighborhoods, setNeighborhoods] = useState<string[]>([]);
     const [cities, setCities] = useState<string[]>([]);
-    const [tags, setTags] = useState<string[]>([]);
+    const [tags, setTags] = useState<Tag[]>([]);
     const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
     const [selectedNeighborhoods, setSelectedNeighborhoods] = useState<string[]>([]);
     const [selectedCities, setSelectedCities] = useState<string[]>([]);
-    const [selectedTags, setSelectedTags] = useState<string[]>([]);
+    const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
 
     React.useEffect(() => {
       const fetchFilters = async () => {
@@ -62,56 +67,68 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
       fetchFilters();
     }, []);
 
-    
+    type FilterType = 'size' | 'neighborhood' | 'city' | 'tag';
 
-    const addFilter = (filter: string, type: string) => {
+    const addFilter = (filter: Tag | string, type: FilterType) => {
       switch (type) {
         case 'size':
-          setSelectedSizes(prevSizes => [...prevSizes, filter]);
+          const sizeFilter = filter as string;
+          setSelectedSizes(prevSizes => [...prevSizes, sizeFilter]);
           break;
         case 'neighborhood':
-          setSelectedNeighborhoods(prevNeighborhoods => [...prevNeighborhoods, filter]);
+          const neighborhoodFilter = filter as string;
+          setSelectedNeighborhoods(prevNeighborhoods => [...prevNeighborhoods, neighborhoodFilter]);
           break;
         case 'city':
-          setSelectedCities(prevCities => [...prevCities, filter]);
+          const cityFilter = filter as string;
+          setSelectedCities(prevCities => [...prevCities, cityFilter]);
           break;
         case 'tag':
-          setSelectedTags(prevTags => [...prevTags, filter]);
+          const tagFilter = filter as Tag;
+          setSelectedTags(prevTags => [...prevTags, tagFilter]);
           break;
         default:
           break;
       }
     };
 
-    const removeFilter = (filter: string, type: string) => {
+    const removeFilter = (filter: Tag | string, type: FilterType) => {
       switch (type) {
         case 'size':
-          setSelectedSizes(prevSizes => prevSizes.filter(size => size !== filter));
+          const sizeFilter = filter as string;
+          setSelectedSizes(prevSizes => prevSizes.filter(size => size !== sizeFilter));
           break;
         case 'neighborhood':
-          setSelectedNeighborhoods(prevNeighborhoods => prevNeighborhoods.filter(neighborhood => neighborhood !== filter));
+          const neighborhoodFilter = filter as string;
+          setSelectedNeighborhoods(prevNeighborhoods => prevNeighborhoods.filter(neighborhood => neighborhood !== neighborhoodFilter));
           break;
         case 'city':
-          setSelectedCities(prevCities => prevCities.filter(city => city !== filter));
+          const cityFilter = filter as string;
+          setSelectedCities(prevCities => prevCities.filter(city => city !== cityFilter));
           break;
         case 'tag':
-          setSelectedTags(prevTags => prevTags.filter(tag => tag !== filter));
+          const tagFilter = filter as Tag;
+          setSelectedTags(prevTags => prevTags.filter(tag => tag.id !== tagFilter.id));
           break;
         default:
           break;
       }
     };
 
-    const isFilterSelected = (filter: string, type: string) => {
+    const isFilterSelected = (filter: Tag | string, type: FilterType) => {
       switch (type) {
         case 'size':
-          return selectedSizes.includes(filter);
+          const sizeFilter = filter as string;
+          return selectedSizes.includes(sizeFilter);
         case 'neighborhood':
-          return selectedNeighborhoods.includes(filter);
+          const neighborhoodFilter = filter as string;
+          return selectedNeighborhoods.includes(neighborhoodFilter);
         case 'city':
-          return selectedCities.includes(filter);
+          const cityFilter = filter as string;
+          return selectedCities.includes(cityFilter);
         case 'tag':
-          return selectedTags.includes(filter);
+          const tagFilter = filter as Tag;
+          return selectedTags.some(tag => tag.id === tagFilter.id);
         default:
           return false;
       }
@@ -123,12 +140,6 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
       setSelectedCities([]);
       setSelectedTags([]);
     };
-    // console.log(sizes, neighborhoods, cities, tags, selectedSizes, selectedNeighborhoods, selectedCities, selectedTags);
-
-    // React.useEffect(() => {
-    //   console.log('tags:', tags);
-    //   console.log('selectedTags:', selectedTags);
-    // }, [tags, selectedTags]);
 
     return (
       <FilterContext.Provider

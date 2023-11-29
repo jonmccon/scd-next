@@ -16,7 +16,7 @@ type FilterContextType = {
   selectedSizes: string[];
   selectedNeighborhoods: string[];
   selectedCities: string[];
-  selectedTags: string[];
+  selectedTags: Tag[];
   addFilter: (filter: string, type: string) => void;
   removeFilter: (filter: string, type: string) => void;
   isFilterSelected: (filter: string, type: string) => boolean;
@@ -28,11 +28,23 @@ const FilterContext = React.createContext<FilterContextType | undefined>(undefin
 export default function Filters() {
   const { sizes, neighborhoods, cities, tags, selectedSizes, selectedNeighborhoods, selectedCities, selectedTags, addFilter, removeFilter, clearFilters, isFilterSelected } = useFilters();
 
-  const handleFilterClick = (filter: string, type: string) => {
-    if (isFilterSelected(filter, type)) {
-      removeFilter(filter, type);
+  type FilterType = 'size' | 'neighborhood' | 'city' | 'tag';
+
+  const handleFilterClick = (filter: Tag | string, type: FilterType) => {
+    if (type === 'tag') {
+      const tagFilter = filter as Tag;
+      if (isFilterSelected(tagFilter, type)) {
+        removeFilter(tagFilter, type);
+      } else {
+        addFilter(tagFilter, type);
+      }
     } else {
-      addFilter(filter, type);
+      const stringFilter = filter as string;
+      if (isFilterSelected(stringFilter, type)) {
+        removeFilter(stringFilter, type);
+      } else {
+        addFilter(stringFilter, type);
+      }
     }
   };
 
@@ -50,7 +62,7 @@ export default function Filters() {
             <li key={filter}>{filter}</li>
           ))}
           {selectedTags.map(filter => (
-            <li key={filter}>{filter}</li>
+            <li key={filter.id}>{filter.name}</li>
           ))}
         </ul>
         <button onClick={clearFilters}>Clear All Filters</button> */}
@@ -119,15 +131,15 @@ export default function Filters() {
       <div className="allTags">
       <h5>DISCIPLINE</h5>
         <div className='allTagsContainer'>
-        {tags.map(( tag ) => (
+        {tags.map( tag => (
           <div
             key={tag.id}
             className="filter-tag-container"
-            style={{ backgroundColor: selectedTags.includes(tag.name) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
+            style={{ backgroundColor: selectedTags.some(selectedTag => selectedTag.id === tag.id) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"
-            onClick={() => handleFilterClick(tag.name, 'tag')} 
+            onClick={() => handleFilterClick(tag, 'tag')} 
           >
             {tag.name}
           </a>
