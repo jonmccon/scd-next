@@ -2,14 +2,17 @@
 import React, { useEffect, useState } from 'react'
 import { useFilters } from '../FilterContext';  // Import your FilterContext
 import chroma from 'chroma-js'
-import axios from 'axios'
 
-// add interface for filterContext type
+type Tag = {
+  id: string;
+  name: string;
+};
+
 type FilterContextType = {
   sizes: string[];
   neighborhoods: string[];
   cities: string[];
-  tags: string[];
+  tags: Tag[];
   selectedSizes: string[];
   selectedNeighborhoods: string[];
   selectedCities: string[];
@@ -19,12 +22,12 @@ type FilterContextType = {
   isFilterSelected: (filter: string, type: string) => boolean;
   clearFilters: () => void;
 };
+
 const FilterContext = React.createContext<FilterContextType | undefined>(undefined);
 
 export default function Filters() {
-  const [data, setData] = useState(null);
   const { sizes, neighborhoods, cities, tags, selectedSizes, selectedNeighborhoods, selectedCities, selectedTags, addFilter, removeFilter, clearFilters, isFilterSelected } = useFilters();
-  
+
   const handleFilterClick = (filter: string, type: string) => {
     if (isFilterSelected(filter, type)) {
       removeFilter(filter, type);
@@ -33,20 +36,6 @@ export default function Filters() {
     }
   };
 
-  useEffect(() => {
-    axios.get('/api/filters')
-      .then(response => {
-        setData(response.data);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }, []);
-
-  if (!data) {
-    return <div>Loading...</div>;
-  }
-  
   
   return (
       <div className="filters">
@@ -130,17 +119,17 @@ export default function Filters() {
       <div className="allTags">
       <h5>DISCIPLINE</h5>
         <div className='allTagsContainer'>
-        {tags.map(( tag: string ) => (
+        {tags.map(( tag ) => (
           <div
-            key={tag}
+            key={tag.id}
             className="filter-tag-container"
-            style={{ backgroundColor: selectedTags.includes(tag) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
+            style={{ backgroundColor: selectedTags.includes(tag.name) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"
-            onClick={() => handleFilterClick(tag, 'tag')} 
+            onClick={() => handleFilterClick(tag.name, 'tag')} 
           >
-            {tag}
+            {tag.name}
           </a>
           </div>
         ))} 

@@ -5,14 +5,18 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 const prisma = new PrismaClient()
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const listings = await prisma.listing.findMany({
+  const listings = await prisma.tag.findMany({
     select: {
-      size: true,
+      id: true,
+      name: true,
     }
   })
 
-  const tags = [...new Set(listings.map(listing => listing.size))];
-
+  const tags = listings.flatMap(listing => ({
+    id: listing.id,
+    name: listing.name,
+  }));
+  
   console.log(`Sending response with status ${res.statusCode} to ${req.url}`)
   res.status(200).json(tags)
 }

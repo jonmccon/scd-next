@@ -1,5 +1,6 @@
 'use client'
 import React, { createContext, useContext, useState } from 'react';
+import axios from 'axios';
 
 type FilterContextType = {
   sizes: string[]; 
@@ -42,31 +43,26 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
     React.useEffect(() => {
-      const fetchSizes = async () => {
-        const response = await fetch('/api/sizes');
-        const data = await response.json();
-        return data;
+      const fetchFilters = async () => {
+        try {
+          const sizesResponse = await axios.get('/api/sizes');
+          const neighborhoodsResponse = await axios.get('/api/neighborhoods');
+          const citiesResponse = await axios.get('/api/cities');
+          const tagsResponse = await axios.get('/api/tags');
+  
+          setSizes(sizesResponse.data);
+          setNeighborhoods(neighborhoodsResponse.data);
+          setCities(citiesResponse.data);
+          setTags(tagsResponse.data);
+        } catch (error) {
+          console.error(error);
+        }
       };
-      const fetchNeighborhoods = async () => {
-        const response = await fetch('/api/neighborhoods');
-        const data = await response.json();
-        return data;
-      };
-      const fetchCities = async () => {
-        const response = await fetch('/api/cities');
-        const data = await response.json();
-        return data;
-      };
-      const fetchTags = async () => {
-        const response = await fetch('/api/tags');
-        const data = await response.json();
-        return data;
-      };
-      fetchSizes().then(setSizes);
-      fetchNeighborhoods().then(setNeighborhoods);
-      fetchCities().then(setCities);
-      fetchTags().then(setTags);
+  
+      fetchFilters();
     }, []);
+
+    
 
     const addFilter = (filter: string, type: string) => {
       switch (type) {
@@ -127,6 +123,12 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
       setSelectedCities([]);
       setSelectedTags([]);
     };
+    // console.log(sizes, neighborhoods, cities, tags, selectedSizes, selectedNeighborhoods, selectedCities, selectedTags);
+
+    // React.useEffect(() => {
+    //   console.log('tags:', tags);
+    //   console.log('selectedTags:', selectedTags);
+    // }, [tags, selectedTags]);
 
     return (
       <FilterContext.Provider

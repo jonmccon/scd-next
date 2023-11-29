@@ -21,7 +21,7 @@ export default function Directory() {
   const categories = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#".split('');
 
   useEffect(() => {
-    axios.get('/api/filters')
+    axios.get('/api/listings')
       .then(response => {
         setData(response.data);
       })
