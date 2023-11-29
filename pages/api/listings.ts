@@ -17,9 +17,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         select: {
           name: true
         }
-      }
-      // Add any other fields you need for a listing
-    }
+      }    }
   })
 
   console.log(`Sending response with status ${res.statusCode} to ${req.url}`)
