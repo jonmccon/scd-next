@@ -19,24 +19,33 @@ function DirectoryListing(props: { listingQuery: any[]; }) {
       size: any;
       tag: any;
     }[] = [];
+
     props.listingQuery.forEach(listing => {
-      listingList.push({
-        title: listing.title,
-        website: listing.website,
-        episodeURL: listing.episodeURL,
-        episodePromo: listing.episodePromo,
-        color: listing.color,
-        city: listing.city,
-        neighborhood: listing.neighborhood,
-        size: listing.size,
-        tag: listing.tag,
-      });
+      if (
+        (selectedSizes.length === 0 || selectedSizes.includes(listing.size)) &&
+        (selectedNeighborhoods.length === 0 || selectedNeighborhoods.includes(listing.neighborhood)) &&
+        (selectedCities.length === 0 || selectedCities.includes(listing.city)) &&
+        (selectedTags.length === 0 || selectedTags.some(tag => tag.id === listing.tag.id))
+      ) {
+        listingList.push({
+          title: listing.title,
+          website: listing.website,
+          episodeURL: listing.episodeURL,
+          episodePromo: listing.episodePromo,
+          color: listing.color,
+          city: listing.city,
+          neighborhood: listing.neighborhood,
+          size: listing.size,
+          tag: listing.tag,
+        });
+      }
     });
+
     return listingList;
   };
 
   const listingList = getListingList();
-  console.log(listingList);
+  // console.log(listingList);
 
 return (
       

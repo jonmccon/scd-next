@@ -8,6 +8,8 @@ type Tag = {
   name: string;
 };
 
+type FilterType = 'size' | 'neighborhood' | 'city' | 'tag';
+
 type FilterContextType = {
   sizes: string[];
   neighborhoods: string[];
@@ -17,9 +19,9 @@ type FilterContextType = {
   selectedNeighborhoods: string[];
   selectedCities: string[];
   selectedTags: Tag[];
-  addFilter: (filter: string, type: string) => void;
-  removeFilter: (filter: string, type: string) => void;
-  isFilterSelected: (filter: string, type: string) => boolean;
+  addFilter: (filter: Tag | string, type: string) => void;
+  removeFilter: (filter: Tag | string, type: string) => void;
+  isFilterSelected: (filter: Tag | string, type: string) => boolean;
   clearFilters: () => void;
 };
 
@@ -27,8 +29,6 @@ const FilterContext = React.createContext<FilterContextType | undefined>(undefin
 
 export default function Filters() {
   const { sizes, neighborhoods, cities, tags, selectedSizes, selectedNeighborhoods, selectedCities, selectedTags, addFilter, removeFilter, clearFilters, isFilterSelected } = useFilters();
-
-  type FilterType = 'size' | 'neighborhood' | 'city' | 'tag';
 
   const handleFilterClick = (filter: Tag | string, type: FilterType) => {
     if (type === 'tag') {

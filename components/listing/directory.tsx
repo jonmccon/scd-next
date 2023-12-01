@@ -13,10 +13,10 @@ interface Listings {
 interface Listing {
   id: string;
   title: string;
+  category: string;
 }
 
 export default function Directory() {
-
   const [data, setData] = useState<{ listings: Listings } | null>(null);
   const categories = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#".split('');
 
@@ -35,8 +35,9 @@ export default function Directory() {
   }
 
   type Data = { listings: Record<string, any> };
-  const { listings }: Data = data;
-  // const totalcount = Object.values(listings).reduce((total, categoryListings) => total + categoryListings.length, 0);
+  const { listings }: Data = data;  
+  const totalcount = Object.values(listings).reduce((total, categoryListings) => total + categoryListings.length, 0);
+  
 
   return (
     
@@ -52,7 +53,7 @@ export default function Directory() {
 
         <div className="directory-block--title" id="endcap">*</div>       
           <div className="directory-block--end">
-            {/* <p>{totalcount} Studios</p>  */}
+            <p>{totalcount} Studios</p> 
             <p>Don&lsquo;t see yourself?</p>
             <RefreshButton />
             <p>

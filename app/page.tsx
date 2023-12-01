@@ -34,13 +34,18 @@ export default function Home() {
       </div>
       
         <Suspense fallback={<TablePlaceholder />}> 
-            <Episodes />    
-            <FilterProvider>
-              <Filters />
-              <Directory />   
-            </FilterProvider>
+          <Episodes />    
         </Suspense>
-      
+
+        <FilterProvider>
+          <Suspense fallback={<TablePlaceholder />}> 
+            <Filters />
+          </Suspense>
+          <Suspense fallback={<TablePlaceholder />}> 
+            <Directory />   
+          </Suspense>
+        </FilterProvider>
+        
         <About />
       
       </div>

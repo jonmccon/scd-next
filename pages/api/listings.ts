@@ -13,12 +13,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       size: true,
       neighborhood: true,
       city: true,
+      published: true,
       tags: {
         select: {
           name: true
         }
       }
-      // Add any other fields you need for a listing
     }
   })
 
