@@ -27,7 +27,7 @@ type FilterContextType = {
 
 const FilterContext = React.createContext<FilterContextType | undefined>(undefined);
 
-export default function Filters() {
+function Filters() {
   const { sizes, neighborhoods, cities, tags, selectedSizes, selectedNeighborhoods, selectedCities, selectedTags, addFilter, removeFilter, clearFilters, isFilterSelected } = useFilters();
 
   const handleFilterClick = (filter: Tag | string, type: FilterType) => {
@@ -64,11 +64,11 @@ export default function Filters() {
           {selectedTags.map(filter => (
             <li key={filter.id}>{filter.name}</li>
           ))}
-        </ul>
-        <button onClick={clearFilters}>Clear All Filters</button> */}
+        </ul>*/}
 
       <div className="tagSize">
       <h5>SIZE</h5>
+      <button onClick={clearFilters}>Clear All Filters</button>
         <div className='tagSizeContainer'>
         {sizes.map((size: string ) => (
           <div
@@ -152,3 +152,5 @@ export default function Filters() {
 
   )
 }
+
+export default React.memo(Filters);

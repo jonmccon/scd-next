@@ -50,7 +50,7 @@ const FilterContext = createContext<FilterContextType>({
   clearFilters: () => {}, 
 });
 
-export function FilterProvider({ children }: { children: React.ReactNode }) {
+export const FilterProvider = React.memo(({ children }: { children: React.ReactNode }) => {
   console.log('FilterContext rendered'); // This will be logged every time the FilterContext component is rendered
     // Define the initial state
     const initialState = {
@@ -96,7 +96,7 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
 
     type FilterType = 'size' | 'neighborhood' | 'city' | 'tag';
 
-    const addFilter = (filter: Tag | string, type: FilterType) => {
+    const addFilter = React.useCallback((filter: Tag | string, type: FilterType) => {
       setState(prevState => {
         switch (type) {
           case 'size':
@@ -111,9 +111,9 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
             return prevState;
         }
       });
-    };
+    }, [state]);
 
-    const removeFilter = (filter: Tag | string, type: FilterType) => {
+    const removeFilter = React.useCallback((filter: Tag | string, type: FilterType) => {
       setState(prevState => {
         switch (type) {
           case 'size':
@@ -128,9 +128,9 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
             return prevState;
         }
       });
-    };
+    }, [state]);
 
-    const isFilterSelected = (filter: Tag | string, type: FilterType) => {
+    const isFilterSelected = React.useCallback((filter: Tag | string, type: FilterType) => {
       switch (type) {
         case 'size':
           return state.selectedSizes.includes(filter as string);
@@ -143,9 +143,9 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
         default:
           return false;
       }
-    };
+    }, [state]);
 
-    const clearFilters = () => {
+    const clearFilters = React.useCallback(() => {
       setState(prevState => ({
         ...prevState,
         selectedSizes: [],
@@ -153,7 +153,7 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
         selectedCities: [],
         selectedTags: [],
       }));
-    };
+    }, [state]);
 
     const {
       sizes,
@@ -186,7 +186,7 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
         {children}
       </FilterContext.Provider>
     );
-}
+});
 
 
 // Use the Context
