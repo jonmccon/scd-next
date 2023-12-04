@@ -51,7 +51,7 @@ const FilterContext = createContext<FilterContextType>({
 });
 
 export const FilterProvider = React.memo(({ children }: { children: React.ReactNode }) => {
-  console.log('FilterContext rendered'); // This will be logged every time the FilterContext component is rendered
+  // console.log('FilterContext rendered'); // This will be logged every time the FilterContext component is rendered
     // Define the initial state
     const initialState = {
       sizes: [],
@@ -70,7 +70,7 @@ export const FilterProvider = React.memo(({ children }: { children: React.ReactN
     React.useEffect(() => {
       const fetchFilters = async () => {
         try {
-          console.log('FilterContext useEffect');
+          // console.log('FilterContext useEffect');
           const sizesResponse = await axios.get('/api/sizes');
           const neighborhoodsResponse = await axios.get('/api/neighborhoods');
           const citiesResponse = await axios.get('/api/cities');
@@ -111,7 +111,7 @@ export const FilterProvider = React.memo(({ children }: { children: React.ReactN
             return prevState;
         }
       });
-    }, [state]);
+    }, []);
 
     const removeFilter = React.useCallback((filter: Tag | string, type: FilterType) => {
       setState(prevState => {
@@ -128,7 +128,7 @@ export const FilterProvider = React.memo(({ children }: { children: React.ReactN
             return prevState;
         }
       });
-    }, [state]);
+    }, []);
 
     const isFilterSelected = React.useCallback((filter: Tag | string, type: FilterType) => {
       switch (type) {

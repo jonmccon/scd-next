@@ -27,28 +27,34 @@ interface Listing {
   tags: Tag[];
 }
 
-function DirectoryListing(props: { listingQuery: Listing[]; }) {
-  // No need to filter listings here, just render them
-  const listingList = props.listingQuery;
-
+interface DirectoryListingProps {
+  listingsByCategory: Listings;
+}
+console.log('DirectoryListing rendered'); // This will be logged every time the DirectoryListing component is rendered
+function DirectoryListing({ listingsByCategory }: DirectoryListingProps) {
   return (
     <div className="directory-list">
-      {listingList.map(listing => (
-        <React.Fragment key={listing.title}>
-          <div className="directory-block--item">
-            <a href={`${listing.website}?seattle-creative-directory`} target="_blank">
-              {listing.title} 
-            </a>
-            {listing.episodePromo && 
-              <div className={`episodePromo ${listing.color}`}>{listing.episodePromo}</div>
-            }
-            {listing.episodeURL && 
-              <AudioPlayerSmall episodeURL={listing.episodeURL} />
-            }
-            {/* <listingTags tags={listing.tags} /> */}
-            {/* include social handle, make a new component */}
-          </div>
-        </React.Fragment>
+      {Object.entries(listingsByCategory).map(([category, listings]) => (
+        <div key={category}>
+          <h2>{category}</h2>
+          {listings.map(listing => (
+            <React.Fragment key={listing.title}>
+              <div className="directory-block--item">
+                <a href={`${listing.website}?seattle-creative-directory`} target="_blank">
+                  {listing.title} 
+                </a>
+                {listing.episodePromo && 
+                  <div className={`episodePromo ${listing.color}`}>{listing.episodePromo}</div>
+                }
+                {listing.episodeURL && 
+                  <AudioPlayerSmall episodeURL={listing.episodeURL} />
+                }
+                {/* <listingTags tags={listing.tags} /> */}
+                {/* include social handle, make a new component */}
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
       ))}
     </div>
   )

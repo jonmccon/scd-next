@@ -51,7 +51,7 @@ function Filters() {
   
   return (
       <div className="filters">
-        {/* <ul>
+        <ul>
           {selectedSizes.map(filter => (
             <li key={filter}>{filter}</li>
           ))}
@@ -64,11 +64,12 @@ function Filters() {
           {selectedTags.map(filter => (
             <li key={filter.id}>{filter.name}</li>
           ))}
-        </ul>*/}
-
-      <div className="tagSize">
-      <h5>SIZE</h5>
+        </ul>
       <button onClick={clearFilters}>Clear All Filters</button>
+
+
+      {/* <div className="tagSize">
+      <h5>SIZE</h5>
         <div className='tagSizeContainer'>
         {sizes.map((size: string ) => (
           <div
@@ -126,7 +127,7 @@ function Filters() {
           </div>
         ))}
         </div>
-      </div>
+      </div> */}
 
       <div className="allTags">
       <h5>DISCIPLINE</h5>

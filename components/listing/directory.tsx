@@ -41,18 +41,26 @@ function Directory() {
   useEffect(() => {
     axios.get('/api/listings')
       .then(response => {
-        const filteredListings = Object.entries(response.data.listings).reduce((acc, [category, listing]) => {
-          const isListingMatchFilter =
-            (selectedSizes.length === 0 || selectedSizes.includes((listing as Listing).size)) &&
-            (selectedNeighborhoods.length === 0 || selectedNeighborhoods.includes((listing as Listing).neighborhood)) &&
-            (selectedCities.length === 0 || selectedCities.includes((listing as Listing).city)) &&
-            (selectedTags.length === 0 || selectedTags.some(tag => tag.id === (listing as Listing).id));
+        const listingsByCategory = response.data.listings.reduce((acc: { [x: string]: any[]; }, listing: { category: any; }) => {
+          const category = listing.category;
+          if (!acc[category]) {
+            acc[category] = [];
+          }
+          acc[category].push(listing);
+          return acc;
+        }, {});
+        console.log(listingsByCategory)
 
-          if (isListingMatchFilter) {
-            if (!acc[category]) {
-              acc[category] = [];
-            }
-            acc[category].push(listing as Listing);
+        const filteredListings = Object.entries(listingsByCategory).reduce((acc, [category, listings]) => {
+          const filteredListingsForCategory = (listings as Listing[]).filter(listing =>
+            (selectedSizes.length === 0 || selectedSizes.includes(listing.size)) &&
+            (selectedNeighborhoods.length === 0 || selectedNeighborhoods.includes(listing.neighborhood)) &&
+            (selectedCities.length === 0 || selectedCities.includes(listing.city)) &&
+            (selectedTags.length === 0 || listing.tags.some(listingTag => selectedTags.some(tag => tag.id === listingTag.id)))
+          );
+
+          if (filteredListingsForCategory.length > 0) {
+            acc[category] = filteredListingsForCategory;
           }
 
           return acc;
@@ -76,14 +84,16 @@ function Directory() {
   return (
     
     <div className="directory">      
-      {categories.map(category => (
-        listings[category] ? (
+      {categories.map(category => {
+        const listingsForCategory = listings[category];
+        
+        return listingsForCategory && listingsForCategory.length > 0 ? (
           <div className='directory-block' key={category}>
             <div className="directory-block--title"><a id={category}></a>{category}</div>
-            <DirectoryListing listingQuery={listings[category]} />
+            <DirectoryListing listingsByCategory={{ [category]: listingsForCategory }} />
           </div>
-        ) : null
-      ))}
+        ) : null;
+      })}
 
         <div className="directory-block--title" id="endcap">*</div>       
           <div className="directory-block--end">
