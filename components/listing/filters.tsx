@@ -8,6 +8,8 @@ type Tag = {
   name: string;
 };
 
+type FilterType = 'size' | 'neighborhood' | 'city' | 'tag';
+
 type FilterContextType = {
   sizes: string[];
   neighborhoods: string[];
@@ -17,18 +19,16 @@ type FilterContextType = {
   selectedNeighborhoods: string[];
   selectedCities: string[];
   selectedTags: Tag[];
-  addFilter: (filter: string, type: string) => void;
-  removeFilter: (filter: string, type: string) => void;
-  isFilterSelected: (filter: string, type: string) => boolean;
+  addFilter: (filter: Tag | string, type: string) => void;
+  removeFilter: (filter: Tag | string, type: string) => void;
+  isFilterSelected: (filter: Tag | string, type: string) => boolean;
   clearFilters: () => void;
 };
 
 const FilterContext = React.createContext<FilterContextType | undefined>(undefined);
 
-export default function Filters() {
+function Filters() {
   const { sizes, neighborhoods, cities, tags, selectedSizes, selectedNeighborhoods, selectedCities, selectedTags, addFilter, removeFilter, clearFilters, isFilterSelected } = useFilters();
-
-  type FilterType = 'size' | 'neighborhood' | 'city' | 'tag';
 
   const handleFilterClick = (filter: Tag | string, type: FilterType) => {
     if (type === 'tag') {
@@ -51,7 +51,7 @@ export default function Filters() {
   
   return (
       <div className="filters">
-        {/* <ul>
+        <ul>
           {selectedSizes.map(filter => (
             <li key={filter}>{filter}</li>
           ))}
@@ -65,9 +65,10 @@ export default function Filters() {
             <li key={filter.id}>{filter.name}</li>
           ))}
         </ul>
-        <button onClick={clearFilters}>Clear All Filters</button> */}
+      <button onClick={clearFilters}>Clear All Filters</button>
 
-      <div className="tagSize">
+
+      {/* <div className="tagSize">
       <h5>SIZE</h5>
         <div className='tagSizeContainer'>
         {sizes.map((size: string ) => (
@@ -126,7 +127,7 @@ export default function Filters() {
           </div>
         ))}
         </div>
-      </div>
+      </div> */}
 
       <div className="allTags">
       <h5>DISCIPLINE</h5>
@@ -152,3 +153,5 @@ export default function Filters() {
 
   )
 }
+
+export default React.memo(Filters);

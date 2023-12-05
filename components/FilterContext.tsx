@@ -2,10 +2,23 @@
 import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
 
+type StateType = {
+  sizes: string[];
+  neighborhoods: string[];
+  cities: string[];
+  tags: Tag[];
+  selectedSizes: string[];
+  selectedNeighborhoods: string[];
+  selectedCities: string[];
+  selectedTags: Tag[];
+};
+
 type Tag = {
   id: string;
   name: string;
 };
+
+type FilterType = 'size' | 'neighborhood' | 'city' | 'tag';
 
 type FilterContextType = {
   sizes: string[]; 
@@ -16,9 +29,9 @@ type FilterContextType = {
   selectedNeighborhoods: string[];
   selectedCities: string[];
   selectedTags: Tag[];
-  addFilter: (filter: string, type: string) => void;
-  removeFilter: (filter: string, type: string) => void;
-  isFilterSelected: (filter: string, type: string) => boolean;
+  addFilter: (filter: Tag | string, type: FilterType) => void;
+  removeFilter: (filter: Tag | string, type: FilterType) => void;
+  isFilterSelected: (filter: Tag | string, type: FilterType) => boolean;
   clearFilters: () => void;
 };
 
@@ -37,109 +50,121 @@ const FilterContext = createContext<FilterContextType>({
   clearFilters: () => {}, 
 });
 
-export function FilterProvider({ children }: { children: React.ReactNode }) {
-    const [sizes, setSizes] = useState<string[]>([]);
-    const [neighborhoods, setNeighborhoods] = useState<string[]>([]);
-    const [cities, setCities] = useState<string[]>([]);
-    const [tags, setTags] = useState<Tag[]>([]);
-    const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
-    const [selectedNeighborhoods, setSelectedNeighborhoods] = useState<string[]>([]);
-    const [selectedCities, setSelectedCities] = useState<string[]>([]);
-    const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
+export const FilterProvider = React.memo(({ children }: { children: React.ReactNode }) => {
+  // console.log('FilterContext rendered'); // This will be logged every time the FilterContext component is rendered
+    // Define the initial state
+    const initialState = {
+      sizes: [],
+      neighborhoods: [],
+      cities: [],
+      tags: [],
+      selectedSizes: [],
+      selectedNeighborhoods: [],
+      selectedCities: [],
+      selectedTags: [],
+    };
+
+    // Create a single state object
+    const [state, setState] = useState<StateType>(initialState);
 
     React.useEffect(() => {
       const fetchFilters = async () => {
         try {
+          // console.log('FilterContext useEffect');
           const sizesResponse = await axios.get('/api/sizes');
           const neighborhoodsResponse = await axios.get('/api/neighborhoods');
           const citiesResponse = await axios.get('/api/cities');
           const tagsResponse = await axios.get('/api/tags');
-  
-          setSizes(sizesResponse.data);
-          setNeighborhoods(neighborhoodsResponse.data);
-          setCities(citiesResponse.data);
-          setTags(tagsResponse.data);
+
+          // Update all state variables at once
+          setState({
+            ...state,
+            sizes: sizesResponse.data,
+            neighborhoods: neighborhoodsResponse.data,
+            cities: citiesResponse.data,
+            tags: tagsResponse.data,
+          });
         } catch (error) {
           console.error(error);
         }
       };
-  
+
       fetchFilters();
     }, []);
 
+    // Update the addFilter, removeFilter, isFilterSelected, and clearFilters functions to use the new state object
+
     type FilterType = 'size' | 'neighborhood' | 'city' | 'tag';
 
-    const addFilter = (filter: Tag | string, type: FilterType) => {
-      switch (type) {
-        case 'size':
-          const sizeFilter = filter as string;
-          setSelectedSizes(prevSizes => [...prevSizes, sizeFilter]);
-          break;
-        case 'neighborhood':
-          const neighborhoodFilter = filter as string;
-          setSelectedNeighborhoods(prevNeighborhoods => [...prevNeighborhoods, neighborhoodFilter]);
-          break;
-        case 'city':
-          const cityFilter = filter as string;
-          setSelectedCities(prevCities => [...prevCities, cityFilter]);
-          break;
-        case 'tag':
-          const tagFilter = filter as Tag;
-          setSelectedTags(prevTags => [...prevTags, tagFilter]);
-          break;
-        default:
-          break;
-      }
-    };
+    const addFilter = React.useCallback((filter: Tag | string, type: FilterType) => {
+      setState(prevState => {
+        switch (type) {
+          case 'size':
+            return { ...prevState, selectedSizes: [...prevState.selectedSizes, filter as string] };
+          case 'neighborhood':
+            return { ...prevState, selectedNeighborhoods: [...prevState.selectedNeighborhoods, filter as string] };
+          case 'city':
+            return { ...prevState, selectedCities: [...prevState.selectedCities, filter as string] };
+          case 'tag':
+            return { ...prevState, selectedTags: [...prevState.selectedTags, filter as Tag] };
+          default:
+            return prevState;
+        }
+      });
+    }, []);
 
-    const removeFilter = (filter: Tag | string, type: FilterType) => {
-      switch (type) {
-        case 'size':
-          const sizeFilter = filter as string;
-          setSelectedSizes(prevSizes => prevSizes.filter(size => size !== sizeFilter));
-          break;
-        case 'neighborhood':
-          const neighborhoodFilter = filter as string;
-          setSelectedNeighborhoods(prevNeighborhoods => prevNeighborhoods.filter(neighborhood => neighborhood !== neighborhoodFilter));
-          break;
-        case 'city':
-          const cityFilter = filter as string;
-          setSelectedCities(prevCities => prevCities.filter(city => city !== cityFilter));
-          break;
-        case 'tag':
-          const tagFilter = filter as Tag;
-          setSelectedTags(prevTags => prevTags.filter(tag => tag.id !== tagFilter.id));
-          break;
-        default:
-          break;
-      }
-    };
+    const removeFilter = React.useCallback((filter: Tag | string, type: FilterType) => {
+      setState(prevState => {
+        switch (type) {
+          case 'size':
+            return { ...prevState, selectedSizes: prevState.selectedSizes.filter(size => size !== filter) };
+          case 'neighborhood':
+            return { ...prevState, selectedNeighborhoods: prevState.selectedNeighborhoods.filter(neighborhood => neighborhood !== filter) };
+          case 'city':
+            return { ...prevState, selectedCities: prevState.selectedCities.filter(city => city !== filter) };
+          case 'tag':
+            return { ...prevState, selectedTags: prevState.selectedTags.filter(tag => tag.id !== (filter as Tag).id) };
+          default:
+            return prevState;
+        }
+      });
+    }, []);
 
-    const isFilterSelected = (filter: Tag | string, type: FilterType) => {
+    const isFilterSelected = React.useCallback((filter: Tag | string, type: FilterType) => {
       switch (type) {
         case 'size':
-          const sizeFilter = filter as string;
-          return selectedSizes.includes(sizeFilter);
+          return state.selectedSizes.includes(filter as string);
         case 'neighborhood':
-          const neighborhoodFilter = filter as string;
-          return selectedNeighborhoods.includes(neighborhoodFilter);
+          return state.selectedNeighborhoods.includes(filter as string);
         case 'city':
-          const cityFilter = filter as string;
-          return selectedCities.includes(cityFilter);
+          return state.selectedCities.includes(filter as string);
         case 'tag':
-          const tagFilter = filter as Tag;
-          return selectedTags.some(tag => tag.id === tagFilter.id);
+          return state.selectedTags.some(tag => tag.id === (filter as Tag).id);
         default:
           return false;
       }
-    };
+    }, [state]);
 
-    const clearFilters = () => {
-      setSelectedSizes([]);
-      setSelectedNeighborhoods([]);
-      setSelectedCities([]);
-      setSelectedTags([]);
-    };
+    const clearFilters = React.useCallback(() => {
+      setState(prevState => ({
+        ...prevState,
+        selectedSizes: [],
+        selectedNeighborhoods: [],
+        selectedCities: [],
+        selectedTags: [],
+      }));
+    }, [state]);
+
+    const {
+      sizes,
+      neighborhoods,
+      cities,
+      tags,
+      selectedSizes,
+      selectedNeighborhoods,
+      selectedCities,
+      selectedTags,
+    } = state;
 
     return (
       <FilterContext.Provider
@@ -161,7 +186,7 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
         {children}
       </FilterContext.Provider>
     );
-}
+});
 
 
 // Use the Context

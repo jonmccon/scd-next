@@ -4,78 +4,59 @@ import AudioPlayerSmall from "../audioplayer/audio-player-small";
 import { useFilters } from '../FilterContext';
 import chroma from 'chroma-js';
 
-function DirectoryListing(props: { listingQuery: any[]; }) {
-  const { selectedSizes, selectedNeighborhoods, selectedCities, selectedTags } = useFilters(); 
+interface Listings {
+  [key: string]: Listing[]; // This means that any string key will return an array of Listing objects
+}
 
-  const getListingList = () => {
-    const listingList: { 
-      title: any; 
-      website: any; 
-      episodeURL: any; 
-      episodePromo: any; 
-      color: any; 
-      city: any;
-      neighborhood: any;
-      size: any;
-      tag: any;
-    }[] = [];
-    props.listingQuery.forEach(listing => {
-      listingList.push({
-        title: listing.title,
-        website: listing.website,
-        episodeURL: listing.episodeURL,
-        episodePromo: listing.episodePromo,
-        color: listing.color,
-        city: listing.city,
-        neighborhood: listing.neighborhood,
-        size: listing.size,
-        tag: listing.tag,
-      });
-    });
-    return listingList;
-  };
+type Tag = {
+  id: string;
+  name: string;
+};
 
-  const listingList = getListingList();
-  console.log(listingList);
+interface Listing {
+  id: string;
+  title: string;
+  category: string;
+  size: string;
+  neighborhood: string;
+  city: string;
+  website: string;
+  episodeURL: string;
+  episodePromo: string;
+  color: string;
+  tags: Tag[];
+}
 
-return (
-      
-  <div className="directory-list">
-  {listingList.map(listing => {
-    return (
-          <React.Fragment
-          key={listing.title}
-          >
-            
-            <div  
-                className="directory-block--item"
-            >
-              
-              <a 
-                href={`${listing.website}?seattle-creative-directory`} 
-                target="_blank"
-              >
-                {listing.title} 
-              </a>
-              
-              {listing.episodePromo ? 
-              <div className={`episodePromo ${listing.color}`}>{listing.episodePromo && listing.episodePromo}</div> : '' 
-              }
-
-              {listing.episodeURL ? 
-              <AudioPlayerSmall 
-              episodeURL={listing.episodeURL && listing.episodeURL} /> : '' 
-              }
-
-              {/* <listingTags tags={listing.tags} /> */}
-              {/* include social handle, make a new component */}
-            </div>
-          </React.Fragment>
-
-    )
-  }
-  )}
-  </div>
-)
+interface DirectoryListingProps {
+  listingsByCategory: Listings;
+}
+console.log('DirectoryListing rendered'); // This will be logged every time the DirectoryListing component is rendered
+function DirectoryListing({ listingsByCategory }: DirectoryListingProps) {
+  return (
+    <div className="directory-list">
+      {Object.entries(listingsByCategory).map(([category, listings]) => (
+        <div key={category}>
+          <h2>{category}</h2>
+          {listings.map(listing => (
+            <React.Fragment key={listing.title}>
+              <div className="directory-block--item">
+                <a href={`${listing.website}?seattle-creative-directory`} target="_blank">
+                  {listing.title} 
+                </a>
+                {listing.episodePromo && 
+                  <div className={`episodePromo ${listing.color}`}>{listing.episodePromo}</div>
+                }
+                {listing.episodeURL && 
+                  <AudioPlayerSmall episodeURL={listing.episodeURL} />
+                }
+                {/* <listingTags tags={listing.tags} /> */}
+                {/* include social handle, make a new component */}
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+      ))}
+    </div>
+  )
 }
 export default DirectoryListing;
