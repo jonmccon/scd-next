@@ -49,7 +49,7 @@ function Directory() {
           acc[category].push(listing);
           return acc;
         }, {});
-        console.log(listingsByCategory)
+        console.log(response.data.listings[0]);
 
         const filteredListings = Object.entries(listingsByCategory).reduce((acc, [category, listings]) => {
           const filteredListingsForCategory = (listings as Listing[]).filter(listing =>
@@ -65,7 +65,7 @@ function Directory() {
 
           return acc;
         }, {} as Listings);
-
+        
         setData({ listings: filteredListings });
       })
       .catch(error => {

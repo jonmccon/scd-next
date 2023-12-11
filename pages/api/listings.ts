@@ -10,9 +10,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     select: {
       id: true,
       title: true,
+      website: true,
+      category: true,
       size: true,
-      neighborhood: true,
       city: true,
+      neighborhood: true,
+      latitude: true,
+      longitude: true,
+      twit: true,
+      inst: true,
       published: true,
       tags: {
         select: {
