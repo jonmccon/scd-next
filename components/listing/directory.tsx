@@ -49,7 +49,7 @@ function Directory() {
           acc[category].push(listing);
           return acc;
         }, {});
-        console.log(response.data.listings[0]);
+        // console.log(response.data.listings[0]);
 
         const filteredListings = Object.entries(listingsByCategory).reduce((acc, [category, listings]) => {
           const filteredListingsForCategory = (listings as Listing[]).filter(listing =>
@@ -79,7 +79,7 @@ function Directory() {
 
   const { listings } = data;  
   const totalcount = Object.values(listings).reduce((total, categoryListings) => total + categoryListings.length, 0);
-
+  console.log(selectedTags)
 
   return (
     
