@@ -253,6 +253,7 @@
     .directory-block--title {
         font: var(--text-gin-small);
         text-align: center;
+        margin-bottom: .5em;
      }
 
     /* by filter style */

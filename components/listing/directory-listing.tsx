@@ -30,13 +30,12 @@ interface Listing {
 interface DirectoryListingProps {
   listingsByCategory: Listings;
 }
-console.log('DirectoryListing rendered'); // This will be logged every time the DirectoryListing component is rendered
+
 function DirectoryListing({ listingsByCategory }: DirectoryListingProps) {
   return (
     <div className="directory-list">
       {Object.entries(listingsByCategory).map(([category, listings]) => (
         <div key={category}>
-          <h2>{category}</h2>
           {listings.map(listing => (
             <React.Fragment key={listing.title}>
               <div className="directory-block--item">

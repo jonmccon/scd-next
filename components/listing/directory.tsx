@@ -49,7 +49,6 @@ function Directory() {
           acc[category].push(listing);
           return acc;
         }, {});
-        // console.log(response.data.listings[0]);
 
         const filteredListings = Object.entries(listingsByCategory).reduce((acc, [category, listings]) => {
           const filteredListingsForCategory = (listings as Listing[]).filter(listing =>
@@ -79,7 +78,6 @@ function Directory() {
 
   const { listings } = data;  
   const totalcount = Object.values(listings).reduce((total, categoryListings) => total + categoryListings.length, 0);
-  console.log(selectedTags)
 
   return (
     
@@ -89,7 +87,9 @@ function Directory() {
         
         return listingsForCategory && listingsForCategory.length > 0 ? (
           <div className='directory-block' key={category}>
-            <div className="directory-block--title"><a id={category}></a>{category}</div>
+            <div className="directory-block--title">
+              {category}
+            </div>
             <DirectoryListing listingsByCategory={{ [category]: listingsForCategory }} />
           </div>
         ) : null;

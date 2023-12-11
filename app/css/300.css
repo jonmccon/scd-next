@@ -395,7 +395,7 @@
     .directory {
         display: grid;
         grid-area: Directory;
-        grid-auto-flow:dense;
+        /* grid-auto-flow: dense; */
         grid-template-columns: repeat(4, minmax(0,1fr));
         grid-gap: .5em;
         margin-top: 2em;
