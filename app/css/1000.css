@@ -26,7 +26,7 @@
         display: grid;
         /* background-color: aqua; */
         grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: 1fr auto auto auto auto auto auto;
+        grid-template-rows: 1fr auto auto auto auto auto;
         grid-gap: .5em;
         grid-auto-flow: dense;    
         max-width: 100%;
@@ -38,7 +38,6 @@
             ".        Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         ."
             ".              Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       ."
             "About          About           About           About           About           About           About           About           About           About           About          About"
-            /* "Footer              Footer          Footer          Footer          Footer          Footer          Footer          Footer          Footer          Footer          Footer          Footer" */
             ;
     }   
 
@@ -334,18 +333,22 @@
     .aboutContent {
         grid-template-columns: .25fr repeat(6, 1fr) .25fr;
         grid-column-gap: 1.5em;
+        text-align: center;
     }
 
     .about-story {
         grid-column: 2 / 4;
     }
 
-    .about-history {
-        grid-column: 4 /6;
+    .about-story {
+    }
+
+    .about-submit {
+        grid-column: 6 / 8;
     }
     
     .about-press {
-        grid-column: 6 / 8;
+        grid-column: 4 / 6;
     }
 
     .aboutContent a {
@@ -373,12 +376,13 @@
         grid-column-gap: 1.5em;
     }
     
-    .footer-submit {
+    .footer-history {
         grid-column: 2 / 6;
     }
 
     .footer-created {
-        grid-column: 6 / 9;
+        grid-column: 6 / 8;
+        text-align: center;
     }
 
 

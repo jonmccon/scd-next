@@ -103,7 +103,7 @@ function Directory() {
             <p>
             <Link
               className="directory-endcap--link highlight" 
-              href="#">Get Listed
+              href="https://research.typeform.com/to/UR7SpT93" target="_blank">Get Listed
             </Link>
             </p>
 
