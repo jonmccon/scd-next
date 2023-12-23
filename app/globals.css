@@ -99,18 +99,23 @@ a:hover {   cursor: pointer; }
 /*  GLOBAL PROMO COLORS */
 
 
-.cardEpisode1 {    background-color:#F9D38A !important;  }
-.cardEpisode2 {    background-color:#CEE0B9 !important;  }
-.cardEpisode3 {    background-color:#F6E0AC !important;  }
-.cardEpisode4 {    background-color:#B4CCE4 !important;  }
-.cardEpisode5 {    background-color:#FFF29E !important;  }
-.cardEpisode6 {    background-color:#FACCD6 !important;  }
-.cardEpisode7 {    background-color:#86E9BB !important;  }
+.cardEpisode1 {    background-color:#CCC9DC !important;  }
+.cardEpisode2 {    background-color:#D8E1A8 !important;  }
+.cardEpisode3 {    background-color:#BBDFF2 !important;  }
+.cardEpisode4 {    background-color:#FFD5BD !important;  }
+.cardEpisode5 {    background-color:#F7E35D !important;  }
+.cardEpisode6 {    background-color:#FFCCCF !important;  }
+.cardEpisode7 {    background-color:#16C172 !important;  }
 .cardEpisode8 {    background-color:#FDD877 !important;  }
-.cardEpisode9 {    background-color:#1BA4DE !important;  }
+.cardEpisode9 {    background-color:#31B1E8 !important;  }
 .cardEpisode10 {   background-color:#EDF67D !important;  }
-/* .cardEpisode11 {   background-color:# !important;  } */
-/* .cardEpisode12 {   background-color:# !important;  } */
+.cardEpisode11 {   background-color:#EFFCEE !important;  }
+.cardEpisode12 {   background-color:#F5DB2E !important;  }
+.cardEpisode13 {   background-color:#E0895E !important;  }
+.cardEpisode14 {   background-color:#8DE0B6 !important;  }
+.cardEpisode15 {   background-color:#E3C770 !important;  }
+
+
 
 /* ----------------------------------------------- */
 
