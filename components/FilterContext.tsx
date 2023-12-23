@@ -51,7 +51,8 @@ const FilterContext = createContext<FilterContextType>({
 });
 
 export const FilterProvider = React.memo(({ children }: { children: React.ReactNode }) => {
-  // console.log('FilterContext rendered'); // This will be logged every time the FilterContext component is rendered
+    FilterProvider.displayName = 'FilterProvider';
+  
     // Define the initial state
     const initialState = {
       sizes: [],
