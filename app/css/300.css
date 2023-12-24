@@ -395,10 +395,10 @@
     .directory {
         display: grid;
         grid-area: Directory;
-        grid-auto-flow:dense;
+        /* grid-auto-flow: dense; */
         grid-template-columns: repeat(4, minmax(0,1fr));
         grid-gap: .5em;
-        margin-top: 2em;
+        margin: 2em 0 2em 0;
     }
 
     .directory-list {
@@ -540,6 +540,7 @@
         display: grid;
         grid-area: About;
         background-color: var(--color-bg-gray);
+        padding: 2em 0 0 0;
     }
 
     .aboutContent, .footerContent {
