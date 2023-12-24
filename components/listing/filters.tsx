@@ -1,6 +1,5 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { useFilters } from '../FilterContext';  // Import your FilterContext
 import chroma from 'chroma-js'
 
 type Tag = {

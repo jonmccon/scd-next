@@ -1,7 +1,6 @@
 'use client'
 import React from "react";
 import AudioPlayerSmall from "../audioplayer/audio-player-small";
-import { useFilters } from '../FilterContext';
 import chroma from 'chroma-js';
 
 interface Listings {
