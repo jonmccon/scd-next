@@ -139,12 +139,20 @@
 
     .podcastEpisode {
         min-height: 40vh;
-        /* aspect-ratio: 1/1; */
     }
 
     .pullquote {
         font: var(--text-serif-pullquote);
         font-style: italic;
+    }
+
+    .loadEpisode {
+        background-color: var(--color-bg-gray);
+        display: grid;
+        grid-template-rows: auto minmax(1ch, 1fr);
+        row-gap: .3em;
+        padding: 1.5em;
+        min-height: 40vh;
     }
 
 /* 
@@ -219,10 +227,14 @@
         text-transform: lowercase;
     }
 
+    .loadFilters {
+        background-color: aqua;
+        height: 40px;
+    }
 
     /* ----------------------------------------------- */
 
-     /* ----------------------------------------------- */
+    /* ----------------------------------------------- */
 
 
     /* DIRECTORY LISTING */

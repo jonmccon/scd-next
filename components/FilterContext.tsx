@@ -1,6 +1,7 @@
 'use client'
 import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
+import LoadEpisode from './loadins/load-episode';
 
 type StateType = {
   sizes: string[];
@@ -71,11 +72,10 @@ export const FilterProvider = React.memo(({ children }: { children: React.ReactN
     React.useEffect(() => {
       const fetchFilters = async () => {
         try {
-          // console.log('FilterContext useEffect');
-          const sizesResponse = await axios.get('/api/sizes');
-          const neighborhoodsResponse = await axios.get('/api/neighborhoods');
-          const citiesResponse = await axios.get('/api/cities');
-          const tagsResponse = await axios.get('/api/tags');
+          const sizesResponse = await axios.get('/api/sizes---');
+          const neighborhoodsResponse = await axios.get('/api/neighborhoods---');
+          const citiesResponse = await axios.get('/api/cities---');
+          const tagsResponse = await axios.get('/api/tags---');
 
           // Update all state variables at once
           setState({
@@ -92,6 +92,9 @@ export const FilterProvider = React.memo(({ children }: { children: React.ReactN
 
       fetchFilters();
     }, []);
+
+
+    
 
     // Update the addFilter, removeFilter, isFilterSelected, and clearFilters functions to use the new state object
 

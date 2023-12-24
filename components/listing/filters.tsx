@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { useFilters } from '../FilterContext'; 
 import chroma from 'chroma-js'
+import LoadFilters from '../loadins/load-filters';
 
 type Tag = {
   id: string;
@@ -48,7 +49,10 @@ function Filters() {
     }
   };
 
-  
+  if (selectedSizes.length === 0 && selectedNeighborhoods.length === 0 && selectedCities.length === 0 && selectedTags.length === 0) {
+    return <LoadFilters />;
+  }
+
   return (
       <div className="filters">
         {/* <ul>
