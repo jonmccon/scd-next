@@ -18,11 +18,12 @@ import LoadEpisode from '@/components/loadins/load-episode'
 const Directory = React.lazy(() => import('@/components/listing/directory'));
 const Filters = React.lazy(() => import('@/components/listing/filters'));
 
-
-// Prisma does not support Edge without the Data Proxy currently
-// export const runtime = 'edge'
 export const preferredRegion = 'home'
 export const dynamic = 'force-dynamic'
+
+// can i use transitions on the suspense boundary?
+// document.startViewTransition(() => { // This kicks off the view transition
+//   document.body.appendChild(newImage);
 
 export default function Home() {
   return (
