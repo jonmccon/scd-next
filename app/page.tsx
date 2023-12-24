@@ -10,6 +10,7 @@ import Episodes from '@/components/listing/episodes'
 import MenuLeft from '@/components/header/menu-left'
 import MenuRight from '@/components/header/subscribe'
 import About from '@/components/footer/about'
+import { FilterProvider } from '@/components/FilterContext'
 import TypeformSubmission from '@/components/typeform/TypeformSubmission'
 import Subscribe from '@/components/header/subscribe'
 
