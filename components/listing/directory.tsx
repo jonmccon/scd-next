@@ -6,7 +6,7 @@ import { useFilters } from '../FilterContext';
 import RefreshButton from '../refresh-button'
 import DirectoryListing from './directory-listing'
 import Link from 'next/link'
-import TablePlaceholder from '../table-placeholder'
+import LoadDirectory from "../loadins/load-directory";
 
 interface Listings {
   [key: string]: Listing[]; // This means that any string key will return an array of Listing objects
@@ -73,7 +73,7 @@ function Directory() {
   }, [selectedSizes, selectedNeighborhoods, selectedCities, selectedTags]);
 
   if (!data) {
-    return <TablePlaceholder />;
+    return <LoadDirectory />;
   }
 
   const { listings } = data;  
