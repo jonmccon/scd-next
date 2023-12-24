@@ -72,10 +72,10 @@ export const FilterProvider = React.memo(({ children }: { children: React.ReactN
     React.useEffect(() => {
       const fetchFilters = async () => {
         try {
-          const sizesResponse = await axios.get('/api/sizes---');
-          const neighborhoodsResponse = await axios.get('/api/neighborhoods---');
-          const citiesResponse = await axios.get('/api/cities---');
-          const tagsResponse = await axios.get('/api/tags---');
+          const sizesResponse = await axios.get('/api/sizes');
+          const neighborhoodsResponse = await axios.get('/api/neighborhoods');
+          const citiesResponse = await axios.get('/api/cities');
+          const tagsResponse = await axios.get('/api/tags');
 
           // Update all state variables at once
           setState({

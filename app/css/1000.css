@@ -139,6 +139,7 @@
 
     .podcastEpisode {
         min-height: 40vh;
+        border-radius: 2%;
     }
 
     .pullquote {
@@ -152,7 +153,8 @@
         grid-template-rows: auto minmax(1ch, 1fr);
         row-gap: .3em;
         padding: 1.5em;
-        min-height: 40vh;
+        min-height: 40vh;      
+        border-radius: 2%;  
     }
 
 /* 
@@ -180,7 +182,7 @@
     /* CATEGORY & TAG CONTAINER*/
     .filters {
         font: var(--text-mono-menu);
-        margin: 6em 0 0 0;
+        margin: 3em 0 6em 0;
         text-align: left;
         max-height: 350px;
         /* background-color: var(--color-test); */
@@ -228,8 +230,11 @@
     }
 
     .loadFilters {
-        background-color: aqua;
-        height: 40px;
+        background-color: var(--color-bg-gray);
+        height: 40vh;
+        margin: 0 1px 0 0;
+        border: none;
+        border-radius: 2%;
     }
 
     /* ----------------------------------------------- */
@@ -266,6 +271,22 @@
         text-align: center;
         margin-bottom: .5em;
      }
+
+     .loadDirectory {
+        display: grid;
+        grid-area: Directory;
+        grid-gap: 1px;
+        grid-template-columns: repeat(12, minmax(0,1fr));
+     }
+
+    .loadDirectoryBlock {
+        background-color: var(--color-bg-gray);
+        height: 40vh;
+        border-radius: 2%;
+        margin: 0 0 0 0;
+        display: grid;
+        grid-column: span 3;
+    }
 
     /* by filter style */
     .directory-block--filter { }

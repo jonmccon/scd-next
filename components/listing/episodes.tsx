@@ -10,7 +10,7 @@ export default function Episodes() {
 
   useEffect(() => {
     const fetchEpisodes = async () => {
-      const res = await fetch('/api/episodes---');
+      const res = await fetch('/api/episodes');
       const data = await res.json();
       setData(data);
     };

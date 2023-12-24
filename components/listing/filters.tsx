@@ -49,7 +49,7 @@ function Filters() {
     }
   };
 
-  if (selectedSizes.length === 0 && selectedNeighborhoods.length === 0 && selectedCities.length === 0 && selectedTags.length === 0) {
+  if (sizes.length === 0 || neighborhoods.length === 0 || cities.length === 0 || tags.length === 0) {
     return <LoadFilters />;
   }
 

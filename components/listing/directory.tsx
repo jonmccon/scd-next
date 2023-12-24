@@ -39,7 +39,7 @@ function Directory() {
   const { selectedSizes, selectedNeighborhoods, selectedCities, selectedTags } = useFilters();
 
   useEffect(() => {
-    axios.get('/api/listings---')
+    axios.get('/api/listings')
       .then(response => {
         const listingsByCategory = response.data.listings.reduce((acc: { [x: string]: any[]; }, listing: { category: any; }) => {
           const category = listing.category;
