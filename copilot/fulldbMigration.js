@@ -31,7 +31,8 @@ async function migrateMarkdownToListings() {
       episodePromo: data.episodePromo ? data.episodePromo : null,
       episodePerson: data.episodePerson ? data.episodePerson : null,
       pullquote: data.pullquote ? data.pullquote : null,
-      color: data.color ? data.color : null,
+      colorA: data.color ? data.color : null,
+      colorB: data.color ? data.color : null,
       published: data.published,
       description: data.description ? data.description : null,
     };
