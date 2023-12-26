@@ -76,7 +76,8 @@ model Listing {
   episodePromo  String?
   episodePerson String?
   episodeURL    String?
-  color         String?
+  colorA        String?
+  colorB        String?
   published     Boolean
   description   String?
   tags          Tag[]   @relation("TagToListing")
