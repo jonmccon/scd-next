@@ -7,8 +7,8 @@ import { FaCirclePlay, FaCirclePause } from 'react-icons/fa6'
 
 class EpisodeListing extends React.Component<any, any> {
   getEpisodeList() {
-    const episodeList: { title: any; website: any; twit: any; inst: any; linkATitle: any; linkAURL: any; linkBTitle: any; linkBURL: any; episodeURL: any; episodePerson: any; episodePromo: any; color: any; pullquote: any; }[] = [];
-    this.props.episodeQuery.forEach((episode: { title: any; website: any; twit: any; inst: any; linkATitle: any; linkAURL: any; linkBTitle: any; linkBURL: any; episodeURL: any; episodePerson: any; episodePromo: any; color: any; pullquote: any; }) => {
+    const episodeList: { title: any; website: any; twit: any; inst: any; linkATitle: any; linkAURL: any; linkBTitle: any; linkBURL: any; episodeURL: any; episodePerson: any; episodePromo: any; colorA: any; colorB: any; pullquote: any; }[] = [];
+    this.props.episodeQuery.forEach((episode: { title: any; website: any; twit: any; inst: any; linkATitle: any; linkAURL: any; linkBTitle: any; linkBURL: any; episodeURL: any; episodePerson: any; episodePromo: any; colorA: any; colorB: any; pullquote: any; }) => {
       episodeList.push({
         title: episode.title,
         website: episode.website,
@@ -21,7 +21,8 @@ class EpisodeListing extends React.Component<any, any> {
         episodeURL: episode.episodeURL,
         episodePerson: episode.episodePerson,
         episodePromo: episode.episodePromo,
-        color: episode.color,
+        colorA: episode.colorA,
+        colorB: episode.colorB,
         pullquote: episode.pullquote,
       });
     });
@@ -34,15 +35,15 @@ class EpisodeListing extends React.Component<any, any> {
     return (
       <div className="podcast">
       
-        {episodeList.map((episode: { title: any; website: any; twit: any; inst: any; linkATitle: any; linkAURL: any; linkBTitle: any; linkBURL: any; episodeURL: any; episodePerson: any; episodePromo: any; color: any; pullquote: any; }) => (
+        {episodeList.map((episode: { title: any; website: any; twit: any; inst: any; linkATitle: any; linkAURL: any; linkBTitle: any; linkBURL: any; episodeURL: any; episodePerson: any; episodePromo: any; colorA: any; colorB: any; pullquote: any; }) => (
           <div 
-            className= {`podcastEpisode ${episode.color}`}
+            className= {`podcastEpisode ${episode.colorA}`}
             key={episode.title}
           >
         
             
             {/* Pull quote */}
-            <div className="pullquote podcastEpisode-content">{episode.pullquote}</div>
+            <div className={`pullquote podcastEpisode-content ${episode.colorB}`}>{episode.pullquote}</div>
             
             <div className="podcastEpisode-content">
               

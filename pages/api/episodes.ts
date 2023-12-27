@@ -18,7 +18,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       episodeURL: true,
       episodePerson: true,
       episodePromo: true,
-      color: true,
+      colorA: true,
+      colorB: true,
       pullquote: true,
     },
     where: { 
