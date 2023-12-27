@@ -1,8 +1,3 @@
-/* IMPORTS FOR OTHER SECTIONS */
-@import url(~sanitize.css);         /* For cross browser wonkiness */
-@import url(fonts.css);             /* All hosted and external fonts */
-@import url(300.css);               /* Mobile styles */
-@import url(1000.css);              /* Desktop styles */
 
 /* COLOR VARIABLES */
 :root {
@@ -60,6 +55,7 @@ body {
     font-size: 16px;
     line-height: 1.3em;
     color: var(--color-text);
+    background-color: tomato;
 }
 
 a {
@@ -73,24 +69,6 @@ a:hover {   cursor: pointer; }
 .hidden {
     display: none;
 }
-
-/* ----------------------------------------------- */
-
-/*  GLOBAL PROMO COLORS */
-
-
-.cardEpisode1 {    background-color:#F9D38A !important;  }
-.cardEpisode2 {    background-color:#CEE0B9 !important;  }
-.cardEpisode3 {    background-color:#F6E0AC !important;  }
-.cardEpisode4 {    background-color:#B4CCE4 !important;  }
-.cardEpisode5 {    background-color:#FFF29E !important;  }
-.cardEpisode6 {    background-color:#FACCD6 !important;  }
-.cardEpisode7 {    background-color:#86E9BB !important;  }
-.cardEpisode8 {    background-color:#FDD877 !important;  }
-.cardEpisode9 {    background-color:#1BA4DE !important;  }
-.cardEpisode10 {   background-color:#EDF67D !important;  }
-/* .cardEpisode11 {   background-color:# !important;  } */
-/* .cardEpisode12 {   background-color:# !important;  } */
 
 /* ----------------------------------------------- */
 
