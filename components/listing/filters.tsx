@@ -152,6 +152,8 @@ function Filters() {
         ))} 
         </div>
       </div>    
+      <button className='clearFiltersButton' onClick={clearFilters}>Clear Filters</button>
+
 
     </div>
 

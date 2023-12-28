@@ -322,6 +322,16 @@
         font: var(--text-mono-title);
     }
 
+    .loadEpisode {
+        background-color: var(--color-bg-gray);
+        display: grid;
+        grid-template-rows: auto minmax(1ch, 1fr);
+        row-gap: .3em;
+        padding: 1.5em;
+        min-height: 40vh;      
+        border-radius: 2%;  
+    }
+
 
     /* Audio player overrides */
 
@@ -481,6 +491,24 @@
     .episodePromo, .audioPlayer-small {
         display: none;
     }
+
+    .loadDirectory {
+        display: grid;
+        grid-area: Directory;
+        grid-gap: 1px;
+        grid-template-columns: repeat(12, minmax(0,1fr));
+     }
+
+    .loadDirectoryBlock {
+        background-color: var(--color-bg-gray);
+        height: 40vh;
+        border-radius: 2%;
+        margin: 0 0 0 0;
+        display: grid;
+        grid-column: span 3;
+    }
+
+
     /* ----------------------------------------------- */
 
 
@@ -533,9 +561,34 @@
         color: var(--color-card);
         background-color: var(--color-text);
     }
+
+    .loadFilters {
+        background-color: var(--color-bg-gray);
+        height: 40vh;
+        margin: 0 1px 0 0;
+        border: none;
+        border-radius: 2%;
+    }
     
+    .clearFiltersButton {
+        margin: 1em 0 0 0;
+        height: 40px;
+        grid-column: span 8;
+        text-align: center;
+        font: var(--text-mono-menu);
+        text-transform: uppercase;
+        color: var(--color-text);
+        background-color: var(--color-card);
+        border-radius: 2px;
+        border: 1px solid var(--color-bg-coral);
+    }
 
-
+    .clearFiltersButton:hover {
+        cursor: pointer;
+        background-color: var(--color-bg-coral);
+        color: var(--color-text);
+        /* text-decoration-line: underline; */
+    }
 
     /* ----------------------------------------------- */
 
