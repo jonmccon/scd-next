@@ -504,21 +504,21 @@
 
     .filter-cat--jump {
         line-height: 1.6em;
-        color: var(--color-text-tag);
+        color: var(--color-text);
         display: inline-block;
         margin: 0 .8em 0 0;
     }
 
     .filter-tag--size {
         line-height: 1.6em;
-        color: var(--color-text-tag);
+        color: var(--color-text);
         display: inline-block;
         margin: 0 .8em 0 0;
     }
 
     .filter-tag--attr {
         line-height: 1.6em;
-        color: var(--color-text-tag);
+        color: var(--color-text);
         display: inline-block;
         margin: 0 .8em 0 0;
     }
@@ -597,9 +597,7 @@
     }
     
     
-    /* ----------------------------------------------- */
-
-    
+    /* ----------------------------------------------- */    
     
 }
 

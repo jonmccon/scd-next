@@ -181,7 +181,6 @@
 
     /* CATEGORY & TAG CONTAINER*/
     .filters {
-        font: var(--text-mono-menu);
         margin: 3em 0 6em 0;
         text-align: left;
         max-height: 350px;
@@ -203,7 +202,6 @@
         grid-column: span 1;
     }
 
-/* issue here with nested divs and whos got the grid */
     .tagSeattle, .tagCity {
         grid-column: span 2;
         padding-left: 1em;
@@ -219,7 +217,7 @@
     .allTags {
         grid-column: span 3; 
         padding-left: 1em;
-        border-left: 1px solid #000; 
+        border-left: 1px solid var(--color-text); 
     }
 
     .allTagsContainer {
