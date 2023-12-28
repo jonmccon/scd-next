@@ -3,12 +3,14 @@
 @media only screen and (min-width: 300px) { 
 
     h1 {
-        font: var(--text-mono-headline);
+        font: var(--text-serif-title);
         line-height: 140%;
     }
     
-    h2 {
-        /* font: 600 1em Spectral, serif; */
+    h5 {
+        font: var(--text-mono--item) !important;
+        margin-block-start: 0;
+        margin-bottom: 2em !important;
     }
 
     /* BACKGROUND PATTERN */
@@ -26,7 +28,7 @@
         grid-gap: .5em;
         grid-auto-flow: dense;    
         min-height: 50vmin;
-        max-width: 400px;
+        max-width: 85vw;
         margin: 0 auto;
         grid-template-areas:
             "MenuLeft       MenuLeft        MenuLeft        MenuLeft        MenuRight       MenuRight       MenuRight       MenuRight"
@@ -47,7 +49,7 @@
         background-repeat: no-repeat;
         background-size: contain;
         height: 4em; 
-        margin: 10vh 0 0 0;
+        margin: 5vh 0 0 0;
         align-self: top;
         background-position: center;
     }
@@ -62,7 +64,7 @@
 
     .headline-wrapper {
         grid-area: Headline;
-        min-height: 20vh;
+        min-height: 10vh;
 
     }
 
@@ -79,7 +81,7 @@
     }
 
     .headline-menu-left {
-        margin: 0 0 0 1.5em;
+        margin: 1.5em 0 0 0;
         grid-area: MenuLeft;
         align-self: center;
         width: max-content;
@@ -91,7 +93,7 @@
     }
     
     .headline-menu-right {
-        margin: -4vh 0 0 0;
+        margin: 1.5em 0 0 0;
         grid-area: MenuRight;
         align-self: center;
         text-align: right;
@@ -263,7 +265,7 @@
 
     .podcast {
         display: grid;
-        margin: 2em 0 0 0;
+        margin: 0 0 0 0;
     }
 
     .podcastEpisode {        
@@ -318,6 +320,16 @@
 
     .podcast-promo h2 {
         font: var(--text-mono-title);
+    }
+
+    .loadEpisode {
+        background-color: var(--color-bg-gray);
+        display: grid;
+        grid-template-rows: auto minmax(1ch, 1fr);
+        row-gap: .3em;
+        padding: 1.5em;
+        min-height: 40vh;      
+        border-radius: 2%;  
     }
 
 
@@ -417,7 +429,7 @@
     .directory-block--item {
         line-height: 3em;
         list-style: none;
-        border-bottom: 1px dashed var(--color-separator);
+        border-bottom: 1px dashed var(--color-dark-listingLink);
         text-shadow: 0em .05em 1px var(--color-card-half);
         margin: .1em 0 0 0;
     }
@@ -451,6 +463,8 @@
 
     #endcap {
         margin: 50% 0 0 0;
+        font: var(--text-mono-menu);
+        text-shadow: none;
     }
 
     .directory-block--end {
@@ -460,7 +474,6 @@
 
     .directory-block--end p, .directory-block--end a {
         color: var(--color-text);
-        font: var(--text-mono-menu);
         /* text-transform: uppercase; */
         border-radius: 4px;
         padding: .3em .4em .2em .4em;
@@ -470,7 +483,7 @@
 
     .directory-endcap--link:hover {
         background: var(--color-bg-coral);
-        box-shadow: -.15em .15em 2px var(--color-listingHover-shadow);
+        /* box-shadow: -.15em .15em 2px var(--color-listingHover-shadow); */
         cursor: pointer;
         text-decoration: underline;
     }
@@ -478,6 +491,24 @@
     .episodePromo, .audioPlayer-small {
         display: none;
     }
+
+    .loadDirectory {
+        display: grid;
+        grid-area: Directory;
+        grid-gap: 1px;
+        grid-template-columns: repeat(12, minmax(0,1fr));
+     }
+
+    .loadDirectoryBlock {
+        background-color: var(--color-bg-gray);
+        height: 40vh;
+        border-radius: 2%;
+        margin: 0 0 0 0;
+        display: grid;
+        grid-column: span 3;
+    }
+
+
     /* ----------------------------------------------- */
 
 
@@ -487,7 +518,6 @@
         grid-area: Filters;
         grid-template-columns: repeat(8, 1fr);
         margin: 2em 0 0 0;
-        font: var(--text-mono-menu);
         /* grid-column: span 4; */
         /* font-style: italic; */
         /* padding: 0 0 2em 0; */
@@ -495,7 +525,7 @@
         /* text-transform: uppercase; */
     }
 
-    .filter-cat-container {        
+    .filter-cat-container {
     }
 
     .tagSize, .tagSeattle, .tagCity, .allTags {
@@ -504,21 +534,22 @@
 
     .filter-cat--jump {
         line-height: 1.6em;
-        color: var(--color-text-tag);
+        color: var(--color-text);
         display: inline-block;
         margin: 0 .8em 0 0;
     }
 
     .filter-tag--size {
         line-height: 1.6em;
-        color: var(--color-text-tag);
+        color: var(--color-text);
         display: inline-block;
         margin: 0 .8em 0 0;
     }
 
     .filter-tag--attr {
+        font: var(--text-mono-menu);
         line-height: 1.6em;
-        color: var(--color-text-tag);
+        color: var(--color-text);
         display: inline-block;
         margin: 0 .8em 0 0;
     }
@@ -530,9 +561,34 @@
         color: var(--color-card);
         background-color: var(--color-text);
     }
+
+    .loadFilters {
+        background-color: var(--color-bg-gray);
+        height: 40vh;
+        margin: 0 1px 0 0;
+        border: none;
+        border-radius: 2%;
+    }
     
+    .clearFiltersButton {
+        margin: 1em 0 0 0;
+        height: 40px;
+        grid-column: span 8;
+        text-align: center;
+        font: var(--text-mono-menu);
+        text-transform: uppercase;
+        color: var(--color-text);
+        background-color: var(--color-card);
+        border-radius: 2px;
+        border: 1px solid var(--color-bg-coral);
+    }
 
-
+    .clearFiltersButton:hover {
+        cursor: pointer;
+        background-color: var(--color-bg-coral);
+        color: var(--color-text);
+        /* text-decoration-line: underline; */
+    }
 
     /* ----------------------------------------------- */
 
@@ -543,15 +599,31 @@
         display: grid;
         grid-area: About;
         background-color: var(--color-bg-gray);
-        padding: 2em 0 0 0;
+        width: 115%;
+        margin: 0 0 0 -7.5%;
+        font: var(--text-serif-pullquote);
+        text-align: center;
+        padding: 2.5em;
     }
 
-    .aboutContent, .footerContent {
-        font: var(--text-serif-pullquote);
+    .aboutContent {
+        grid-template-columns: 1fr;
+        grid-row-gap: 1.5em;
         display: grid;
-        padding: 1.5em;
-        /* justify-self: center; */
     }
+
+    .about-story {
+        grid-row: 1;
+    }
+
+    .about-submit {
+        grid-row: 2;
+    }
+    
+    .about-press {
+        grid-row: 3;
+    }
+
 
     .about a {
         color:var(--color-bg-coral-dark);
@@ -573,6 +645,28 @@
     }
 
     /* ----------------------------------------------- */
+    
+    /* Footer content */
+
+    .footerContent {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: 1.5em;
+        margin: 1.5em 0 0 0;
+    }
+    
+    .footer-history {
+        grid-row: 1;
+    }
+
+    .footer-created {
+        grid-row: 2;
+        text-align: center;
+    }
+
+
+    /* ----------------------------------------------- */
+
 
     /* Typeform overrides */
 
@@ -597,9 +691,7 @@
     }
     
     
-    /* ----------------------------------------------- */
-
-    
+    /* ----------------------------------------------- */    
     
 }
 

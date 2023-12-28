@@ -3,7 +3,6 @@
 @media only screen and (min-width: 1250px) { 
 
     h1 {
-        font: var(--text-mono-input) !important;
         line-height: 140%;
     }
 
@@ -147,16 +146,6 @@
         font-style: italic;
     }
 
-    .loadEpisode {
-        background-color: var(--color-bg-gray);
-        display: grid;
-        grid-template-rows: auto minmax(1ch, 1fr);
-        row-gap: .3em;
-        padding: 1.5em;
-        min-height: 40vh;      
-        border-radius: 2%;  
-    }
-
 /* 
     .rhap_progress-section {
         display: inherit !important;
@@ -181,11 +170,15 @@
 
     /* CATEGORY & TAG CONTAINER*/
     .filters {
-        font: var(--text-mono-menu);
+
         margin: 3em 0 6em 0;
         text-align: left;
         max-height: 350px;
         /* background-color: var(--color-test); */
+    }
+
+    .loadFilters {
+        border: none !important;
     }
     
     .filter-cat-container {
@@ -203,7 +196,6 @@
         grid-column: span 1;
     }
 
-/* issue here with nested divs and whos got the grid */
     .tagSeattle, .tagCity {
         grid-column: span 2;
         padding-left: 1em;
@@ -219,7 +211,7 @@
     .allTags {
         grid-column: span 3; 
         padding-left: 1em;
-        border-left: 1px solid #000; 
+        border-left: 1px solid var(--color-text); 
     }
 
     .allTagsContainer {
@@ -229,12 +221,24 @@
         text-transform: lowercase;
     }
 
-    .loadFilters {
-        background-color: var(--color-bg-gray);
-        height: 40vh;
-        margin: 0 1px 0 0;
-        border: none;
-        border-radius: 2%;
+    .clearFiltersButton {
+        margin: 1em 0 0 0;
+        height: 20px;
+        grid-column: span 1;
+        text-align: center;
+        font: var(--text-mono-menu);
+        text-transform: uppercase;
+        color: var(--color-text);
+        background-color: var(--color-card);
+        border-radius: 2px;
+        border: 1px solid var(--color-bg-coral);
+    }
+
+    .clearFiltersButton:hover {
+        cursor: pointer;
+        background-color: var(--color-bg-coral);
+        color: var(--color-text);
+        /* text-decoration-line: underline; */
     }
 
     /* ----------------------------------------------- */
@@ -271,22 +275,6 @@
         text-align: center;
         margin-bottom: .5em;
      }
-
-     .loadDirectory {
-        display: grid;
-        grid-area: Directory;
-        grid-gap: 1px;
-        grid-template-columns: repeat(12, minmax(0,1fr));
-     }
-
-    .loadDirectoryBlock {
-        background-color: var(--color-bg-gray);
-        height: 40vh;
-        border-radius: 2%;
-        margin: 0 0 0 0;
-        display: grid;
-        grid-column: span 3;
-    }
 
     /* by filter style */
     .directory-block--filter { }
@@ -362,6 +350,14 @@
     /* ----------------------------------------------- */
 
     /* About page content */
+    
+    .about {
+        display: grid;
+        grid-area: About;
+        background-color: var(--color-bg-gray);
+        width: 100%;
+        margin: 0 0 0 0;
+    }
 
     .aboutContent {
         grid-template-columns: .25fr repeat(6, 1fr) .25fr;
@@ -371,17 +367,17 @@
 
     .about-story {
         grid-column: 2 / 4;
-    }
-
-    .about-story {
+        grid-row: unset;
     }
 
     .about-submit {
         grid-column: 6 / 8;
+        grid-row: unset;
     }
     
     .about-press {
         grid-column: 4 / 6;
+        grid-row: unset;
     }
 
     .aboutContent a {
@@ -411,17 +407,18 @@
     
     .footer-history {
         grid-column: 2 / 6;
+        grid-row: unset;
     }
 
     .footer-created {
         grid-column: 6 / 8;
         text-align: center;
+        grid-row: unset;
+
     }
 
 
     /* ----------------------------------------------- */
-
-.cardEpisode5B {   color: #2fdf29 !important;  }
 
 }
 

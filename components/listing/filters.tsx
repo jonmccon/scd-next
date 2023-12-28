@@ -79,7 +79,7 @@ function Filters() {
           <div
             key={size}
             className="filter-tag-container"
-            style={{ backgroundColor: selectedSizes.includes(size) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
+            style={{ backgroundColor: selectedSizes.includes(size) ? chroma.scale(['805D93','FFD5BD']).colors(5)[1] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"
@@ -100,7 +100,7 @@ function Filters() {
           <div
             key={neighborhood}
             className="filter-tag-container"
-            style={{ backgroundColor: selectedNeighborhoods.includes(neighborhood) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
+            style={{ backgroundColor: selectedNeighborhoods.includes(neighborhood) ? chroma.scale(['805D93','FFD5BD']).colors(5)[2] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"
@@ -120,7 +120,7 @@ function Filters() {
           <div
             key={city}
             className="filter-tag-container"
-            style={{ backgroundColor: selectedCities.includes(city) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
+            style={{ backgroundColor: selectedCities.includes(city) ? chroma.scale(['805D93','FFD5BD']).colors(5)[3] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"
@@ -140,7 +140,7 @@ function Filters() {
           <div
             key={tag.id}
             className="filter-tag-container"
-            style={{ backgroundColor: selectedTags.some(selectedTag => selectedTag.id === tag.id) ? chroma.scale('YlGnBu').colors(5)[2] : 'transparent' }}
+            style={{ backgroundColor: selectedTags.some(selectedTag => selectedTag.id === tag.id) ? chroma.scale(['805D93','FFD5BD']).colors(5)[4] : 'transparent' }}
           >
           <a 
             className="filter-tag--attr"
@@ -152,6 +152,8 @@ function Filters() {
         ))} 
         </div>
       </div>    
+      <button className='clearFiltersButton' onClick={clearFilters}>Clear Filters</button>
+
 
     </div>
 

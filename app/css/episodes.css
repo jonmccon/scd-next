@@ -1,0 +1,48 @@
+
+
+/*  EPISODE PROMO COLORS */
+
+.ep1 {  background-color:#CCC9DC !important;  }
+.ep1, .ep1 .rhap_time, .ep1 a, .ep1 svg {   
+        color: #1B2A41 !important;  }
+
+.ep2 {  background-color:#D8E1A8 !important;  }
+.ep2, .ep2 .rhap_time, .ep2 a, .ep2 svg {   
+        color: #375E43 !important;  }
+
+.ep3 {  background-color:#BBDFF2 !important;  }
+.ep3, .ep3 .rhap_time, .ep3 a, .ep3 svg {   
+        color: #13499A !important;  }
+
+.ep4 {  background-color:#FFD5BD !important;  }
+.ep4, .ep4 .rhap_time, .ep4 a, .ep4 svg {   
+        color: #805D93 !important;  }
+
+.ep5 {  background-color:#F7E35D !important;  }
+.ep5, .ep5 .rhap_time, .ep5 a, .ep5 svg {   
+        color: #434043 !important;  }
+
+.ep6 {  background-color:#FFCCCF !important;  }
+.ep6, .ep6 .rhap_time, .ep6 a, .ep6 svg {   
+        color: #F02D3A !important;  }
+
+.ep7 {  background-color:#16C172 !important;  }
+.ep7, .ep7 .rhap_time, .ep7 a, .ep7 svg {   
+        color: #214F4B !important;  }
+
+.ep8 {  background-color:#FDD877 !important;  }
+.ep8, .ep8 .rhap_time, .ep8 a, .ep8 svg {   
+        color: #FE7F2D !important;  }
+
+.ep9 {  background-color:#31B1E8 !important;  }
+.ep9, .ep9 .rhap_time, .ep9 a, .ep9 svg {   
+        color: #0A559A !important;  }
+
+.ep10 { background-color:#EDF67D !important;  }
+.ep10, .ep10 .rhap_time, .ep10 a, .ep10 svg {   
+        color: #372772 !important;  }
+
+/* .ep11 {   background-color:# !important;  } */
+/* .ep12 {   background-color:# !important;  } */
+
+/* ----------------------------------------------- */
