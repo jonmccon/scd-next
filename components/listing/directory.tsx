@@ -95,19 +95,18 @@ function Directory() {
         ) : null;
       })}
 
-        <div className="directory-block--title" id="endcap">*</div>       
+        <div className="directory-block--title" id="endcap">*       
           <div className="directory-block--end">
             <p>{totalcount} Studios</p> 
             <p>Don&lsquo;t see yourself?</p>
-            <RefreshButton />
-            <p>
+            {/* <RefreshButton /> */}
+            
             <Link
               className="directory-endcap--link highlight" 
               href="https://research.typeform.com/to/UR7SpT93" target="_blank">Get Listed
             </Link>
-            </p>
-
           </div>
+        </div>
     </div>
 
   )

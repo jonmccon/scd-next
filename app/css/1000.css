@@ -3,7 +3,6 @@
 @media only screen and (min-width: 1250px) { 
 
     h1 {
-        font: var(--text-mono-input) !important;
         line-height: 140%;
     }
 
@@ -361,6 +360,14 @@
     /* ----------------------------------------------- */
 
     /* About page content */
+    
+    .about {
+        display: grid;
+        grid-area: About;
+        background-color: var(--color-bg-gray);
+        width: 100%;
+        margin: 0 0 0 0;
+    }
 
     .aboutContent {
         grid-template-columns: .25fr repeat(6, 1fr) .25fr;
@@ -370,17 +377,17 @@
 
     .about-story {
         grid-column: 2 / 4;
-    }
-
-    .about-story {
+        grid-row: unset;
     }
 
     .about-submit {
         grid-column: 6 / 8;
+        grid-row: unset;
     }
     
     .about-press {
         grid-column: 4 / 6;
+        grid-row: unset;
     }
 
     .aboutContent a {
@@ -410,11 +417,14 @@
     
     .footer-history {
         grid-column: 2 / 6;
+        grid-row: unset;
     }
 
     .footer-created {
         grid-column: 6 / 8;
         text-align: center;
+        grid-row: unset;
+
     }
 
 

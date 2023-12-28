@@ -31,7 +31,7 @@ export default function About() {
                 <a href="https://jonmccon.com/" target="_blank">Jonny McConnell</a><br />
                 <a href="https://www.instagram.com/ben_busy" target="_blank">Ben Hubbard</a><br />
                 <a href="https://sea-to-sound.com" target="_blank">Lee Gehrig</a><br />
-                <a href="https://github.com/jonmccon/scd-next">Source</a>
+                <a href="https://github.com/jonmccon/scd-next" target="_blank">Source</a>
                 </p>
             </div>   
         </div>
