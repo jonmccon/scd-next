@@ -8,7 +8,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const listings = await prisma.listing.findMany({
     select: {
       size: true,
-    }
+    },
+    orderBy: {
+      size: 'asc',
+    },
   })
 
   const sizes = [...new Set(listings.map(listing => listing.size))];

@@ -487,7 +487,6 @@
         grid-area: Filters;
         grid-template-columns: repeat(8, 1fr);
         margin: 2em 0 0 0;
-        font: var(--text-mono-menu);
         /* grid-column: span 4; */
         /* font-style: italic; */
         /* padding: 0 0 2em 0; */
@@ -495,7 +494,7 @@
         /* text-transform: uppercase; */
     }
 
-    .filter-cat-container {        
+    .filter-cat-container {
     }
 
     .tagSize, .tagSeattle, .tagCity, .allTags {
@@ -517,6 +516,7 @@
     }
 
     .filter-tag--attr {
+        font: var(--text-mono-menu);
         line-height: 1.6em;
         color: var(--color-text);
         display: inline-block;

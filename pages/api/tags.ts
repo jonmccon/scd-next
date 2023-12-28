@@ -9,7 +9,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     select: {
       id: true,
       name: true,
-    }
+    },
+    orderBy: {
+      name: 'asc',
+    },
   })
 
   const tags = listings.flatMap(listing => ({
