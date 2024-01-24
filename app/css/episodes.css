@@ -42,7 +42,8 @@
 .ep10, .ep10 .rhap_time, .ep10 a, .ep10 svg {   
         color: #372772 !important;  }
 
-/* .ep11 {   background-color:# !important;  } */
-/* .ep12 {   background-color:# !important;  } */
-
+.ep11 { background-color:#F5DB2E !important;  }
+.ep11, .ep11 .rhap_time, .ep11 a, .ep11 svg {   
+        color: #5447A9 !important;  }
+        
 /* ----------------------------------------------- */
