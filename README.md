@@ -1,3 +1,13 @@
+A phonebook directory for the creative people and spaces of the Pacific Northwest
+
+Public - https://www.seattlecreative.directory/
+Submit a new entry - https://research.typeform.com/to/UR7SpT93
+
+
+
+<!-- 
+
+
 ---
 name: Vercel Postgres + Prisma Next.js Starter
 slug: postgres-prisma
@@ -54,4 +64,6 @@ Next, run Next.js in development mode:
 pnpm dev
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples) ([Documentation](https://nextjs.org/docs/deployment)).
+Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples) ([Documentation](https://nextjs.org/docs/deployment)). 
+
+-->
