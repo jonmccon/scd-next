@@ -16,6 +16,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const cities = [...new Set(listings.map(listing => listing.city))];
 
-  // console.log(`Sending response with status ${res.statusCode} to ${req.url}`)
-  // res.status(200).json(cities);
+  console.log(`Sending response with status ${res.statusCode} to ${req.url}`)
+  res.status(200).json(cities);
 }

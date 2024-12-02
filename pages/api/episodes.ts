@@ -33,6 +33,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
   })
 
-  // console.log(`Sending response with status ${res.statusCode} to ${req.url}`)
-  // res.status(200).json(episodes);
+  console.log(`Sending response with status ${res.statusCode} to ${req.url}`)
+  res.status(200).json(episodes);
 }

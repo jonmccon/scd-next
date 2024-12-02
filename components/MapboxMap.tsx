@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-mapboxgl.accessToken = process.env.MAPBOX_MAP_ACCESS as string;
+mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_MAP_ACCESS as string;
 
 interface Listing {
   id: String;
@@ -55,6 +55,6 @@ export default function MapboxMap() {
       .catch(error => console.error('Error fetching map data:', error));
   }, []);
 
-  return <div ref={mapContainer} style={{ width: '100%', height: '400px' }} />;
+  return <div id='map-listings' ref={mapContainer} style={{ width: '100%', height: '400px' }} />;
 }
 

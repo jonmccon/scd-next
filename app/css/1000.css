@@ -31,10 +31,11 @@
         max-width: 100%;
         border-radius: 10px;
         grid-template-areas:
-            "MenuLeft              MenuLeft        .        .               Logo            Logo            Logo            Logo            .               .       MenuRight       MenuRight"
-            ".              .               .               Headline        Headline        Headline        Headline        Headline        Headline        .        .               ."
+            "MenuLeft       MenuLeft        .               .               Logo            Logo            Logo            Logo            .               .               MenuRight       MenuRight"
+            ".              .               .               Headline        Headline        Headline        Headline        Headline        Headline        .               .               ."
+            "mapListings    mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings    mapListings"
             "showContainer  showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer"
-            ".        Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         ."
+            ".              Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         ."
             ".              Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       ."
             "About          About           About           About           About           About           About           About           About           About           About          About"
             ;

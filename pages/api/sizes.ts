@@ -16,6 +16,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const sizes = [...new Set(listings.map(listing => listing.size))];
 
-  // console.log(`Sending response with status ${res.statusCode} to ${req.url}`)
-  // res.status(200).json(sizes)
+  console.log(`Sending response with status ${res.statusCode} to ${req.url}`)
+  res.status(200).json(sizes)
 }
