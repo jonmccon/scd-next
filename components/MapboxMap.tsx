@@ -4,11 +4,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN as string;
+mapboxgl.accessToken = process.env.MAPBOX_MAP_ACCESS as string;
 
-interface Location {
-  id: number;
-  name: string;
+interface Listing {
+  id: String;
+  title: String;
   latitude: number;
   longitude: number;
 }
@@ -16,7 +16,7 @@ interface Location {
 export default function MapboxMap() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
-  const [locations, setLocations] = useState<Location[]>([]);
+  const [locations, setLocations] = useState<Listing[]>([]);
 
   useEffect(() => {
     if (map.current) return; // Initialize map only once
@@ -38,16 +38,16 @@ export default function MapboxMap() {
         setLocations(data);
         
         // Add markers for each location
-        data.forEach((location: Location) => {
+        data.forEach((location: Listing) => {
           new mapboxgl.Marker()
             .setLngLat([location.longitude, location.latitude])
-            .setPopup(new mapboxgl.Popup().setHTML(`<h3>${location.name}</h3>`))
+            .setPopup(new mapboxgl.Popup().setHTML(`<h3>${location.title}</h3>`))
             .addTo(map.current!);
         });
 
         // Fit map to markers
         const bounds = new mapboxgl.LngLatBounds();
-        data.forEach((location: Location) => {
+        data.forEach((location: Listing) => {
           bounds.extend([location.longitude, location.latitude]);
         });
         map.current!.fitBounds(bounds, { padding: 50 });

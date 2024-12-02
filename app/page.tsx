@@ -13,6 +13,7 @@ import { FilterProvider } from '@/components/FilterContext'
 import TypeformSubmission from '@/components/typeform/TypeformSubmission'
 import Subscribe from '@/components/header/subscribe'
 import LoadEpisode from '@/components/loadins/load-episode'
+import MapboxMap from '@/components/MapboxMap'
 
 const Directory = React.lazy(() => import('@/components/listing/directory'));
 const Filters = React.lazy(() => import('@/components/listing/filters'));
@@ -39,6 +40,10 @@ export default function Home() {
         </div>
       </div>
       
+        <Suspense> 
+          <MapboxMap />
+        </Suspense> 
+
         <Suspense> 
           <Episodes />    
         </Suspense>

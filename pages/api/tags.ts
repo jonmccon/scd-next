@@ -20,6 +20,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     name: listing.name,
   }));
   
-  console.log(`Sending response with status ${res.statusCode} to ${req.url}`)
-  res.status(200).json(tags)
+  // console.log(`Sending response with status ${res.statusCode} to ${req.url}`)
+  // res.status(200).json(tags)
 }
