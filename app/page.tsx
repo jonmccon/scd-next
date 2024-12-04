@@ -39,10 +39,6 @@ export default function Home() {
           <h1>Cataloging the creative studios of the Pacific Northwest</h1>
         </div>
       </div>
-      
-        <Suspense> 
-          <MapboxMap />
-        </Suspense> 
 
         <Suspense> 
           <Episodes />    
@@ -52,6 +48,9 @@ export default function Home() {
           <Suspense> 
             <Filters />
           </Suspense>
+          <Suspense> 
+            <MapboxMap />
+          </Suspense>   
           <Suspense> 
             <Directory />   
           </Suspense>

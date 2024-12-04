@@ -49,6 +49,8 @@ function Filters() {
     }
   };
 
+  // console.log('Filters:', selectedSizes, selectedNeighborhoods, selectedCities, selectedTags);
+
   if (sizes.length === 0 || neighborhoods.length === 0 || cities.length === 0 || tags.length === 0) {
     return <LoadFilters />;
   }
