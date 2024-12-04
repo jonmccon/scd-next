@@ -6,12 +6,36 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_MAP_ACCESS as string;
 
+
+interface Listings {
+  [key: string]: Listing[]; // This means that any string key will return an array of Listing objects
+}
+
+type Tag = {
+  id: string;
+  name: string;
+};
+
 interface Listing {
-  id: String;
-  title: String;
+  id: string;
+  title: string;
+  category: string;
+  size: string;
+  neighborhood: string;
+  city: string;
+  website: string;
+  episodeURL: string;
+  episodePromo: string;
   latitude: number;
   longitude: number;
+  color: string;
+  tags: Tag[];
 }
+
+interface DirectoryListingProps {
+  listingsByCategory: Listings;
+}
+
 
 export default function MapboxMap() {
   const mapContainer = useRef<HTMLDivElement>(null);
@@ -24,7 +48,7 @@ export default function MapboxMap() {
     map.current = new mapboxgl.Map({
       container: mapContainer.current!,
       style: 'mapbox://styles/mapbox/streets-v11',
-      center: [-74.5, 40], // Default center (adjust as needed)
+      center: [-122.5, 47.6], // Default center (adjust as needed)
       zoom: 9
     });
 
