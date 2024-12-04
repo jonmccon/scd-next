@@ -65,7 +65,12 @@ export default function MapboxMap() {
         data.forEach((location: Listing) => {
           new mapboxgl.Marker()
             .setLngLat([location.longitude, location.latitude])
-            .setPopup(new mapboxgl.Popup().setHTML(`<h3>${location.title}</h3>`))
+            .setPopup(new mapboxgl.Popup().setHTML(`
+              <h3>${location.title ? location.title : ''}</h3>
+              <p>${location.size ? location.size : ''}</p>
+              <p>${location.neighborhood ? location.neighborhood + "," : ''} ${location.city ? location.city : ''}</p>              
+              <a href="${location.website}" target="_blank">Website</a>
+              `))
             .addTo(map.current!);
         });
 
