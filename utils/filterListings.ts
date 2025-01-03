@@ -26,6 +26,7 @@ export const filterListings = (listings: Listing[], selectedSizes: string[], sel
       (selectedSizes.length === 0 || selectedSizes.includes(listing.size)) &&
       (selectedNeighborhoods.length === 0 || selectedNeighborhoods.includes(listing.neighborhood)) &&
       (selectedCities.length === 0 || selectedCities.includes(listing.city)) &&
-      (selectedTags.length === 0 || listing.tags.some(listingTag => selectedTags.some(tag => tag.id === listingTag.id)))
+      // (selectedTags.length === 0 || listing.tags.some(listingTag => selectedTags.some(tag => tag.id === listingTag.id)))
+      (selectedTags.length === 0 || (listing.tags && listing.tags.some(listingTag => selectedTags.some(tag => tag.id === listingTag.id))))
     );
   };

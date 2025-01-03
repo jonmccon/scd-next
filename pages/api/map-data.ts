@@ -15,6 +15,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           not: null,
         },
       },
+      include: {
+        tags: true,
+      },
     });
     return res.json(listings);
   } catch (error) {
