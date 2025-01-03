@@ -57,22 +57,6 @@ function Filters() {
 
   return (
       <div className="filters">
-        {/* <ul>
-          {selectedSizes.map(filter => (
-            <li key={filter}>{filter}</li>
-          ))}
-          {selectedNeighborhoods.map(filter => (
-            <li key={filter}>{filter}</li>
-          ))}
-          {selectedCities.map(filter => (
-            <li key={filter}>{filter}</li>
-          ))}
-          {selectedTags.map(filter => (
-            <li key={filter.id}>{filter.name}</li>
-          ))}
-        </ul> */}
-      
-
 
       <div className="tagSize">
       <h5>SIZE</h5>
@@ -156,6 +140,21 @@ function Filters() {
       </div>    
       <button className='clearFiltersButton' onClick={clearFilters}>Clear Filters</button>
 
+      {/* List selected filters for debugging */}
+        {/* <ul>
+          {selectedSizes.map(filter => (
+            <li key={filter}>{filter}</li>
+          ))}
+          {selectedNeighborhoods.map(filter => (
+            <li key={filter}>{filter}</li>
+          ))}
+          {selectedCities.map(filter => (
+            <li key={filter}>{filter}</li>
+          ))}
+          {selectedTags.map(filter => (
+            <li key={filter.id}>{filter.name}</li>
+          ))}
+        </ul> */}
 
     </div>
 

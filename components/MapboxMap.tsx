@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useFilters } from './FilterContext';
+import { filterListings } from '../utils/filterListings';
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_MAP_ACCESS as string;
 
@@ -54,12 +55,7 @@ export default function MapboxMap() {
       .then(response => response.json())
       .then(data => {
         console.log('Fetched data:', data);
-        const filteredListings = data.filter((listing: Listing) =>
-          (selectedSizes.length === 0 || selectedSizes.includes(listing.size)) &&
-          (selectedNeighborhoods.length === 0 || selectedNeighborhoods.includes(listing.neighborhood)) &&
-          (selectedCities.length === 0 || selectedCities.includes(listing.city)) &&
-          (selectedTags.length === 0 || (Array.isArray(listing.tags) && listing.tags.some(listingTag => selectedTags.some(tag => tag.id === listingTag.id))))
-        );
+        const filteredListings = filterListings(data as Listing[], selectedSizes, selectedNeighborhoods, selectedCities, selectedTags);
         console.log('Filtered listings:', filteredListings);
         setLocations(filteredListings);
       })
@@ -77,6 +73,7 @@ export default function MapboxMap() {
 
       // Add new markers
       locations.forEach((location: Listing) => {
+        // console.log('Adding marker for location:', location);
         const marker = new mapboxgl.Marker()
           .setLngLat([location.longitude, location.latitude])
           .setPopup(new mapboxgl.Popup().setHTML(`
