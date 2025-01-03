@@ -80,7 +80,7 @@ function Directory() {
   return (
     
     <div className="directory">
-      {totalcount}      
+    
       {categories.map(category => {
         const listingsForCategory = listings[category];
         
