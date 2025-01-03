@@ -1,6 +1,6 @@
 /* DESKTOP SCREEN */
 
-@media only screen and (min-width: 1250px) { 
+@media only screen and (min-width: 1150px) { 
 
     h1 {
         line-height: 140%;
@@ -32,9 +32,9 @@
         border-radius: 10px;
         grid-template-areas:
             "MenuLeft       MenuLeft        .               .               Logo            Logo            Logo            Logo            .               .               MenuRight       MenuRight"
-            ".              .               .               Headline        Headline        Headline        Headline        Headline        Headline        .               .               ."
-            "mapListings    mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings    mapListings"
+            ".              .               .               Headline        Headline        Headline        Headline        Headline        Headline        .               .               ."            
             "showContainer  showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer"
+            "mapListings    mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings    mapListings"
             ".              Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         ."
             ".              Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       ."
             "About          About           About           About           About           About           About           About           About           About           About          About"
