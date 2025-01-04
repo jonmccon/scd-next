@@ -54,91 +54,108 @@ function Filters() {
   if (sizes.length === 0 || neighborhoods.length === 0 || cities.length === 0 || tags.length === 0) {
     return <LoadFilters />;
   }
+        
+  const activeFilters = selectedSizes.length + selectedNeighborhoods.length + selectedCities.length + selectedTags.length;
 
   return (
       <div className="filters">
 
       <div className="tagSize">
-      <h5>SIZE</h5>
+      <button className='clearFiltersButton' onClick={clearFilters}>Clear Filters {activeFilters}</button>  
+
         <div className='tagSizeContainer'>
-        {sizes.map((size: string ) => (
-          <div
-            key={size}
-            className="filter-tag-container"
-            style={{ backgroundColor: selectedSizes.includes(size) ? chroma.scale(['805D93','FFD5BD']).colors(5)[1] : 'transparent' }}
-          >
-          <a 
-            className="filter-tag--attr"
-            onClick={() => handleFilterClick(size, 'size')} 
-          >
-            {size}
-          </a>
-          </div>
-        ))}
+        
+          {sizes.map((size: string ) => (
+              <button 
+              className="filter-tag--attr"
+              onClick={() => handleFilterClick(size, 'size')} 
+              style={{ backgroundColor: selectedSizes.includes(size) ? chroma.scale(['805D93','FFD5BD']).colors(5)[1] : 'transparent' }}
+              >
+                <div
+                  key={size}
+                  className="filter-tag-container"
+                >
+                  {size}        
+                </div>
+            </button>
+          ))}
+
+        <div className='tagTitle'>
+            <h5>SIZE</h5>
         </div>
+        
+        </div>
+
+
+        
       </div>
 
 
       <div className="tagSeattle">
-      <h5>SEATTLE BY NEIGHBORHOOD</h5>
         <div className='tagSeattleContainer'>
-        {neighborhoods.map(( neighborhood: string ) => (
-          <div
-            key={neighborhood}
-            className="filter-tag-container"
-            style={{ backgroundColor: selectedNeighborhoods.includes(neighborhood) ? chroma.scale(['805D93','FFD5BD']).colors(5)[2] : 'transparent' }}
-          >
-          <a 
-            className="filter-tag--attr"
-            onClick={() => handleFilterClick(neighborhood, 'neighborhood')} 
-          >
-            {neighborhood}
-          </a>
-          </div>
-        ))}
+          {neighborhoods.map(( neighborhood: string ) => (
+              <button 
+              className="filter-tag--attr"
+              onClick={() => handleFilterClick(neighborhood, 'neighborhood')} 
+              style={{ backgroundColor: selectedNeighborhoods.includes(neighborhood) ? chroma.scale(['805D93','FFD5BD']).colors(5)[2] : 'transparent' }}
+              >
+                <div
+                  key={neighborhood}
+                  className="filter-tag-container"
+                >
+                  {neighborhood}              
+                </div>
+            </button>
+          ))}
+
+      {/* <h5>SEATTLE BY NEIGHBORHOOD</h5> */}
+
         </div>
       </div>
 
       <div className="tagCity">
-      <h5>GREATER PNW</h5>
         <div className='tagCityContainer'>
         {cities.map(( city: string ) => (
-          <div
-            key={city}
-            className="filter-tag-container"
-            style={{ backgroundColor: selectedCities.includes(city) ? chroma.scale(['805D93','FFD5BD']).colors(5)[3] : 'transparent' }}
+          <button 
+          className="filter-tag--attr"
+          onClick={() => handleFilterClick(city, 'city')} 
+          style={{ backgroundColor: selectedCities.includes(city) ? chroma.scale(['805D93','FFD5BD']).colors(5)[3] : 'transparent' }}
           >
-          <a 
-            className="filter-tag--attr"
-            onClick={() => handleFilterClick(city, 'city')} 
-          >
-            {city}
-          </a>
-          </div>
+            <div
+              key={city}
+              className="filter-tag-container"
+            >
+
+            {city}          
+            </div>
+          </button>
         ))}
+      {/* <h5>GREATER PNW</h5> */}
+
         </div>
       </div>
 
       <div className="allTags">
-      <h5>DISCIPLINE</h5>
         <div className='allTagsContainer'>
         {tags.map( tag => (
-          <div
-            key={tag.id}
-            className="filter-tag-container"
-            style={{ backgroundColor: selectedTags.some(selectedTag => selectedTag.id === tag.id) ? chroma.scale(['805D93','FFD5BD']).colors(5)[4] : 'transparent' }}
+          <button 
+          className="filter-tag--attr"
+          onClick={() => handleFilterClick(tag, 'tag')} 
+          style={{ backgroundColor: selectedTags.some(selectedTag => selectedTag.id === tag.id) ? chroma.scale(['805D93','FFD5BD']).colors(5)[4] : 'transparent' }}
           >
-          <a 
-            className="filter-tag--attr"
-            onClick={() => handleFilterClick(tag, 'tag')} 
-          >
-            {tag.name}
-          </a>
-          </div>
+            <div
+              key={tag.id}
+              className="filter-tag-container"
+            >
+              {tag.name}
+            
+            </div>
+          </button>
         ))} 
+      {/* <h5>DISCIPLINE</h5> */}
+
         </div>
       </div>    
-      <button className='clearFiltersButton' onClick={clearFilters}>Clear Filters</button>
 
       {/* List selected filters for debugging */}
         {/* <ul>

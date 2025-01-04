@@ -55,7 +55,7 @@ body {
     /* this .68 is because a text size got double .8em in the filter titles
     .68 is within a 1/2 pixel size, but it's not truly correct */
     --text-mono--itemPodcast: 500 .68em JetBrains-Mono, sans-serif;
-    --text-mono-menu: 400 .8em JetBrains-Mono, sans-serif;
+    --text-mono-menu: 200 .5em JetBrains-Mono, sans-serif;
     --text-mono-title: 800 1.5em JetBrains-Mono, sans-serif;
     --text-serif-std: 400 2.8em Spectral, serif;
     --text-serif-body: 400 1.5em Spectral, serif;

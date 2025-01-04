@@ -8,9 +8,9 @@
     }
     
     h5 {
-        font: var(--text-mono--item) !important;
-        margin-block-start: 0;
-        margin-bottom: 2em !important;
+        font: var(--text-mono-menu) !important;
+        /* margin-block-end: 0; */
+        /* margin-bottom: 2em !important; */
     }
 
     /* BACKGROUND PATTERN */
@@ -525,9 +525,15 @@
     /* CATEGORY & TAG CONTAINER*/
     .filters {
         display: grid;
-        grid-area: Filters;
+        /* grid-area: Filters; */
         grid-template-columns: repeat(8, 1fr);
-        margin: 2em 0 0 0;
+        /* grid-gap: .2ch; */
+        padding-bottom: .2em;
+        overflow: hidden;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: var(--color-bg-gray);
         /* grid-column: span 4; */
         /* font-style: italic; */
         /* padding: 0 0 2em 0; */
@@ -539,7 +545,12 @@
     }
 
     .tagSize, .tagSeattle, .tagCity, .allTags {
+        display: grid;
         grid-column: span 4;
+    }
+
+    .tagTitle {
+        grid-column: span 1;
     }
 
     .filter-cat--jump {
@@ -549,25 +560,14 @@
         margin: 0 .8em 0 0;
     }
 
-    .filter-tag--size {
-        line-height: 1.6em;
-        color: var(--color-text);
-        display: inline-block;
-        margin: 0 .8em 0 0;
-    }
-
     .filter-tag--attr {
         font: var(--text-mono-menu);
-        line-height: 1.6em;
         color: var(--color-text);
-        display: inline-block;
-        margin: 0 .8em 0 0;
+        text-align: left;
     }
 
-    .filter-tag--size:hover, .filter-tag--attr:hover {
-        /* text-decoration: underline; */
+    .filter-tag--attr:hover {
         border-radius: 4px;
-        padding: 0px 4px;
         color: var(--color-card);
         background-color: var(--color-text);
     }
@@ -581,9 +581,9 @@
     }
     
     .clearFiltersButton {
-        margin: 1em 0 0 0;
+        /* margin: 1em 0 0 0; */
         height: 40px;
-        grid-column: span 8;
+        grid-column: span 1;
         text-align: center;
         font: var(--text-mono-menu);
         text-transform: uppercase;

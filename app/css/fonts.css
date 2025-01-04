@@ -10,6 +10,15 @@
 /* Self hosted fonts */
 /* -------------------------------------------- */
 
+/* JetBrains - Extra Light */
+@font-face {
+  font-family: 'JetBrains-Mono';
+  font-style: normal;
+  font-weight: 200;
+  src: local('JetBrains Mono'), local('JetBrains Mono'),
+       url('../../public/fonts/woff2/JetBrainsMono-ExtraLight.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+
 /* JetBrains - Regular */
 @font-face {
   font-family: 'JetBrains-Mono';
