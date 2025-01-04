@@ -40,11 +40,10 @@ export default function Home() {
         </div>
       </div>
 
-        <Suspense> 
-          <Episodes />    
-        </Suspense>
-
         <FilterProvider>
+          <Suspense> 
+            <Episodes />    
+          </Suspense>
           <Suspense> 
             <Filters />
           </Suspense>

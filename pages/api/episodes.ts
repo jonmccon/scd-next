@@ -21,6 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       colorA: true,
       colorB: true,
       pullquote: true,
+      tags: true,
     },
     where: { 
       published: true, 

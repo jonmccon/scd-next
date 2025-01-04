@@ -526,7 +526,7 @@
     .filters {
         display: grid;
         /* grid-area: Filters; */
-        grid-template-columns: repeat(8, 1fr);
+        grid-template-columns: repeat(12, 1fr);
         /* grid-gap: .2ch; */
         padding-bottom: .2em;
         overflow: hidden;
