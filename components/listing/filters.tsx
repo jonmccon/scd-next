@@ -66,13 +66,13 @@ function Filters() {
         <div className='tagSizeContainer'>
         
           {sizes.map((size: string ) => (
-              <button 
+              <button
+              key={size} 
               className="filter-tag--attr"
               onClick={() => handleFilterClick(size, 'size')} 
               style={{ backgroundColor: selectedSizes.includes(size) ? chroma.scale(['805D93','FFD5BD']).colors(5)[1] : 'transparent' }}
               >
                 <div
-                  key={size}
                   className="filter-tag-container"
                 >
                   {size}        
@@ -94,13 +94,13 @@ function Filters() {
       <div className="tagSeattle">
         <div className='tagSeattleContainer'>
           {neighborhoods.map(( neighborhood: string ) => (
-              <button 
+              <button
+              key={neighborhood} 
               className="filter-tag--attr"
               onClick={() => handleFilterClick(neighborhood, 'neighborhood')} 
               style={{ backgroundColor: selectedNeighborhoods.includes(neighborhood) ? chroma.scale(['805D93','FFD5BD']).colors(5)[2] : 'transparent' }}
               >
                 <div
-                  key={neighborhood}
                   className="filter-tag-container"
                 >
                   {neighborhood}              
@@ -117,12 +117,12 @@ function Filters() {
         <div className='tagCityContainer'>
         {cities.map(( city: string ) => (
           <button 
+          key={city}
           className="filter-tag--attr"
           onClick={() => handleFilterClick(city, 'city')} 
           style={{ backgroundColor: selectedCities.includes(city) ? chroma.scale(['805D93','FFD5BD']).colors(5)[3] : 'transparent' }}
           >
             <div
-              key={city}
               className="filter-tag-container"
             >
 
@@ -138,13 +138,13 @@ function Filters() {
       <div className="allTags">
         <div className='allTagsContainer'>
         {tags.map( tag => (
-          <button 
+          <button
+          key={tag.id} 
           className="filter-tag--attr"
           onClick={() => handleFilterClick(tag, 'tag')} 
           style={{ backgroundColor: selectedTags.some(selectedTag => selectedTag.id === tag.id) ? chroma.scale(['805D93','FFD5BD']).colors(5)[4] : 'transparent' }}
           >
             <div
-              key={tag.id}
               className="filter-tag-container"
             >
               {tag.name}
