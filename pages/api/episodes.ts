@@ -22,6 +22,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       colorB: true,
       pullquote: true,
       tags: true,
+      category: true,
+      size: true,
+      city: true,
+      neighborhood: true,
     },
     where: { 
       published: true, 

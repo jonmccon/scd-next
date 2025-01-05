@@ -40,11 +40,13 @@ export default function MapboxMap() {
     if (map.current) return; // Initialize map only once
     map.current = new mapboxgl.Map({
       container: mapContainer.current!,
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: [-122.5, 47.6], // Default center (adjust as needed)
+      style: 'mapbox://styles/jonmccon/cm5jtz2n4002p01rdb8fw7cib',
+      center: [-122.325379, 47.624522], 
       zoom: 9
     });
-    // Add navigation control (zoom in/out)
+    // Navigation controls, options: https://docs.mapbox.com/mapbox-gl-js/api/navigationcontrol/
+    map.current.scrollZoom.disable();
+    map.current.touchZoomRotate.enable();
     map.current.addControl(new mapboxgl.NavigationControl(), 'top-right');
   }, []);
 
@@ -72,8 +74,12 @@ export default function MapboxMap() {
       markersRef.current = [];
 
       // Add new markers
+      // https://docs.mapbox.com/mapbox-gl-js/api/markers/#marker
+      // https://docs.mapbox.com/help/tutorials/custom-markers-gl-js/#step-5-1-create-an-empty-div-for-each-point
+      // 
       locations.forEach((location: Listing) => {
         // console.log('Adding marker for location:', location);
+        // custom market class here
         const marker = new mapboxgl.Marker()
           .setLngLat([location.longitude, location.latitude])
           .setPopup(new mapboxgl.Popup().setHTML(`

@@ -521,6 +521,14 @@
 
     /* ----------------------------------------------- */
 
+    /* filters at the top
+    podcast, discord top left
+    clear fitlers top right
+    logo middle
+    typeform bottom right
+    newsletter bottom left
+    */
+
 
     /* CATEGORY & TAG CONTAINER*/
     .filters {
@@ -534,11 +542,7 @@
         bottom: 0;
         width: 100%;
         background-color: var(--color-bg-gray);
-        /* grid-column: span 4; */
-        /* font-style: italic; */
-        /* padding: 0 0 2em 0; */
-        /* border-bottom: 1px solid var(--color-text-tag); */
-        /* text-transform: uppercase; */
+        z-index: 100;
     }
 
     .filter-cat-container {
