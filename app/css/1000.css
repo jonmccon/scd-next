@@ -32,30 +32,30 @@
         max-width: 100%;
         border-radius: 10px;
         grid-template-areas:
-            "MenuLeft       MenuLeft        .               .               Logo            Logo            Logo            Logo            .               .               MenuRight       MenuRight"
-            ".              .               .               Headline        Headline        Headline        Headline        Headline        Headline        .               .               ."            
-            "showContainer  showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer"
+            /* "MenuLeft       MenuLeft        .               .               Logo            Logo            Logo            Logo            .               .               MenuRight       MenuRight" */
+            "Headline       Headline        Headline        Headline        Headline        Headline        Headline        Headline        Headline        Headline        Headline       Headline"            
             "mapListings    mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings    mapListings"
+            "showContainer  showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer  showContainer"
             /* ".              Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         ." */
             ".              Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       ."
             "About          About           About           About           About           About           About           About           About           About           About          About"
             ;
     }   
 
+    /* HEADER CONTAINER */
+
 
      /* LOGOMARK */
 
      .logo {
         margin: 3em 0 0 0;
+        z-index: 200;
+        background-color: green;
       }
 
     /* ----------------------------------------------- */
     
     /* HEADLINE */
-    .headline {
-        margin: 0 0 2em 0;
-        /* min-height: 60vh; */
-    }
 
     .headline-wrapper {
         display: grid;
@@ -64,7 +64,7 @@
     }
 
     .headline-wrapper-small {
-        grid-area: Headline;
+        /* grid-area: Headline; */
         margin: 4em 0 0 0;
     }
 
@@ -74,7 +74,7 @@
 
     .headline-menu-left {
         margin: 0 0 0 1.5em;
-        grid-area: MenuLeft;
+        /* grid-area: MenuLeft; */
         align-self: center;
         width: max-content;
     }
@@ -86,7 +86,7 @@
 
     .headline-menu-right {
         margin: 2.5em 1.5em 0 0;
-        grid-area: MenuRight;
+        /* grid-area: MenuRight; */
         align-self: start;
         text-align: right;
     }
@@ -124,6 +124,20 @@
 
     .email-form button:hover { }
     /* ----------------------------------------------- */
+
+    /* MAP OF LISTINGS */   
+
+    #map-listings {
+        /* height: 30vh; */
+    }
+
+    /* Custom map icon */
+    .marker {
+        width: 10px;
+        height: 10px;
+      }
+
+    /* ----------------------------------------------- */  
 
     /* PODCAST SHOW */
 
@@ -175,7 +189,7 @@
     .filters {
         text-align: left;
         /* margin: 3em 0 6em 0; */
-        /* max-height: 350px; */
+        max-height: 30vh;
         /* background-color: var(--color-test); */
     }
 

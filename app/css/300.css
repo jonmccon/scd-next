@@ -31,17 +31,33 @@
         max-width: 85vw;
         margin: 0 auto;
         grid-template-areas:
+            /* 
             "MenuLeft       MenuLeft        MenuLeft        MenuLeft        MenuRight       MenuRight       MenuRight       MenuRight"
-            ".              Logo            Logo            Logo            Logo            Logo            Logo            ."
-            ".              .               Headline        Headline        Headline        Headline        .               ."
-            "showContainer  showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer"
-            "Filters        Filters         Filters         Filters         Filters         Filters         Filters         Filters"
+            ".              Logo            Logo            Logo            Logo            Logo            Logo            ." 
+            */
+            "Headline       Headline        Headline        Headline        Headline        Headline        Headline        Headline"
             "mapListings    mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings"
+            "showContainer  showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer"
+            /* "Filters        Filters         Filters         Filters         Filters         Filters         Filters         Filters" */
             ".              Directory       Directory       Directory       Directory       Directory       Directory       ."
             "About          About           About           About           About           About           About           About"
             /* ".              Footer          Footer          Footer          Footer          Footer          Footer          ." */
             ;
     }  
+
+    /* HEADER CONTAINER */
+
+    .headline-wrapper {
+        grid-area: Headline;
+        display: grid;
+        grid-template-columns:repeat(5, 1fr);
+        min-height: 10vh;
+        z-index: 150;
+        /* background-color: blue; */
+        grid-template-areas: 
+            "MenuLeft Filters Logo FiltersClear MenuRight";
+    }
+
 
     .logo {
         display: grid;
@@ -58,20 +74,12 @@
     /* ----------------------------------------------- */
     
     /* HEADLINE */
-    .headline {
-        display: grid;
-        text-align: center;
-    }
 
-    .headline-wrapper {
-        grid-area: Headline;
-        min-height: 10vh;
 
-    }
 
     .headline-wrapper-small {
         display: grid;
-        grid-area: Headline;
+        /* grid-area: Headline; */
         max-height: 10vh;
         margin: 0 0 0 0;
         /* background-color:purple; */
@@ -86,6 +94,7 @@
         grid-area: MenuLeft;
         align-self: center;
         width: max-content;
+        z-index: 100;
     }
 
     .headline-menu-left a {
@@ -98,6 +107,7 @@
         grid-area: MenuRight;
         align-self: center;
         text-align: right;
+        z-index: 100;
         /* width: max-content; */
     }
 
@@ -259,7 +269,19 @@
     #map-listings {
         display: grid;
         grid-area: mapListings;
+        width: 100%;
+        height: 50vh;
     }
+
+    /* Custom map icon */
+    .marker {
+        background-image: url('/mapDotv1.png');
+        background-size: cover;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
 
     /* ----------------------------------------------- */    
 
@@ -533,16 +555,17 @@
     /* CATEGORY & TAG CONTAINER*/
     .filters {
         display: grid;
-        /* grid-area: Filters; */
+        grid-area: Filters;
         grid-template-columns: repeat(12, 1fr);
         /* grid-gap: .2ch; */
         padding-bottom: .2em;
         overflow: hidden;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        background-color: var(--color-bg-gray);
-        z-index: 100;
+        /* position: sticky; */
+        /* top: 0; */
+        /* width: 100%; */
+        /* background-color: var(--color-bg-gray); */
+        /* background-color: slateblue; */
+        z-index: 50;
     }
 
     .filter-cat-container {
@@ -587,6 +610,7 @@
     .clearFiltersButton {
         /* margin: 1em 0 0 0; */
         height: 40px;
+        /* grid-area: FiltersClear; */
         grid-column: span 1;
         text-align: center;
         font: var(--text-mono-menu);

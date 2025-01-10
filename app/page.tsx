@@ -6,7 +6,7 @@ import { Suspense } from 'react'
 // import Directory from '@/components/listing/directory'
 // import Filters from '@/components/listing/filters'
 import Episodes from '@/components/listing/episodes'
-import MenuLeft from '@/components/header/menu-left'
+import MenuLeft from '@/components/header/link-podcast'
 import MenuRight from '@/components/header/subscribe'
 import About from '@/components/footer/about'
 import { FilterProvider } from '@/components/FilterContext'
@@ -14,9 +14,11 @@ import TypeformSubmission from '@/components/typeform/TypeformSubmission'
 import Subscribe from '@/components/header/subscribe'
 import LoadEpisode from '@/components/loadins/load-episode'
 import MapboxMap from '@/components/MapboxMap'
+// import Logo from '@/components/header/logo'
+import Header from '@/components/header/header'
 
 const Directory = React.lazy(() => import('@/components/listing/directory'));
-const Filters = React.lazy(() => import('@/components/listing/filters'));
+const Filters = React.lazy(() => import('@/components/header/filters'));
 
 export const preferredRegion = 'home'
 export const dynamic = 'force-dynamic'
@@ -30,31 +32,28 @@ export default function Home() {
     <main className="pattern">
       <div className="wrapper">
       
-      <div className="logo"></div>
-      <MenuLeft />
-      <Subscribe />
-      
-      <div className="headline-wrapper">
-        <div className="headline">
-          <h1>Cataloging the creative studios of the Pacific Northwest</h1>
-        </div>
-      </div>
+        <Header />
 
-        <FilterProvider>
-          <Suspense> 
-            <Episodes />    
-          </Suspense>
-          <Suspense> 
-            <Filters />
-          </Suspense>
-          <Suspense> 
-            <MapboxMap />
-          </Suspense>   
-          <Suspense> 
-            <Directory />   
-          </Suspense>
-        </FilterProvider>
-        
+          <FilterProvider>
+          
+            <Suspense> 
+              <Episodes />    
+            </Suspense>
+          
+            <Suspense> 
+              <Filters />
+            </Suspense>
+          
+            <Suspense> 
+              <MapboxMap />
+            </Suspense>   
+            
+            <Suspense> 
+              <Directory />   
+            </Suspense>
+          
+          </FilterProvider>
+          
         <About />
       
       </div>

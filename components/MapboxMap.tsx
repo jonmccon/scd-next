@@ -42,7 +42,7 @@ export default function MapboxMap() {
       container: mapContainer.current!,
       style: 'mapbox://styles/jonmccon/cm5jtz2n4002p01rdb8fw7cib',
       center: [-122.325379, 47.624522], 
-      zoom: 9
+      zoom: 11
     });
     // Navigation controls, options: https://docs.mapbox.com/mapbox-gl-js/api/navigationcontrol/
     map.current.scrollZoom.disable();
@@ -79,8 +79,11 @@ export default function MapboxMap() {
       // 
       locations.forEach((location: Listing) => {
         // console.log('Adding marker for location:', location);
-        // custom market class here
-        const marker = new mapboxgl.Marker()
+
+        const el = document.createElement('div');
+        el.className = 'marker';
+
+        const marker = new mapboxgl.Marker(el)
           .setLngLat([location.longitude, location.latitude])
           .setPopup(new mapboxgl.Popup().setHTML(`
             <h3>${location.title ? location.title : ''}</h3>
@@ -100,7 +103,7 @@ export default function MapboxMap() {
     }
   }, [locations]);
 
-  return <div id='map-listings' ref={mapContainer} style={{ width: '100%', height: '400px' }} />;
+  return <div id='map-listings' ref={mapContainer} />;
 }
 
 

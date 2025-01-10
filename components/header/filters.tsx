@@ -4,6 +4,11 @@ import { useFilters } from '../FilterContext';
 import chroma from 'chroma-js'
 import LoadFilters from '../loadins/load-filters';
 
+import Logo from "./logo";
+import Link_Podcast from "./link-podcast";
+import Link_Discord from "./link-discord";
+import Subscribe from "./subscribe";
+
 type Tag = {
   id: string;
   name: string;
@@ -58,10 +63,9 @@ function Filters() {
   const activeFilters = selectedSizes.length + selectedNeighborhoods.length + selectedCities.length + selectedTags.length;
 
   return (
+    
       <div className="filters">
-
       <div className="tagSize">
-      <button className='clearFiltersButton' onClick={clearFilters}>Clear Filters {activeFilters}</button>  
 
         <div className='tagSizeContainer'>
         
@@ -173,6 +177,7 @@ function Filters() {
           ))}
         </ul> */}
 
+    <button className='clearFiltersButton' onClick={clearFilters}>Clear Filters {activeFilters}</button>  
     </div>
 
   )
