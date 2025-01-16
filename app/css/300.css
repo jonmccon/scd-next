@@ -45,30 +45,20 @@
             ;
     }  
 
-    /* HEADER CONTAINER */
-
-    .headline-wrapper {
-        grid-area: Headline;
-        display: grid;
-        grid-template-columns:repeat(5, 1fr);
-        min-height: 10vh;
-        z-index: 150;
-        /* background-color: blue; */
-        grid-template-areas: 
-            "MenuLeft Filters Logo FiltersClear MenuRight";
-    }
 
 
     .logo {
-        display: grid;
-        grid-area: Logo;
+        position: -webkit-sticky;
+        position: sticky;        
+        top: 0;
+        height: 4em; 
+        margin: 0 auto 0 auto;
+        /* grid-area: Logo; */
         background-image: url(../../public/scLogo.svg);
         background-repeat: no-repeat;
         background-size: contain;
-        height: 4em; 
-        margin: 5vh 0 0 0;
-        align-self: top;
         background-position: center;
+        z-index: 1000;
     }
 
     /* ----------------------------------------------- */
@@ -503,12 +493,12 @@
     /* CATEGORY & TAG CONTAINER*/
     .filters {
         display: grid;
-        grid-area: Filters;
+        /* grid-area: Filters; */
         grid-template-columns: repeat(12, 1fr);
         /* grid-gap: .2ch; */
         padding-bottom: .2em;
         overflow: hidden;
-        /* position: sticky; */
+        position: fixed;
         /* top: 0; */
         /* width: 100%; */
         /* background-color: var(--color-bg-gray); */

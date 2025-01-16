@@ -15,8 +15,7 @@
     
     /* BACKGROUND PATTERN */
     .pattern {
-        grid-template-columns: 2em 1fr 2em;
-        grid-template-rows: 2em 1fr 2em;
+
     }
     /* ----------------------------------------------- */
 
@@ -33,7 +32,7 @@
         border-radius: 10px;
         grid-template-areas:
             /* "MenuLeft       MenuLeft        .               .               Logo            Logo            Logo            Logo            .               .               MenuRight       MenuRight" */
-            "Headline       Headline        Headline        Headline        Headline        Headline        Headline        Headline        Headline        Headline        Headline       Headline"            
+            /* "Headline       Headline        Headline        Headline        Headline        Headline        Headline        Headline        Headline        Headline        Headline       Headline"             */
             "mapListings    mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings    mapListings"
             "showContainer  showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer  showContainer"
             ".              Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         ."
@@ -48,31 +47,15 @@
      /* LOGOMARK */
 
      .logo {
-        z-index: 200;
-        background-color: green;
-        position: sticky;
-        top: 0;
-        margin: 1em auto 0 auto;
+        /* background-color: green; */
+        /* position: sticky; */
+        /* top: 0;
+        margin: 1em auto 0 auto; */
       }
 
     /* ----------------------------------------------- */
     
     /* HEADLINE */
-
-    .headline-wrapper {
-        display: grid;
-        grid-area: Headline;
-        min-height: 5vh;
-    }
-
-    .headline-wrapper-small {
-        /* grid-area: Headline; */
-        margin: 4em 0 0 0;
-    }
-
-    .headlineFilter {
-        font-size: 1em;
-    }
 
     .headline-menu-left {
         position: fixed;

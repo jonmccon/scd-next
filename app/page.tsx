@@ -32,20 +32,22 @@ export const dynamic = 'force-dynamic'
 export default function Home() {
   return (
     <main className="pattern">
+        <Logo />
+
       <div className="wrapper">
       
-        <Logo />
         <Socials />
 
           <FilterProvider>
-          
+            <Suspense> 
+              <Filters />
+            </Suspense>     
+                 
             <Suspense> 
               <Episodes />    
             </Suspense>
           
-            <Suspense> 
-              <Filters />
-            </Suspense>
+
           
             <Suspense> 
               <MapboxMap />
