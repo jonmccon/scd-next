@@ -6,7 +6,7 @@ import { Suspense } from 'react'
 // import Directory from '@/components/listing/directory'
 // import Filters from '@/components/listing/filters'
 import Episodes from '@/components/listing/episodes'
-import MenuLeft from '@/components/header/link-podcast'
+import MenuLeft from '@/components/header/socials'
 import MenuRight from '@/components/header/subscribe'
 import About from '@/components/footer/about'
 import { FilterProvider } from '@/components/FilterContext'
@@ -15,7 +15,9 @@ import Subscribe from '@/components/header/subscribe'
 import LoadEpisode from '@/components/loadins/load-episode'
 import MapboxMap from '@/components/MapboxMap'
 // import Logo from '@/components/header/logo'
-import Header from '@/components/header/header'
+// import Header from '@/components/header/header'
+import Socials from '@/components/header/socials'
+import Logo from '@/components/header/logo'
 
 const Directory = React.lazy(() => import('@/components/listing/directory'));
 const Filters = React.lazy(() => import('@/components/header/filters'));
@@ -32,7 +34,8 @@ export default function Home() {
     <main className="pattern">
       <div className="wrapper">
       
-        <Header />
+        <Logo />
+        <Socials />
 
           <FilterProvider>
           

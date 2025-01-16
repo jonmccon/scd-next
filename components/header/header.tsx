@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import Link from "next/link";
 import Logo from "./logo";
-import Link_Podcast from "./link-podcast";
+import Link_Podcast from "./socials";
 import Link_Discord from "./link-discord";
 import Subscribe from "./subscribe";
 

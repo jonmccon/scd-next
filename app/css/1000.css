@@ -36,7 +36,7 @@
             "Headline       Headline        Headline        Headline        Headline        Headline        Headline        Headline        Headline        Headline        Headline       Headline"            
             "mapListings    mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings    mapListings"
             "showContainer  showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer  showContainer"
-            /* ".              Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         ." */
+            ".              Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         ."
             ".              Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       ."
             "About          About           About           About           About           About           About           About           About           About           About          About"
             ;
@@ -48,9 +48,11 @@
      /* LOGOMARK */
 
      .logo {
-        margin: 3em 0 0 0;
         z-index: 200;
         background-color: green;
+        position: sticky;
+        top: 0;
+        margin: 1em auto 0 auto;
       }
 
     /* ----------------------------------------------- */
@@ -73,9 +75,13 @@
     }
 
     .headline-menu-left {
-        margin: 0 0 0 1.5em;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        margin: 0 0 .25em .5em;
         /* grid-area: MenuLeft; */
-        align-self: center;
+        align-self: left;
+        text-align: left;
         width: max-content;
     }
 
@@ -84,21 +90,18 @@
         margin: 0 0 0 0;
     }
 
-    .headline-menu-right {
-        margin: 2.5em 1.5em 0 0;
+    .newsletter-subscribe {
+        /* margin: 2.5em 1.5em 0 0; */
         /* grid-area: MenuRight; */
-        align-self: start;
-        text-align: right;
     }
 
-    /* .headline-menu-right a {
-        display: block;
-        text-align: right;
-    } */
+    .newsletter-subscribe a {
+        /* text-align: left; */
+    }
 
     .headline-menu--link { 
         font: var(--text-mono-std);
-        text-align: right;
+        background-color: var(--color-bg-gray);
     }
     
     .headline-menu--about {
@@ -112,7 +115,8 @@
 
     .email-form input { 
         width: 20ch;
-        padding: 0 0 0 1ch;
+        margin: 0 0 -1em 0;
+        /* padding: 0 0 0 1ch; */
     }
 
     .email-form input:hover { }
@@ -120,6 +124,7 @@
     .email-form input:focus { }
 
     .email-form button { 
+        /* margin: 0 0 .25em 0; */
     }
 
     .email-form button:hover { }

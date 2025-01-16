@@ -5,7 +5,7 @@ import chroma from 'chroma-js'
 import LoadFilters from '../loadins/load-filters';
 
 import Logo from "./logo";
-import Link_Podcast from "./link-podcast";
+import Link_Podcast from "./socials";
 import Link_Discord from "./link-discord";
 import Subscribe from "./subscribe";
 
