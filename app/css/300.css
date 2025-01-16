@@ -493,11 +493,10 @@
     /* ----------------------------------------------- */
 
     /* filters at the top
-    podcast, discord top left
     clear fitlers top right
     logo middle
     typeform bottom right
-    newsletter bottom left
+    newsletter podcast, discord bottom left
     */
 
 
@@ -661,7 +660,9 @@
         background-color: #000 !important;
     }
 
-    
+    .tf-v1-popover-button-icon {
+        margin: 0 0 .25em 0;
+    }
 
     .tf-v1-popover-tooltip {
         background-color: #000 !important;
