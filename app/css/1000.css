@@ -24,7 +24,7 @@
     .wrapper {
         display: grid;
         /* background-color: aqua; */
-        grid-template-columns: repeat(12, 1fr);
+        /* grid-template-columns: repeat(12, 1fr); */
         grid-template-rows: 1fr auto auto auto auto auto;
         grid-gap: .5em;
         grid-auto-flow: dense;    
@@ -36,7 +36,7 @@
             "mapListings    mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings    mapListings"
             "showContainer  showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer  showContainer"
             ".              Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         ."
-            ".              Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       ."
+            "Directory              Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory"
             "About          About           About           About           About           About           About           About           About           About           About          About"
             ;
     }   
@@ -177,45 +177,30 @@
     .filters {
         text-align: left;
         /* margin: 3em 0 6em 0; */
-        max-height: 30vh;
+        max-height: 20vh;
         /* background-color: var(--color-test); */
-    }
-
-    .filters button {
-        background-color: var(--color-card);
-        padding: .2ch 0 .2ch .5ch;
     }
 
     .loadFilters {
         border: none !important;
     }
-    
-    .filter-cat-container {
-        display: none;   
-    }
 
     .filter-tag-container {
-        display: inline-block;
-    }
-
-    .allCats {
-        grid-column: span 2; 
-        align-self: end;
     }
 
     .tagSize {
         grid-column: span 1;
-        align-self: end;
+        align-self: start;
     }
     
     .tagTitle {
         grid-column: span 1;
-        align-self: end;
+        align-self: start;
     }
 
     .tagSeattle, .tagCity {
         grid-column: span 2;
-        align-self: end;
+        align-self: start;
     }
 
     .tagSizeContainer {
@@ -232,14 +217,15 @@
     }
     
     .allTags {
-        grid-column: span 3; 
-        align-self: end;
+        grid-column: 9 / span 4; 
+        align-self: start;
     }
 
     .allTagsContainer {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-column: span 3;
+        grid-template-columns: repeat(4, 1fr);
+        align-self: end;
+        /* grid-column: span 3; */
         /* grid-gap: .25ch; */
     }
 

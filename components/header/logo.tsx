@@ -5,7 +5,7 @@ export default function Logo() {
     return (
       <React.Fragment>
         
-        <Link href="https://seattlecreative.directory/">          
+        <Link href="/">          
         <div className="logo" />
         </Link>
 
