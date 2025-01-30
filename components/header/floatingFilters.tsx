@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import { useFilters } from '../FilterContext'; 
+
 import LoadFilters from '../loadins/load-filters';
 
 type Tag = {
@@ -73,14 +74,16 @@ function Filters() {
     </div>
   );
 
-  const getFilterType = (filter: Tag | string): FilterType => {
-    if (selectedSizes.includes(filter as string)) return 'size';
-    if (selectedNeighborhoods.includes(filter as string)) return 'neighborhood';
-    if (selectedCities.includes(filter as string)) return 'city';
-    if (selectedTags.some(tag => tag.name === filter)) return 'tag';
-    return 'size'; // Default to 'size' if not found
-  };
-
+const getFilterType = (filter: Tag | string): FilterType => {
+  if (typeof filter === 'string') {
+    if (selectedSizes.includes(filter)) return 'size';
+    if (selectedNeighborhoods.includes(filter)) return 'neighborhood';
+    if (selectedCities.includes(filter)) return 'city';
+  } else {
+    if (selectedTags.some(tag => tag.id === filter.id)) return 'tag';
+  }
+  return 'size'; // Default to 'size' if not found
+};
   return (
     <div className={`filter-menu ${isOpen ? "open" : "closed"}`}>
       <div className={`filter-menu-content ${isOpen ? "open" : "closed"}`}>
@@ -90,7 +93,7 @@ function Filters() {
 
         {isOpen && (
           <div className="filter-content">
-            <h2 className="filter-title">Filters</h2>
+            {/* <h2 className="filter-title">Filters</h2> */}
             <div className="filter-sections">
               <div className="filter-section">
                 <h3 className="filter-section-title">Size</h3>
@@ -117,7 +120,7 @@ function Filters() {
 
         {!isOpen && activeFilters > 0 && (
           <div className="active-filters">
-            <p className="active-filters-title">Active Filters:</p>
+            {/* <p className="active-filters-title">Active Filters:</p> */}
             <div className="active-filters-list">
               {[
                 ...selectedSizes,

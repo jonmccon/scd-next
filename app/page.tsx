@@ -21,13 +21,14 @@ export const dynamic = 'force-dynamic'
 export default function Home() {
   return (
     <main className="pattern">
+      <Logo />
+          
+
+      <div className="wrapper">
       <FilterProvider>
-        <Logo />
         <Suspense> 
           <Filters />
         </Suspense>  
-
-      <div className="wrapper">
       
         <Socials />
 
@@ -44,10 +45,10 @@ export default function Home() {
           </Suspense>
                     
         <About />
-      
+        </FilterProvider>  
       </div>
     <TypeformSubmission />  
-    </FilterProvider>     
+       
     </main>
 
   )

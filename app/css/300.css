@@ -29,12 +29,12 @@
         grid-auto-flow: dense;    
         min-height: 50vmin;
         max-width: 85vw;
-        margin: 0 auto;
+        margin: -4em auto;
         grid-template-areas:
             /* 
-            "MenuLeft       MenuLeft        MenuLeft        MenuLeft        MenuRight       MenuRight       MenuRight       MenuRight"
-            ".              Logo            Logo            Logo            Logo            Logo            Logo            ." 
-            */
+            /* "MenuLeft       MenuLeft        MenuLeft        MenuLeft        MenuRight       MenuRight       MenuRight       MenuRight"  */
+            /* ".              Logo            Logo            Logo            Logo            Logo            Logo            ."  */
+            
             /* "Headline       Headline        Headline        Headline        Headline        Headline        Headline        Headline" */
             "mapListings    mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings"
             "showContainer  showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer"
@@ -50,8 +50,9 @@
     .logo {
         position: -webkit-sticky;
         position: sticky;        
-        top: 0;
-        height: 3em; 
+        top: 1em;
+        height: 4em; 
+        width: 25em;
         margin: 0 auto 0 auto;
         /* grid-area: Logo; */
         background-image: url(../../public/scLogo.svg);
@@ -534,7 +535,7 @@
     }
 
     .filter-tag-container:hover {
-        background-color: var(--color-bg-gray);
+        background-color: var(--color-card);
     }
 
     .filter-tag--attr {
@@ -543,6 +544,7 @@
         text-align: left;
         padding: 0;
         margin: 0;
+        background-color: var(--color-card);
     }
 
     .filter-tag--attr:hover {
@@ -566,20 +568,20 @@
     }
 
     .filter-menu.closed {
-        bottom: 10em;
-        right: 4rem;
+        top: 1em;
+        left: 1em;
     }
 
     .filter-menu-content {
-        background-color: white;
+        /* background-color: white;
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
         border-radius: 0.5rem;
-        overflow: hidden;
+        overflow: hidden; */
         transition: all 0.3s;
     }
 
     .filter-menu-content.open {
-        width: 100%;
+        width: max-content;
         /* height: 100%; */
     }
 
@@ -590,8 +592,8 @@
 
     .filter-toggle-button {
         position: absolute;
-        bottom: 10em;
-        right: 1rem;
+        top: 1em;
+        left: 1em;
         padding: 0.5rem;
         background-color: black;
         color: white;
@@ -602,31 +604,33 @@
     }
 
     .filter-content {
-        padding: 1.5rem;
+        padding: 6em 0 0 1em;
         overflow-y: auto;
         height: 100%;
     }
 
-    .filter-title {
-        font-size: 2rem;
-        font-weight: bold;
-        margin-bottom: 1rem;
-    }
+    /* .filter-title { */
+        /* font-size: 2rem; */
+        /* font-weight: bold; */
+        /* margin-top: 2em; */
+    /* } */
 
     .filter-sections {
         display: grid;
-        gap: 1.5rem;
+        gap: 1em;
     }
 
     .filter-section {
+        /* background-color: var(--color-card); */
         display: grid;
-        gap: 0.5rem;
+        /* gap: 0.5rem; */
     }
 
     .filter-section-title {
-        font-size: 1.25rem;
-        font-weight: semi-bold;
-        margin-bottom: 0.5rem;
+        font: var(--text-mono-title);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        /* margin-bottom: 0.5rem; */
     }
 
     .clear-filters-button {
@@ -639,13 +643,13 @@
 
     .active-filters {
         position: absolute;
-        bottom: 3.5rem;
-        left: 1rem;
-        background-color: white;
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-        border-radius: 0.5rem;
+        top: 6em;
+        left: 1em;
+        /* background-color: white; */
+        /* box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); */
+        /* border-radius: 0.5rem; */
         padding: 0.5rem;
-        max-width: 20rem;
+        max-width: max-content;
     }
 
     .active-filters-title {
@@ -666,13 +670,14 @@
         background-color: #e5e7eb;
         border-radius: 0.5rem;
         cursor: pointer;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
     }
 
     .filter-grid {
         display: grid;
-        grid-template-columns: repeat(8, 1fr);
-        gap: 0.5rem;
-        margin-bottom: 1rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.1em;
+        /* margin-bottom: 1rem; */
     }
 
     @media (min-width: 640px) {
@@ -689,19 +694,16 @@
 
     @media (min-width: 1024px) {
         .filter-grid {
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(8, 1fr);
         }
     }
+    
 
-    @media (min-width: 768px) {
-        .filter-content {
-            height: 33%;
-        }
-    }
+
 
     .loadFilters {
         background-color: var(--color-bg-gray);
-        height: 40vh;
+        /* height: 5vh; */
         margin: 0 1px 0 0;
         border: none;
         border-radius: 2%;
