@@ -35,18 +35,23 @@ function Filters() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const handleFilterClick = (filter: Tag | string, type: FilterType) => {
+    // console.log('handleFilterClick:', { filter, type });
     if (type === 'tag') {
       const tagFilter = filter as Tag;
       if (isFilterSelected(tagFilter, type)) {
+        // console.log('Removing tag filter:', tagFilter);
         removeFilter(tagFilter, type);
       } else {
+        // console.log('Adding tag filter:', tagFilter);
         addFilter(tagFilter, type);
       }
     } else {
       const stringFilter = filter as string;
       if (isFilterSelected(stringFilter, type)) {
+        // console.log('Removing string filter:', stringFilter);
         removeFilter(stringFilter, type);
       } else {
+        // console.log('Adding string filter:', stringFilter);
         addFilter(stringFilter, type);
       }
     }
@@ -79,8 +84,10 @@ const getFilterType = (filter: Tag | string): FilterType => {
     if (selectedSizes.includes(filter)) return 'size';
     if (selectedNeighborhoods.includes(filter)) return 'neighborhood';
     if (selectedCities.includes(filter)) return 'city';
+    // console.log('Unknown string filter:', filter);
   } else {
-    if (selectedTags.some(tag => tag.id === filter.id)) return 'tag';
+    if (selectedTags.some(tag => tag.name === filter.name)) return 'tag';
+    // console.log('Unknown tag filter:', filter.name);
   }
   return 'size'; // Default to 'size' if not found
 };
@@ -126,14 +133,14 @@ const getFilterType = (filter: Tag | string): FilterType => {
                 ...selectedSizes,
                 ...selectedNeighborhoods,
                 ...selectedCities,
-                ...selectedTags.map((tag) => tag.name),
-              ].map((filter, index) => (
+                ...selectedTags,
+              ].map((filter: string | Tag, index) => (
                 <span
                   key={index}
                   className="active-filter-item"
                   onClick={() => handleFilterClick(filter, getFilterType(filter))}
                 >
-                  {filter}
+                  {typeof filter === 'string' ? filter : filter.name}
                 </span>
               ))}
             </div>
