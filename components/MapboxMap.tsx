@@ -51,21 +51,21 @@ export default function MapboxMap() {
   }, []);
 
   useEffect(() => {
-    console.log('Filters changed:', { selectedSizes, selectedNeighborhoods, selectedCities, selectedTags });
+    // console.log('Filters changed:', { selectedSizes, selectedNeighborhoods, selectedCities, selectedTags });
     // Fetch data from our API route
     fetch('/api/map-data')
       .then(response => response.json())
       .then(data => {
-        console.log('Fetched data:', data);
+        // console.log('Fetched data:', data);
         const filteredListings = filterListings(data as Listing[], selectedSizes, selectedNeighborhoods, selectedCities, selectedTags);
-        console.log('Filtered listings:', filteredListings);
+        // console.log('Filtered listings:', filteredListings);
         setLocations(filteredListings);
       })
       .catch(error => console.error('Error fetching map data:', error));
   }, [selectedSizes, selectedNeighborhoods, selectedCities, selectedTags]);
 
   useEffect(() => {
-    console.log('Locations updated:', locations);
+    // console.log('Locations updated:', locations);
     if (!map.current) return;
 
     const onLoad = () => {
