@@ -85,7 +85,7 @@ function Filters() {
     <div className={`filter-menu ${isOpen ? "open" : "closed"}`}>
       <div className={`filter-menu-content ${isOpen ? "open" : "closed"}`}>
         <button className="filter-toggle-button" onClick={toggleMenu}>
-          {isOpen ? "X" : "Filter"}
+          {isOpen ? "X" : "🏷️"}
         </button>
 
         {isOpen && (

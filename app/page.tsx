@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <main className="pattern">
       <FilterProvider>
-        {/* <Logo /> */}
+        <Logo />
         <Suspense> 
           <Filters />
         </Suspense>  
