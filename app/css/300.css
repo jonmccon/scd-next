@@ -492,25 +492,25 @@
 
 
     /* CATEGORY & TAG CONTAINER*/
-    .filters {
+    /* .filters {
         position: -webkit-sticky;
         position: sticky;
         top: 0;
         width: 100%;
-        display: grid;
+        display: grid; */
         /* grid-area: Filters; */
-        grid-template-columns: repeat(12, 1fr);
+        /* grid-template-columns: repeat(12, 1fr); */
         /* grid-gap: .2ch; */
-        padding-bottom: .2em;
-        overflow:visible;
+        /* padding-bottom: .2em; */
+        /* overflow:visible; */
         /* background-color: var(--color-bg-gray); */
         /* background-color: slateblue; */
-        z-index: 50;
-    }
+        /* z-index: 50; */
+    /* } */
 
-    .filter-cat-container {
-    }
-
+    /* .filter-cat-container {
+    } */
+/* 
     .tagSize, .tagSeattle, .tagCity, .allTags {
         display: grid;
         grid-column: span 4;
@@ -525,41 +525,24 @@
         color: var(--color-text);
         display: inline-block;
         margin: 0 .8em 0 0;
-    }
+    } */
 
-    .filter-tag-container {
+    /* .filter-tag-container {
         border: 1px solid var(--color-bg-gray);
         border-style: none none solid solid;
         padding: 2px;
         margin: 1px 0 0 0;
-    }
+    } */
 
-    .filter-tag-container:hover {
+    /* .filter-tag-container:hover {
         background-color: var(--color-card);
-    }
+    } */
 
-    .filter-tag--attr {
-        font: var(--text-mono-menu);
-        color: var(--color-text);
-        text-align: left;
-        padding: 0;
-        margin: 0;
-        background-color: var(--color-card);
-    }
 
-    .filter-tag--attr:hover {
-        border-radius: 4px;
-        color: var(--color-text);
-    }
-
-    .filter-tag--attr.selected {
-        /* Styles for selected filter tags */
-        background-color: lightblue; /* Example color */
-    }
 
     .filter-menu {
         position: fixed;
-        z-index: 50;
+        z-index: 150;
         transition: all 0.3s;
     }
 
@@ -573,15 +556,14 @@
     }
 
     .filter-menu-content {
-        /* background-color: white;
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-        border-radius: 0.5rem;
-        overflow: hidden; */
-        transition: all 0.3s;
+        transition: all 0.1s;
     }
 
     .filter-menu-content.open {
-        width: max-content;
+        /* background-color: var(--color-card-half);  */
+        /* border-radius: 0.5rem; */
+        overflow: hidden;
+        width: 100%;
         /* height: 100%; */
     }
 
@@ -604,7 +586,7 @@
     }
 
     .filter-content {
-        padding: 6em 0 0 1em;
+        padding: 6em 1em 0 1em;
         overflow-y: auto;
         height: 100%;
     }
@@ -633,7 +615,29 @@
         /* margin-bottom: 0.5rem; */
     }
 
+    .filter-tag--attr {
+        font: var(--text-mono-menu);
+        color: var(--color-text);
+        text-align: left;
+        padding: 0;
+        margin: 0;
+        background-color: var(--color-card);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    }
+
+    .filter-tag--attr:hover {
+        border-radius: 4px;
+        background-color: var(--color-text);
+    }
+
+    .filter-tag--attr.selected {
+        /* Styles for selected filter tags */
+        background-color: lightblue; /* Example color */
+    }
+
     .clear-filters-button {
+        font: var(--text-mono-std);
+        text-transform: uppercase;
         margin-top: 1.5rem;
         padding: 0.5rem 1rem;
         background-color: red;
@@ -662,10 +666,11 @@
         display: flex;
         flex-wrap: wrap;
         gap: 0.25rem;
+        width: 20em;
     }
 
     .active-filter-item {
-        font-size: 1em;
+        font: var(--text-mono-menu);
         padding: 0.25rem 0.5rem;
         background-color: #e5e7eb;
         border-radius: 0.5rem;
