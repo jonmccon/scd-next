@@ -15,20 +15,21 @@
 
     /* BACKGROUND PATTERN */
     .pattern {
-        border: 1em solid var(--color-bg-gray);
-        background-color: var(--color-card);
+        /* border: 1em solid var(--color-bg-gray); */
+        background-color: var(--color-bg-gray);
         
     }
     /* ----------------------------------------------- */
 
     .wrapper {
         display: grid;
+        background-color: var(--color-card);
         /* grid-template-columns: 1.5em repeat(6, 1fr) 1.5em; */
-        grid-template-rows: 1fr auto auto auto auto auto auto;
+        grid-template-rows: 1fr auto auto auto;
         grid-gap: .5em;
         grid-auto-flow: dense;    
         min-height: 50vmin;
-        max-width: 85vw;
+        /* max-width: 85vw; */
         margin: -4em auto;
         grid-template-areas:
             /* 
@@ -619,7 +620,7 @@
         font: var(--text-mono-menu);
         color: var(--color-text);
         text-align: left;
-        padding: 0;
+        padding: 1px;
         margin: 0;
         background-color: var(--color-card);
         box-shadow: 0.3em 0.3em 0em rgba(0, 0, 0, 0.1);
@@ -744,17 +745,17 @@
         display: grid;
         grid-area: About;
         background-color: var(--color-bg-gray);
-        width: 115%;
-        margin: 0 0 0 -7.5%;
+        width: 100%;
+        margin: 0;
         font: var(--text-serif-pullquote);
         text-align: center;
-        padding: 2.5em;
     }
 
     .aboutContent {
         grid-template-columns: 1fr;
         grid-row-gap: 1.5em;
         display: grid;
+        padding: 2.5em;
     }
 
     .about-story {
@@ -797,7 +798,7 @@
         display: grid;
         grid-template-columns: 1fr;
         grid-row-gap: 1.5em;
-        margin: 1.5em 0 0 0;
+        margin: 1.5em 2.5em 2.5em 2.5em;
     }
     
     .footer-history {

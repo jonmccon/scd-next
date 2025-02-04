@@ -15,7 +15,7 @@
     
     /* BACKGROUND PATTERN */
     .pattern {
-
+        border: 1em solid var(--color-bg-gray);
     }
     /* ----------------------------------------------- */
 
@@ -25,10 +25,10 @@
         display: grid;
         /* background-color: aqua; */
         /* grid-template-columns: repeat(12, 1fr); */
-        grid-template-rows: 1fr auto auto auto auto auto;
+        grid-template-rows: 1fr auto auto auto auto;
         grid-gap: .5em;
         grid-auto-flow: dense;    
-        max-width: 100%;
+        max-width: 85vw%;
         border-radius: 10px;
         grid-template-areas:
             /* "MenuLeft       MenuLeft        .               .               Logo            Logo            Logo            Logo            .               .               MenuRight       MenuRight" */
