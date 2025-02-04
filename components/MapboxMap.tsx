@@ -85,11 +85,14 @@ export default function MapboxMap() {
 
         const marker = new mapboxgl.Marker(el)
           .setLngLat([location.longitude, location.latitude])
-          .setPopup(new mapboxgl.Popup().setHTML(`
-            <h3>${location.title ? location.title : ''}</h3>
-            <p>${location.size ? location.size : ''}</p>
-            <p>${location.neighborhood ? location.neighborhood + "," : ''} ${location.city ? location.city : ''}</p>              
-            <a href="${location.website}" target="_blank">Website</a>
+          .setPopup(new mapboxgl.Popup({className: 'map-popup'}).setHTML(`
+            <h1>${location.title ? location.title : ''}</h1>
+            <h2>${location.neighborhood ? location.neighborhood + "," : ''} ${location.city ? location.city : ''}</h2>              
+            <a href="${location.website}" target="_blank">${location.website}</a>
+            <div class="map-tagContainer">
+              ${location.tags.map((tag: Tag) => `<div class="map-tagList">${tag.name}</div>`).join('')}
+            </div>
+            
           `))
           .addTo(map.current!);
         markersRef.current.push(marker);

@@ -26,10 +26,11 @@
         /* background-color: aqua; */
         /* grid-template-columns: repeat(12, 1fr); */
         grid-template-rows: 1fr auto auto auto;
-        grid-gap: .5em;
+        grid-gap: 1px;
         grid-auto-flow: dense;    
         /* max-width: 85vw; */
         border-radius: 10px;
+        margin: -4em 0 0 0;
         grid-template-areas:
             /* "MenuLeft       MenuLeft        .               .               Logo            Logo            Logo            Logo            .               .               MenuRight       MenuRight" */
             /* "Headline       Headline        Headline        Headline        Headline        Headline        Headline        Headline        Headline        Headline        Headline       Headline"             */
@@ -125,7 +126,7 @@
     /* MAP OF LISTINGS */   
 
     #map-listings {
-        /* height: 30vh; */
+        height: 50vh;
     }
 
     /* Custom map icon */
@@ -183,12 +184,12 @@
 
 
     /* CATEGORY & TAG CONTAINER*/
-    .filters {
-        text-align: left;
+    /* .filters { */
+        /* text-align: left; */
         /* margin: 3em 0 6em 0; */
-        max-height: 20vh;
+        /* max-height: 20vh; */
         /* background-color: var(--color-test); */
-    }
+    /* }
 
     .loadFilters {
         border: none !important;
@@ -210,21 +211,21 @@
     .tagSeattle, .tagCity {
         grid-column: span 2;
         align-self: start;
-    }
+    } */
 
-    .tagSizeContainer {
+    /* .tagSizeContainer {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; */
         /* grid-gap: .25ch; */
-    }
+    /* } */
 
-    .tagSeattleContainer, .tagCityContainer {
+    /* .tagSeattleContainer, .tagCityContainer {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-column: span 2; 
+        grid-column: span 2;  */
         /* grid-gap: .25ch; */
-    }
-    
+    /* } */
+/*     
     .allTags {
         grid-column: 9 / span 4; 
         align-self: start;
@@ -236,7 +237,7 @@
         align-self: end;
         /* grid-column: span 3; */
         /* grid-gap: .25ch; */
-    }
+    /* }  */
 
 
     .clearFiltersButton {
@@ -299,7 +300,24 @@
     .directory-block--filter { }
 
     /* hover effects */
-    .directory-block--item:hover { }    
+    .directory-block--item:hover { }  
+    
+    .loadDirectory {
+        display: grid;
+        grid-area: Directory;
+        grid-gap: 1px;
+        grid-template-rows: auto minmax(1ch, 1fr);
+     }
+
+     .loadDirectoryBlock {
+        background-color: var(--color-bg-gray);
+        height: 20vh;
+        border-radius: 2%;
+        margin: 0 0 0 0;
+        display: grid;
+        grid-column: span 3;
+    }
+
     /* ----------------------------------------------- */
 
     /* Inline audio player overrides */
