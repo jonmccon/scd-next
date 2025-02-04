@@ -16,8 +16,7 @@
     /* BACKGROUND PATTERN */
     .pattern {
         /* border: 1em solid var(--color-bg-gray); */
-        background-color: var(--color-bg-gray);
-        
+        /* background-color: var(--color-bg-gray); */
     }
     /* ----------------------------------------------- */
 
@@ -30,7 +29,7 @@
         grid-auto-flow: dense;    
         min-height: 50vmin;
         /* max-width: 85vw; */
-        margin: -4em auto;
+        margin: -4em 0 0 0;
         grid-template-areas:
             /* 
             /* "MenuLeft       MenuLeft        MenuLeft        MenuLeft        MenuRight       MenuRight       MenuRight       MenuRight"  */
