@@ -47,6 +47,7 @@ body {
     --color-dark-border: #333333;
     --color-dark-bg: #1F1E1E;
     --text-mono-std: 400 .7em JetBrains-Mono, sans-serif;
+    --text-mono-std-mobile: 400 1em JetBrains-Mono, sans-serif;
     --text-mono-input: 400 .8em JetBrains-Mono, sans-serif;
     --text-mono-inputSubmit: 400 1.2em JetBrains-Mono, sans-serif;
     --text-mono--item: 500 .8em JetBrains-Mono, sans-serif;

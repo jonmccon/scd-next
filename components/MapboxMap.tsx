@@ -47,7 +47,7 @@ export default function MapboxMap() {
     // Navigation controls, options: https://docs.mapbox.com/mapbox-gl-js/api/navigationcontrol/
     map.current.scrollZoom.disable();
     map.current.touchZoomRotate.enable();
-    map.current.addControl(new mapboxgl.NavigationControl(), 'top-right');
+    map.current.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
   }, []);
 
   useEffect(() => {

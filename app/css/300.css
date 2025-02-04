@@ -46,16 +46,16 @@
     }  
 
 
-
     .logo {
         position: -webkit-sticky;
         position: sticky;        
         top: 1em;
-        height: 4em; 
-        width: 20em;
-        margin: 0 auto 0 auto;
+        left: 80vw;
+        height: 6em; 
+        width: 20vw;
+        /* margin: 0 auto 0 auto; */
         /* grid-area: Logo; */
-        background-image: url(../../public/scLogoFill.svg);
+        background-image: url(../../public/scLogoFill-monogram.svg);
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
@@ -81,11 +81,14 @@
     }
 
     .headline-menu-left {
-        margin: 1.5em 0 0 0;
+        position: fixed;
+        bottom: .7em;
+        left: 0;
+        margin: 0 0 .25em .5em;
         /* grid-area: MenuLeft; */
-        align-self: center;
+        align-self: left;
+        text-align: left;
         width: max-content;
-        z-index: 100;
     }
 
     .headline-menu-left a {
@@ -110,7 +113,8 @@
 
     .headline-menu--link, .email-form button {
         color: var(--color-text);
-        font: var(--text-mono-std);
+        font: var(--text-mono-std-mobile);
+        background-color: var(--color-bg-gray);
         text-transform: uppercase;
         border-radius: 4px;
         padding: .3em .4em .2em .4em;
@@ -136,13 +140,10 @@
 
     .email-form {
         display: inline;
-    }
-
-    .email-form {
-        font: var(--text-mono-std);
+        font: var(--text-mono-std-mobile);
         border: 0 none var(--color-card);
-        padding: .2em .4em .1em .2em;
-        margin: 0 0 .2em .25em;
+        padding: .2em .4em .1em 0;
+        margin: 0;
         /* text-align: right; */
         text-transform: uppercase;
         width: 100%;
@@ -167,6 +168,8 @@
         height: 3ch;
         background-color: var(--color-bg-gray);
         border-radius: 4px;
+        padding-left: .4em;
+        width: 15ch;
     }
     
     .email-form input:focus {
@@ -195,7 +198,7 @@
 
     .email-form-error {
         display: inline;
-        font-size: smaller;
+        font-size: x-small;
         text-transform: lowercase;
         font-style: italic;
         background-color: #F5DB2E;
@@ -819,16 +822,27 @@
         background-color: #000 !important;
     }
 
+    .tf-v1-popover-button {
+        width: 3.5em !important;
+        height: 3.5em !important;
+    }
+
+    .tf-v1-popover-tooltip::before {
+        bottom: 12px !important;
+    }
+
     .tf-v1-popover-button-icon {
         margin: 0 0 .25em 0;
     }
 
     .tf-v1-popover-tooltip {
         background-color: #000 !important;
+        bottom: 1.5em !important;
+        right: 6em !important;
     }
 
     .tf-v1-popover-tooltip-text {
-        font: 700 .8em JetBrains-Mono, sans-serif;
+        font: 700 1em JetBrains-Mono, sans-serif;
         text-transform: uppercase;
         color: #FFF;
     }

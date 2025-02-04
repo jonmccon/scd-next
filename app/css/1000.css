@@ -47,10 +47,12 @@
      /* LOGOMARK */
 
      .logo {
-        /* background-color: green; */
-        /* position: sticky; */
-        /* top: 0;
-        margin: 1em auto 0 auto; */
+        top: 1em;
+        height: 4em; 
+        width: 20em;
+        left: auto;
+        margin: 0 auto 0 auto;
+        background-image: url(../../public/scLogoFill.svg);
       }
 
     /* ----------------------------------------------- */
@@ -84,7 +86,6 @@
 
     .headline-menu--link { 
         font: var(--text-mono-std);
-        background-color: var(--color-bg-gray);
     }
     
     .headline-menu--about {
@@ -94,6 +95,8 @@
 
     /* SUBSCRIBE */
     .email-form {  
+        font: var(--text-mono-std);
+        padding: .2em .4em .1em .4em;
      }
 
     .email-form input { 
@@ -111,6 +114,12 @@
     }
 
     .email-form button:hover { }
+
+    .email-form-error {
+        font-size: smaller;
+        margin: 0 0 0 0;
+    }
+
     /* ----------------------------------------------- */
 
     /* MAP OF LISTINGS */   
@@ -429,6 +438,20 @@
 
 
     /* ----------------------------------------------- */
+
+    /* Typeform overrides */
+
+    .tf-v1-popover-tooltip {
+        background-color: #000 !important;
+        bottom: 2.5em !important;
+        right: 6.5em !important;
+    }
+
+    .tf-v1-popover-tooltip-text {
+        font: 700 .8em JetBrains-Mono, sans-serif;
+    }
+
+    
 
 }
 
