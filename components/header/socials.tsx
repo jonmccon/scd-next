@@ -26,6 +26,14 @@ export default function Socials() {
           >
             Join Discord
           </Link>
+
+          <Link
+            className="headline-menu--link"
+            target="_blank"
+            href="mailto:jonny@seattlecreative.directory?subject=You have my Support!"
+          >
+            Become a sponsor
+          </Link>
           
         </div>
       </React.Fragment>

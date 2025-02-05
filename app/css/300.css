@@ -89,6 +89,7 @@
         align-self: left;
         text-align: left;
         width: max-content;
+        z-index: 100;
     }
 
     .headline-menu-left a {
@@ -345,6 +346,19 @@
         padding: 1.5em;
         min-height: 20vh;      
         border-radius: 2%;  
+    }
+
+    .show-link {
+        width: auto;
+        height: 3em;
+        margin: 1em;
+        border-radius: 4px;
+        background-color: var(--color-card);
+        font: var(--text-mono-std-mobile);
+        align-content: center;
+        text-align: center;
+        text-transform: uppercase;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
 
@@ -912,7 +926,7 @@
         display: none;
       }
     
-      .external-link {
+      .show-link {
         display: block;
     }
 }
@@ -926,7 +940,7 @@
         display: grid;
     }
 
-    .external-link {
+    .show-link {
         display: none;
     }
 }

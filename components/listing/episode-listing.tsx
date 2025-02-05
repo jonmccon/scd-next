@@ -137,15 +137,14 @@ class EpisodeListing extends React.Component<any, any> {
           </div>
         ))}
 
-          <div className="podcastEpisode-content external-link">
-            <Link 
+          <Link 
               href="https://seattlecreative.show"
               target="_blank"
             >
-              View More Episodes
-            </Link>
-          </div>
-
+            <div className="podcastEpisode-content show-link">
+                View More Episodes
+            </div>
+          </Link>
       </div>
     );
   }
