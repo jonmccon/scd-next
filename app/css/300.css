@@ -621,17 +621,23 @@
         height: 3rem;
     }
 
+
+
     .filter-toggle-button {
         position: fixed;
         top: .5em;
         left: .5em;
-        padding: 1rem;
+        /* padding: 1rem; */
         background-color: black;
         color: white;
         border-radius: 50%;
         width: 54px;
         height: 54px;
         font-size: 24px;
+    }
+
+    .filter-menu.open .filter-toggle-button {
+        padding: 1rem;
     }
 
     .filter-content {
@@ -649,7 +655,7 @@
 
     .filter-sections {
         display: grid;
-        gap: 1em;
+        gap: .5em;
     }
 
     .filter-section {
@@ -660,6 +666,7 @@
 
     .filter-section-title {
         font: var(--text-mono-title);
+        color: var(--color-text-tag);
         text-transform: uppercase;
         letter-spacing: 10px;
         background-color: var(--color-card);
@@ -670,10 +677,10 @@
         font: var(--text-mono-menu);
         color: var(--color-text);
         text-align: left;
-        padding: 1px;
+        padding: 2px;
         margin: 0;
         background-color: var(--color-card);
-        box-shadow: 0.3em 0.3em 0em rgba(0, 0, 0, 0.1);
+        box-shadow: 0.3em 0.3em 0em rgba(0, 0, 0, 0.1); 
     }
 
     .filter-tag--attr:hover {
@@ -684,7 +691,12 @@
 
     .filter-tag--attr.selected {
         /* Styles for selected filter tags */
-        background-color: lightblue; /* Example color */
+        background-color: var(--color-bg-gray); /* Example color */
+    }
+
+    .filter-tag--attr.selected:hover {
+        background-color: var(--color-bg-gray-light);
+        color: var(--color-text)
     }
 
     .active-filters {
@@ -709,19 +721,20 @@
         flex-wrap: wrap;
         gap: 0.25rem;
         min-width: 60vw;
+        max-height: min-content;
     }
 
     .active-filter-item {
         font: var(--text-mono-menu);
         padding: 0.25rem 0.5rem;
         background-color: #e5e7eb;
-        border-radius: 0.5rem;
+        border-radius: 4px;
         cursor: pointer;
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
     }
     
     .active-filter-item:hover {
-        background-color: #d1d5db;
+        background-color: var(--color-bg-gray-light);
     }
 
     .active-filter-item:hover::after {
@@ -735,26 +748,7 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 0.1em;
         /* margin-bottom: 1rem; */
-    }
-
-    @media (min-width: 640px) {
-        .filter-grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-
-    @media (min-width: 768px) {
-        .filter-grid {
-            grid-template-columns: repeat(4, 1fr);
-        }
-    }
-
-    @media (min-width: 1024px) {
-        .filter-grid {
-            grid-template-columns: repeat(8, 1fr);
-        }
-    }
-    
+    }    
 
     .loadFilters {
         background-color: var(--color-bg-gray);
@@ -900,5 +894,40 @@
     
     /* ----------------------------------------------- */    
     
+}
+
+@media (min-width: 640px) {
+    .filter-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .filter-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Limit the number of podcast episodes */
+    .podcastEpisode:nth-child(n+5) {
+        display: none;
+      }
+    
+      .external-link {
+        display: block;
+    }
+}
+
+@media (min-width: 1024px) {
+    .filter-grid {
+        grid-template-columns: repeat(8, 1fr);
+    }
+    
+    .podcastEpisode {
+        display: grid;
+    }
+
+    .external-link {
+        display: none;
+    }
 }
 

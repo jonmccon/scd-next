@@ -3,6 +3,7 @@ import React from "react";
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player';
 import { LuAtSign, LuTwitter, LuInstagram, LuAmpersand, LuAmpersands } from 'react-icons/lu';
 import { FaCirclePlay, FaCirclePause } from 'react-icons/fa6'
+import Link from "next/link";
 
 
 class EpisodeListing extends React.Component<any, any> {
@@ -31,6 +32,7 @@ class EpisodeListing extends React.Component<any, any> {
 
   render() {
     const episodeList = this.getEpisodeList();
+    // const episodesToShow = episodeList.slice(0, 4);
 
     return (
       <div className="podcast">
@@ -133,9 +135,17 @@ class EpisodeListing extends React.Component<any, any> {
                   }}
               />
           </div>
-      
-      
         ))}
+
+          <div className="podcastEpisode-content external-link">
+            <Link 
+              href="https://seattlecreative.show"
+              target="_blank"
+            >
+              View More Episodes
+            </Link>
+          </div>
+
       </div>
     );
   }

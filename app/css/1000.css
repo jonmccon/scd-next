@@ -126,7 +126,8 @@
     /* MAP OF LISTINGS */   
 
     #map-listings {
-        height: 50vh;
+        height: 70vh;
+        z-index: 10;
     }
 
     /* Custom map icon */
@@ -140,8 +141,8 @@
     /* PODCAST SHOW */
 
     #showContainer {
-        margin: 1px;
-        
+        margin: -6px 1px 0 1px;
+        z-index: 50;
     }
 
     .podcast {
@@ -243,8 +244,15 @@
     }
 
     .filter-menu.open {
-        inset: 0 0 50% 0;
+        inset: 0;
         background-color: var(--color-transparent);
+    }
+
+    @media (min-height: 800px) {
+        .filter-menu.open {
+            inset: 0 0 50% 0;
+            background-color: var(--color-transparent);
+        }
     }
 
     .filter-menu.closed {
