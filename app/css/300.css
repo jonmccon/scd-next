@@ -218,36 +218,46 @@
 
     /* Custom map icon */
     .marker {
-        background-image: url('/mapDotv1.png');
+        background-image: url('/mapDotv2.png');
         background-size: cover;
         width: 20px;
         height: 20px;
-        border-radius: 50%;
+        /* border-radius: 50%; */
         cursor: pointer;
+        filter: brightness(50%);
       }
+
+    .map-popup {
+        max-width: fit-content !important;
+    }
 
     .mapboxgl-popup-content {
         width: fit-content !important;
         box-shadow: 0 1px 2px rgba(0,0,0,.2) !important;
     }
     .map-popup h1 {
-        font: var(--text-serif-bld);
+        font: var(--text-serif-std);
     }
 
     .map-popup h2 {
-        font: var(--text-serif-std);
+        font: var(--text-mono-menu);
     }
 
     .map-popup a {
         font: var(--text-mono-menu);
+        text-decoration: underline;
     }
     
     .map-tagContainer {
         display: grid;
         grid-template-columns: repeat(4, auto);
         column-gap: 0.5em;
-        background-color: #8DE0B6;
-        font: var(--text-mono-std);
+        /* background-color: #8DE0B6; */
+        font: var(--text-mono-menu);
+    }
+
+    .mapboxgl-popup-close-button {
+        right: .6em !important;
     }
 
     /* ----------------------------------------------- */    

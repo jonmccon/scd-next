@@ -5,6 +5,8 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useFilters } from './FilterContext';
 import { filterListings } from '../utils/filterListings';
+import { LuAnchor, LuTwitter, LuInstagram, LuTag, LuTags } from 'react-icons/lu';
+
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_MAP_ACCESS as string;
 
@@ -77,6 +79,11 @@ export default function MapboxMap() {
       // https://docs.mapbox.com/mapbox-gl-js/api/markers/#marker
       // https://docs.mapbox.com/help/tutorials/custom-markers-gl-js/#step-5-1-create-an-empty-div-for-each-point
       // 
+      // Tag list element
+      // <div class="map-tagContainer">
+      // ${location.tags.map((tag: Tag) => `<div class="map-tagList">${tag.name}</div>`).join('')}
+      // </div>
+
       locations.forEach((location: Listing) => {
         // console.log('Adding marker for location:', location);
 
@@ -87,11 +94,8 @@ export default function MapboxMap() {
           .setLngLat([location.longitude, location.latitude])
           .setPopup(new mapboxgl.Popup({className: 'map-popup'}).setHTML(`
             <h1>${location.title ? location.title : ''}</h1>
-            <h2>${location.neighborhood ? location.neighborhood + "," : ''} ${location.city ? location.city : ''}</h2>              
             <a href="${location.website}" target="_blank">${location.website}</a>
-            <div class="map-tagContainer">
-              ${location.tags.map((tag: Tag) => `<div class="map-tagList">${tag.name}</div>`).join('')}
-            </div>
+            <h2>${location.neighborhood ? location.neighborhood + "," : ''} ${location.city ? location.city : ''}</h2>                          
             
           `))
           .addTo(map.current!);

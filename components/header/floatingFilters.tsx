@@ -65,7 +65,7 @@ function Filters() {
 
   const renderFilters = (items: any[], type: string) => (
     <div className="filter-grid">
-      {items.map((item, index) => (
+      {items.filter(item => item !== null && item !== undefined).map((item, index) => (
         <button
           key={type === "tag" ? item.id : item}
           className={`filter-tag--attr ${isFilterSelected(item, type as FilterType) ? 'selected' : ''}`}
