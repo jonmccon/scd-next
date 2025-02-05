@@ -239,28 +239,36 @@
         /* grid-gap: .25ch; */
     /* }  */
 
-
-    .clearFiltersButton {
-        margin-bottom: 2em;
-        height: 20px;
-        place-self: start stretch;
-        grid-column: span 1;
-        text-align: center;
-        font: var(--text-mono-menu);
-        text-transform: uppercase;
-        color: var(--color-text);
-        background-color: var(--color-card);
-        border-radius: 2px;
-        border: 1px solid var(--color-bg-coral);
+    .filter-menu {
     }
 
-    .clearFiltersButton:hover {
-        cursor: pointer;
-        background-color: var(--color-bg-coral);
-        color: var(--color-text);
-        /* text-decoration-line: underline; */
+    .filter-menu.open {
+        inset: 0 0 50% 0;
+        background-color: var(--color-transparent);
     }
 
+    .filter-menu.closed {
+
+    }
+
+    .filter-toggle-button {
+        top: 1em;
+        left: 1em;
+    }
+
+    .active-filters {
+        top: .5em;
+        left: 5rem;
+        max-width: 35vw;
+    }
+
+    .active-filters-list {
+        gap: 0.25rem;
+        min-width: 30vw;
+    }
+
+
+  
     /* ----------------------------------------------- */
 
     /* ----------------------------------------------- */
@@ -317,6 +325,8 @@
         display: grid;
         grid-column: span 3;
     }
+
+    
 
     /* ----------------------------------------------- */
 

@@ -1,6 +1,7 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useFilters } from '../FilterContext'; 
+import { IoClose } from "react-icons/io5";
 
 import LoadFilters from '../loadins/load-filters';
 
@@ -31,6 +32,7 @@ const FilterContext = React.createContext<FilterContextType | undefined>(undefin
 function Filters() {
   const [isOpen, setIsOpen] = useState(false);
   const { sizes, neighborhoods, cities, tags, selectedSizes, selectedNeighborhoods, selectedCities, selectedTags, addFilter, removeFilter, clearFilters, isFilterSelected } = useFilters();
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -56,6 +58,27 @@ function Filters() {
       }
     }
   };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (dialogRef.current && !dialogRef.current.contains(event.target as Node)) {
+      setIsOpen(false);
+    //   console.log('Clicked outside, closing menu');
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    //   console.log('Menu is open, added event listener');
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    //   console.log('Menu is closed, removed event listener');
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    //   console.log('Cleanup: removed event listener');
+    };
+  }, [isOpen]);
 
   if (sizes.length === 0 || neighborhoods.length === 0 || cities.length === 0 || tags.length === 0) {
     return <LoadFilters />;
@@ -92,10 +115,10 @@ const getFilterType = (filter: Tag | string): FilterType => {
   return 'size'; // Default to 'size' if not found
 };
   return (
-    <div className={`filter-menu ${isOpen ? "open" : "closed"}`}>
+    <div className={`filter-menu ${isOpen ? "open" : "closed"}`} ref={dialogRef}>
       <div className={`filter-menu-content ${isOpen ? "open" : "closed"}`}>
         <button className="filter-toggle-button" onClick={toggleMenu}>
-          {isOpen ? "X" : "🏷️"}
+          {isOpen ? <IoClose /> : "🏷️"}
         </button>
 
         {isOpen && (
@@ -120,7 +143,7 @@ const getFilterType = (filter: Tag | string): FilterType => {
               </div>
             </div>
             <button className="clear-filters-button" onClick={clearFilters}>
-              Clear All Filters
+              Clear All Filters {activeFilters > 0 && ` (${activeFilters})`}
             </button>
           </div>
         )}
@@ -145,7 +168,7 @@ const getFilterType = (filter: Tag | string): FilterType => {
               ))}
             </div>
             <button className="clear-filters-button" onClick={clearFilters}>
-              Clear All Filters
+              Clear All Filters {activeFilters > 0 && ` (${activeFilters})`}
             </button>
           </div>
         )}
