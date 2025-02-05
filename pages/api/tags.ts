@@ -23,3 +23,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   console.log(`Sending response with status ${res.statusCode} to ${req.url}`)
   res.status(200).json(tags)
 }
+
+// add try block and   } catch (error) {
+//   console.error('Error fetching data from PostgreSQL:', error);
+//   res.status(500).json({ error: 'Internal Server Error' });
+// } finally {
+//   await prisma.$disconnect();
+// }

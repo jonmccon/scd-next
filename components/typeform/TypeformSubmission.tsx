@@ -19,7 +19,7 @@ const TypeformSubmission = () => {
         <Popover 
           id="UR7SpT93" 
           open='time'
-          openValue={60000}
+          openValue={180000}
           autoClose    
           keepSession
           tooltip='&nbsp&nbspGet Listed'

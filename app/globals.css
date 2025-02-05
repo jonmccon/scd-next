@@ -31,6 +31,7 @@ body {
     --color-bg-coral-half: rgba(255, 173, 161, 0.5);
     --color-bg-coral-dark: rgb(247, 130, 112);
     /* --color-bg-gray: rgba(113, 64, 96, 0.05); */
+    --color-bg-gray-light: #d1d5db;
     --color-bg-gray: #E5E5E5;
     --color-bg-gray-dark: rgb(214, 214, 214);
     --color-text: rgb(41, 41, 41);
@@ -47,6 +48,7 @@ body {
     --color-dark-border: #333333;
     --color-dark-bg: #1F1E1E;
     --text-mono-std: 400 .7em JetBrains-Mono, sans-serif;
+    --text-mono-std-mobile: 400 1em JetBrains-Mono, sans-serif;
     --text-mono-input: 400 .8em JetBrains-Mono, sans-serif;
     --text-mono-inputSubmit: 400 1.2em JetBrains-Mono, sans-serif;
     --text-mono--item: 500 .8em JetBrains-Mono, sans-serif;
@@ -55,14 +57,15 @@ body {
     /* this .68 is because a text size got double .8em in the filter titles
     .68 is within a 1/2 pixel size, but it's not truly correct */
     --text-mono--itemPodcast: 500 .68em JetBrains-Mono, sans-serif;
-    --text-mono-menu: 400 .8em JetBrains-Mono, sans-serif;
-    --text-mono-title: 800 1.5em JetBrains-Mono, sans-serif;
+    --text-mono-menu: 200 .8em JetBrains-Mono, sans-serif;
+    --text-mono-title: 800 1em JetBrains-Mono, sans-serif;
     --text-serif-std: 400 2.8em Spectral, serif;
     --text-serif-body: 400 1.5em Spectral, serif;
     --text-serif-bld: 700 1em Spectral, serif;
     --text-serif-title: 600 3em Spectral, serif;
     --text-serif-pullquote: 400 1.25em Spectral, serif;
-    --text-serif-pullquote-small: 600 1em Spectral, serif;
+    /* Mobile pullquote may need more distinction here */
+    --text-serif-pullquote-small: 400 1.25em Spectral, serif;
     --text-serif-label: 400 .8em Spectral, serif;
     --text-serif--item: 400 1.1em Spectral, serif;
     --text-gin-std: 400 4em Gin-and-Soda, sans-serif;

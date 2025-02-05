@@ -3,6 +3,7 @@ import React from "react";
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useFilters } from '../FilterContext';
+import { filterListings } from "../../utils/filterListings";
 import RefreshButton from '../refresh-button'
 import DirectoryListing from './directory-listing'
 import Link from 'next/link'
@@ -27,6 +28,8 @@ interface Listing {
   website: string;
   episodeURL: string;
   episodePromo: string;
+  latitude: number;
+  longitude: number;
   color: string;
   tags: Tag[];
 }
@@ -51,12 +54,7 @@ function Directory() {
         }, {});
 
         const filteredListings = Object.entries(listingsByCategory).reduce((acc, [category, listings]) => {
-          const filteredListingsForCategory = (listings as Listing[]).filter(listing =>
-            (selectedSizes.length === 0 || selectedSizes.includes(listing.size)) &&
-            (selectedNeighborhoods.length === 0 || selectedNeighborhoods.includes(listing.neighborhood)) &&
-            (selectedCities.length === 0 || selectedCities.includes(listing.city)) &&
-            (selectedTags.length === 0 || listing.tags.some(listingTag => selectedTags.some(tag => tag.id === listingTag.id)))
-          );
+        const filteredListingsForCategory = filterListings(listings as Listing[], selectedSizes, selectedNeighborhoods, selectedCities, selectedTags);
 
           if (filteredListingsForCategory.length > 0) {
             acc[category] = filteredListingsForCategory;
@@ -81,7 +79,8 @@ function Directory() {
 
   return (
     
-    <div className="directory">      
+    <div className="directory">
+    
       {categories.map(category => {
         const listingsForCategory = listings[category];
         

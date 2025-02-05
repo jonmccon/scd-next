@@ -1,21 +1,21 @@
 /* DESKTOP SCREEN */
 
-@media only screen and (min-width: 1250px) { 
+@media only screen and (min-width: 1150px) { 
 
     h1 {
         line-height: 140%;
     }
 
     h5 {
-        font: var(--text-mono--item) !important;
-        margin-block-start: 0;
-        margin-bottom: 2em !important;
+        font: var(--text-mono-menu);
+        /* margin-block-start: 0; */
+        position: absolute;
+        bottom: 0;
     }
     
     /* BACKGROUND PATTERN */
     .pattern {
-        grid-template-columns: 2em 1fr 2em;
-        grid-template-rows: 2em 1fr 2em;
+        border: 1em solid var(--color-bg-gray);
     }
     /* ----------------------------------------------- */
 
@@ -24,56 +24,50 @@
     .wrapper {
         display: grid;
         /* background-color: aqua; */
-        grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: 1fr auto auto auto auto auto;
-        grid-gap: .5em;
+        /* grid-template-columns: repeat(12, 1fr); */
+        grid-template-rows: 1fr auto auto auto;
+        grid-gap: 1px;
         grid-auto-flow: dense;    
-        max-width: 100%;
+        /* max-width: 85vw; */
         border-radius: 10px;
+        margin: -4em 0 0 0;
         grid-template-areas:
-            "MenuLeft              MenuLeft        .        .               Logo            Logo            Logo            Logo            .               .       MenuRight       MenuRight"
-            ".              .               .               Headline        Headline        Headline        Headline        Headline        Headline        .        .               ."
-            "showContainer  showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer"
-            ".        Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         ."
-            ".              Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       ."
+            /* "MenuLeft       MenuLeft        .               .               Logo            Logo            Logo            Logo            .               .               MenuRight       MenuRight" */
+            /* "Headline       Headline        Headline        Headline        Headline        Headline        Headline        Headline        Headline        Headline        Headline       Headline"             */
+            "mapListings    mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings     mapListings    mapListings"
+            "showContainer  showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer   showContainer  showContainer"
+            /* ".              Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         Filters         ." */
+            "Directory              Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory       Directory"
             "About          About           About           About           About           About           About           About           About           About           About          About"
             ;
     }   
+
+    /* HEADER CONTAINER */
 
 
      /* LOGOMARK */
 
      .logo {
-        margin: 3em 0 0 0;
+        top: 1em;
+        height: 4em; 
+        width: 20em;
+        left: auto;
+        margin: 0 auto 0 auto;
+        background-image: url(../../public/scLogoFill.svg);
       }
 
     /* ----------------------------------------------- */
     
     /* HEADLINE */
-    .headline {
-        margin: 0 0 2em 0;
-        /* min-height: 60vh; */
-    }
-
-    .headline-wrapper {
-        display: grid;
-        grid-area: Headline;
-        min-height: 5vh;
-    }
-
-    .headline-wrapper-small {
-        grid-area: Headline;
-        margin: 4em 0 0 0;
-    }
-
-    .headlineFilter {
-        font-size: 1em;
-    }
 
     .headline-menu-left {
-        margin: 0 0 0 1.5em;
-        grid-area: MenuLeft;
-        align-self: center;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        margin: 0 0 .25em .5em;
+        /* grid-area: MenuLeft; */
+        align-self: left;
+        text-align: left;
         width: max-content;
     }
 
@@ -82,21 +76,17 @@
         margin: 0 0 0 0;
     }
 
-    .headline-menu-right {
-        margin: 2.5em 1.5em 0 0;
-        grid-area: MenuRight;
-        align-self: start;
-        text-align: right;
+    .newsletter-subscribe {
+        /* margin: 2.5em 1.5em 0 0; */
+        /* grid-area: MenuRight; */
     }
 
-    /* .headline-menu-right a {
-        display: block;
-        text-align: right;
-    } */
+    .newsletter-subscribe a {
+        /* text-align: left; */
+    }
 
     .headline-menu--link { 
         font: var(--text-mono-std);
-        text-align: right;
     }
     
     .headline-menu--about {
@@ -106,11 +96,14 @@
 
     /* SUBSCRIBE */
     .email-form {  
+        font: var(--text-mono-std);
+        padding: .2em .4em .1em .4em;
      }
 
     .email-form input { 
         width: 20ch;
-        padding: 0 0 0 1ch;
+        margin: 0 0 -1em 0;
+        /* padding: 0 0 0 1ch; */
     }
 
     .email-form input:hover { }
@@ -118,16 +111,38 @@
     .email-form input:focus { }
 
     .email-form button { 
+        /* margin: 0 0 .25em 0; */
     }
 
     .email-form button:hover { }
+
+    .email-form-error {
+        font-size: smaller;
+        margin: 0 0 0 0;
+    }
+
     /* ----------------------------------------------- */
+
+    /* MAP OF LISTINGS */   
+
+    #map-listings {
+        height: 70vh;
+        z-index: 10;
+    }
+
+    /* Custom map icon */
+    .marker {
+        width: 15px;
+        height: 15px;
+      }
+
+    /* ----------------------------------------------- */  
 
     /* PODCAST SHOW */
 
     #showContainer {
-        margin: 1px;
-        
+        margin: -6px 1px 0 1px;
+        z-index: 50;
     }
 
     .podcast {
@@ -166,81 +181,102 @@
         padding-left: 3px;
       } */
 
+    /* ----------------------------------------------- */
 
 
     /* CATEGORY & TAG CONTAINER*/
-    .filters {
-
-        margin: 3em 0 6em 0;
-        text-align: left;
-        max-height: 350px;
+    /* .filters { */
+        /* text-align: left; */
+        /* margin: 3em 0 6em 0; */
+        /* max-height: 20vh; */
         /* background-color: var(--color-test); */
-    }
+    /* }
 
     .loadFilters {
         border: none !important;
     }
-    
-    .filter-cat-container {
-        display: none;   
-    }
 
-    .filter-tag-container { 
-    }
-
-    .allCats {
-        grid-column: span 2; 
+    .filter-tag-container {
     }
 
     .tagSize {
         grid-column: span 1;
+        align-self: start;
+    }
+    
+    .tagTitle {
+        grid-column: span 1;
+        align-self: start;
     }
 
     .tagSeattle, .tagCity {
         grid-column: span 2;
-        padding-left: 1em;
-        border-left: 1px solid #292929; 
-    }
+        align-self: start;
+    } */
 
-    .tagSeattleContainer, .tagCityContainer {
+    /* .tagSizeContainer {
+        display: grid;
+        grid-template-columns: 1fr; */
+        /* grid-gap: .25ch; */
+    /* } */
+
+    /* .tagSeattleContainer, .tagCityContainer {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-column: span 2; 
-    }
-    
+        grid-column: span 2;  */
+        /* grid-gap: .25ch; */
+    /* } */
+/*     
     .allTags {
-        grid-column: span 3; 
-        padding-left: 1em;
-        border-left: 1px solid var(--color-text); 
+        grid-column: 9 / span 4; 
+        align-self: start;
     }
 
     .allTagsContainer {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-column: span 3;
-        text-transform: lowercase;
+        grid-template-columns: repeat(4, 1fr);
+        align-self: end;
+        /* grid-column: span 3; */
+        /* grid-gap: .25ch; */
+    /* }  */
+
+    .filter-menu {
     }
 
-    .clearFiltersButton {
-        margin: 1em 0 0 0;
-        height: 20px;
-        grid-column: span 1;
-        text-align: center;
-        font: var(--text-mono-menu);
-        text-transform: uppercase;
-        color: var(--color-text);
-        background-color: var(--color-card);
-        border-radius: 2px;
-        border: 1px solid var(--color-bg-coral);
+    .filter-menu.open {
+        inset: 0;
+        background-color: var(--color-transparent);
     }
 
-    .clearFiltersButton:hover {
-        cursor: pointer;
-        background-color: var(--color-bg-coral);
-        color: var(--color-text);
-        /* text-decoration-line: underline; */
+    @media (min-height: 800px) {
+        .filter-menu.open {
+            inset: 0 0 50% 0;
+            background-color: var(--color-transparent);
+        }
     }
 
+    .filter-menu.closed {
+
+    }
+
+    .filter-toggle-button {
+        top: 1em;
+        left: 1em;
+    }
+
+    .active-filters {
+        top: .5em;
+        left: 5rem;
+        max-width: 35vw;
+    }
+
+    .active-filters-list {
+        gap: 0.25rem;
+        min-width: 30vw;
+    }
+
+
+  
     /* ----------------------------------------------- */
 
     /* ----------------------------------------------- */
@@ -280,7 +316,26 @@
     .directory-block--filter { }
 
     /* hover effects */
-    .directory-block--item:hover { }    
+    .directory-block--item:hover { }  
+    
+    .loadDirectory {
+        display: grid;
+        grid-area: Directory;
+        grid-gap: 1px;
+        grid-template-rows: auto minmax(1ch, 1fr);
+     }
+
+     .loadDirectoryBlock {
+        background-color: var(--color-bg-gray);
+        height: 20vh;
+        border-radius: 2%;
+        margin: 0 0 0 0;
+        display: grid;
+        grid-column: span 3;
+    }
+
+    
+
     /* ----------------------------------------------- */
 
     /* Inline audio player overrides */
@@ -419,6 +474,20 @@
 
 
     /* ----------------------------------------------- */
+
+    /* Typeform overrides */
+
+    .tf-v1-popover-tooltip {
+        background-color: #000 !important;
+        bottom: 2.5em !important;
+        right: 6.5em !important;
+    }
+
+    .tf-v1-popover-tooltip-text {
+        font: 700 .8em JetBrains-Mono, sans-serif;
+    }
+
+    
 
 }
 

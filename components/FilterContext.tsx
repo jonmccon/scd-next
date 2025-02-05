@@ -12,6 +12,10 @@ type StateType = {
   selectedNeighborhoods: string[];
   selectedCities: string[];
   selectedTags: Tag[];
+  setSelectedSizes: (sizes: string[]) => void;
+  setSelectedNeighborhoods: (neighborhoods: string[]) => void;
+  setSelectedCities: (cities: string[]) => void;
+  setSelectedTags: (tags: Tag[]) => void;
 };
 
 type Tag = {
@@ -30,6 +34,10 @@ type FilterContextType = {
   selectedNeighborhoods: string[];
   selectedCities: string[];
   selectedTags: Tag[];
+  setSelectedSizes: (sizes: string[]) => void;
+  setSelectedNeighborhoods: (neighborhoods: string[]) => void;
+  setSelectedCities: (cities: string[]) => void;
+  setSelectedTags: (tags: Tag[]) => void;
   addFilter: (filter: Tag | string, type: FilterType) => void;
   removeFilter: (filter: Tag | string, type: FilterType) => void;
   isFilterSelected: (filter: Tag | string, type: FilterType) => boolean;
@@ -45,6 +53,10 @@ const FilterContext = createContext<FilterContextType>({
   selectedNeighborhoods: [],
   selectedCities: [],
   selectedTags: [],
+  setSelectedSizes: (sizes: string[]) => {},
+  setSelectedNeighborhoods: (neighborhoods: string[]) => {},
+  setSelectedCities: (cities: string[]) => {},
+  setSelectedTags: (tags: Tag[]) => {},
   addFilter: () => {},
   removeFilter: () => {},
   isFilterSelected: () => false, 
@@ -64,6 +76,10 @@ export const FilterProvider = React.memo(({ children }: { children: React.ReactN
       selectedNeighborhoods: [],
       selectedCities: [],
       selectedTags: [],
+      setSelectedSizes: (sizes: string[]) => {},
+      setSelectedNeighborhoods: (neighborhoods: string[]) => {},
+      setSelectedCities: (cities: string[]) => {},
+      setSelectedTags: (tags: Tag[]) => {},
     };
 
     // Create a single state object
@@ -156,6 +172,10 @@ export const FilterProvider = React.memo(({ children }: { children: React.ReactN
         selectedNeighborhoods: [],
         selectedCities: [],
         selectedTags: [],
+        setSelectedSizes: (sizes: string[]) => setState(prevState => ({ ...prevState, selectedSizes: sizes })),
+        setSelectedNeighborhoods: (neighborhoods: string[]) => setState(prevState => ({ ...prevState, selectedNeighborhoods: neighborhoods })),
+        setSelectedCities: (cities: string[]) => setState(prevState => ({ ...prevState, selectedCities: cities })),
+        setSelectedTags: (tags: Tag[]) => setState(prevState => ({ ...prevState, selectedTags: tags })),
       }));
     }, [state]);
 
@@ -168,6 +188,10 @@ export const FilterProvider = React.memo(({ children }: { children: React.ReactN
       selectedNeighborhoods,
       selectedCities,
       selectedTags,
+      setSelectedSizes,
+      setSelectedNeighborhoods,
+      setSelectedCities,
+      setSelectedTags,
     } = state;
 
     return (
@@ -181,6 +205,10 @@ export const FilterProvider = React.memo(({ children }: { children: React.ReactN
           selectedNeighborhoods,
           selectedCities,
           selectedTags,
+          setSelectedSizes,
+          setSelectedNeighborhoods,
+          setSelectedCities,
+          setSelectedTags,
           addFilter,
           removeFilter,
           isFilterSelected,

@@ -1,16 +1,14 @@
-import React, { Component } from "react";
-class Logo extends Component {
-  render() {
+import React from "react";
+import Link from "next/link";
+
+export default function Logo() {
     return (
       <React.Fragment>
         
-        <div className="logo">
-          
-        </div>
-      
+        <Link href="/">          
+        <div className="logo" />
+        </Link>
+
       </React.Fragment>
     );
-  }
 }
-
-export default Logo;
