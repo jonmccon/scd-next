@@ -138,7 +138,8 @@ class EpisodeListing extends React.Component<any, any> {
         ))}
 
           <Link 
-              href="https://seattlecreative.show"
+              href="https://seattlecreative.simplecast.com"
+              // href="https://listen.seattlecreative.show/"
               target="_blank"
             >
             <div className="podcastEpisode-content show-link">
