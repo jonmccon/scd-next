@@ -14,7 +14,8 @@ export default function Socials() {
           <Link
             className="headline-menu--link"
             target="_blank"
-            href="https://seattlecreative.show/"
+            href="https://seattlecreative.simplecast.com"
+            // href="https://listen.seattlecreative.show/"
           >
             All Episodes
           </Link>
