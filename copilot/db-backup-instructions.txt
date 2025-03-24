@@ -1,9 +1,0 @@
-When you use the -Fc option with pg_dump, it creates a custom-format dump file, which is a binary file. This format is designed to be more efficient and to include additional metadata that makes it suitable for use with pg_restore.
-pg_dump -Fc -v --dbname=<vercel_db_source> -f db-example.dump
-
-If you want a plain text SQL dump that you can view in a text editor like VS Code, you can use the -Fp option instead:
-pg_dump -Fp -v --dbname=<vercel_db_source> -f db-example.sql
-
-Replace <vercel_db_source> with the actual connection string or details provided by Vercel.
-
-Also keep in mind that plain text SQL dumps are generally larger than custom-format dumps because they don't include the same level of compression and optimization. However, they are human-readable and can be easily inspected or modified if needed.

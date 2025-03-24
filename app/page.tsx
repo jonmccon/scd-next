@@ -7,6 +7,7 @@ import TypeformSubmission from '@/components/typeform/TypeformSubmission'
 import MapboxMap from '@/components/MapboxMap'
 import Socials from '@/components/header/socials'
 import Logo from '@/components/header/logo'
+import PromoBanner from '@/components/promo/promo-banner'
 
 const Directory = React.lazy(() => import('@/components/listing/directory'));
 const Filters = React.lazy(() => import('@/components/header/floatingFilters'));
@@ -20,7 +21,9 @@ export const dynamic = 'force-dynamic'
 
 export default function Home() {
   return (
+    
     <main className="pattern">
+      {/* <PromoBanner /> */}
       <Logo />
           
 
