@@ -10,7 +10,7 @@ export default function PromoBanner() {
       <React.Fragment>
         
         
-<Link href="http://creativeworks.co/west">  
+<Link href="http://creativeworks.co/west?seattle-creative-directory" target="_blank">  
     <div>
       <div className="triangle"></div>
       <img src="/img/cwcWEST.png" alt="Creative Works Logo" className="promo-image" />
