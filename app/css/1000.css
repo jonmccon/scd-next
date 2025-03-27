@@ -57,6 +57,16 @@
       }
 
     /* ----------------------------------------------- */
+
+    /* PROMO BANNER  */
+
+    .promo-banner {
+        font: var(--text-mono-std);
+        /* background-color: yellow; */
+        z-index: 100;
+    }
+
+
     
     /* HEADLINE */
 
