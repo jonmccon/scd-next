@@ -63,6 +63,33 @@
     }
 
     /* ----------------------------------------------- */
+
+    .triangle {
+        display: none;
+      }
+
+    .promo-banner {
+        position: relative;
+        padding: 1ch;
+        text-align: center;
+        font: var(--text-mono-menu);
+        line-height: 1.4em;
+        background-color: rgb(251, 203, 60);
+        z-index: 100;
+        /* border-radius: 0 0 12px 12px; */
+        
+    }
+
+    .promo-image {
+        /* display: none; */
+        top: 0px;
+        right: 0px;
+        position: absolute;
+        width: 110px;
+        height: 110px;
+        margin: 0 0 0 0;
+        z-index: 150;
+    }
     
     /* HEADLINE */
 
@@ -638,7 +665,8 @@
 
 
     .filter-toggle-button {
-        position: fixed;
+        position: -webkit-sticky;
+        position: sticky;
         top: .5em;
         left: .5em;
         /* padding: 1rem; */
@@ -648,6 +676,10 @@
         width: 54px;
         height: 54px;
         font-size: 24px;
+    }
+
+    .filter-toggle-button.closed {
+        /* margin-top: 5em; */
     }
 
     .filter-menu.open .filter-toggle-button {

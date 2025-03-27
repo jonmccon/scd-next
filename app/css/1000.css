@@ -60,11 +60,49 @@
 
     /* PROMO BANNER  */
 
-    .promo-banner {
-        font: var(--text-mono-std);
-        /* background-color: yellow; */
+
+    .triangle {
+        display: block;
+        width: 0px;
+        height: 0px;
+        right: 0px;
+        top: 0px;
+        position: fixed;
+        border-style: solid;
+        border-width: 0 200px 200px 0;
+        border-color: transparent rgb(251, 203, 60) transparent transparent;
         z-index: 100;
+      }
+
+    .promo-banner {
+        display: block;
+        position: fixed;
+        right: 0px;
+        top: 0px;
+        margin: 0px 125px 0 0;
+        width: 240px;
+        padding: 1ch;
+        text-align: center;
+        font: var(--text-mono-menu);
+        line-height: 1.4em;
+        background-color: rgb(251, 203, 60);
+        z-index: 100;
+        border-radius: 0 0 0 12px;
+        
     }
+
+    .promo-image {
+        display: block;
+        top: 0px;
+        right: 0px;
+        position: fixed;
+        width: 150px;
+        height: 150px;
+        margin: 0 0 0 0;
+        z-index: 150;
+    }
+
+    /* ----------------------------------------------- */
 
 
     

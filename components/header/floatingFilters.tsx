@@ -117,7 +117,7 @@ const getFilterType = (filter: Tag | string): FilterType => {
   return (
     <div className={`filter-menu ${isOpen ? "open" : "closed"}`} ref={dialogRef}>
       <div className={`filter-menu-content ${isOpen ? "open" : "closed"}`}>
-        <button className="filter-toggle-button" onClick={toggleMenu}>
+        <button className={`filter-toggle-button ${isOpen ? "open" : "closed"}`} onClick={toggleMenu}>
           {isOpen ? <IoClose /> : "🏷️"}
         </button>
 
