@@ -8,7 +8,8 @@
     "dev": "prisma generate && next dev -H 0.0.0.0",
     "build": "prisma generate && prisma db push && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "healthcheck": "ts-node utils/healthcheck.ts"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
