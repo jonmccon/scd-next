@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma"
+import prisma from "@/lib/prisma"
 
 export async function HealthStats() {
   // Get counts of websites by status
@@ -54,19 +54,26 @@ interface StatCardProps {
 }
 
 function StatCard({ title, value, description, color = "blue" }: StatCardProps) {
-  const colorClasses = {
-    blue: "bg-blue-50 text-blue-700",
-    green: "bg-green-50 text-green-700",
-    yellow: "bg-yellow-50 text-yellow-700",
-    red: "bg-red-50 text-red-700",
+  // Get color-specific classes
+  const getColorClasses = (color: string): string => {
+    switch (color) {
+      case "blue":
+        return "bg-blue-50 text-blue-700"
+      case "green":
+        return "bg-green-50 text-green-700"
+      case "yellow":
+        return "bg-yellow-50 text-yellow-700"
+      case "red":
+        return "bg-red-50 text-red-700"
+      default:
+        return "bg-blue-50 text-blue-700"
+    }
   }
 
   return (
     <div className="bg-white rounded-lg shadow-md p-6">
       <h3 className="text-sm font-medium text-gray-500">{title}</h3>
-      <div className={`text-3xl font-bold mt-2 ${color ? colorClasses[color] : ""} inline-block px-2 py-1 rounded`}>
-        {value}
-      </div>
+      <div className={`text-3xl font-bold mt-2 ${getColorClasses(color)} inline-block px-2 py-1 rounded`}>{value}</div>
       <p className="text-sm text-gray-500 mt-2">{description}</p>
     </div>
   )

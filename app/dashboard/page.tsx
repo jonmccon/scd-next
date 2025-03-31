@@ -1,9 +1,9 @@
 import { Suspense } from "react"
 import Link from "next/link"
 import prisma from "@/lib/prisma"
-import StatusBadge from "@/components/status-badge"
-import HealthSummary from "@/components/health-summary"
-import { HealthStats } from "@/components/health-stats"
+import StatusBadge from "@/components/healthcheck/status-badge"
+import HealthSummary from "@/components/healthcheck/health-summary"
+import { HealthStats } from "@/components/healthcheck/health-stats"
 
 export const dynamic = "force-dynamic"
 

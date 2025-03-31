@@ -80,6 +80,7 @@ model Listing {
   description   String?
   colorB        String?
   tags          Tag[]   @relation("TagToListing")
+  healthChecks HealthCheck[]
 }
 
 model Tag {
@@ -103,6 +104,7 @@ model HealthCheck {
   contentIssue    String?
   redirectChain   Json?     // Store the redirect chain as JSON
   isSecure        Boolean?  // Whether the site uses HTTPS
+  Listing         Listing  @relation(fields: [listingId], references: [id])
 
   @@index([listingId])
   @@index([checkedAt])

@@ -1,31 +1,40 @@
-import { cva, type VariantProps } from "class-variance-authority"
-
-const badgeVariants = cva("inline-flex items-center rounded-full font-medium", {
-  variants: {
-    status: {
-      up: "bg-green-100 text-green-800",
-      down: "bg-red-100 text-red-800",
-      redirect: "bg-yellow-100 text-yellow-800",
-      error: "bg-red-100 text-red-800",
-      content_error: "bg-orange-100 text-orange-800",
-      too_many_redirects: "bg-yellow-100 text-yellow-800",
-    },
-    size: {
-      default: "px-2.5 py-0.5 text-xs",
-      large: "px-3 py-1 text-sm",
-    },
-  },
-  defaultVariants: {
-    status: "up",
-    size: "default",
-  },
-})
-
-interface StatusBadgeProps extends VariantProps<typeof badgeVariants> {
+interface StatusBadgeProps {
   status: string
+  size?: "default" | "large"
 }
 
-export default function StatusBadge({ status, size }: StatusBadgeProps) {
+export default function StatusBadge({ status, size = "default" }: StatusBadgeProps) {
+  // Get status-specific classes
+  const getStatusClasses = (status: string): string => {
+    switch (status) {
+      case "up":
+        return "bg-green-100 text-green-800"
+      case "down":
+        return "bg-red-100 text-red-800"
+      case "redirect":
+        return "bg-yellow-100 text-yellow-800"
+      case "error":
+        return "bg-red-100 text-red-800"
+      case "content_error":
+        return "bg-orange-100 text-orange-800"
+      case "too_many_redirects":
+        return "bg-yellow-100 text-yellow-800"
+      default:
+        return "bg-gray-100 text-gray-800"
+    }
+  }
+
+  // Get size-specific classes
+  const getSizeClasses = (size: "default" | "large"): string => {
+    switch (size) {
+      case "large":
+        return "px-3 py-1 text-sm"
+      default:
+        return "px-2.5 py-0.5 text-xs"
+    }
+  }
+
+  // Format the status text for display
   const statusText =
     {
       up: "Up",
@@ -36,6 +45,9 @@ export default function StatusBadge({ status, size }: StatusBadgeProps) {
       too_many_redirects: "Too Many Redirects",
     }[status] || status
 
-  return <span className={badgeVariants({ status: status as any, size })}>{statusText}</span>
+  // Combine all classes
+  const classes = `inline-flex items-center rounded-full font-medium ${getStatusClasses(status)} ${getSizeClasses(size)}`
+
+  return <span className={classes}>{statusText}</span>
 }
 

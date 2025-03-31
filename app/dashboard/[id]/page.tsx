@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import prisma from "@/lib/prisma"
-import StatusBadge from "@/components/status-badge"
-import ResponseTimeChart from "@/components/response-time-chart"
-import StatusHistoryChart from "@/components/status-history-chart"
-import HealthCheckTable from "@/components/health-check-table"
+import StatusBadge from "@/components/healthcheck/status-badge"
+import ResponseTimeChart from "@/components/healthcheck/response-time-chart"
+import StatusHistoryChart from "@/components/healthcheck/status-history-chart"
+import HealthCheckTable from "@/components/healthcheck/health-check-table"
 
 export const dynamic = "force-dynamic"
 
@@ -22,6 +22,9 @@ async function getListingWithHealthHistory(id: string) {
       title: true,
       website: true,
       category: true,
+      tags: true,
+      description: true,
+      published: true,
     },
   })
 
@@ -84,12 +87,15 @@ export default async function ListingHealthPage({ params }: PageProps) {
               {website}
             </a>
             <p className="text-sm text-gray-500 mt-1">Category: {category}</p>
+            <p className="text-sm text-gray-500 mt-1">Tags: {listingData.tags.join(", ")}</p>
+            <p className="text-sm text-gray-500 mt-1">Description: {listingData.description}</p>
+            <p className="text-sm text-gray-500 mt-1">Published: {listingData.published ? "Yes" : "No"}</p>
           </div>
 
           {latestCheck && (
             <div className="text-right">
               <div className="mb-2">
-                <StatusBadge status={latestCheck.status} size="large" />
+                <StatusBadge status={latestCheck.status} />
               </div>
               <p className="text-sm text-gray-500">Last checked: {new Date(latestCheck.checkedAt).toLocaleString()}</p>
             </div>
