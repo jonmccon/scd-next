@@ -81,32 +81,10 @@ model Listing {
   description   String?
   colorB        String?
   tags          Tag[]   @relation("TagToListing")
-  healthChecks HealthCheck[]
 }
 
 model Tag {
   id       String    @id @default(cuid())
   name     String    @unique
   listings Listing[] @relation("TagToListing")
-}
-
-model HealthCheck {
-  id              String    @id @default(cuid())
-  listingId       String
-  checkedAt       DateTime  @default(now())
-  status          String    // 'up', 'down', 'redirect', 'error', 'content_error'
-  statusCode      Int?
-  responseTimeMs  Int?
-  redirectUrl     String?
-  finalUrl        String?
-  errorMessage    String?
-  errorType       String?   // 'timeout', 'dns', 'connection_refused', 'ssl', 'unknown'
-  contentType     String?
-  contentIssue    String?
-  redirectChain   Json?     // Store the redirect chain as JSON
-  isSecure        Boolean?  // Whether the site uses HTTPS
-  Listing         Listing  @relation(fields: [listingId], references: [id])
-
-  @@index([listingId])
-  @@index([checkedAt])
 }
