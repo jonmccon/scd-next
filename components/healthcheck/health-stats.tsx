@@ -1,30 +1,41 @@
+"use client"
+
 import prisma from "@/lib/prisma"
 
 export async function HealthStats() {
+  // Get the most recent health check IDs for each listing
+  const recentChecks = await prisma.healthCheck.findMany({
+    distinct: ["listingId"], // Ensure only one record per listingId
+    orderBy: {
+      checkedAt: "desc", // Get the most recent check
+    },
+    select: {
+      id: true, // Only select the ID
+    },
+  });
+
+  // Extract the IDs into an array of strings
+  const recentIds = recentChecks.map((check) => check.id);
+
   // Get counts of websites by status
   const statusCounts = await prisma.healthCheck.groupBy({
     by: ["status"],
     where: {
-      // Only include the most recent check for each listing
       id: {
-        in: await prisma.$queryRaw`
-          SELECT DISTINCT ON ("listingId") id
-          FROM "HealthCheck"
-          ORDER BY "listingId", "checkedAt" DESC
-        `,
+        in: recentIds, // Use the array of IDs here
       },
     },
     _count: {
       status: true,
     },
-  })
+  });
 
   // Calculate total websites checked
-  const totalChecked = statusCounts.reduce((sum, item) => sum + item._count.status, 0)
+  const totalChecked = statusCounts.reduce((sum, item) => sum + item._count.status, 0);
 
   // Calculate uptime percentage
-  const upCount = statusCounts.find((item) => item.status === "up")?._count.status || 0
-  const uptimePercentage = totalChecked > 0 ? Math.round((upCount / totalChecked) * 100) : 0
+  const upCount = statusCounts.find((item) => item.status === "up")?._count.status || 0;
+  const uptimePercentage = totalChecked > 0 ? Math.round((upCount / totalChecked) * 100) : 0;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -43,7 +54,7 @@ export async function HealthStats() {
       />
       <StatCard title="Last Check" value={new Date().toLocaleDateString()} description="Most recent health check" />
     </div>
-  )
+  );
 }
 
 interface StatCardProps {
