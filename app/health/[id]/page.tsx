@@ -22,7 +22,11 @@ async function getListingWithHealthHistory(id: string) {
       title: true,
       website: true,
       category: true,
-      tags: true,
+      tags: {
+        select: {
+          name: true,
+        },
+      },
       description: true,
       published: true,
     },
@@ -69,7 +73,7 @@ export default async function ListingHealthPage({ params }: PageProps) {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-6">
-        <Link href="/dashboard" className="text-blue-600 hover:text-blue-800">
+        <Link href="/health" className="text-blue-600 hover:text-blue-800">
           ← Back to Dashboard
         </Link>
       </div>
@@ -87,7 +91,7 @@ export default async function ListingHealthPage({ params }: PageProps) {
               {website}
             </a>
             <p className="text-sm text-gray-500 mt-1">Category: {category}</p>
-            <p className="text-sm text-gray-500 mt-1">Tags: {listingData.tags.join(", ")}</p>
+            <p className="text-sm text-gray-500 mt-1">Tags: {listingData.tags.map(tag => tag.name).join(", ")}</p>
             <p className="text-sm text-gray-500 mt-1">Description: {listingData.description}</p>
             <p className="text-sm text-gray-500 mt-1">Published: {listingData.published ? "Yes" : "No"}</p>
           </div>

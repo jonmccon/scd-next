@@ -6,12 +6,15 @@ const prisma = new PrismaClient()
 // Function to check a website's health
 async function checkWebsite(url: string) {
   try {
-    const startTime = Date.now()
+    const startTime = Date.now();
 
-    // Set a proper user agent
+    // Set headers to mimic a real browser
     const headers = {
-      "User-Agent": "Website-Health-Check-Bot/1.0",
-    }
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+      "Accept-Language": "en-US,en;q=0.5",
+      "Referer": "https://www.google.com",
+    };
 
     const controller = new AbortController();
     const timeoutId = global.setTimeout(() => controller.abort(), 10000); // 10-second timeout
@@ -23,32 +26,38 @@ async function checkWebsite(url: string) {
       signal: controller.signal,
     }).finally(() => clearTimeout(timeoutId));
 
-    const responseTime = Date.now() - startTime
+    const responseTime = Date.now() - startTime;
 
     // Handle redirects
     if (response.status >= 300 && response.status < 400) {
-      const redirectUrl = response.headers.get("location")
-      return {
-        status: "redirect",
-        statusCode: response.status,
-        redirectUrl: redirectUrl,
-        responseTime,
+      const redirectUrl = response.headers.get("location");
+
+      if (redirectUrl) {
+        return {
+          status: "redirect",
+          statusCode: response.status,
+          redirectUrl,
+          responseTime,
+        };
+      } else {
+        return {
+          status: "up",
+          statusCode: response.status,
+          responseTime,
+        };
       }
     }
 
     // For successful responses, check content
     if (response.ok) {
-      const contentType = response.headers.get("content-type")
-      const isHtml = contentType && contentType.includes("text/html")
+      const contentType = response.headers.get("content-type");
+      const isHtml = contentType && contentType.includes("text/html");
 
-      // Only check content for HTML responses
       if (isHtml) {
         try {
-          const text = await response.text()
-
-          // Check if the page contains an error message despite 200 status
-          const hasErrorMessage = /error|not found|404|403|500/i.test(text)
-          const pageTitle = text.match(/<title>(.*?)<\/title>/i)?.[1] || ""
+          const text = await response.text();
+          const hasErrorMessage = /error|not found|404|403|500/i.test(text);
+          const pageTitle = text.match(/<title>(.*?)<\/title>/i)?.[1] || "";
 
           if (hasErrorMessage && (pageTitle.includes("Error") || pageTitle.includes("Not Found"))) {
             return {
@@ -56,19 +65,14 @@ async function checkWebsite(url: string) {
               statusCode: response.status,
               responseTime,
               contentIssue: "Page contains error messages despite 200 status",
-            }
+            };
           }
         } catch (contentError) {
-          if (contentError instanceof Error) {
-            console.log(`Error parsing content for ${url}: ${contentError.message}`)
-          } else {
-            console.log(`Error parsing content for ${url}: ${String(contentError)}`)
-          }
+          console.log(`Error parsing content for ${url}: ${contentError.message}`);
         }
       }
 
-      // Check SSL information
-      const isSecure = url.startsWith("https://")
+      const isSecure = url.startsWith("https://");
 
       return {
         status: "up",
@@ -76,33 +80,41 @@ async function checkWebsite(url: string) {
         responseTime,
         isSecure,
         contentType,
-      }
+      };
+    }
+
+    // Handle other status codes
+    if (response.status >= 400) {
+      return {
+        status: "down",
+        statusCode: response.status,
+        responseTime,
+      };
     }
 
     return {
-      status: "down",
+      status: "unknown",
       statusCode: response.status,
       responseTime,
-    }
+    };
   } catch (error: any) {
-    // Handle different types of errors
-    let errorType = "unknown"
+    let errorType = "unknown";
     if (error.name === "AbortError") {
-      errorType = "timeout"
+      errorType = "timeout";
     } else if (error.message.includes("ENOTFOUND")) {
-      errorType = "dns"
+      errorType = "dns";
     } else if (error.message.includes("ECONNREFUSED")) {
-      errorType = "connection_refused"
+      errorType = "connection_refused";
     } else if (error.message.includes("certificate")) {
-      errorType = "ssl"
+      errorType = "ssl";
     }
 
     return {
-      status: "error",
+      status: "warning",
       statusCode: null,
       errorType,
       errorMessage: error.message,
-    }
+    };
   }
 }
 
