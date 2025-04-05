@@ -68,7 +68,11 @@ async function checkWebsite(url: string) {
             };
           }
         } catch (contentError) {
-          console.log(`Error parsing content for ${url}: ${contentError.message}`);
+          if (contentError instanceof Error) {
+            console.log(`Error parsing content for ${url}: ${contentError.message}`);
+          } else {
+            console.log(`Error parsing content for ${url}: ${String(contentError)}`);
+          }
         }
       }
 

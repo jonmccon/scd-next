@@ -99,7 +99,9 @@ export default async function ListingHealthPage({ params }: PageProps) {
           {latestCheck && (
             <div className="text-right">
               <div className="mb-2">
-                <StatusBadge status={latestCheck.status} />
+                {["up", "down", "warning", "redirect", "content_error"].includes(latestCheck.status) ? (
+                  <StatusBadge status={latestCheck.status as "up" | "down" | "warning" | "redirect" | "content_error"} />
+                ) : null}
               </div>
               <p className="text-sm text-gray-500">Last checked: {new Date(latestCheck.checkedAt).toLocaleString()}</p>
             </div>

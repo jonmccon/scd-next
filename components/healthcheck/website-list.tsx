@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import StatusBadge from "@/components/healthcheck/status-badge";
-import HealthSummary from "@/components/healthcheck/health-summary";
 import Link from "next/link";
+import StatusBadge from "@/components/healthcheck/status-badge";
 
 export default function WebsiteList() {
   const [listings, setListings] = useState<any[]>([]);
@@ -22,51 +21,58 @@ export default function WebsiteList() {
   }
 
   return (
-    <>
-      {listings.map((listing) => (
-        <div key={listing.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-          <div className="p-4 border-b">
-            <div className="flex justify-between items-start">
-              <h2 className="text-xl font-semibold truncate">{listing.title}</h2>
-              {listing.latestCheck && <StatusBadge status={listing.latestCheck.status} />}
-            </div>
-            <Link href={listing.website}><p className="text-sm text-gray-500 truncate mt-1">{listing.website}</p></Link>
-            <p className="text-xs text-gray-400 mt-1">Category: {listing.category}</p>
-          </div>
-
-          <div className="p-4">
-            {listing.latestCheck ? (
-              <>
-                <div className="text-sm mb-3">
-                  <span className="text-gray-500">Last checked: </span>
-                  <span className="font-medium">{new Date(listing.latestCheck.checkedAt).toLocaleString()}</span>
-                </div>
-
-                {listing.latestCheck.responseTimeMs && (
-                  <div className="text-sm mb-3">
-                    <span className="text-gray-500">Response time: </span>
-                    <span className="font-medium">{listing.latestCheck.responseTimeMs}ms</span>
-                  </div>
-                )}
-
-                {listing.healthHistory.length > 0 && (
-                  <div className="mt-4">
-                    <HealthSummary healthHistory={listing.healthHistory} />
-                  </div>
-                )}
-              </>
-            ) : (
-              <p className="text-sm text-gray-500">No health checks recorded</p>
-            )}
-          </div>
-
-          <div className="bg-gray-50 p-4 border-t">
-            <Link href={`/health/${listing.id}`} className="text-blue-600 hover:text-blue-800 text-sm font-medium">
-              View detailed history →
-            </Link>
-          </div>
-        </div>
-      ))}
-    </>
+    <div className="overflow-x-auto">
+      <table className="min-w-full divide-y divide-gray-200">
+        <thead className="bg-gray-50">
+          <tr>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+            {/* <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Website</th> */}
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+            {/* <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tags</th> */}
+            {/* <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th> */}
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Published</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Latest Status</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Checked</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+          </tr>
+        </thead>
+        <tbody className="bg-white divide-y divide-gray-200">
+          {listings.map((listing) => {
+            const latestCheck = listing.latestCheck || {};
+            return (
+              <tr key={listing.id}>
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{listing.title}</td>
+                {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-600">
+                  <a
+                    href={listing.website.startsWith("http") ? listing.website : `https://${listing.website}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {listing.website}
+                  </a>
+                </td> */}
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{listing.category}</td>
+                {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  {listing.tags.map((tag) => tag.name).join(", ")}
+                </td> */}
+                {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{listing.description}</td> */}
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  {listing.published ? "Yes" : "No"}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  {latestCheck.status && <StatusBadge status={latestCheck.status} />}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  {latestCheck.checkedAt ? new Date(latestCheck.checkedAt).toLocaleString() : "N/A"}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-600">
+                  <Link href={`/health/${listing.id}`}>View Details</Link>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
   );
 }
