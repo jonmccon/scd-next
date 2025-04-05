@@ -58,7 +58,11 @@ export default function HealthCheckTable({ healthChecks }: HealthCheckTableProps
                   {new Date(check.checkedAt).toLocaleString()}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <StatusBadge status={check.status} />
+                  {["up", "down", "warning", "redirect", "content_error"].includes(check.status) ? (
+                    <StatusBadge status={check.status as "up" | "down" | "warning" | "redirect" | "content_error"} />
+                  ) : (
+                    <span className="text-sm text-gray-500">Unknown</span>
+                  )}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {check.responseTimeMs ? `${check.responseTimeMs}ms` : "-"}
