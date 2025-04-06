@@ -4,7 +4,6 @@ import prisma from "@/lib/prisma";
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const listings = await prisma.listing.findMany({
     where: {
-      published: true,
       website: {
         not: "",
       },
@@ -29,40 +28,69 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const listingsWithHealth = await Promise.all(
     listings.map(async (listing) => {
-      const latestCheck = await prisma.healthCheck.findFirst({
-        where: {
-          listingId: listing.id,
-        },
-        orderBy: {
-          checkedAt: "desc",
-        },
-      });
-
-      const thirtyDaysAgo = new Date();
-      thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-
-      const healthHistory = await prisma.healthCheck.findMany({
-        where: {
-          listingId: listing.id,
-          checkedAt: {
-            gte: thirtyDaysAgo,
+      try {
+        // Fetch the latest health check
+        const latestCheck = await prisma.healthCheck.findFirst({
+          where: {
+            listingId: listing.id,
           },
-        },
-        orderBy: {
-          checkedAt: "asc",
-        },
-        select: {
-          status: true,
-          responseTimeMs: true,
-          checkedAt: true,
-        },
-      });
+          orderBy: {
+            checkedAt: "desc",
+          },
+        });
 
-      return {
-        ...listing,
-        latestCheck,
-        healthHistory,
-      };
+        const thirtyDaysAgo = new Date();
+        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+
+        // Fetch the health history for the last 30 days
+        const healthHistory = await prisma.healthCheck.findMany({
+          where: {
+            listingId: listing.id,
+            checkedAt: {
+              gte: thirtyDaysAgo,
+            },
+          },
+          orderBy: {
+            checkedAt: "asc",
+          },
+          select: {
+            status: true,
+            responseTimeMs: true,
+            checkedAt: true,
+          },
+        });
+
+        return {
+          ...listing,
+          latestCheck,
+          healthHistory,
+        };
+      } catch (error: any) {
+        console.error(`Error fetching health data for listing ID ${listing.id}:`, error);
+
+        // Log the error as a health check entry in the database
+        await prisma.healthCheck.create({
+          data: {
+            listingId: listing.id,
+            status: "error",
+            errorMessage: error.message || "Unknown error",
+            errorType: "fetch_failure",
+            checkedAt: new Date(),
+          },
+        });
+
+        // Return the listing with the error logged
+        return {
+          ...listing,
+          latestCheck: {
+            status: "error",
+            errorMessage: error.message || "Unknown error",
+            errorType: "fetch_failure",
+            checkedAt: new Date(),
+          },
+          healthHistory: [],
+        };
+      }
     })
   );
 

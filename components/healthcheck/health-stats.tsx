@@ -61,10 +61,10 @@ function StatCard({ title, value, description, color = "blue" }: StatCardProps) 
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
+    <div>
       <h3 className="text-sm font-medium text-gray-500">{title}</h3>
-      <div className={`text-3xl font-bold mt-2 ${getColorClasses(color)} inline-block px-2 py-1 rounded`}>{value}</div>
-      <p className="text-sm text-gray-500 mt-2">{description}</p>
+      <div className={`text-3xl font-bold ${getColorClasses(color)} inline-block px-2 py-1 rounded`}>{value}</div>
+      <p className="text-sm text-gray-500">{description}</p>
     </div>
   );
 }

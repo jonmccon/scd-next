@@ -78,7 +78,7 @@ export default async function ListingHealthPage({ params }: PageProps) {
         </Link>
       </div>
 
-      <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+      <div className=" p-6 mb-8">
         <div className="flex justify-between items-start">
           <div>
             <h1 className="text-2xl font-bold">{title}</h1>
@@ -112,24 +112,24 @@ export default async function ListingHealthPage({ params }: PageProps) {
       {recentChecks.length > 0 ? (
         <>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className=" p-6">
               <h2 className="text-xl font-semibold mb-4">Response Time (Last 30 Days)</h2>
               <ResponseTimeChart data={recentChecks} />
             </div>
 
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className=" p-6">
               <h2 className="text-xl font-semibold mb-4">Status History (Last 30 Days)</h2>
               <StatusHistoryChart data={recentChecks} />
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow-md p-6">
+          <div className=" p-6">
             <h2 className="text-xl font-semibold mb-4">Health Check History</h2>
             <HealthCheckTable healthChecks={healthChecks.slice(0, 50)} />
           </div>
         </>
       ) : (
-        <div className="bg-white rounded-lg shadow-md p-6 text-center">
+        <div className=" p-6 text-center">
           <p className="text-gray-500">No health check data available for this website.</p>
         </div>
       )}

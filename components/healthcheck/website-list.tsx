@@ -25,24 +25,24 @@ export default function WebsiteList() {
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
-            {/* <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Website</th> */}
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-            {/* <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tags</th> */}
-            {/* <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th> */}
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Published</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Latest Status</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Checked</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+            <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+            {/* <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Website</th> */}
+            <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+            {/* <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tags</th> */}
+            {/* <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th> */}
+            <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Published</th>
+            <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Latest Status</th>
+            <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Checked</th>
+            <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
           {listings.map((listing) => {
             const latestCheck = listing.latestCheck || {};
             return (
-              <tr key={listing.id}>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{listing.title}</td>
-                {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-600">
+              <tr key={listing.id} className="hover:bg-gray-50">
+                <td className="whitespace-nowrap text-sm font-medium text-gray-900">{listing.title}</td>
+                {/* <td className="whitespace-nowrap text-sm text-blue-600">
                   <a
                     href={listing.website.startsWith("http") ? listing.website : `https://${listing.website}`}
                     target="_blank"
@@ -51,22 +51,22 @@ export default function WebsiteList() {
                     {listing.website}
                   </a>
                 </td> */}
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{listing.category}</td>
-                {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="whitespace-nowrap text-sm text-gray-500">{listing.category}</td>
+                {/* <td className="whitespace-nowrap text-sm text-gray-500">
                   {listing.tags.map((tag) => tag.name).join(", ")}
                 </td> */}
-                {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{listing.description}</td> */}
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                {/* <td className="whitespace-nowrap text-sm text-gray-500">{listing.description}</td> */}
+                <td className="whitespace-nowrap text-sm text-gray-500">
                   {listing.published ? "Yes" : "No"}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="whitespace-nowrap">
                   {latestCheck.status && <StatusBadge status={latestCheck.status} />}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="whitespace-nowrap text-sm text-gray-500">
                   {latestCheck.checkedAt ? new Date(latestCheck.checkedAt).toLocaleString() : "N/A"}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-600">
-                  <Link href={`/health/${listing.id}`}>View Details</Link>
+                <td className="whitespace-nowrap text-sm">
+                  <Link className="text-blue-600 hover:text-blue-800" href={`/health/${listing.id}`}>View Details</Link>
                 </td>
               </tr>
             );

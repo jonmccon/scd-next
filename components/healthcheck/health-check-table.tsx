@@ -33,19 +33,19 @@ export default function HealthCheckTable({ healthChecks }: HealthCheckTableProps
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th scope="col" className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Date & Time
             </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th scope="col" className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Status
             </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th scope="col" className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Response Time
             </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th scope="col" className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Status Code
             </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th scope="col" className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Details
             </th>
           </tr>
@@ -54,21 +54,21 @@ export default function HealthCheckTable({ healthChecks }: HealthCheckTableProps
           {healthChecks.map((check) => (
             <>
               <tr key={check.id} className="hover:bg-gray-50 cursor-pointer" onClick={() => toggleRow(check.id)}>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="whitespace-nowrap text-sm text-gray-500">
                   {new Date(check.checkedAt).toLocaleString()}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="whitespace-nowrap">
                   {["up", "down", "warning", "redirect", "content_error"].includes(check.status) ? (
                     <StatusBadge status={check.status as "up" | "down" | "warning" | "redirect" | "content_error"} />
                   ) : (
                     <span className="text-sm text-gray-500">Unknown</span>
                   )}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="whitespace-nowrap text-sm text-gray-500">
                   {check.responseTimeMs ? `${check.responseTimeMs}ms` : "-"}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{check.statusCode || "-"}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="whitespace-nowrap text-sm text-gray-500">{check.statusCode || "-"}</td>
+                <td className="whitespace-nowrap text-sm text-gray-500">
                   <button
                     className="text-blue-600 hover:text-blue-800"
                     onClick={(e) => {
@@ -82,7 +82,7 @@ export default function HealthCheckTable({ healthChecks }: HealthCheckTableProps
               </tr>
               {expandedRow === check.id && (
                 <tr className="bg-gray-50">
-                  <td colSpan={5} className="px-6 py-4">
+                  <td colSpan={5} className="">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {check.redirectUrl && (
                         <div>
