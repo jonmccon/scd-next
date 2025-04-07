@@ -1,23 +1,41 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import StatusBadge from "@/components/healthcheck/status-badge";
 
-export default function WebsiteList() {
-  const [listings, setListings] = useState<any[]>([]);
+interface WebsiteListProps {
+  listings: Array<{
+    id: string;
+    title: string;
+    website: string;
+    tags: Array<{ name: string }>;
+    description: string | null;
+    published: boolean;
+    category: string;
+    latestCheck: {
+      status: string;
+      errorMessage?: string | null;
+      errorType?: string;
+      checkedAt: string;
+      id: string;
+      listingId: string;
+      statusCode: number | null;
+      responseTimeMs: number | null;
+      redirectUrl: string | null;
+      finalUrl: string | null;
+      isSecure: boolean | null;
+    } | null;
+    healthHistory: Array<{
+      status: string;
+      responseTimeMs: number | null;
+      checkedAt: string;
+    }>;
+  }>;
+}
 
-  useEffect(() => {
-    async function fetchListings() {
-      const response = await fetch("/api/listings-with-health");
-      const data = await response.json();
-      setListings(data);
-    }
-    fetchListings();
-  }, []);
-
+export default function WebsiteList({ listings }: WebsiteListProps) {
   if (listings.length === 0) {
-    return <div>Loading...</div>;
+    return <div>No listings available.</div>;
   }
 
   return (
@@ -26,51 +44,34 @@ export default function WebsiteList() {
         <thead className="bg-gray-50">
           <tr>
             <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
-            {/* <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Website</th> */}
             <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-            {/* <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tags</th> */}
-            {/* <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th> */}
             <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Published</th>
             <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Latest Status</th>
             <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Checked</th>
-            <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
-          {listings.map((listing) => {
-            const latestCheck = listing.latestCheck || {};
-            return (
-              <tr key={listing.id} className="hover:bg-gray-50">
-                <td className="whitespace-nowrap text-sm font-medium text-gray-900">{listing.title}</td>
-                {/* <td className="whitespace-nowrap text-sm text-blue-600">
-                  <a
-                    href={listing.website.startsWith("http") ? listing.website : `https://${listing.website}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {listing.website}
-                  </a>
-                </td> */}
-                <td className="whitespace-nowrap text-sm text-gray-500">{listing.category}</td>
-                {/* <td className="whitespace-nowrap text-sm text-gray-500">
-                  {listing.tags.map((tag) => tag.name).join(", ")}
-                </td> */}
-                {/* <td className="whitespace-nowrap text-sm text-gray-500">{listing.description}</td> */}
-                <td className="whitespace-nowrap text-sm text-gray-500">
-                  {listing.published ? "Yes" : "No"}
-                </td>
-                <td className="whitespace-nowrap">
-                  {latestCheck.status && <StatusBadge status={latestCheck.status} />}
-                </td>
-                <td className="whitespace-nowrap text-sm text-gray-500">
-                  {latestCheck.checkedAt ? new Date(latestCheck.checkedAt).toLocaleString() : "N/A"}
-                </td>
-                <td className="whitespace-nowrap text-sm">
-                  <Link className="text-blue-600 hover:text-blue-800" href={`/health/${listing.id}`}>View Details</Link>
-                </td>
-              </tr>
-            );
-          })}
+          {listings.map((listing) => (
+            <tr key={listing.id} className="hover:bg-gray-50">
+              <td className="whitespace-nowrap text-sm font-medium text-gray-900">
+                <Link href={`/health/${listing.id}`} className="text-blue-600 hover:text-blue-800">
+                  {listing.title}
+                </Link>
+              </td>
+              <td className="whitespace-nowrap text-sm text-gray-500">{listing.category}</td>
+              <td className="whitespace-nowrap text-sm text-gray-500">{listing.published ? "Yes" : "No"}</td>
+              <td className="whitespace-nowrap">
+                {listing.latestCheck?.status ? (
+                  <StatusBadge status={listing.latestCheck.status as "up" | "down" | "warning" | "redirect" | "content_error"} />
+                ) : (
+                  "N/A"
+                )}
+              </td>
+              <td className="whitespace-nowrap text-sm text-gray-500">
+                {listing.latestCheck?.checkedAt ? new Date(listing.latestCheck.checkedAt).toLocaleString() : "N/A"}
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

@@ -1,21 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { DashboardPageProps } from "@/app/health/page"; // Import the parent interface
 
-export default function HealthStats() {
-  const [data, setData] = useState<{ totalChecked: number; uptimePercentage: number; issues: number } | null>(null);
+type HealthStatsData = DashboardPageProps["healthStats"]; // Extract the healthStats type
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch("/api/health-stats");
-      const result = await response.json();
-      setData(result);
-    }
-    fetchData();
-  }, []);
-
-  if (!data) return <div>Loading...</div>;
-
+export default function HealthStats({ data }: { data: HealthStatsData }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
       <StatCard title="Total Websites" value={data.totalChecked.toString()} description="Websites being monitored" />
