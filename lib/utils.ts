@@ -1,3 +1,6 @@
+// This naming here is wrong, also i don't think this is used anywhere
+// filterListings should be moved into this folder too
+
 import ms from 'ms'
 
 export const timeAgo = (timestamp: Date, timeOnly?: boolean): string => {
