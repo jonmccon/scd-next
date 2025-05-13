@@ -645,6 +645,49 @@
         left: 1em;
     }
 
+    /* Filters tooltip */
+
+    .filters-tooltip {
+        /* transition: all 0.1s; */
+        /* top: 0em;
+        left: 3.4em; */
+    }
+
+    .filters-tooltip.closed {
+        position: relative;
+        left: 2.7em;
+        min-width: fit-content;
+        max-width: 240px;
+        padding: 10px 25px 10px 10px;
+        border-radius: 8px;
+        background: #000;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .08), 0 2px 12px rgba(0, 0, 0, .06);
+    }
+
+    .filters-tooltip.closed::before {
+        background-color: #000;
+        content: "";
+        display: block;
+        width: 12px;
+        height: 12px;
+        position: absolute;
+        left: -4px;
+        top: 12px;
+        transform: rotate(45deg);
+        box-shadow: 2px -2px 2px 0 rgba(0, 0, 0, .06);
+    }
+
+    .filters-tooltip-text {
+        font: 700 0.8rem JetBrains-Mono, sans-serif;
+        text-transform: uppercase;
+        color: #FFF;
+    }
+
+    .filter-tooltip.open,   .filters-tooltip::before, .filters-tooltip-text.open {
+        display: none;
+        inset: 0;
+    }
+
     .filter-menu-content {
         transition: all 0.1s;
     }
@@ -678,8 +721,9 @@
         font-size: 24px;
     }
 
-    .filter-toggle-button.closed {
-        /* margin-top: 5em; */
+    .filter-toggle-button.closed span {
+        position: absolute;
+        margin: 0.4rem 0rem 0rem -1rem;
     }
 
     .filter-menu.open .filter-toggle-button {
@@ -928,7 +972,7 @@
     }
 
     .tf-v1-popover-tooltip-text {
-        font: 700 1em JetBrains-Mono, sans-serif;
+        font: 700 0.8rem JetBrains-Mono, sans-serif;
         text-transform: uppercase;
         color: #FFF;
     }

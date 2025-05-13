@@ -23,7 +23,7 @@ export default function Home() {
   return (
     
     <main className="pattern">
-      <PromoBanner />
+      {/* <PromoBanner /> */}
       <Logo />
           
 

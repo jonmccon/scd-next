@@ -303,6 +303,10 @@
         }
     }
 
+    .filters-tooltip-text {
+        font: 700 0.7rem JetBrains-Mono, sans-serif;
+    }
+
     .filter-menu.closed {
 
     }
@@ -532,7 +536,7 @@
     }
 
     .tf-v1-popover-tooltip-text {
-        font: 700 .8em JetBrains-Mono, sans-serif;
+        font: 700 .7rem JetBrains-Mono, sans-serif;
     }
 
     
