@@ -116,6 +116,7 @@ class EpisodeListing extends React.Component<any, any> {
               
               <AudioPlayer         
                 src= {episode.episodeURL}
+                preload="metadata"
                 onPlay={e => console.log("onPlay")}
                 layout="horizontal-reverse" 
                 customProgressBarSection={
